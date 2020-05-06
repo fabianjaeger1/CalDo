@@ -1,0 +1,52 @@
+PODS:
+  - Alamofire (5.0.0-beta.7)
+  - DayDatePicker (1.7)
+  - Gemini (1.4.0)
+  - Hero (1.4.0)
+  - JTAppleCalendar (7.1.7)
+  - PanModal (1.2.7)
+  - StepIndicator (1.0.7.1)
+  - SwiftyChrono (1.1.0)
+  - SwiftyJSON (4.3.0)
+  - TagListView (1.4.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.0.0-beta.4)
+  - DayDatePicker
+  - Gemini
+  - Hero
+  - JTAppleCalendar
+  - PanModal
+  - StepIndicator
+  - SwiftyChrono
+  - SwiftyJSON (~> 4.0)
+  - TagListView (~> 1.0)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - DayDatePicker
+    - Gemini
+    - Hero
+    - JTAppleCalendar
+    - PanModal
+    - StepIndicator
+    - SwiftyChrono
+    - SwiftyJSON
+    - TagListView
+
+SPEC CHECKSUMS:
+  Alamofire: bd07938ceecad59d2492aeecb1f785a8f2721160
+  DayDatePicker: 62929f136aefb56fabb27cde9709fea4c8dd3b9f
+  Gemini: 4ad915cca8805577fe3021e02feeca2b77dcdbfc
+  Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
+  JTAppleCalendar: 96da4d8388fa6dc82d6a60d41ef36a015e167e2f
+  PanModal: 3e16ead1a907fb06f4df3f13492fd00149fa4974
+  StepIndicator: 8e907e2e3a72a3fc939177ef97abd28390416bfc
+  SwiftyChrono: 233460655232c082ced7ac0e3a6a3b23d57a077d
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
+  TagListView: 987b0bdbb16cd9d9e7c0e2ec32aff37ecba8b173
+
+PODFILE CHECKSUM: 8a10b90b54f2c5fe98aae6376e2df253c2ddee3f
+
+COCOAPODS: 1.9.1

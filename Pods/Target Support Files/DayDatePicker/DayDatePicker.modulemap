@@ -1,0 +1,6 @@
+framework module DayDatePicker {
+  umbrella header "DayDatePicker-umbrella.h"
+
+  export *
+  module * { export * }
+}

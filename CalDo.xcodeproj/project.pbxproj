@@ -1,0 +1,1008 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		01036E5122ECF0E1008D6B16 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01036E5022ECF0E1008D6B16 /* NewTaskViewController.swift */; };
+		010B3A12232E5D24008B3684 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010B3A11232E5D24008B3684 /* TodayViewController.swift */; };
+		012259A523F62854003BAAEE /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012259A423F62854003BAAEE /* CalendarViewController.swift */; };
+		0130AD4622EF25AB00C3EF47 /* Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0130AD4522EF25AB00C3EF47 /* Projects.swift */; };
+		0130AD4822EF279300C3EF47 /* ChooseProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0130AD4722EF279300C3EF47 /* ChooseProjectsViewController.swift */; };
+		0135B2A8231DC66800E43638 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0135B2A7231DC66800E43638 /* WeatherModel.swift */; };
+		013E66BF22F0BFD80048AF18 /* DatePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013E66BE22F0BFD80048AF18 /* DatePopUpViewController.swift */; };
+		0142AAC1231BF78300324DA1 /* OnDateRepeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0142AAC0231BF78300324DA1 /* OnDateRepeatViewController.swift */; };
+		0145956C2445EA6400AFB34D /* SF-Pro-Rounded-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 014595652445E9DA00AFB34D /* SF-Pro-Rounded-Black.otf */; };
+		0145956D2445EA6400AFB34D /* SF-Pro-Rounded-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0145956B2445E9DB00AFB34D /* SF-Pro-Rounded-Bold.otf */; };
+		0145956E2445EA6400AFB34D /* SF-Pro-Rounded-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 014595642445E9DA00AFB34D /* SF-Pro-Rounded-Heavy.otf */; };
+		0145956F2445EA6400AFB34D /* SF-Pro-Rounded-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0145956A2445E9DB00AFB34D /* SF-Pro-Rounded-Light.otf */; };
+		014595702445EA6400AFB34D /* SF-Pro-Rounded-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 014595662445E9DA00AFB34D /* SF-Pro-Rounded-Medium.otf */; };
+		014595712445EA6400AFB34D /* SF-Pro-Rounded-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 014595692445E9DB00AFB34D /* SF-Pro-Rounded-Regular.otf */; };
+		014595722445EA6400AFB34D /* SF-Pro-Rounded-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 014595672445E9DA00AFB34D /* SF-Pro-Rounded-Semibold.otf */; };
+		014595732445EA6400AFB34D /* SF-Pro-Rounded-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 014595682445E9DB00AFB34D /* SF-Pro-Rounded-Thin.otf */; };
+		014595742445EA6400AFB34D /* SF-Pro-Rounded-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 014595632445E9DA00AFB34D /* SF-Pro-Rounded-Ultralight.otf */; };
+		015DA69E23C94B5300582851 /* HabitHomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015DA69D23C94B5300582851 /* HabitHomeScreenViewController.swift */; };
+		015DA6A023C94E4900582851 /* ProjectHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015DA69F23C94E4900582851 /* ProjectHomeViewController.swift */; };
+		015DA6A223C952EF00582851 /* ChooseProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015DA6A123C952EF00582851 /* ChooseProjectTableViewCell.swift */; };
+		0165E19823294AAA002F5DA1 /* TodoSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0165E19723294AAA002F5DA1 /* TodoSectionViewController.swift */; };
+		0165E19F2329A971002F5DA1 /* InboxHomeScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0165E19D2329A971002F5DA1 /* InboxHomeScreenTableViewCell.swift */; };
+		0165E1A02329A971002F5DA1 /* InboxHomeScreenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0165E19E2329A971002F5DA1 /* InboxHomeScreenTableViewCell.xib */; };
+		0165E1A22329AAE9002F5DA1 /* InboxHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0165E1A12329AAE9002F5DA1 /* InboxHomeViewController.swift */; };
+		0165E1A52329F337002F5DA1 /* ScheduledHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0165E1A32329F337002F5DA1 /* ScheduledHomeViewController.swift */; };
+		0179EDDC22EC820200F2A48B /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0179EDDB22EC820200F2A48B /* DateExtension.swift */; };
+		019280EB1F8A615C00E895D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019280EA1F8A615C00E895D4 /* AppDelegate.swift */; };
+		019280F01F8A615C00E895D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 019280EE1F8A615C00E895D4 /* Main.storyboard */; };
+		019281001F8A615C00E895D4 /* CalDoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019280FF1F8A615C00E895D4 /* CalDoTests.swift */; };
+		0192810B1F8A615C00E895D4 /* CalDoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0192810A1F8A615C00E895D4 /* CalDoUITests.swift */; };
+		019281551F8B884E00E895D4 /* InboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019281541F8B884E00E895D4 /* InboxViewController.swift */; };
+		019878132319C87300DE1F7E /* RepeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019878122319C87300DE1F7E /* RepeatViewController.swift */; };
+		01987817231AA1CE00DE1F7E /* EndRepeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01987816231AA1CE00DE1F7E /* EndRepeatViewController.swift */; };
+		019A09FB242E82D5002434F0 /* DateHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019A09FA242E82D5002434F0 /* DateHeaderCell.swift */; };
+		01B3CA0422EB8BEF00E5344D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B3CA0322EB8BEF00E5344D /* HomeViewController.swift */; };
+		01C954722115E2310047175F /* Todo Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C954712115E2310047175F /* Todo Struct.swift */; };
+		01D53465234F681800DE6776 /* CustomTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D53462234F681800DE6776 /* CustomTabBarItem.swift */; };
+		01D53466234F681800DE6776 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D53463234F681800DE6776 /* CustomTabBarController.swift */; };
+		01D53467234F681800DE6776 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D53464234F681800DE6776 /* CustomTabBar.swift */; };
+		01D53469234F684100DE6776 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01D53468234F684100DE6776 /* Images.xcassets */; };
+		01D53471234F6A1900DE6776 /* TodoSectionProjectsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5346D234F6A1900DE6776 /* TodoSectionProjectsTableViewCell.swift */; };
+		01D53472234F6A1900DE6776 /* HomeSectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5346E234F6A1900DE6776 /* HomeSectionCollectionViewCell.swift */; };
+		01D53473234F6A1900DE6776 /* TodoSectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5346F234F6A1900DE6776 /* TodoSectionCollectionViewCell.swift */; };
+		01D53474234F6A1900DE6776 /* TodoSectionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D53470234F6A1900DE6776 /* TodoSectionsTableViewCell.swift */; };
+		01D53476234F6D3A00DE6776 /* TimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D53475234F6D3A00DE6776 /* TimePickerViewController.swift */; };
+		01D5347B234F6E3E00DE6776 /* DateAndTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D53479234F6E3E00DE6776 /* DateAndTime.swift */; };
+		01D5347C234F6E3E00DE6776 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5347A234F6E3E00DE6776 /* Color.swift */; };
+		01D53480234F6EFC00DE6776 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5347D234F6EFC00DE6776 /* TagCollectionViewCell.swift */; };
+		01D53481234F6EFC00DE6776 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5347E234F6EFC00DE6776 /* DateCell.swift */; };
+		01D53482234F6EFC00DE6776 /* PriorityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5347F234F6EFC00DE6776 /* PriorityTableViewCell.swift */; };
+		01D53484234F705000DE6776 /* SelectionScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D53483234F705000DE6776 /* SelectionScreenViewController.swift */; };
+		01D5348E234F727C00DE6776 /* RepeatViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5348D234F727C00DE6776 /* RepeatViewCell.swift */; };
+		01D53490234F733100DE6776 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01D5348F234F733100DE6776 /* LaunchScreen.storyboard */; };
+		01EAFEE6231CAACA00F3EA9D /* RepetitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EAFEE5231CAACA00F3EA9D /* RepetitionViewController.swift */; };
+		01F389AB23608BE7005DAE8E /* InboxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F389AA23608BE7005DAE8E /* InboxTableViewCell.swift */; };
+		01F389B323608C8B005DAE8E /* TagListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F389B223608C8B005DAE8E /* TagListViewController.swift */; };
+		1672103DAFACBE7365B8437F /* Pods_CalDo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4726741C17ABDA6BE135D3FF /* Pods_CalDo.framework */; };
+		8F6C6E659FD3852843D034AD /* Pods_CalDoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4247D29744B391B96999F1B9 /* Pods_CalDoUITests.framework */; };
+		F6E9E984C58F4D327C9B4ECA /* Pods_CalDoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC9F82338562CAE3409D475 /* Pods_CalDoTests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		019280FC1F8A615C00E895D4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 019280DF1F8A615C00E895D4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 019280E61F8A615C00E895D4;
+			remoteInfo = CalDo;
+		};
+		019281071F8A615C00E895D4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 019280DF1F8A615C00E895D4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 019280E61F8A615C00E895D4;
+			remoteInfo = CalDo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		01036E5022ECF0E1008D6B16 /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewTaskViewController.swift; path = CalDo/ViewControllers/NewTaskViewController.swift; sourceTree = SOURCE_ROOT; };
+		010B3A11232E5D24008B3684 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TodayViewController.swift; path = ../../TodayViewController.swift; sourceTree = "<group>"; };
+		012259A423F62854003BAAEE /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		0130AD4522EF25AB00C3EF47 /* Projects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projects.swift; sourceTree = "<group>"; };
+		0130AD4722EF279300C3EF47 /* ChooseProjectsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChooseProjectsViewController.swift; path = CalDo/ViewControllers/ChooseProjectsViewController.swift; sourceTree = SOURCE_ROOT; };
+		0135B2A7231DC66800E43638 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		013E66BE22F0BFD80048AF18 /* DatePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DatePopUpViewController.swift; path = CalDo/ViewControllers/DatePopUpViewController.swift; sourceTree = SOURCE_ROOT; };
+		0142AAC0231BF78300324DA1 /* OnDateRepeatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnDateRepeatViewController.swift; sourceTree = "<group>"; };
+		014595632445E9DA00AFB34D /* SF-Pro-Rounded-Ultralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Ultralight.otf"; sourceTree = "<group>"; };
+		014595642445E9DA00AFB34D /* SF-Pro-Rounded-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Heavy.otf"; sourceTree = "<group>"; };
+		014595652445E9DA00AFB34D /* SF-Pro-Rounded-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Black.otf"; sourceTree = "<group>"; };
+		014595662445E9DA00AFB34D /* SF-Pro-Rounded-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Medium.otf"; sourceTree = "<group>"; };
+		014595672445E9DA00AFB34D /* SF-Pro-Rounded-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Semibold.otf"; sourceTree = "<group>"; };
+		014595682445E9DB00AFB34D /* SF-Pro-Rounded-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Thin.otf"; sourceTree = "<group>"; };
+		014595692445E9DB00AFB34D /* SF-Pro-Rounded-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Regular.otf"; sourceTree = "<group>"; };
+		0145956A2445E9DB00AFB34D /* SF-Pro-Rounded-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Light.otf"; sourceTree = "<group>"; };
+		0145956B2445E9DB00AFB34D /* SF-Pro-Rounded-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Bold.otf"; sourceTree = "<group>"; };
+		014C23A02313176500A3EA4F /* TagListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TagListViewController.swift; path = CalDo/ViewControllers/TagListViewController.swift; sourceTree = SOURCE_ROOT; };
+		015DA69D23C94B5300582851 /* HabitHomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitHomeScreenViewController.swift; sourceTree = "<group>"; };
+		015DA69F23C94E4900582851 /* ProjectHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectHomeViewController.swift; sourceTree = "<group>"; };
+		015DA6A123C952EF00582851 /* ChooseProjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseProjectTableViewCell.swift; sourceTree = "<group>"; };
+		0165E19723294AAA002F5DA1 /* TodoSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoSectionViewController.swift; sourceTree = "<group>"; };
+		0165E19D2329A971002F5DA1 /* InboxHomeScreenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxHomeScreenTableViewCell.swift; sourceTree = "<group>"; };
+		0165E19E2329A971002F5DA1 /* InboxHomeScreenTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InboxHomeScreenTableViewCell.xib; sourceTree = "<group>"; };
+		0165E1A12329AAE9002F5DA1 /* InboxHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxHomeViewController.swift; sourceTree = "<group>"; };
+		0165E1A32329F337002F5DA1 /* ScheduledHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledHomeViewController.swift; sourceTree = "<group>"; };
+		0179EDDB22EC820200F2A48B /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		019280E71F8A615C00E895D4 /* CalDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		019280EA1F8A615C00E895D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		019280EF1F8A615C00E895D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		019280F61F8A615C00E895D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		019280FB1F8A615C00E895D4 /* CalDoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalDoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		019280FF1F8A615C00E895D4 /* CalDoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalDoTests.swift; sourceTree = "<group>"; };
+		019281011F8A615C00E895D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		019281061F8A615C00E895D4 /* CalDoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalDoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0192810A1F8A615C00E895D4 /* CalDoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalDoUITests.swift; sourceTree = "<group>"; };
+		0192810C1F8A615C00E895D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		019281541F8B884E00E895D4 /* InboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxViewController.swift; sourceTree = "<group>"; };
+		019878122319C87300DE1F7E /* RepeatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatViewController.swift; sourceTree = "<group>"; };
+		01987816231AA1CE00DE1F7E /* EndRepeatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndRepeatViewController.swift; sourceTree = "<group>"; };
+		019A09FA242E82D5002434F0 /* DateHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHeaderCell.swift; sourceTree = "<group>"; };
+		01B3CA0322EB8BEF00E5344D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		01C954712115E2310047175F /* Todo Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo Struct.swift"; sourceTree = "<group>"; };
+		01D53462234F681800DE6776 /* CustomTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarItem.swift; sourceTree = "<group>"; };
+		01D53463234F681800DE6776 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		01D53464234F681800DE6776 /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		01D53468234F684100DE6776 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		01D5346D234F6A1900DE6776 /* TodoSectionProjectsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoSectionProjectsTableViewCell.swift; sourceTree = "<group>"; };
+		01D5346E234F6A1900DE6776 /* HomeSectionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeSectionCollectionViewCell.swift; sourceTree = "<group>"; };
+		01D5346F234F6A1900DE6776 /* TodoSectionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoSectionCollectionViewCell.swift; sourceTree = "<group>"; };
+		01D53470234F6A1900DE6776 /* TodoSectionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoSectionsTableViewCell.swift; sourceTree = "<group>"; };
+		01D53475234F6D3A00DE6776 /* TimePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePickerViewController.swift; sourceTree = "<group>"; };
+		01D53479234F6E3E00DE6776 /* DateAndTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateAndTime.swift; sourceTree = "<group>"; };
+		01D5347A234F6E3E00DE6776 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		01D5347D234F6EFC00DE6776 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
+		01D5347E234F6EFC00DE6776 /* DateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
+		01D5347F234F6EFC00DE6776 /* PriorityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriorityTableViewCell.swift; sourceTree = "<group>"; };
+		01D53483234F705000DE6776 /* SelectionScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionScreenViewController.swift; sourceTree = "<group>"; };
+		01D5348D234F727C00DE6776 /* RepeatViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatViewCell.swift; sourceTree = "<group>"; };
+		01D5348F234F733100DE6776 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		01EAFEE5231CAACA00F3EA9D /* RepetitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RepetitionViewController.swift; path = /Users/fabianjaeger/Developer/CalDo/CalDo/ViewControllers/RepetitionViewController.swift; sourceTree = "<absolute>"; };
+		01F389AA23608BE7005DAE8E /* InboxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxTableViewCell.swift; sourceTree = "<group>"; };
+		01F389B223608C8B005DAE8E /* TagListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagListViewController.swift; sourceTree = "<group>"; };
+		01F5F480232727F500FE8D62 /* CalDo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CalDo-Bridging-Header.h"; sourceTree = "<group>"; };
+		01F5F482232727F600FE8D62 /* SwiftExample-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SwiftExample-Bridging-Header.h"; path = "../../../Desktop/SwiftExample-Bridging-Header.h"; sourceTree = "<group>"; };
+		1848A7A760F8301A9C4DABF0 /* Pods-CalDoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalDoUITests.debug.xcconfig"; path = "Target Support Files/Pods-CalDoUITests/Pods-CalDoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		1EE98E7D15441A57A60D79CF /* Pods-CalDoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalDoUITests.release.xcconfig"; path = "Target Support Files/Pods-CalDoUITests/Pods-CalDoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		4247D29744B391B96999F1B9 /* Pods_CalDoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalDoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4726741C17ABDA6BE135D3FF /* Pods_CalDo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalDo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EFE6A56603CF02BFEE70A21 /* Pods-CalDoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalDoTests.release.xcconfig"; path = "Target Support Files/Pods-CalDoTests/Pods-CalDoTests.release.xcconfig"; sourceTree = "<group>"; };
+		72A7FC944A6AFBB00A63585F /* Pods-CalDo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalDo.release.xcconfig"; path = "Target Support Files/Pods-CalDo/Pods-CalDo.release.xcconfig"; sourceTree = "<group>"; };
+		929E004114D27D044565F86A /* Pods-CalDoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalDoTests.debug.xcconfig"; path = "Target Support Files/Pods-CalDoTests/Pods-CalDoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AADC4FA7D5CB265C6C07244D /* Pods-CalDo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalDo.debug.xcconfig"; path = "Target Support Files/Pods-CalDo/Pods-CalDo.debug.xcconfig"; sourceTree = "<group>"; };
+		ACC9F82338562CAE3409D475 /* Pods_CalDoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalDoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		019280E41F8A615C00E895D4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1672103DAFACBE7365B8437F /* Pods_CalDo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		019280F81F8A615C00E895D4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6E9E984C58F4D327C9B4ECA /* Pods_CalDoTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		019281031F8A615C00E895D4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F6C6E659FD3852843D034AD /* Pods_CalDoUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		014595502445E90400AFB34D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				014595652445E9DA00AFB34D /* SF-Pro-Rounded-Black.otf */,
+				0145956B2445E9DB00AFB34D /* SF-Pro-Rounded-Bold.otf */,
+				014595642445E9DA00AFB34D /* SF-Pro-Rounded-Heavy.otf */,
+				0145956A2445E9DB00AFB34D /* SF-Pro-Rounded-Light.otf */,
+				014595662445E9DA00AFB34D /* SF-Pro-Rounded-Medium.otf */,
+				014595692445E9DB00AFB34D /* SF-Pro-Rounded-Regular.otf */,
+				014595672445E9DA00AFB34D /* SF-Pro-Rounded-Semibold.otf */,
+				014595682445E9DB00AFB34D /* SF-Pro-Rounded-Thin.otf */,
+				014595632445E9DA00AFB34D /* SF-Pro-Rounded-Ultralight.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		0179EDCF22EC622B00F2A48B /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				01D5347A234F6E3E00DE6776 /* Color.swift */,
+				01D53479234F6E3E00DE6776 /* DateAndTime.swift */,
+				0135B2A7231DC66800E43638 /* WeatherModel.swift */,
+				0130AD4522EF25AB00C3EF47 /* Projects.swift */,
+				01C954712115E2310047175F /* Todo Struct.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		0179EDD022EC623800F2A48B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0179EDD122EC627800F2A48B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				014595502445E90400AFB34D /* Fonts */,
+				01D53468234F684100DE6776 /* Images.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0179EDD422EC63F700F2A48B /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				019280EE1F8A615C00E895D4 /* Main.storyboard */,
+				01D5348F234F733100DE6776 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		0179EDD622EC652B00F2A48B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		0179EDD722EC670B00F2A48B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				0179EDDB22EC820200F2A48B /* DateExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		0179EDD922EC672B00F2A48B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				015DA6A123C952EF00582851 /* ChooseProjectTableViewCell.swift */,
+				019A09FA242E82D5002434F0 /* DateHeaderCell.swift */,
+				01F389AA23608BE7005DAE8E /* InboxTableViewCell.swift */,
+				01D5348D234F727C00DE6776 /* RepeatViewCell.swift */,
+				01D5347E234F6EFC00DE6776 /* DateCell.swift */,
+				01D5347F234F6EFC00DE6776 /* PriorityTableViewCell.swift */,
+				01D5347D234F6EFC00DE6776 /* TagCollectionViewCell.swift */,
+				01D5346E234F6A1900DE6776 /* HomeSectionCollectionViewCell.swift */,
+				01D5346F234F6A1900DE6776 /* TodoSectionCollectionViewCell.swift */,
+				01D5346D234F6A1900DE6776 /* TodoSectionProjectsTableViewCell.swift */,
+				01D53470234F6A1900DE6776 /* TodoSectionsTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		0179EDDA22EC67B000F2A48B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		017B4E81234F60E600142AD1 /* Custom Tab Bar */ = {
+			isa = PBXGroup;
+			children = (
+				01D53464234F681800DE6776 /* CustomTabBar.swift */,
+				01D53463234F681800DE6776 /* CustomTabBarController.swift */,
+				01D53462234F681800DE6776 /* CustomTabBarItem.swift */,
+			);
+			path = "Custom Tab Bar";
+			sourceTree = "<group>";
+		};
+		019280DE1F8A615C00E895D4 = {
+			isa = PBXGroup;
+			children = (
+				019280E91F8A615C00E895D4 /* CalDo */,
+				019280FE1F8A615C00E895D4 /* CalDoTests */,
+				019281091F8A615C00E895D4 /* CalDoUITests */,
+				019280E81F8A615C00E895D4 /* Products */,
+				7E6EFDBB67B51986E7728520 /* Pods */,
+				4D930EACD8DE0171F79BE61B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		019280E81F8A615C00E895D4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				019280E71F8A615C00E895D4 /* CalDo.app */,
+				019280FB1F8A615C00E895D4 /* CalDoTests.xctest */,
+				019281061F8A615C00E895D4 /* CalDoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		019280E91F8A615C00E895D4 /* CalDo */ = {
+			isa = PBXGroup;
+			children = (
+				01F5F482232727F600FE8D62 /* SwiftExample-Bridging-Header.h */,
+				019280F61F8A615C00E895D4 /* Info.plist */,
+				019280EA1F8A615C00E895D4 /* AppDelegate.swift */,
+				0179EDCF22EC622B00F2A48B /* CoreData */,
+				01B3CA0522EB8CD100E5344D /* ViewControllers */,
+				0179EDD622EC652B00F2A48B /* Controllers */,
+				0179EDD022EC623800F2A48B /* Models */,
+				0179EDD722EC670B00F2A48B /* Extension */,
+				0179EDDA22EC67B000F2A48B /* Services */,
+				0179EDD122EC627800F2A48B /* Resources */,
+				01F5F480232727F500FE8D62 /* CalDo-Bridging-Header.h */,
+			);
+			path = CalDo;
+			sourceTree = "<group>";
+		};
+		019280FE1F8A615C00E895D4 /* CalDoTests */ = {
+			isa = PBXGroup;
+			children = (
+				019280FF1F8A615C00E895D4 /* CalDoTests.swift */,
+				019281011F8A615C00E895D4 /* Info.plist */,
+			);
+			path = CalDoTests;
+			sourceTree = "<group>";
+		};
+		019281091F8A615C00E895D4 /* CalDoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				0192810A1F8A615C00E895D4 /* CalDoUITests.swift */,
+				0192810C1F8A615C00E895D4 /* Info.plist */,
+			);
+			path = CalDoUITests;
+			sourceTree = "<group>";
+		};
+		01B3CA0522EB8CD100E5344D /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				01D53475234F6D3A00DE6776 /* TimePickerViewController.swift */,
+				017B4E81234F60E600142AD1 /* Custom Tab Bar */,
+				0179EDD422EC63F700F2A48B /* Storyboards */,
+				015DA69F23C94E4900582851 /* ProjectHomeViewController.swift */,
+				0165E19723294AAA002F5DA1 /* TodoSectionViewController.swift */,
+				015DA69D23C94B5300582851 /* HabitHomeScreenViewController.swift */,
+				01F389B223608C8B005DAE8E /* TagListViewController.swift */,
+				01D53483234F705000DE6776 /* SelectionScreenViewController.swift */,
+				012259A423F62854003BAAEE /* CalendarViewController.swift */,
+				01B3CA0322EB8BEF00E5344D /* HomeViewController.swift */,
+				0130AD4722EF279300C3EF47 /* ChooseProjectsViewController.swift */,
+				019281541F8B884E00E895D4 /* InboxViewController.swift */,
+				01036E5022ECF0E1008D6B16 /* NewTaskViewController.swift */,
+				013E66BE22F0BFD80048AF18 /* DatePopUpViewController.swift */,
+				010B3A11232E5D24008B3684 /* TodayViewController.swift */,
+				014C23A02313176500A3EA4F /* TagListViewController.swift */,
+				019878122319C87300DE1F7E /* RepeatViewController.swift */,
+				01987816231AA1CE00DE1F7E /* EndRepeatViewController.swift */,
+				0142AAC0231BF78300324DA1 /* OnDateRepeatViewController.swift */,
+				01EAFEE5231CAACA00F3EA9D /* RepetitionViewController.swift */,
+				0165E19D2329A971002F5DA1 /* InboxHomeScreenTableViewCell.swift */,
+				0165E19E2329A971002F5DA1 /* InboxHomeScreenTableViewCell.xib */,
+				0165E1A12329AAE9002F5DA1 /* InboxHomeViewController.swift */,
+				0165E1A32329F337002F5DA1 /* ScheduledHomeViewController.swift */,
+				0179EDD922EC672B00F2A48B /* Cells */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4D930EACD8DE0171F79BE61B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4726741C17ABDA6BE135D3FF /* Pods_CalDo.framework */,
+				ACC9F82338562CAE3409D475 /* Pods_CalDoTests.framework */,
+				4247D29744B391B96999F1B9 /* Pods_CalDoUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7E6EFDBB67B51986E7728520 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AADC4FA7D5CB265C6C07244D /* Pods-CalDo.debug.xcconfig */,
+				72A7FC944A6AFBB00A63585F /* Pods-CalDo.release.xcconfig */,
+				929E004114D27D044565F86A /* Pods-CalDoTests.debug.xcconfig */,
+				4EFE6A56603CF02BFEE70A21 /* Pods-CalDoTests.release.xcconfig */,
+				1848A7A760F8301A9C4DABF0 /* Pods-CalDoUITests.debug.xcconfig */,
+				1EE98E7D15441A57A60D79CF /* Pods-CalDoUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		019280E61F8A615C00E895D4 /* CalDo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0192810F1F8A615C00E895D4 /* Build configuration list for PBXNativeTarget "CalDo" */;
+			buildPhases = (
+				941D69BE9F75D2DB07C0DE87 /* [CP] Check Pods Manifest.lock */,
+				019280E31F8A615C00E895D4 /* Sources */,
+				019280E41F8A615C00E895D4 /* Frameworks */,
+				019280E51F8A615C00E895D4 /* Resources */,
+				6B292E34816DD9CDF4BA6418 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CalDo;
+			productName = CalDo;
+			productReference = 019280E71F8A615C00E895D4 /* CalDo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		019280FA1F8A615C00E895D4 /* CalDoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 019281121F8A615C00E895D4 /* Build configuration list for PBXNativeTarget "CalDoTests" */;
+			buildPhases = (
+				64C89CD3D45D65E0EEAB3DE4 /* [CP] Check Pods Manifest.lock */,
+				019280F71F8A615C00E895D4 /* Sources */,
+				019280F81F8A615C00E895D4 /* Frameworks */,
+				019280F91F8A615C00E895D4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				019280FD1F8A615C00E895D4 /* PBXTargetDependency */,
+			);
+			name = CalDoTests;
+			productName = CalDoTests;
+			productReference = 019280FB1F8A615C00E895D4 /* CalDoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		019281051F8A615C00E895D4 /* CalDoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 019281151F8A615C00E895D4 /* Build configuration list for PBXNativeTarget "CalDoUITests" */;
+			buildPhases = (
+				3D5FBE43D0935CB5572E9AFD /* [CP] Check Pods Manifest.lock */,
+				019281021F8A615C00E895D4 /* Sources */,
+				019281031F8A615C00E895D4 /* Frameworks */,
+				019281041F8A615C00E895D4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				019281081F8A615C00E895D4 /* PBXTargetDependency */,
+			);
+			name = CalDoUITests;
+			productName = CalDoUITests;
+			productReference = 019281061F8A615C00E895D4 /* CalDoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		019280DF1F8A615C00E895D4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 1140;
+				ORGANIZATIONNAME = CalDo;
+				TargetAttributes = {
+					019280E61F8A615C00E895D4 = {
+						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1030;
+						ProvisioningStyle = Automatic;
+					};
+					019280FA1F8A615C00E895D4 = {
+						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1020;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 019280E61F8A615C00E895D4;
+					};
+					019281051F8A615C00E895D4 = {
+						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1020;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 019280E61F8A615C00E895D4;
+					};
+				};
+			};
+			buildConfigurationList = 019280E21F8A615C00E895D4 /* Build configuration list for PBXProject "CalDo" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 019280DE1F8A615C00E895D4;
+			productRefGroup = 019280E81F8A615C00E895D4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				019280E61F8A615C00E895D4 /* CalDo */,
+				019280FA1F8A615C00E895D4 /* CalDoTests */,
+				019281051F8A615C00E895D4 /* CalDoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		019280E51F8A615C00E895D4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				014595702445EA6400AFB34D /* SF-Pro-Rounded-Medium.otf in Resources */,
+				014595712445EA6400AFB34D /* SF-Pro-Rounded-Regular.otf in Resources */,
+				014595722445EA6400AFB34D /* SF-Pro-Rounded-Semibold.otf in Resources */,
+				014595732445EA6400AFB34D /* SF-Pro-Rounded-Thin.otf in Resources */,
+				01D53469234F684100DE6776 /* Images.xcassets in Resources */,
+				014595742445EA6400AFB34D /* SF-Pro-Rounded-Ultralight.otf in Resources */,
+				0145956F2445EA6400AFB34D /* SF-Pro-Rounded-Light.otf in Resources */,
+				01D53490234F733100DE6776 /* LaunchScreen.storyboard in Resources */,
+				0145956C2445EA6400AFB34D /* SF-Pro-Rounded-Black.otf in Resources */,
+				0145956D2445EA6400AFB34D /* SF-Pro-Rounded-Bold.otf in Resources */,
+				0165E1A02329A971002F5DA1 /* InboxHomeScreenTableViewCell.xib in Resources */,
+				0145956E2445EA6400AFB34D /* SF-Pro-Rounded-Heavy.otf in Resources */,
+				019280F01F8A615C00E895D4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		019280F91F8A615C00E895D4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		019281041F8A615C00E895D4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3D5FBE43D0935CB5572E9AFD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CalDoUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		64C89CD3D45D65E0EEAB3DE4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CalDoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6B292E34816DD9CDF4BA6418 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CalDo/Pods-CalDo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/DayDatePicker/DayDatePicker.framework",
+				"${BUILT_PRODUCTS_DIR}/Gemini/Gemini.framework",
+				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
+				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/PanModal/PanModal.framework",
+				"${BUILT_PRODUCTS_DIR}/StepIndicator/StepIndicator.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyChrono/SwiftyChrono.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/TagListView/TagListView.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DayDatePicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gemini.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PanModal.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StepIndicator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyChrono.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TagListView.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CalDo/Pods-CalDo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		941D69BE9F75D2DB07C0DE87 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CalDo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		019280E31F8A615C00E895D4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				010B3A12232E5D24008B3684 /* TodayViewController.swift in Sources */,
+				01D53466234F681800DE6776 /* CustomTabBarController.swift in Sources */,
+				0179EDDC22EC820200F2A48B /* DateExtension.swift in Sources */,
+				013E66BF22F0BFD80048AF18 /* DatePopUpViewController.swift in Sources */,
+				015DA6A223C952EF00582851 /* ChooseProjectTableViewCell.swift in Sources */,
+				0135B2A8231DC66800E43638 /* WeatherModel.swift in Sources */,
+				01D53484234F705000DE6776 /* SelectionScreenViewController.swift in Sources */,
+				01D53465234F681800DE6776 /* CustomTabBarItem.swift in Sources */,
+				019281551F8B884E00E895D4 /* InboxViewController.swift in Sources */,
+				01D53481234F6EFC00DE6776 /* DateCell.swift in Sources */,
+				0165E1A52329F337002F5DA1 /* ScheduledHomeViewController.swift in Sources */,
+				01EAFEE6231CAACA00F3EA9D /* RepetitionViewController.swift in Sources */,
+				01D53482234F6EFC00DE6776 /* PriorityTableViewCell.swift in Sources */,
+				019280EB1F8A615C00E895D4 /* AppDelegate.swift in Sources */,
+				01F389B323608C8B005DAE8E /* TagListViewController.swift in Sources */,
+				01D53480234F6EFC00DE6776 /* TagCollectionViewCell.swift in Sources */,
+				015DA6A023C94E4900582851 /* ProjectHomeViewController.swift in Sources */,
+				01987817231AA1CE00DE1F7E /* EndRepeatViewController.swift in Sources */,
+				01D53472234F6A1900DE6776 /* HomeSectionCollectionViewCell.swift in Sources */,
+				01036E5122ECF0E1008D6B16 /* NewTaskViewController.swift in Sources */,
+				0130AD4622EF25AB00C3EF47 /* Projects.swift in Sources */,
+				01F389AB23608BE7005DAE8E /* InboxTableViewCell.swift in Sources */,
+				0142AAC1231BF78300324DA1 /* OnDateRepeatViewController.swift in Sources */,
+				0165E19823294AAA002F5DA1 /* TodoSectionViewController.swift in Sources */,
+				0165E19F2329A971002F5DA1 /* InboxHomeScreenTableViewCell.swift in Sources */,
+				01C954722115E2310047175F /* Todo Struct.swift in Sources */,
+				01D5347B234F6E3E00DE6776 /* DateAndTime.swift in Sources */,
+				0165E1A22329AAE9002F5DA1 /* InboxHomeViewController.swift in Sources */,
+				01D53474234F6A1900DE6776 /* TodoSectionsTableViewCell.swift in Sources */,
+				01D53467234F681800DE6776 /* CustomTabBar.swift in Sources */,
+				01D5347C234F6E3E00DE6776 /* Color.swift in Sources */,
+				01D53471234F6A1900DE6776 /* TodoSectionProjectsTableViewCell.swift in Sources */,
+				012259A523F62854003BAAEE /* CalendarViewController.swift in Sources */,
+				01D53476234F6D3A00DE6776 /* TimePickerViewController.swift in Sources */,
+				01D53473234F6A1900DE6776 /* TodoSectionCollectionViewCell.swift in Sources */,
+				01B3CA0422EB8BEF00E5344D /* HomeViewController.swift in Sources */,
+				0130AD4822EF279300C3EF47 /* ChooseProjectsViewController.swift in Sources */,
+				015DA69E23C94B5300582851 /* HabitHomeScreenViewController.swift in Sources */,
+				019878132319C87300DE1F7E /* RepeatViewController.swift in Sources */,
+				019A09FB242E82D5002434F0 /* DateHeaderCell.swift in Sources */,
+				01D5348E234F727C00DE6776 /* RepeatViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		019280F71F8A615C00E895D4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				019281001F8A615C00E895D4 /* CalDoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		019281021F8A615C00E895D4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0192810B1F8A615C00E895D4 /* CalDoUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		019280FD1F8A615C00E895D4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 019280E61F8A615C00E895D4 /* CalDo */;
+			targetProxy = 019280FC1F8A615C00E895D4 /* PBXContainerItemProxy */;
+		};
+		019281081F8A615C00E895D4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 019280E61F8A615C00E895D4 /* CalDo */;
+			targetProxy = 019281071F8A615C00E895D4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		019280EE1F8A615C00E895D4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				019280EF1F8A615C00E895D4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0192810D1F8A615C00E895D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0192810E1F8A615C00E895D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		019281101F8A615C00E895D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AADC4FA7D5CB265C6C07244D /* Pods-CalDo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 28V6TURVS4;
+				INFOPLIST_FILE = CalDo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Fabian.CalDo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CalDo/CalDo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		019281111F8A615C00E895D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 72A7FC944A6AFBB00A63585F /* Pods-CalDo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 28V6TURVS4;
+				INFOPLIST_FILE = CalDo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Fabian.CalDo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CalDo/CalDo-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		019281131F8A615C00E895D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 929E004114D27D044565F86A /* Pods-CalDoTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CalDoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Fabian.CalDoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CalDo.app/CalDo";
+			};
+			name = Debug;
+		};
+		019281141F8A615C00E895D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4EFE6A56603CF02BFEE70A21 /* Pods-CalDoTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CalDoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Fabian.CalDoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CalDo.app/CalDo";
+			};
+			name = Release;
+		};
+		019281161F8A615C00E895D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1848A7A760F8301A9C4DABF0 /* Pods-CalDoUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CalDoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Fabian.CalDoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CalDo;
+			};
+			name = Debug;
+		};
+		019281171F8A615C00E895D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1EE98E7D15441A57A60D79CF /* Pods-CalDoUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CalDoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Fabian.CalDoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CalDo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		019280E21F8A615C00E895D4 /* Build configuration list for PBXProject "CalDo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0192810D1F8A615C00E895D4 /* Debug */,
+				0192810E1F8A615C00E895D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0192810F1F8A615C00E895D4 /* Build configuration list for PBXNativeTarget "CalDo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				019281101F8A615C00E895D4 /* Debug */,
+				019281111F8A615C00E895D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		019281121F8A615C00E895D4 /* Build configuration list for PBXNativeTarget "CalDoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				019281131F8A615C00E895D4 /* Debug */,
+				019281141F8A615C00E895D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		019281151F8A615C00E895D4 /* Build configuration list for PBXNativeTarget "CalDoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				019281161F8A615C00E895D4 /* Debug */,
+				019281171F8A615C00E895D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 019280DF1F8A615C00E895D4 /* Project object */;
+}
