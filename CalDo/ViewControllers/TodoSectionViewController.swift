@@ -92,8 +92,11 @@ class TodoSectionViewController: UIViewController, UITableViewDelegate, UITableV
         if indexPath == NSIndexPath(row: 1, section: 0) as IndexPath{
             self.performSegue(withIdentifier: "TodayDetail", sender: self)
         }
-        if indexPath == NSIndexPath(row: 2, section: 2) as IndexPath{
+        if indexPath == NSIndexPath(row: 2, section: 0) as IndexPath{
             self.performSegue(withIdentifier: "UpcomingDetail", sender: self)
+        }
+        if indexPath == NSIndexPath(row: 3, section: 0) as IndexPath{
+            self.performSegue(withIdentifier: "HabitDetail", sender: self)
         }
         
     }
@@ -149,6 +152,9 @@ class TodoSectionViewController: UIViewController, UITableViewDelegate, UITableV
         }
         else if segue.identifier == "UpcomingDetail"{
             //            let destinationVC = segue.destination as? UpcomingViewController
+        }
+        else if segue.identifier == "HabitDetail"{
+            
         }
     }
     
