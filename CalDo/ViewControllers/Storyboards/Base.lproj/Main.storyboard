@@ -153,7 +153,7 @@
                                                         <constraint firstAttribute="width" constant="118" id="RH9-Ur-9fm"/>
                                                         <constraint firstAttribute="height" constant="23" id="V1s-BT-b4i"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="18"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -313,7 +313,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9t8-Il-TON">
                                                     <rect key="frame" x="66" y="21" width="96" height="28"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                                    <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="19"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -657,12 +657,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z6X-z1-qOe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3552.8000000000002" y="-106.59670164917542"/>
+            <point key="canvasLocation" x="3364" y="967"/>
         </scene>
-        <!--View Controller-->
+        <!--Habit View Controller-->
         <scene sceneID="fzh-jb-QLW">
             <objects>
-                <viewController id="NFI-oE-5dt" sceneMemberID="viewController">
+                <viewController id="NFI-oE-5dt" customClass="HabitViewController" customModule="CalDo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KQp-M5-wit">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -682,6 +682,10 @@
                                 <rect key="frame" x="16" y="93" width="343" height="554"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="KQp-M5-wit" id="oK3-SR-cQT"/>
+                                    <outlet property="delegate" destination="KQp-M5-wit" id="sUF-jC-5Yl"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -691,7 +695,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Byb-1U-srl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5069.6000000000004" y="966.56671664167925"/>
+            <point key="canvasLocation" x="5410" y="967"/>
         </scene>
         <!--Today View Controller-->
         <scene sceneID="fxj-Cc-NZ2">
@@ -720,7 +724,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DGz-11-IhK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3432.8000000000002" y="966.56671664167925"/>
+            <point key="canvasLocation" x="4071" y="967"/>
         </scene>
         <!--Upcoming View Controller-->
         <scene sceneID="3v9-Ku-axL">
@@ -748,7 +752,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jae-5a-VVW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4365.6000000000004" y="966.56671664167925"/>
+            <point key="canvasLocation" x="4740" y="967"/>
         </scene>
         <!--Custom Tab Bar View Controller-->
         <scene sceneID="IjF-9y-skc">
@@ -2535,16 +2539,16 @@
         <segue reference="fiX-NY-lbz"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="Account" width="31" height="31"/>
+        <image name="Account" width="25" height="30"/>
         <image name="AccountSelected" width="29" height="34"/>
         <image name="Add_Symbol" width="30" height="30"/>
         <image name="Add_Todo" width="49" height="49"/>
         <image name="Back_Button" width="31" height="31"/>
-        <image name="Calendar Icon" width="29" height="30"/>
+        <image name="Calendar Icon" width="28" height="29"/>
         <image name="Down" width="30" height="29"/>
         <image name="Event_Add" width="42" height="42"/>
         <image name="Habits_Home" width="127" height="129"/>
-        <image name="Home" width="30" height="30"/>
+        <image name="Home" width="29" height="29"/>
         <image name="Inbox_Home" width="129" height="129"/>
         <image name="Location" width="14" height="19"/>
         <image name="Notes" width="19" height="21"/>
@@ -2562,7 +2566,7 @@
         <image name="Tag_Todo" width="24" height="23"/>
         <image name="Task_Add" width="42" height="42"/>
         <image name="Today_Todo" width="129" height="129"/>
-        <image name="Todo Button" width="30" height="27"/>
+        <image name="Todo Button" width="28" height="26"/>
         <image name="TodoButton" width="21" height="21"/>
         <image name="TrashCan" width="49" height="49"/>
         <image name="Weather Sun" width="50" height="51"/>

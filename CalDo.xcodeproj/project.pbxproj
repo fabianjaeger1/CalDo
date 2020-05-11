@@ -27,6 +27,7 @@
 		015DA69E23C94B5300582851 /* HabitHomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015DA69D23C94B5300582851 /* HabitHomeScreenViewController.swift */; };
 		015DA6A023C94E4900582851 /* ProjectHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015DA69F23C94E4900582851 /* ProjectHomeViewController.swift */; };
 		015DA6A223C952EF00582851 /* ChooseProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015DA6A123C952EF00582851 /* ChooseProjectTableViewCell.swift */; };
+		0160336C24694EA00032DA23 /* HabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0160336B24694EA00032DA23 /* HabitViewController.swift */; };
 		0165E19823294AAA002F5DA1 /* TodoSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0165E19723294AAA002F5DA1 /* TodoSectionViewController.swift */; };
 		0165E19F2329A971002F5DA1 /* InboxHomeScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0165E19D2329A971002F5DA1 /* InboxHomeScreenTableViewCell.swift */; };
 		0165E1A02329A971002F5DA1 /* InboxHomeScreenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0165E19E2329A971002F5DA1 /* InboxHomeScreenTableViewCell.xib */; };
@@ -107,6 +108,7 @@
 		015DA69D23C94B5300582851 /* HabitHomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitHomeScreenViewController.swift; sourceTree = "<group>"; };
 		015DA69F23C94E4900582851 /* ProjectHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectHomeViewController.swift; sourceTree = "<group>"; };
 		015DA6A123C952EF00582851 /* ChooseProjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseProjectTableViewCell.swift; sourceTree = "<group>"; };
+		0160336B24694EA00032DA23 /* HabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewController.swift; sourceTree = "<group>"; };
 		0165E19723294AAA002F5DA1 /* TodoSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoSectionViewController.swift; sourceTree = "<group>"; };
 		0165E19D2329A971002F5DA1 /* InboxHomeScreenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxHomeScreenTableViewCell.swift; sourceTree = "<group>"; };
 		0165E19E2329A971002F5DA1 /* InboxHomeScreenTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InboxHomeScreenTableViewCell.xib; sourceTree = "<group>"; };
@@ -378,6 +380,7 @@
 				0165E19E2329A971002F5DA1 /* InboxHomeScreenTableViewCell.xib */,
 				0165E1A12329AAE9002F5DA1 /* InboxHomeViewController.swift */,
 				0165E1A32329F337002F5DA1 /* ScheduledHomeViewController.swift */,
+				0160336B24694EA00032DA23 /* HabitViewController.swift */,
 				0179EDD922EC672B00F2A48B /* Cells */,
 			);
 			path = ViewControllers;
@@ -699,6 +702,7 @@
 				01D53473234F6A1900DE6776 /* TodoSectionCollectionViewCell.swift in Sources */,
 				01B3CA0422EB8BEF00E5344D /* HomeViewController.swift in Sources */,
 				0130AD4822EF279300C3EF47 /* ChooseProjectsViewController.swift in Sources */,
+				0160336C24694EA00032DA23 /* HabitViewController.swift in Sources */,
 				015DA69E23C94B5300582851 /* HabitHomeScreenViewController.swift in Sources */,
 				019878132319C87300DE1F7E /* RepeatViewController.swift in Sources */,
 				019A09FB242E82D5002434F0 /* DateHeaderCell.swift in Sources */,
