@@ -28,6 +28,8 @@
 		015DA6A023C94E4900582851 /* ProjectHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015DA69F23C94E4900582851 /* ProjectHomeViewController.swift */; };
 		015DA6A223C952EF00582851 /* ChooseProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015DA6A123C952EF00582851 /* ChooseProjectTableViewCell.swift */; };
 		0160336C24694EA00032DA23 /* HabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0160336B24694EA00032DA23 /* HabitViewController.swift */; };
+		0160336E2469A21E0032DA23 /* FloatingButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0160336D2469A21E0032DA23 /* FloatingButtonExtension.swift */; };
+		016033712469A45B0032DA23 /* AddTodoInboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016033702469A45B0032DA23 /* AddTodoInboxViewController.swift */; };
 		0165E19823294AAA002F5DA1 /* TodoSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0165E19723294AAA002F5DA1 /* TodoSectionViewController.swift */; };
 		0165E19F2329A971002F5DA1 /* InboxHomeScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0165E19D2329A971002F5DA1 /* InboxHomeScreenTableViewCell.swift */; };
 		0165E1A02329A971002F5DA1 /* InboxHomeScreenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0165E19E2329A971002F5DA1 /* InboxHomeScreenTableViewCell.xib */; };
@@ -109,6 +111,8 @@
 		015DA69F23C94E4900582851 /* ProjectHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectHomeViewController.swift; sourceTree = "<group>"; };
 		015DA6A123C952EF00582851 /* ChooseProjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseProjectTableViewCell.swift; sourceTree = "<group>"; };
 		0160336B24694EA00032DA23 /* HabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewController.swift; sourceTree = "<group>"; };
+		0160336D2469A21E0032DA23 /* FloatingButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FloatingButtonExtension.swift; path = CalDo/ViewControllers/FloatingButtonExtension.swift; sourceTree = SOURCE_ROOT; };
+		016033702469A45B0032DA23 /* AddTodoInboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoInboxViewController.swift; sourceTree = "<group>"; };
 		0165E19723294AAA002F5DA1 /* TodoSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoSectionViewController.swift; sourceTree = "<group>"; };
 		0165E19D2329A971002F5DA1 /* InboxHomeScreenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxHomeScreenTableViewCell.swift; sourceTree = "<group>"; };
 		0165E19E2329A971002F5DA1 /* InboxHomeScreenTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InboxHomeScreenTableViewCell.xib; sourceTree = "<group>"; };
@@ -255,6 +259,7 @@
 		0179EDD722EC670B00F2A48B /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				0160336D2469A21E0032DA23 /* FloatingButtonExtension.swift */,
 				0179EDDB22EC820200F2A48B /* DateExtension.swift */,
 			);
 			path = Extension;
@@ -359,6 +364,7 @@
 				01D53475234F6D3A00DE6776 /* TimePickerViewController.swift */,
 				017B4E81234F60E600142AD1 /* Custom Tab Bar */,
 				0179EDD422EC63F700F2A48B /* Storyboards */,
+				016033702469A45B0032DA23 /* AddTodoInboxViewController.swift */,
 				015DA69F23C94E4900582851 /* ProjectHomeViewController.swift */,
 				0165E19723294AAA002F5DA1 /* TodoSectionViewController.swift */,
 				015DA69D23C94B5300582851 /* HabitHomeScreenViewController.swift */,
@@ -700,8 +706,10 @@
 				012259A523F62854003BAAEE /* CalendarViewController.swift in Sources */,
 				01D53476234F6D3A00DE6776 /* TimePickerViewController.swift in Sources */,
 				01D53473234F6A1900DE6776 /* TodoSectionCollectionViewCell.swift in Sources */,
+				0160336E2469A21E0032DA23 /* FloatingButtonExtension.swift in Sources */,
 				01B3CA0422EB8BEF00E5344D /* HomeViewController.swift in Sources */,
 				0130AD4822EF279300C3EF47 /* ChooseProjectsViewController.swift in Sources */,
+				016033712469A45B0032DA23 /* AddTodoInboxViewController.swift in Sources */,
 				0160336C24694EA00032DA23 /* HabitViewController.swift in Sources */,
 				015DA69E23C94B5300582851 /* HabitHomeScreenViewController.swift in Sources */,
 				019878132319C87300DE1F7E /* RepeatViewController.swift in Sources */,

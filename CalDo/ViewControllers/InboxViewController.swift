@@ -38,6 +38,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var myIndex = 0
     var deleteThisPlease = [TodoItem]()
     
+    @IBOutlet weak var AddButton: UIButton!
     @IBOutlet weak var SearchBar: UISearchBar!
     @IBOutlet weak var InboxLabel: UILabel!
     @IBOutlet weak var MenuButton: UIButton!
@@ -338,6 +339,8 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         myTableView.backgroundColor = .BackgroundColor
         
         self.view.backgroundColor = UIColor.BackgroundColor
+        
+        AddButton.createFloatingActionButton()
         
         super.viewDidLoad()
 
