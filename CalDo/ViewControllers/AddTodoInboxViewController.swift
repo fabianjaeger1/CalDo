@@ -12,10 +12,14 @@ import Foundation
 class AddTodoInboxViewController: UIViewController {
     
     
+    @IBOutlet weak var AddView: UIView!
+    
     @IBOutlet weak var TodoTitle: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        AddView.layer.cornerRadius = 20
         
         TodoTitle.becomeFirstResponder()
         
