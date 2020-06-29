@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="18G103" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ProjectEntity" representedClassName=".ProjectEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="color" optional="YES" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+    </entity>
+    <entity name="TagEntity" representedClassName="TagEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="color" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="TaskEntity" representedClassName=".TaskEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="completed" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProjectEntity"/>
+        <relationship name="tags" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TagEntity"/>
+    </entity>
+    <elements>
+        <element name="ProjectEntity" positionX="328.859375" positionY="-64.46484375" width="128" height="73"/>
+        <element name="TaskEntity" positionX="51.87890625" positionY="-291.0625" width="137.0078125" height="118"/>
+        <element name="TagEntity" positionX="-142.765625" positionY="-62.59375" width="128" height="73"/>
+    </elements>
+</model>

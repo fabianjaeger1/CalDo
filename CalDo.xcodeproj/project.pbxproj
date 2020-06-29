@@ -67,6 +67,9 @@
 		01F389AB23608BE7005DAE8E /* InboxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F389AA23608BE7005DAE8E /* InboxTableViewCell.swift */; };
 		01F389B323608C8B005DAE8E /* TagListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F389B223608C8B005DAE8E /* TagListViewController.swift */; };
 		1672103DAFACBE7365B8437F /* Pods_CalDo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4726741C17ABDA6BE135D3FF /* Pods_CalDo.framework */; };
+		830DB5ED24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 830DB5EB24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld */; };
+		830DB5EE24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 830DB5EB24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld */; };
+		830DB5EF24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 830DB5EB24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld */; };
 		8F6C6E659FD3852843D034AD /* Pods_CalDoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4247D29744B391B96999F1B9 /* Pods_CalDoUITests.framework */; };
 		F6E9E984C58F4D327C9B4ECA /* Pods_CalDoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC9F82338562CAE3409D475 /* Pods_CalDoTests.framework */; };
 /* End PBXBuildFile section */
@@ -163,6 +166,7 @@
 		4726741C17ABDA6BE135D3FF /* Pods_CalDo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalDo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EFE6A56603CF02BFEE70A21 /* Pods-CalDoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalDoTests.release.xcconfig"; path = "Target Support Files/Pods-CalDoTests/Pods-CalDoTests.release.xcconfig"; sourceTree = "<group>"; };
 		72A7FC944A6AFBB00A63585F /* Pods-CalDo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalDo.release.xcconfig"; path = "Target Support Files/Pods-CalDo/Pods-CalDo.release.xcconfig"; sourceTree = "<group>"; };
+		830DB5EC24A8EC35006B16E3 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		929E004114D27D044565F86A /* Pods-CalDoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalDoTests.debug.xcconfig"; path = "Target Support Files/Pods-CalDoTests/Pods-CalDoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AADC4FA7D5CB265C6C07244D /* Pods-CalDo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalDo.debug.xcconfig"; path = "Target Support Files/Pods-CalDo/Pods-CalDo.debug.xcconfig"; sourceTree = "<group>"; };
 		ACC9F82338562CAE3409D475 /* Pods_CalDoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalDoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -220,6 +224,7 @@
 				0135B2A7231DC66800E43638 /* WeatherModel.swift */,
 				0130AD4522EF25AB00C3EF47 /* Projects.swift */,
 				01C954712115E2310047175F /* Todo Struct.swift */,
+				830DB5EB24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -703,6 +708,7 @@
 				01D53467234F681800DE6776 /* CustomTabBar.swift in Sources */,
 				01D5347C234F6E3E00DE6776 /* Color.swift in Sources */,
 				01D53471234F6A1900DE6776 /* TodoSectionProjectsTableViewCell.swift in Sources */,
+				830DB5ED24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld in Sources */,
 				012259A523F62854003BAAEE /* CalendarViewController.swift in Sources */,
 				01D53476234F6D3A00DE6776 /* TimePickerViewController.swift in Sources */,
 				01D53473234F6A1900DE6776 /* TodoSectionCollectionViewCell.swift in Sources */,
@@ -723,6 +729,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				019281001F8A615C00E895D4 /* CalDoTests.swift in Sources */,
+				830DB5EE24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -731,6 +738,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0192810B1F8A615C00E895D4 /* CalDoUITests.swift in Sources */,
+				830DB5EF24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1019,6 +1027,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		830DB5EB24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				830DB5EC24A8EC35006B16E3 /* Model.xcdatamodel */,
+			);
+			currentVersion = 830DB5EC24A8EC35006B16E3 /* Model.xcdatamodel */;
+			path = CoreDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 019280DF1F8A615C00E895D4 /* Project object */;
 }
