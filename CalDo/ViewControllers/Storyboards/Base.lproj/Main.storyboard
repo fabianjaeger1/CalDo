@@ -413,7 +413,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BUh-EJ-yGr"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Todo" image="Todo Button" id="Wh9-Zd-RWk"/>
+                    <tabBarItem key="tabBarItem" title="Todo" image="Todo" id="Wh9-Zd-RWk"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="CollectionView" destination="K52-sD-qCa" id="qpP-Vv-lOD"/>
@@ -531,16 +531,17 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Notes" translatesAutoresizingMaskIntoConstraints="NO" id="5jy-mn-IT9">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookmark.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5jy-mn-IT9">
                                                     <rect key="frame" x="116" y="14" width="18" height="18"/>
+                                                    <color key="tintColor" name="TextColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="18" id="5ov-DN-XOJ"/>
                                                         <constraint firstAttribute="height" constant="18" id="XbG-h4-Nye"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Location" translatesAutoresizingMaskIntoConstraints="NO" id="Gwf-Yh-W6c">
-                                                    <rect key="frame" x="152" y="14" width="18" height="18"/>
-                                                    <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Gwf-Yh-W6c">
+                                                    <rect key="frame" x="143" y="14.5" width="18" height="17"/>
+                                                    <color key="tintColor" name="TextColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="JHa-YX-qFK"/>
                                                         <constraint firstAttribute="width" constant="18" id="qVU-3O-Q3j"/>
@@ -593,7 +594,7 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="rhh-Ht-tR5" secondAttribute="trailing" constant="1" id="Pcn-2k-vX0"/>
                                                 <constraint firstItem="rhh-Ht-tR5" firstAttribute="top" secondItem="TN7-nN-wOo" secondAttribute="topMargin" id="S4A-Oe-wU9"/>
                                                 <constraint firstItem="Uj7-0K-Hef" firstAttribute="leading" secondItem="TN7-nN-wOo" secondAttribute="leadingMargin" constant="44" id="Whx-ed-NcI"/>
-                                                <constraint firstItem="Gwf-Yh-W6c" firstAttribute="leading" secondItem="5jy-mn-IT9" secondAttribute="trailing" constant="18" id="YUS-S1-uYY"/>
+                                                <constraint firstItem="Gwf-Yh-W6c" firstAttribute="leading" secondItem="5jy-mn-IT9" secondAttribute="trailing" constant="9" id="YUS-S1-uYY"/>
                                                 <constraint firstItem="rSV-HA-jT0" firstAttribute="leading" secondItem="TN7-nN-wOo" secondAttribute="leadingMargin" constant="44" id="kkV-F4-kPC"/>
                                                 <constraint firstItem="5jy-mn-IT9" firstAttribute="leading" secondItem="Uj7-0K-Hef" secondAttribute="trailing" constant="11" id="lws-Mv-FZ3"/>
                                                 <constraint firstItem="Vwg-uy-AmV" firstAttribute="trailing" secondItem="TN7-nN-wOo" secondAttribute="trailingMargin" id="nJg-9N-guM"/>
@@ -2595,19 +2596,17 @@
         <segue reference="fiX-NY-lbz"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="Account" width="30" height="36"/>
+        <image name="Account" width="30" height="35"/>
         <image name="AccountSelected" width="29" height="34"/>
         <image name="Add_Symbol" width="30" height="30"/>
         <image name="Add_Todo" width="49" height="49"/>
         <image name="Back_Button" width="31" height="31"/>
-        <image name="Calendar Icon" width="34" height="34"/>
+        <image name="Calendar Icon" width="35" height="35"/>
         <image name="Down" width="30" height="29"/>
         <image name="Event_Add" width="42" height="42"/>
         <image name="Habits_Home" width="127" height="129"/>
         <image name="Home" width="33" height="33"/>
         <image name="Inbox_Home" width="129" height="129"/>
-        <image name="Location" width="14" height="19"/>
-        <image name="Notes" width="19" height="21"/>
         <image name="Plus Sign" width="56" height="55"/>
         <image name="Priority_Todo" width="19" height="24"/>
         <image name="Project_Add" width="42" height="42"/>
@@ -2622,11 +2621,14 @@
         <image name="Tag_Todo" width="24" height="23"/>
         <image name="Task_Add" width="42" height="42"/>
         <image name="Today_Todo" width="129" height="129"/>
+        <image name="Todo" width="34" height="35"/>
         <image name="Todo Button" width="34" height="32"/>
         <image name="TodoButton" width="21" height="21"/>
         <image name="TrashCan" width="49" height="49"/>
         <image name="Weather Sun" width="50" height="51"/>
         <image name="When_Todo" width="25" height="24"/>
+        <image name="bookmark.fill" catalog="system" width="112" height="128"/>
+        <image name="location.fill" catalog="system" width="128" height="115"/>
         <namedColor name="CustomBackgroundColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

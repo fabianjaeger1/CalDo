@@ -28,6 +28,81 @@ import UIKit
 //    }
 //}
 
+extension Date {
+
+    static func - (lhs: Date, rhs: Date) -> TimeInterval {
+        return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
+    }
+
+}
+
+func computeNewDate(from fromDate: Date, to toDate: Date) -> Date {
+     let delta = toDate - fromDate // `Date` - `Date` = `TimeInterval`
+     let today = Date()
+     if delta < 0 {
+         return today
+     } else {
+         return today + delta // `Date` + `TimeInterval` = `Date`
+     }
+}
+
+func DateToString(date:Date) -> String {
+    let cal = Calendar.current
+
+    let today = Date()
+    let timeformatter = DateFormatter()
+    timeformatter.dateFormat = "HH:mm"
+    let time = timeformatter.string(from: date)
+    
+    let dateformatter = DateFormatter()
+    dateformatter.dateFormat = "EEEE"
+    
+    let dateformatter2 = DateFormatter()
+    dateformatter2.dateFormat = "d MMM HH:mm"
+    
+//
+//    let components = cal.dateComponents([Calendar.Component.hour, Calendar.Component.minute], from: date)
+    
+//    let day = cal.dateComponents([.day], from: date)
+//    let month  = cal.dateComponents([.month], from: date)
+//    let time = cal.dateComponents([.hour,.minute], from: date)
+//
+//    let weekday = cal.component(.weekday, from: date)
+//
+//    let nextWeek = cal.date(byAdding: .day, value: 7, to: Date())
+    
+    
+
+//    let interval = cal.dateComponents([.day, .month, .year], from: date, to: date )
+    let date1 = cal.startOfDay(for: Date())
+    let date2 = cal.startOfDay(for: date)
+
+    let components2 = cal.dateComponents([.day], from: date1, to: date2)
+    
+//    cal.date(bySettingHour: 12, minute: 00, second: 00, of: cal.startOfDay(for: date))
+    
+    if Calendar.current.isDateInToday(date){
+        return "Today " + time
+    }
+    if Calendar.current.isDateInTomorrow(date){
+        return "Tomorrow " + time
+        // \(components.hour!):\(components.minute!)"
+    }
+    if Calendar.current.isDateInYesterday(date){
+        return "Yesterday " + time
+    }
+    
+    if components2.day! > 2 && components2.day! < 7 {
+        return "\(dateformatter.string(from: date)) \(time)"
+    }
+    
+    if components2.day! > 7{
+        return dateformatter2.string(from: date)
+    }
+    
+    return date.DatetoString(dateFormat: "MMM d yyyy HH:mm" )
+}
+
 
 var InboxTodo = [TodoItem]() //Globally defined variable for Todo items in Inbox
 
@@ -133,7 +208,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         let shapeLayer = CAShapeLayer()
         let todo = InboxTodo[indexPath.row]
-        let ConvertedDate = todo.todoDate?.DatetoString(dateFormat: "HH:mm")
+        // let ConvertedDate = todo.todoDate?.DatetoString(dateFormat: "HH:mm")
 
         let center = CGPoint(x: cell.ProjectColor.frame.height/2, y: cell.ProjectColor.frame.width/2)
         let circlePath = UIBezierPath(arcCenter: center, radius: CGFloat(4), startAngle: CGFloat(0), endAngle: CGFloat(Double.pi * 2), clockwise: true)
@@ -170,7 +245,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.TodoTitle.textColor = UIColor.textColor
         cell.TodoDate.textColor = UIColor.textColor
         cell.ProjectLabel.textColor = UIColor.textColor
-        cell.TodoDate?.text = ConvertedDate
+        cell.TodoDate?.text = DateToString(date: todo.todoDate!)
         cell.ProjectLabel.text = todo.todoProject?.ProjectTitle
   
 // ====================== TAGS ================================

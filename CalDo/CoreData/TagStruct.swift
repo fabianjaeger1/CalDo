@@ -12,5 +12,4 @@ import TagListView
 struct tag{
     var tagLabel: String!
     var tagColor: UIColor!
-
 }
