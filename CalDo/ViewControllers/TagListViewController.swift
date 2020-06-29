@@ -9,12 +9,6 @@
 import UIKit
 import TagListView
 
-struct tag{
-    var tagLabel: String!
-    var tagColor: UIColor!
-
-}
-
 var AllTags = [tag]()
 var PreviouslySelectedTags = [tag]()
 

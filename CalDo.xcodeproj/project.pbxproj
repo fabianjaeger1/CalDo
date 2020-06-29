@@ -24,6 +24,7 @@
 		014595722445EA6400AFB34D /* SF-Pro-Rounded-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 014595672445E9DA00AFB34D /* SF-Pro-Rounded-Semibold.otf */; };
 		014595732445EA6400AFB34D /* SF-Pro-Rounded-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 014595682445E9DB00AFB34D /* SF-Pro-Rounded-Thin.otf */; };
 		014595742445EA6400AFB34D /* SF-Pro-Rounded-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 014595632445E9DA00AFB34D /* SF-Pro-Rounded-Ultralight.otf */; };
+		015361C524AA7AB200D19DD2 /* TagStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015361C424AA7AB200D19DD2 /* TagStruct.swift */; };
 		015DA69E23C94B5300582851 /* HabitHomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015DA69D23C94B5300582851 /* HabitHomeScreenViewController.swift */; };
 		015DA6A023C94E4900582851 /* ProjectHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015DA69F23C94E4900582851 /* ProjectHomeViewController.swift */; };
 		015DA6A223C952EF00582851 /* ChooseProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015DA6A123C952EF00582851 /* ChooseProjectTableViewCell.swift */; };
@@ -107,6 +108,7 @@
 		0145956A2445E9DB00AFB34D /* SF-Pro-Rounded-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Light.otf"; sourceTree = "<group>"; };
 		0145956B2445E9DB00AFB34D /* SF-Pro-Rounded-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Bold.otf"; sourceTree = "<group>"; };
 		014C23A02313176500A3EA4F /* TagListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TagListViewController.swift; path = CalDo/ViewControllers/TagListViewController.swift; sourceTree = SOURCE_ROOT; };
+		015361C424AA7AB200D19DD2 /* TagStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagStruct.swift; sourceTree = "<group>"; };
 		015DA69D23C94B5300582851 /* HabitHomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitHomeScreenViewController.swift; sourceTree = "<group>"; };
 		015DA69F23C94E4900582851 /* ProjectHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectHomeViewController.swift; sourceTree = "<group>"; };
 		015DA6A123C952EF00582851 /* ChooseProjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseProjectTableViewCell.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				0135B2A7231DC66800E43638 /* WeatherModel.swift */,
 				0130AD4522EF25AB00C3EF47 /* Projects.swift */,
 				01C954712115E2310047175F /* Todo Struct.swift */,
+				015361C424AA7AB200D19DD2 /* TagStruct.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -711,6 +714,7 @@
 				0130AD4822EF279300C3EF47 /* ChooseProjectsViewController.swift in Sources */,
 				016033712469A45B0032DA23 /* AddTodoInboxViewController.swift in Sources */,
 				0160336C24694EA00032DA23 /* HabitViewController.swift in Sources */,
+				015361C524AA7AB200D19DD2 /* TagStruct.swift in Sources */,
 				015DA69E23C94B5300582851 /* HabitHomeScreenViewController.swift in Sources */,
 				019878132319C87300DE1F7E /* RepeatViewController.swift in Sources */,
 				019A09FB242E82D5002434F0 /* DateHeaderCell.swift in Sources */,
