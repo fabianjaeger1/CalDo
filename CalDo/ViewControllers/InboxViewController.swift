@@ -36,6 +36,8 @@ extension Date {
 
 }
 
+
+
 func computeNewDate(from fromDate: Date, to toDate: Date) -> Date {
      let delta = toDate - fromDate // `Date` - `Date` = `TimeInterval`
      let today = Date()
@@ -49,7 +51,6 @@ func computeNewDate(from fromDate: Date, to toDate: Date) -> Date {
 func DateToString(date:Date) -> String {
     let cal = Calendar.current
 
-    let today = Date()
     let timeformatter = DateFormatter()
     timeformatter.dateFormat = "HH:mm"
     let time = timeformatter.string(from: date)
@@ -59,43 +60,24 @@ func DateToString(date:Date) -> String {
     
     let dateformatter2 = DateFormatter()
     dateformatter2.dateFormat = "d MMM HH:mm"
-    
-//
-//    let components = cal.dateComponents([Calendar.Component.hour, Calendar.Component.minute], from: date)
-    
-//    let day = cal.dateComponents([.day], from: date)
-//    let month  = cal.dateComponents([.month], from: date)
-//    let time = cal.dateComponents([.hour,.minute], from: date)
-//
-//    let weekday = cal.component(.weekday, from: date)
-//
-//    let nextWeek = cal.date(byAdding: .day, value: 7, to: Date())
-    
-    
 
-//    let interval = cal.dateComponents([.day, .month, .year], from: date, to: date )
     let date1 = cal.startOfDay(for: Date())
     let date2 = cal.startOfDay(for: date)
 
     let components2 = cal.dateComponents([.day], from: date1, to: date2)
-    
-//    cal.date(bySettingHour: 12, minute: 00, second: 00, of: cal.startOfDay(for: date))
     
     if Calendar.current.isDateInToday(date){
         return "Today " + time
     }
     if Calendar.current.isDateInTomorrow(date){
         return "Tomorrow " + time
-        // \(components.hour!):\(components.minute!)"
     }
     if Calendar.current.isDateInYesterday(date){
         return "Yesterday " + time
     }
-    
     if components2.day! > 2 && components2.day! < 7 {
         return "\(dateformatter.string(from: date)) \(time)"
     }
-    
     if components2.day! > 7{
         return dateformatter2.string(from: date)
     }
@@ -107,6 +89,16 @@ func DateToString(date:Date) -> String {
 var InboxTodo = [TodoItem]() //Globally defined variable for Todo items in Inbox
 
 class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ToDoCellDelegate {
+    
+    @IBOutlet var toolbarView: UIView!
+    @IBOutlet weak var textfield: UITextField!
+    
+    @IBOutlet weak var AddTaskTextField: UITextField!
+    
+    @IBAction func PlusButtonPressed(_ sender: Any) {
+        AddTaskTextField.becomeFirstResponder()
+    }
+    
     
     let impact = UIImpactFeedbackGenerator()
     
@@ -247,6 +239,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.ProjectLabel.textColor = UIColor.textColor
         cell.TodoDate?.text = DateToString(date: todo.todoDate!)
         cell.ProjectLabel.text = todo.todoProject?.ProjectTitle
+        cell.backgroundColor = .BackgroundColor
   
 // ====================== TAGS ================================
         
@@ -407,6 +400,10 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         } else {
             // Fallback on earlier versions
         }
+        
+        
+        toolbarView.backgroundColor = .BackgroundColor
+        
         InboxLabel.textColor = UIColor.textColor
         SearchBar.barTintColor = UIColor.white
         SearchBar.isTranslucent = false
@@ -418,6 +415,17 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         AddButton.createFloatingActionButton()
         
         super.viewDidLoad()
+        
+        textfield.inputAccessoryView = toolbarView
+        
+        toolbarView.layer.cornerRadius = 20
+        
+
+        
+        // Load the view using bundle.
+        // Make sure a nib name should be correct
+        // And cast it to the class, something like this
+       
 
 
         InboxTodo = TodoItem.loadSampleToDos()
