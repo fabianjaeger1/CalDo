@@ -163,8 +163,10 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UICollect
         let dimtextcolor = UIColor(named: "TextColorDim")
 //        self.CollectionView.animateCell(cell)
         
-        if indexPath.row == 1{
-            cell.TaskAmountLabel.text = "\(InboxTodo.count)"
+        if indexPath.row == 1 {
+            // TODO: method for loading inbox tasks
+            // cell.TaskAmountLabel.text = "\(InboxTodo.count)"
+            cell.TaskAmountLabel.text = "5"
         }
         cell.TitleLabel.text = Sections[indexPath.row]
         cell.SectionImage.image = SectionImages[indexPath.row]

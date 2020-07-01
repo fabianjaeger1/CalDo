@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 //import ViewAnimator
 
 //extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -29,9 +30,17 @@ import UIKit
 //}
 
 
-var InboxTodo = [TodoItem]() //Globally defined variable for Todo items in Inbox
+// var InboxTodo = [TodoItem]() // Globally defined variable for Todo items in Inbox
 
 class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ToDoCellDelegate {
+    
+    // Get the CoreData context
+    let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    // Load sample CoreData tasks
+    // TODO: Replace with fetching the actual tasks (not here?)
+    var InboxTasks = [NSManagedObject]()
+    // var InboxTasks = loadSampleTaskEntities()
     
     let impact = UIImpactFeedbackGenerator()
     
@@ -121,7 +130,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return InboxTodo.count
+        return InboxTasks.count
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -132,8 +141,9 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellWithIcon", for: indexPath) as! InboxTableViewCell
         
         let shapeLayer = CAShapeLayer()
-        let todo = InboxTodo[indexPath.row]
-        let ConvertedDate = todo.todoDate?.DatetoString(dateFormat: "HH:mm")
+        let task = InboxTasks[indexPath.row]
+        //let ConvertedDate = todo.todoDate?.DatetoString(dateFormat: "HH:mm")
+        let ConvertedDate = (task.value(forKey: "date") as! Date?)?.DatetoString(dateFormat: "HH:mm")
 
         let center = CGPoint(x: cell.ProjectColor.frame.height/2, y: cell.ProjectColor.frame.width/2)
         let circlePath = UIBezierPath(arcCenter: center, radius: CGFloat(4), startAngle: CGFloat(0), endAngle: CGFloat(Double.pi * 2), clockwise: true)
@@ -144,12 +154,15 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
         shapeLayer.path = circlePath.cgPath
         shapeLayer.lineWidth = 3.0
-        shapeLayer.fillColor = UIColor(hexString: (todo.todoProject?.ProjectColor)!).cgColor
+        
+        // shapeLayer.fillColor = UIColor(hexString: (todo.todoProject?.ProjectColor)!).cgColor
+        shapeLayer.fillColor = UIColor(hexString: (((task.value(forKey: "project") as! ProjectEntity?)?.value(forKey: "color") as! String?))!).cgColor
+        
         cell.ProjectColor.layer.backgroundColor = UIColor.clear.cgColor
         cell.ProjectColor.layer.addSublayer(shapeLayer)
 
         
-        if todo.todoCompleted == true{
+        if (task.value(forKey: "completed") as! Bool) == true {
             cell.alpha = 1
 //            let currentindex = IndexPath.init(row: indexPath.row, section: 0)
             let image = UIImage(named: "DoneButtonPressed")
@@ -166,93 +179,118 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         
         cell.delegate = self
-        cell.TodoTitle?.text = todo.todoTitle
+        cell.TodoTitle?.text = (task.value(forKey: "title") as! String)
         cell.TodoTitle.textColor = UIColor.textColor
         cell.TodoDate.textColor = UIColor.textColor
         cell.ProjectLabel.textColor = UIColor.textColor
         cell.TodoDate?.text = ConvertedDate
-        cell.ProjectLabel.text = todo.todoProject?.ProjectTitle
+        // cell.ProjectLabel.text = todo.todoProject?.ProjectTitle
+        cell.ProjectLabel.text = ((task.value(forKey: "project") as! ProjectEntity).value(forKey: "title") as! String)
   
 // ====================== TAGS ================================
         
-        if todo.todoTags!.isEmpty {
+        print(task.value(forKey: "title") as! String)
+        
+        let taskTagsSet = task.value(forKey: "tags") as! Set<TagEntity>
+        var taskTags = Array(taskTagsSet)
+        
+        
+        if !taskTags.isEmpty {taskTags.sort { ($0.value(forKey: "title") as! String) < ($1.value(forKey: "title") as! String)
+            }
         }
-        else{
-            let count = todo.todoTags!.count
+        
+        var taskTagTitles = [String]()
+        var taskTagColors = [UIColor]()
+        
+        for tag in taskTags {
+            taskTagTitles.append(tag.value(forKey: "title") as! String)
+            taskTagColors.append(UIColor(hexString: tag.value(forKey: "color") as! String))
+        }
+        
+        //if todo.todoTags!.isEmpty {
+        
+        //if (task.value(forKey: "tags") as! [TaskEntity]).isEmpty {
+        
+        if taskTags.isEmpty {
+        }
+        else {
+            let count = taskTags.count
             if count == 1 {
-                cell.Tag1.text = todo.todoTags![0].tagLabel!
-                cell.Tag1.textColor = todo.todoTags![0].tagColor!
+                //cell.Tag1.text = todo.todoTags![0].tagLabel!
+                //cell.Tag1.textColor = todo.todoTags![0].tagColor!
+                cell.Tag1.text = taskTagTitles[0]
+                cell.Tag1.textColor = taskTagColors[0]
             }
             else if count == 2{
-                cell.Tag1.text = todo.todoTags![0].tagLabel!
-                cell.Tag1.textColor = todo.todoTags![0].tagColor!
-                cell.Tag2.text = todo.todoTags![1].tagLabel!
-                cell.Tag2.textColor = todo.todoTags![1].tagColor!
+                cell.Tag1.text = taskTagTitles[0]
+                cell.Tag1.textColor = taskTagColors[0]
+                cell.Tag2.text = taskTagTitles[1]
+                cell.Tag2.textColor = taskTagColors[1]
             }
             else if count == 3{
-                cell.Tag1.text = todo.todoTags![0].tagLabel!
-                cell.Tag1.textColor = todo.todoTags![0].tagColor!
-                cell.Tag2.text = todo.todoTags![1].tagLabel!
-                cell.Tag2.textColor = todo.todoTags![1].tagColor!
-                cell.Tag3.text = todo.todoTags![2].tagLabel!
-                cell.Tag3.textColor = todo.todoTags![2].tagColor!
+                cell.Tag1.text = taskTagTitles[0]
+                cell.Tag1.textColor = taskTagColors[0]
+                cell.Tag2.text = taskTagTitles[1]
+                cell.Tag2.textColor = taskTagColors[1]
+                cell.Tag3.text = taskTagTitles[2]
+                cell.Tag3.textColor =  taskTagColors[2]
             }
             else if count == 4{
-                cell.Tag1.text = todo.todoTags![0].tagLabel!
-                cell.Tag1.textColor = todo.todoTags![0].tagColor!
-                cell.Tag2.text = todo.todoTags![1].tagLabel!
-                cell.Tag2.textColor = todo.todoTags![1].tagColor!
-                cell.Tag3.text = todo.todoTags![2].tagLabel!
-                cell.Tag3.textColor = todo.todoTags![2].tagColor!
-                cell.Tag4.text = todo.todoTags![3].tagLabel!
-                cell.Tag4.textColor = todo.todoTags![3].tagColor!
+                cell.Tag1.text = taskTagTitles[0]
+                cell.Tag1.textColor = taskTagColors[0]
+                cell.Tag2.text = taskTagTitles[1]
+                cell.Tag2.textColor = taskTagColors[1]
+                cell.Tag3.text = taskTagTitles[2]
+                cell.Tag3.textColor =  taskTagColors[2]
+                cell.Tag4.text = taskTagTitles[3]
+                cell.Tag4.textColor = taskTagColors[3]
             }
             else if count == 5{
-                cell.Tag1.text = todo.todoTags![0].tagLabel!
-                cell.Tag1.textColor = todo.todoTags![0].tagColor!
-                cell.Tag2.text = todo.todoTags![1].tagLabel!
-                cell.Tag2.textColor = todo.todoTags![1].tagColor!
-                cell.Tag3.text = todo.todoTags![2].tagLabel!
-                cell.Tag3.textColor = todo.todoTags![2].tagColor!
-                cell.Tag4.text = todo.todoTags![3].tagLabel!
-                cell.Tag4.textColor = todo.todoTags![3].tagColor!
-                cell.Tag5.text = todo.todoTags![4].tagLabel!
-                cell.Tag5.textColor = todo.todoTags![4].tagColor!
+                cell.Tag1.text = taskTagTitles[0]
+                cell.Tag1.textColor = taskTagColors[0]
+                cell.Tag2.text = taskTagTitles[1]
+                cell.Tag2.textColor = taskTagColors[1]
+                cell.Tag3.text = taskTagTitles[2]
+                cell.Tag3.textColor =  taskTagColors[2]
+                cell.Tag4.text = taskTagTitles[3]
+                cell.Tag4.textColor = taskTagColors[3]
+                cell.Tag5.text = taskTagTitles[4]
+                cell.Tag5.textColor = taskTagColors[4]
             }
         }
         
         cell.layer.backgroundColor = UIColor.clear.cgColor
         
 // =============== CELL ICONS =======================
-        if todo.todoNotes != nil{
+        if task.value(forKey: "notes") != nil {
             cell.TodoNotesIcon.alpha = 1
         }
         else {
             cell.TodoNotesIcon.alpha = 0
         }
         
-        if todo.todoLocation == nil{
+        if task.value(forKey: "location") == nil {
             cell.TodoLocationIcon.alpha = 0
         }
-        else{
+        else {
             cell.TodoLocationIcon.alpha = 1
         }
 // ================== CELL TODO BUTTON =======================
         
-        if todo.todoRecurrence == true && todo.todoPriority == [2]{
+        if (task.value(forKey: "recurrence") as! Bool) == true && (task.value(forKey: "priority") as! Int) == 1 {
             let image = UIImage(named: "Recurring Normal")
             cell.TodoStatus.setImage(image, for: .normal)
         }
-        if todo.todoRecurrence == true && todo.todoPriority == [3]{
+         if (task.value(forKey: "recurrence") as! Bool) == true && (task.value(forKey: "priority") as! Int) == 2 {
             let image = UIImage(named: "Recurring High")
             cell.TodoStatus.setImage(image, for: .normal)
         }
         
-        if todo.todoPriority == [2] && todo.todoRecurrence != true {
+        if (task.value(forKey: "recurrence") as! Bool) != true && (task.value(forKey: "priority") as! Int) == 1 {
             let image = UIImage(named: "Todo Medium Priority")
             cell.TodoStatus.setImage(image, for: .normal)
         }
-        if todo.todoPriority == [3] && todo.todoRecurrence != true {
+        if (task.value(forKey: "recurrence") as! Bool) != true && (task.value(forKey: "priority") as! Int) == 2 {
             let image = UIImage(named: "Todo High Priority")
             cell.TodoStatus.setImage(image, for: .normal)
         }
@@ -323,6 +361,28 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     
+    // Load the tasks from the CoreData storage
+    // TODO: move somewhere else?
+    func loadTasks() {
+        let request : NSFetchRequest<TaskEntity> = TaskEntity.fetchRequest()
+        do {
+            InboxTasks = try managedContext.fetch(request)
+        } catch {
+            print("Error fetching data from context \(error)")
+        }
+    }
+    
+    func saveTasks() {
+        do {
+            try managedContext.save()
+        } catch {
+            print("Error saving data to context \(error)")
+        }
+        
+        // self.tableView.reloadData()
+    }
+     
+    
     override func viewDidLoad() {
         
         if #available(iOS 12.0, *) {
@@ -344,8 +404,13 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         super.viewDidLoad()
 
-
-        InboxTodo = TodoItem.loadSampleToDos()
+        // Load tasks
+        // loadSampleTaskEntities()
+        loadTasks()
+        
+        
+        
+        // InboxTodo = TodoItem.loadSampleToDos()
 //        if let savedToDos = TodoItem.loadToDos() {
 //            InboxTodo = savedToDos
 //        } else {
@@ -366,14 +431,15 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func checkmarkTapped(sender: InboxTableViewCell) {
         if let indexPath = myTableView.indexPath(for: sender) {
-//            var todo = InboxTodo[indexPath.row]
-            var todo = InboxTodo[indexPath.row]
+            
+            InboxTasks[indexPath.row].setValue(true, forKey: "completed")
+            saveTasks()
 
-            todo.todoCompleted = !todo.todoCompleted
-            InboxTodo[indexPath.row] = todo
+            // task.completed = !task.completed
+            // InboxTasks[indexPath.row] = task
             impact.impactOccurred()
             myTableView.reloadRows(at: [indexPath], with: .automatic)
-                            InboxTodo.remove(at: indexPath.row)
+                            InboxTasks.remove(at: indexPath.row)
             
             UIView.animate(withDuration: 0.8){
 //                self.myTableView.deleteSections(at: [indexPath], with: .fade)
@@ -386,7 +452,6 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         }
     }
-    
     
     
 }
