@@ -64,6 +64,7 @@ class CoreDataManager {
         }
     }
     
+    // Fetches the upcoming tasks into the upcomingTasks variable, sorted by date
     func fetchUpcomingTasks() {
         let managedContext = persistentContainer.viewContext
                
@@ -76,14 +77,28 @@ class CoreDataManager {
         } catch {
             print("Error fetching upcoming tasks from context \(error)")
         }
+        
+        if !self.upcomingTasks.isEmpty {
+            self.upcomingTasks.sort {
+                ($0.value(forKey: "date") as! Date).compare($1.value(forKey: "date") as! Date) == .orderedAscending
+            }
+            
+        }
     }
     
+    // Fetches the today tasks into the todayTasks variable, sorted by date
     func fetchTodayTasks() {
         let managedContext = persistentContainer.viewContext
                  
         let request : NSFetchRequest<TaskEntity> = TaskEntity.fetchRequest()
-        let currentDate = Date()
-        let predicate = NSPredicate(format: "(completed == false) AND (date <= %@)", currentDate as NSDate)
+        
+        var calendar = Calendar.current
+        calendar.timeZone = NSTimeZone.local
+        
+        var dateTo = calendar.startOfDay(for: Date())
+        dateTo = calendar.date(byAdding: .day, value: 1, to: dateTo)!
+        
+        let predicate = NSPredicate(format: "(completed == false) AND (date <= %@)", dateTo as NSDate)
           request.predicate = predicate
           
         do {
@@ -91,7 +106,13 @@ class CoreDataManager {
         } catch {
             print("Error fetching today tasks from context \(error)")
         }
-      }
+        
+        if !self.todayTasks.isEmpty {
+            self.todayTasks.sort {
+                ($0.value(forKey: "date") as! Date).compare($1.value(forKey: "date") as! Date) == .orderedAscending
+            }
+        }
+    }
     
     func addTask(title: String, tags: NSSet) {
         let managedContext = persistentContainer.viewContext
@@ -144,7 +165,9 @@ class CoreDataManager {
             print("Error fetching tags from context \(error)")
         }
         
-        if !tags.isEmpty {tags.sort { ($0.value(forKey: "title") as! String) < ($1.value(forKey: "title") as! String)
+        if !tags.isEmpty {
+            tags.sort {
+                ($0.value(forKey: "title") as! String) < ($1.value(forKey: "title") as! String)
             }
         }
         return tags
