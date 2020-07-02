@@ -52,13 +52,13 @@ class InboxHomeViewController: UIViewController, UITableViewDataSource, UITableV
     func checkmarkTapped(sender: InboxHomeScreenTableViewCell) {
         if let indexPath = tableView.indexPath(for: sender) {
             // var todo = InboxTodo[indexPath.row]
-            var task = inboxTasks[indexPath.section]
+            var task = CoreDataManager.shared.inboxTasks[indexPath.section]
             
-            inboxTasks[indexPath.row].setValue(true, forKey: "completed")
+            CoreDataManager.shared.inboxTasks[indexPath.row].setValue(true, forKey: "completed")
             CoreDataManager.shared.saveContext()
             
             tableView.reloadRows(at: [indexPath], with: .automatic)
-            inboxTasks.remove(at: indexPath.row)
+            CoreDataManager.shared.inboxTasks.remove(at: indexPath.row)
             
             UIView.animate(withDuration: 0.8){
                 //                self.myTableView.deleteSections(at: [indexPath], with: .fade)
@@ -92,7 +92,7 @@ class InboxHomeViewController: UIViewController, UITableViewDataSource, UITableV
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        if inboxTasks.count == 0 {
+        if CoreDataManager.shared.inboxTasks.count == 0 {
             self.tableView.setEmptyMessage("""
             Nothing to see here
             Start adding Tasks
@@ -103,7 +103,7 @@ class InboxHomeViewController: UIViewController, UITableViewDataSource, UITableV
             self.tableView.restore()
             self.tableView.separatorStyle = .none
         }
-        return inboxTasks.count
+        return CoreDataManager.shared.inboxTasks.count
     }
     
 //    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -118,7 +118,7 @@ class InboxHomeViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "InboxHomeScreenTableViewCell", for: indexPath) as! InboxHomeScreenTableViewCell
-        let task = inboxTasks[indexPath.section]
+        let task = CoreDataManager.shared.inboxTasks[indexPath.section]
         
         let shapeLayer = CAShapeLayer()
         let center = CGPoint(x: cell.ProjectColor.frame.height/2, y: cell.ProjectColor.frame.width/2)

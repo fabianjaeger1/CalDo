@@ -119,7 +119,7 @@ class TodoSectionViewController: UIViewController, UITableViewDelegate, UITableV
         var todoAmountLabels = [String](repeating: "", count: 4)
         
         CoreDataManager.shared.fetchInboxTasks()
-        let inboxTaskAmount = inboxTasks.count
+        let inboxTaskAmount = CoreDataManager.shared.inboxTasks.count
         if inboxTaskAmount == 1 {
             todoAmountLabels[0] = "1 Task"
         }

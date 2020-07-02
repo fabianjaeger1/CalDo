@@ -165,7 +165,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UICollect
         
         if indexPath.row == 1 {
             CoreDataManager.shared.fetchInboxTasks()
-            cell.TaskAmountLabel.text = String(inboxTasks.count)
+            cell.TaskAmountLabel.text = String(CoreDataManager.shared.inboxTasks.count)
         }
         
         cell.TitleLabel.text = Sections[indexPath.row]

@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import UIKit
 
-struct CoreDataManager {
+class CoreDataManager {
     static let shared = CoreDataManager()
     
     let persistentContainer: NSPersistentContainer = {
@@ -44,7 +44,7 @@ struct CoreDataManager {
         let request : NSFetchRequest<TaskEntity> = TaskEntity.fetchRequest()
         
         do {
-           allTasks = try managedContext.fetch(request)
+            self.allTasks = try managedContext.fetch(request)
         } catch {
             print("Error fetching tasks from context \(error)")
         }
@@ -58,7 +58,7 @@ struct CoreDataManager {
         request.predicate = predicate
         
         do {
-           inboxTasks = try managedContext.fetch(request)
+            self.inboxTasks = try managedContext.fetch(request)
         } catch {
             print("Error fetching inbox tasks from context \(error)")
         }
@@ -131,10 +131,11 @@ struct CoreDataManager {
         return taskTags
     }
     
+    var allTasks = [TaskEntity]()
+
+    var inboxTasks = [TaskEntity]()
     
 }
 
-var allTasks = [TaskEntity]()
 
-var inboxTasks = [TaskEntity]()
 
