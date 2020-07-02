@@ -64,6 +64,35 @@ class CoreDataManager {
         }
     }
     
+    func fetchUpcomingTasks() {
+        let managedContext = persistentContainer.viewContext
+               
+        let request : NSFetchRequest<TaskEntity> = TaskEntity.fetchRequest()
+        let predicate = NSPredicate(format: "(completed == false) AND (date != nil)")
+        request.predicate = predicate
+        
+        do {
+            self.upcomingTasks = try managedContext.fetch(request)
+        } catch {
+            print("Error fetching upcoming tasks from context \(error)")
+        }
+    }
+    
+    func fetchTodayTasks() {
+        let managedContext = persistentContainer.viewContext
+                 
+        let request : NSFetchRequest<TaskEntity> = TaskEntity.fetchRequest()
+        let currentDate = Date()
+        let predicate = NSPredicate(format: "(completed == false) AND (date <= %@)", currentDate as NSDate)
+          request.predicate = predicate
+          
+        do {
+            self.todayTasks = try managedContext.fetch(request)
+        } catch {
+            print("Error fetching today tasks from context \(error)")
+        }
+      }
+    
     func addTask(title: String, tags: NSSet) {
         let managedContext = persistentContainer.viewContext
         
@@ -134,6 +163,10 @@ class CoreDataManager {
     var allTasks = [TaskEntity]()
 
     var inboxTasks = [TaskEntity]()
+    
+    var upcomingTasks = [TaskEntity]()
+    
+    var todayTasks = [TaskEntity]()
     
 }
 
