@@ -35,11 +35,9 @@ import CoreData
 class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ToDoCellDelegate {
     
     // Get the CoreData context
-    let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    // let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    // Load sample CoreData tasks
-    // TODO: Replace with fetching the actual tasks (not here?)
-    var InboxTasks = [NSManagedObject]()
+    // var InboxTasks = [NSManagedObject]()
     // var InboxTasks = loadSampleTaskEntities()
     
     let impact = UIImpactFeedbackGenerator()
@@ -130,7 +128,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return InboxTasks.count
+        return inboxTasks.count
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -141,7 +139,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellWithIcon", for: indexPath) as! InboxTableViewCell
         
         let shapeLayer = CAShapeLayer()
-        let task = InboxTasks[indexPath.row]
+        let task = inboxTasks[indexPath.row]
         //let ConvertedDate = todo.todoDate?.DatetoString(dateFormat: "HH:mm")
         let ConvertedDate = (task.value(forKey: "date") as! Date?)?.DatetoString(dateFormat: "HH:mm")
 
@@ -156,10 +154,15 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         shapeLayer.lineWidth = 3.0
         
         // shapeLayer.fillColor = UIColor(hexString: (todo.todoProject?.ProjectColor)!).cgColor
-        shapeLayer.fillColor = UIColor(hexString: (((task.value(forKey: "project") as! ProjectEntity?)?.value(forKey: "color") as! String?))!).cgColor
-        
-        cell.ProjectColor.layer.backgroundColor = UIColor.clear.cgColor
-        cell.ProjectColor.layer.addSublayer(shapeLayer)
+        // shapeLayer.fillColor = UIColor(hexString: (((task.value(forKey: "project") as! ProjectEntity?)?.value(forKey: "color") as! String?))!).cgColor
+         if let project = CoreDataManager.shared.fetchProjectFromTask(task: task as! TaskEntity) {
+            shapeLayer.fillColor = CoreDataManager.shared.projectColor(project: project)?.cgColor
+            
+            cell.ProjectLabel.text = project.value(forKey: "title") as? String
+            cell.ProjectLabel.textColor = UIColor.textColor
+            cell.ProjectColor.layer.backgroundColor = UIColor.clear.cgColor
+            cell.ProjectColor.layer.addSublayer(shapeLayer)
+        }
 
         
         if (task.value(forKey: "completed") as! Bool) == true {
@@ -182,10 +185,8 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.TodoTitle?.text = (task.value(forKey: "title") as! String)
         cell.TodoTitle.textColor = UIColor.textColor
         cell.TodoDate.textColor = UIColor.textColor
-        cell.ProjectLabel.textColor = UIColor.textColor
         cell.TodoDate?.text = ConvertedDate
-        // cell.ProjectLabel.text = todo.todoProject?.ProjectTitle
-        cell.ProjectLabel.text = ((task.value(forKey: "project") as! ProjectEntity).value(forKey: "title") as! String)
+        
   
 // ====================== TAGS ================================
         
@@ -360,27 +361,6 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         myTableView.reloadData()
     }
     
-    
-    // Load the tasks from the CoreData storage
-    // TODO: move somewhere else?
-    func loadTasks() {
-        let request : NSFetchRequest<TaskEntity> = TaskEntity.fetchRequest()
-        do {
-            InboxTasks = try managedContext.fetch(request)
-        } catch {
-            print("Error fetching data from context \(error)")
-        }
-    }
-    
-    func saveTasks() {
-        do {
-            try managedContext.save()
-        } catch {
-            print("Error saving data to context \(error)")
-        }
-        
-        // self.tableView.reloadData()
-    }
      
     
     override func viewDidLoad() {
@@ -406,8 +386,8 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
         // Load tasks
         // loadSampleTaskEntities()
-        loadTasks()
-        
+        // loadTasks()
+        CoreDataManager.shared.fetchInboxTasks()
         
         
         // InboxTodo = TodoItem.loadSampleToDos()
@@ -432,14 +412,17 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func checkmarkTapped(sender: InboxTableViewCell) {
         if let indexPath = myTableView.indexPath(for: sender) {
             
-            InboxTasks[indexPath.row].setValue(true, forKey: "completed")
-            saveTasks()
+            inboxTasks[indexPath.row].setValue(true, forKey: "completed")
+            print(inboxTasks[indexPath.row].value(forKey: "title") as! String)
+            // saveTasks()
+            CoreDataManager.shared.saveContext()
 
             // task.completed = !task.completed
             // InboxTasks[indexPath.row] = task
             impact.impactOccurred()
             myTableView.reloadRows(at: [indexPath], with: .automatic)
-                            InboxTasks.remove(at: indexPath.row)
+            
+            inboxTasks.remove(at: indexPath.row)
             
             UIView.animate(withDuration: 0.8){
 //                self.myTableView.deleteSections(at: [indexPath], with: .fade)

@@ -47,7 +47,9 @@ struct TodoItem {
 
 // Load (& save) sample CoreData tasks
 func loadSampleTaskEntities() {
-    let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    // let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    let managedContext = CoreDataManager.shared.persistentContainer.viewContext
     
     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TaskEntity")
     let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
@@ -58,7 +60,6 @@ func loadSampleTaskEntities() {
     } catch {
         print("Error batch deleting \(error)")
     }
-    
     
     
     
@@ -109,6 +110,14 @@ func loadSampleTaskEntities() {
     task5.title = "Go Bonkers!!!"
     task5.project = project1
     task5.tags = [tag1, tag2]
+    
+    let task6 = TaskEntity(context:managedContext)
+    task6.title = "Feed dogs"
+    task6.tags = [tag1]
+    
+    let task7 = TaskEntity(context: managedContext)
+    task7.title = "Go to dentist with mom"
+    task7.tags = [tag2]
     
     do {
         try managedContext.save()

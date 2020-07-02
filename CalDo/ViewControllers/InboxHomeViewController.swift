@@ -45,20 +45,20 @@ extension UITableView {
 class InboxHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, InboxCellDelegate {
     
     // Get the CoreData context
-    let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    // let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    var InboxTasks = [NSManagedObject]()
+    // var InboxTasks = [NSManagedObject]()
     
     func checkmarkTapped(sender: InboxHomeScreenTableViewCell) {
         if let indexPath = tableView.indexPath(for: sender) {
-            //            var todo = InboxTodo[indexPath.row]
-            var task = InboxTasks[indexPath.section]
+            // var todo = InboxTodo[indexPath.row]
+            var task = inboxTasks[indexPath.section]
             
-            InboxTasks[indexPath.row].setValue(true, forKey: "completed")
-            saveTasks()
+            inboxTasks[indexPath.row].setValue(true, forKey: "completed")
+            CoreDataManager.shared.saveContext()
             
             tableView.reloadRows(at: [indexPath], with: .automatic)
-            InboxTasks.remove(at: indexPath.section)
+            inboxTasks.remove(at: indexPath.row)
             
             UIView.animate(withDuration: 0.8){
                 //                self.myTableView.deleteSections(at: [indexPath], with: .fade)
@@ -92,7 +92,7 @@ class InboxHomeViewController: UIViewController, UITableViewDataSource, UITableV
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        if InboxTasks.count == 0 {
+        if inboxTasks.count == 0 {
             self.tableView.setEmptyMessage("""
             Nothing to see here
             Start adding Tasks
@@ -103,7 +103,7 @@ class InboxHomeViewController: UIViewController, UITableViewDataSource, UITableV
             self.tableView.restore()
             self.tableView.separatorStyle = .none
         }
-        return InboxTasks.count
+        return inboxTasks.count
     }
     
 //    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -118,7 +118,7 @@ class InboxHomeViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "InboxHomeScreenTableViewCell", for: indexPath) as! InboxHomeScreenTableViewCell
-        let task = InboxTasks[indexPath.section]
+        let task = inboxTasks[indexPath.section]
         
         let shapeLayer = CAShapeLayer()
         let center = CGPoint(x: cell.ProjectColor.frame.height/2, y: cell.ProjectColor.frame.width/2)
@@ -131,15 +131,19 @@ class InboxHomeViewController: UIViewController, UITableViewDataSource, UITableV
         
         shapeLayer.path = circlePath.cgPath
         shapeLayer.lineWidth = 3.0
-        shapeLayer.fillColor = UIColor(hexString: (((task.value(forKey: "project") as! ProjectEntity?)?.value(forKey: "color") as! String?))!).cgColor
-        cell.ProjectColor.layer.backgroundColor = UIColor.clear.cgColor
-        cell.ProjectColor.layer.addSublayer(shapeLayer)
-    
+        
+        if let project = CoreDataManager.shared.fetchProjectFromTask(task: task as! TaskEntity) {
+            shapeLayer.fillColor = CoreDataManager.shared.projectColor(project: project)?.cgColor
+            
+            cell.ProjectLabel.text = project.value(forKey: "title") as? String
+            cell.ProjectLabel.textColor = UIColor.textColor
+            cell.ProjectColor.layer.backgroundColor = UIColor.clear.cgColor
+            cell.ProjectColor.layer.addSublayer(shapeLayer)
+        }
+
         
         cell.TodoTitle.text = task.value(forKey: "title") as? String
         cell.TodoTitle.textColor = UIColor.textColor
-        cell.ProjectLabel.text = (task.value(forKey: "project") as! ProjectEntity).value(forKey: "title") as? String
-        cell.ProjectLabel.textColor = UIColor.textColor
         cell.accessoryView = nil
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.delegate = self
@@ -213,28 +217,7 @@ class InboxHomeViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewWillAppear(_ animated: Bool) {
                 animateTable()
-    }
-    
-    // Load the tasks from the CoreData storage
-    // TODO: move somewhere else?
-    func loadTasks() {
-        let request : NSFetchRequest<TaskEntity> = TaskEntity.fetchRequest()
-        do {
-            // TODO: with or w/o self?
-            InboxTasks = try managedContext.fetch(request)
-        } catch {
-            print("Error fetching data from context \(error)")
-        }
-    }
-    
-    func saveTasks() {
-        do {
-            try managedContext.save()
-        } catch {
-            print("Error saving data to context \(error)")
-        }
-        
-        // self.tableView.reloadData()
+        CoreDataManager.shared.fetchInboxTasks()
     }
     
     override func viewDidLoad() {
@@ -244,8 +227,9 @@ class InboxHomeViewController: UIViewController, UITableViewDataSource, UITableV
     
         
         // Load tasks
-        loadSampleTaskEntities()
-        loadTasks()
+        // loadSampleTaskEntities()
+        
+        // CoreDataManager.shared.inboxTasks = CoreDataManager.shared.fetchInboxTasks()
         
         tableView.register(UINib(nibName: "InboxHomeScreenTableViewCell", bundle: nil), forCellReuseIdentifier: "InboxHomeScreenTableViewCell")
         
