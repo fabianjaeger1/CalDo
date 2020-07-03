@@ -29,6 +29,63 @@ import CoreData
 //    }
 //}
 
+extension Date {
+
+    static func - (lhs: Date, rhs: Date) -> TimeInterval {
+        return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
+    }
+
+}
+
+
+
+func computeNewDate(from fromDate: Date, to toDate: Date) -> Date {
+     let delta = toDate - fromDate // `Date` - `Date` = `TimeInterval`
+     let today = Date()
+     if delta < 0 {
+         return today
+     } else {
+         return today + delta // `Date` + `TimeInterval` = `Date`
+     }
+}
+
+func DateToString(date:Date) -> String {
+    let cal = Calendar.current
+
+    let timeformatter = DateFormatter()
+    timeformatter.dateFormat = "HH:mm"
+    let time = timeformatter.string(from: date)
+    
+    let dateformatter = DateFormatter()
+    dateformatter.dateFormat = "EEEE"
+    
+    let dateformatter2 = DateFormatter()
+    dateformatter2.dateFormat = "d MMM HH:mm"
+
+    let date1 = cal.startOfDay(for: Date())
+    let date2 = cal.startOfDay(for: date)
+
+    let components2 = cal.dateComponents([.day], from: date1, to: date2)
+    
+    if Calendar.current.isDateInToday(date){
+        return "Today " + time
+    }
+    if Calendar.current.isDateInTomorrow(date){
+        return "Tomorrow " + time
+    }
+    if Calendar.current.isDateInYesterday(date){
+        return "Yesterday " + time
+    }
+    if components2.day! > 2 && components2.day! < 7 {
+        return "\(dateformatter.string(from: date)) \(time)"
+    }
+    if components2.day! > 7{
+        return dateformatter2.string(from: date)
+    }
+    
+    return date.DatetoString(dateFormat: "MMM d yyyy HH:mm" )
+}
+
 
 // var InboxTodo = [TodoItem]() // Globally defined variable for Todo items in Inbox
 
@@ -39,6 +96,16 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // var InboxTasks = [NSManagedObject]()
     // var InboxTasks = loadSampleTaskEntities()
+  
+    @IBOutlet var toolbarView: UIView!
+    @IBOutlet weak var textfield: UITextField!
+    
+    @IBOutlet weak var AddTaskTextField: UITextField!
+    
+    @IBAction func PlusButtonPressed(_ sender: Any) {
+        AddTaskTextField.becomeFirstResponder()
+    }
+ 
     
     let impact = UIImpactFeedbackGenerator()
     
@@ -136,6 +203,39 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
+            
+        let todo = InboxTodo[indexPath.row]
+        
+    
+        // Smaller Table View cell without Projects and Tags
+        if todo.todoProject == nil && todo.todoTags!.count == 0{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SmallTableViewCell1", for: indexPath) as! SmallTableViewCell1
+            
+            
+            
+            return cell
+        }
+        // Smaller Table View cell without Time and Tags 
+        if todo.todoDate == nil && todo.todoTags!.count == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SmallTableViewCell2", for: indexPath) as! SmallTableViewCell2
+            
+            let shapeLayer = CAShapeLayer()
+            let center = CGPoint(x: cell.ProjectColor.frame.height/2, y: cell.ProjectColor.frame.width/2)
+            let circlePath = UIBezierPath(arcCenter: center, radius: CGFloat(4), startAngle: CGFloat(0), endAngle: CGFloat(Double.pi * 2), clockwise: true)
+
+            shapeLayer.path = circlePath.cgPath
+            shapeLayer.lineWidth = 3.0
+            cell.TodoTitle?.text = todo.todoTitle
+            cell.TodoTitle.textColor = UIColor.textColor
+            cell.ProjectLabel.textColor = UIColor.textColor
+            cell.ProjectLabel.text = todo.todoProject?.ProjectTitle
+            cell.backgroundColor = .BackgroundColor
+            
+            
+            return cell
+        }
+        
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellWithIcon", for: indexPath) as! InboxTableViewCell
         
         let shapeLayer = CAShapeLayer()
@@ -186,7 +286,10 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.TodoTitle.textColor = UIColor.textColor
         cell.TodoDate.textColor = UIColor.textColor
         cell.TodoDate?.text = ConvertedDate
-        
+        cell.ProjectLabel.textColor = UIColor.textColor
+        // cell.TodoDate?.text = DateToString(date: todo.todoDate!)
+        cell.ProjectLabel.text = todo.todoProject?.ProjectTitle
+        cell.backgroundColor = .BackgroundColor
   
 // ====================== TAGS ================================
         
@@ -376,6 +479,10 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         } else {
             // Fallback on earlier versions
         }
+        
+        
+        toolbarView.backgroundColor = .BackgroundColor
+        
         InboxLabel.textColor = UIColor.textColor
         SearchBar.barTintColor = UIColor.white
         SearchBar.isTranslucent = false
@@ -387,6 +494,17 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         AddButton.createFloatingActionButton()
         
         super.viewDidLoad()
+        
+        textfield.inputAccessoryView = toolbarView
+        
+        toolbarView.layer.cornerRadius = 20
+        
+
+        
+        // Load the view using bundle.
+        // Make sure a nib name should be correct
+        // And cast it to the class, something like this
+       
 
         // Load tasks
         // loadSampleTaskEntities()

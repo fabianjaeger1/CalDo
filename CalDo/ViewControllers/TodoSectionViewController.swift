@@ -44,6 +44,7 @@ class TodoSectionViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var CollectionView: UICollectionView!
     
+    @IBOutlet var myView: UIView!
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -132,7 +133,7 @@ class TodoSectionViewController: UIViewController, UITableViewDelegate, UITableV
         cell.TodoSectionLabel.textColor = UIColor.textColor
 //        cell.TodoAmountLabel.textColor = UIColor(hexString: "C6CCD4")
         
-        cell.contentView.layer.cornerRadius = 20
+        cell.contentView.layer.cornerRadius = 25
         cell.contentView.layer.borderWidth = 1.0
         cell.contentView.layer.borderColor = UIColor.clear.cgColor
         cell.contentView.backgroundColor = UIColor.backgroundColor
@@ -269,6 +270,7 @@ class TodoSectionViewController: UIViewController, UITableViewDelegate, UITableV
         } else {
             // Fallback on earlier versions
         }
+    
 
         CollectionView.delegate = self
         CollectionView.dataSource = self

@@ -385,11 +385,11 @@
 		122B3E4881D9904C41B4A5A5903CDDD5 /* UIViewExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIViewExtension.swift; path = Gemini/UIViewExtension.swift; sourceTree = "<group>"; };
 		1233EA3896111D703AE143DCD8743A68 /* ESTimeExpressionParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ESTimeExpressionParser.swift; path = Sources/Parsers/ES/ESTimeExpressionParser.swift; sourceTree = "<group>"; };
 		127BF84BC8F8A7DA9302DBA39F47AF18 /* YawRotationAnimatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YawRotationAnimatable.swift; path = Gemini/YawRotationAnimatable.swift; sourceTree = "<group>"; };
-		13E778F4B833EE5D7ABE882406A8215E /* Hero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Hero.framework; path = Hero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		13E778F4B833EE5D7ABE882406A8215E /* Hero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		141FCDFE2AF513E6E4CCB79FF5EA0F63 /* Refiner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Refiner.swift; path = Sources/Refiners/Refiner.swift; sourceTree = "<group>"; };
 		1529F4863C6F2102E377B003D2EEBEC5 /* HeroPlugin.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HeroPlugin.swift; path = Sources/HeroPlugin.swift; sourceTree = "<group>"; };
 		1569D9EA48114902A5EC3E4C85FF066C /* PanModalPresentationAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PanModalPresentationAnimator.swift; path = PanModal/Animator/PanModalPresentationAnimator.swift; sourceTree = "<group>"; };
-		161277983660BBB6908A635083708CFB /* PanModal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PanModal.framework; path = PanModal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		161277983660BBB6908A635083708CFB /* PanModal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PanModal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		16641B090DA815B69B51FB582D9F7557 /* StepIndicator-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "StepIndicator-prefix.pch"; sourceTree = "<group>"; };
 		1720F626B6007E878840DDA17D1AC1DE /* DEDeadlineFormatParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DEDeadlineFormatParser.swift; path = Sources/Parsers/DE/DEDeadlineFormatParser.swift; sourceTree = "<group>"; };
 		178F2A1F24B1CB8481DEE912A40C38D1 /* CachedResponseHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CachedResponseHandler.swift; path = Source/CachedResponseHandler.swift; sourceTree = "<group>"; };
@@ -451,7 +451,7 @@
 		442AC472B50A6E291A99D638FB9051E5 /* Media.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = StepIndicator/Media.xcassets; sourceTree = "<group>"; };
 		461D3034B8CDF7F25F82FC7602F717E0 /* URLConvertible+URLRequestConvertible.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URLConvertible+URLRequestConvertible.swift"; path = "Source/URLConvertible+URLRequestConvertible.swift"; sourceTree = "<group>"; };
 		462BD2C46A973FECB23DD140AEDD5481 /* ZHUtil.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZHUtil.swift; path = Sources/Utils/ZHUtil.swift; sourceTree = "<group>"; };
-		475DAE55BA14EBFA921D6BBBC118899C /* Pods_CalDoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CalDoTests.framework; path = "Pods-CalDoTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		475DAE55BA14EBFA921D6BBBC118899C /* Pods_CalDoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalDoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47E0C71B809D09DCA00AB77AE71DB69A /* Gemini-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Gemini-dummy.m"; sourceTree = "<group>"; };
 		480306865FAFF132A96727A502B11AED /* BasePreprocessor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BasePreprocessor.swift; path = Sources/Preprocessors/BasePreprocessor.swift; sourceTree = "<group>"; };
 		4816D50BDE016710425B9B1D3A9F8726 /* CustomAnimatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CustomAnimatable.swift; path = Gemini/CustomAnimatable.swift; sourceTree = "<group>"; };
@@ -465,7 +465,7 @@
 		4B58E89C2E503D00D742E2C367EB9B47 /* ESMonthNameLittleEndianParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ESMonthNameLittleEndianParser.swift; path = Sources/Parsers/ES/ESMonthNameLittleEndianParser.swift; sourceTree = "<group>"; };
 		4DE37EC2DC58C02B1D165CA9882C8222 /* Alamofire.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.release.xcconfig; sourceTree = "<group>"; };
 		4E5D39A7463A03EFEF8B97AB3F82BF99 /* HeroModifier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HeroModifier.swift; path = Sources/HeroModifier.swift; sourceTree = "<group>"; };
-		4E79958862A94A99F0A40F883CEB810E /* Gemini.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Gemini.framework; path = Gemini.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E79958862A94A99F0A40F883CEB810E /* Gemini.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Gemini.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		502A3C7D9E8059AF27950CC1E0DA6FAD /* SwiftyChrono.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyChrono.modulemap; sourceTree = "<group>"; };
 		519338E8A4038A356568A2E4CFC4554E /* JTAppleCalendarVariables.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCalendarVariables.swift; path = Sources/JTAppleCalendarVariables.swift; sourceTree = "<group>"; };
 		51A5C53700AC34A10B330AA18584D3F8 /* UIScrollViewDelegates.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIScrollViewDelegates.swift; path = Sources/UIScrollViewDelegates.swift; sourceTree = "<group>"; };
@@ -484,7 +484,7 @@
 		5977B12CF2D460967AAA355A262CBFB5 /* Pods-CalDoUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CalDoUITests-Info.plist"; sourceTree = "<group>"; };
 		5AB8E07B69755DA688A82B01BAE4E40B /* DECasualTimeParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DECasualTimeParser.swift; path = Sources/Parsers/DE/DECasualTimeParser.swift; sourceTree = "<group>"; };
 		5C34956F77039A9CC08F7A70B119C7B7 /* HeroTransition+CustomTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "HeroTransition+CustomTransition.swift"; path = "Sources/Transition/HeroTransition+CustomTransition.swift"; sourceTree = "<group>"; };
-		5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EC26B78CEC001298EAEB679857011F1 /* SwiftyChrono.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyChrono.debug.xcconfig; sourceTree = "<group>"; };
 		5F510F3307738BA7A0DB37E8F5FDE3E0 /* ENSlashDateFormatParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ENSlashDateFormatParser.swift; path = Sources/Parsers/EN/ENSlashDateFormatParser.swift; sourceTree = "<group>"; };
 		6059E0AE36D2B80B66FBA887FEA9B787 /* FRDeadlineFormatParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FRDeadlineFormatParser.swift; path = Sources/Parsers/FR/FRDeadlineFormatParser.swift; sourceTree = "<group>"; };
@@ -492,7 +492,7 @@
 		61A0672462347E16ED32B1B69A0F8094 /* EventMonitor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EventMonitor.swift; path = Source/EventMonitor.swift; sourceTree = "<group>"; };
 		6396F91EBE5BAC8F05EE4D09BC95275A /* SourcePreprocessor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SourcePreprocessor.swift; path = Sources/Preprocessors/SourcePreprocessor.swift; sourceTree = "<group>"; };
 		63F2AC2DD3AC1CF75AD699DDDB43B20C /* GeminiAnimationModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GeminiAnimationModel.swift; path = Gemini/GeminiAnimationModel.swift; sourceTree = "<group>"; };
-		641EC62AD5E431A434C65CA7D6EF937F /* StepIndicator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = StepIndicator.framework; path = StepIndicator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		641EC62AD5E431A434C65CA7D6EF937F /* StepIndicator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StepIndicator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64963E76B9009C106F6B7BD893D9D2A3 /* UIViewController+Hero.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIViewController+Hero.swift"; path = "Sources/Extensions/UIViewController+Hero.swift"; sourceTree = "<group>"; };
 		65423BCC7FCD2A89ED676B87B0606C9C /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Alamofire.modulemap; sourceTree = "<group>"; };
 		66D72FA3F5FFEDFAED0A56868A313C8B /* PanModal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PanModal.h; path = PanModal/PanModal.h; sourceTree = "<group>"; };
@@ -535,7 +535,7 @@
 		842E212E2E7F1DA717CADE8BE0741ACD /* HeroTransition+UITabBarControllerDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "HeroTransition+UITabBarControllerDelegate.swift"; path = "Sources/Transition/HeroTransition+UITabBarControllerDelegate.swift"; sourceTree = "<group>"; };
 		847EFF8E9C3E90B93D4174F73EEAD4EE /* JPMergeDateRangeRefiner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JPMergeDateRangeRefiner.swift; path = Sources/Refiners/JP/JPMergeDateRangeRefiner.swift; sourceTree = "<group>"; };
 		84D10D8ACD298A49476449CC27B294FC /* Chrono.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Chrono.swift; path = Sources/Chrono.swift; sourceTree = "<group>"; };
-		85E4C71ED52304F1AB0503E80CD9CB1E /* TagListView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TagListView.framework; path = TagListView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		85E4C71ED52304F1AB0503E80CD9CB1E /* TagListView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TagListView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86D9E030EC7EAB8D326F312D1B33EB6A /* CloseButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CloseButton.swift; path = TagListView/CloseButton.swift; sourceTree = "<group>"; };
 		87278CAC95741A6CEB3E1E1CA5DFF75F /* Gemini.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Gemini.modulemap; sourceTree = "<group>"; };
 		8773607A50FBB827D6EDE6CE13C64022 /* Hero.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Hero.debug.xcconfig; sourceTree = "<group>"; };
@@ -563,13 +563,13 @@
 		9A871DDCEC067AFFDF6DDEF9EFCC43A8 /* ENMergeDateRangeRefiner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ENMergeDateRangeRefiner.swift; path = Sources/Refiners/EN/ENMergeDateRangeRefiner.swift; sourceTree = "<group>"; };
 		9A8C3C74636F863075D41D716A08BFBB /* JTAppleCalendar-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "JTAppleCalendar-Info.plist"; sourceTree = "<group>"; };
 		9C95E9E06DFB2768B58620EBC754C5AF /* Gemini.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Gemini.release.xcconfig; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DBC785FD77E495A11F722564DA8DDD9 /* DayDatePicker.Date.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DayDatePicker.Date.swift; path = DayDatePicker/Classes/DayDatePicker/DayDatePicker.Date.swift; sourceTree = "<group>"; };
 		9EEC7754DF42DF080101211F9CD69C72 /* PitchRotationAnimatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PitchRotationAnimatable.swift; path = Gemini/PitchRotationAnimatable.swift; sourceTree = "<group>"; };
 		A04E519AEF03CB363AA88B80872DDB7D /* ENUtil.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ENUtil.swift; path = Sources/Utils/ENUtil.swift; sourceTree = "<group>"; };
 		A065A856F285E3562515448782BB1001 /* StepIndicator-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "StepIndicator-Info.plist"; sourceTree = "<group>"; };
 		A09D717306D729636219DA8E4393AAFA /* FRUtil.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FRUtil.swift; path = Sources/Utils/FRUtil.swift; sourceTree = "<group>"; };
-		A0C8E428D980D3C9293A3C2BF740F0CD /* JTAppleCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JTAppleCalendar.framework; path = JTAppleCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0C8E428D980D3C9293A3C2BF740F0CD /* JTAppleCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JTAppleCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0D5F78351C6CE08CA470F6776ADA6C2 /* ZHCasualDateParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZHCasualDateParser.swift; path = Sources/Parsers/ZH/ZHCasualDateParser.swift; sourceTree = "<group>"; };
 		A0E3A8C0C884E8B710A94463E7AEBD68 /* AlamofireExtended.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AlamofireExtended.swift; path = Source/AlamofireExtended.swift; sourceTree = "<group>"; };
 		A15C258F909B3CFB33AF6050835B9EAB /* PanModalPresentationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PanModalPresentationController.swift; path = PanModal/Controller/PanModalPresentationController.swift; sourceTree = "<group>"; };
@@ -591,13 +591,13 @@
 		AA388A24D230C4D2AEAF9492BDE98228 /* MatchPreprocessor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MatchPreprocessor.swift; path = Sources/Preprocessors/MatchPreprocessor.swift; sourceTree = "<group>"; };
 		AB2E974440E2BE2E88DA70BB38BD4500 /* Pods-CalDoTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CalDoTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		AD1BF20162E077F17CA53C42C34B2A71 /* TagListView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TagListView.swift; path = TagListView/TagListView.swift; sourceTree = "<group>"; };
-		ADDA4E6EBCD679F6D2BBC3A281DF1C03 /* DayDatePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DayDatePicker.framework; path = DayDatePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADDA4E6EBCD679F6D2BBC3A281DF1C03 /* DayDatePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DayDatePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE5FCD7F77929B828859CF64EB77A17D /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
 		AFF3D6B5FFBDA0A3BE193A18F5D1CA80 /* Pods-CalDoUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CalDoUITests-umbrella.h"; sourceTree = "<group>"; };
 		B01CFA9B8CE6D071737EB6EE9308D69B /* ENCasualDateParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ENCasualDateParser.swift; path = Sources/Parsers/EN/ENCasualDateParser.swift; sourceTree = "<group>"; };
 		B0BD6DC3C639874C480432951E3CF5AA /* CG+Hero.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CG+Hero.swift"; path = "Sources/Extensions/CG+Hero.swift"; sourceTree = "<group>"; };
 		B315C36D00AC15EC03790E8E2A0F7FC4 /* UIViewController+PanModalPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIViewController+PanModalPresenter.swift"; path = "PanModal/Presenter/UIViewController+PanModalPresenter.swift"; sourceTree = "<group>"; };
-		B3662899453F0B14443105F5487C2016 /* Pods_CalDoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CalDoUITests.framework; path = "Pods-CalDoUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3662899453F0B14443105F5487C2016 /* Pods_CalDoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalDoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B456693B09C4AAFDC5AD350952A9A11F /* RedirectHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RedirectHandler.swift; path = Source/RedirectHandler.swift; sourceTree = "<group>"; };
 		B4890719D20124F6C55979F8C1B1FB91 /* Regex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Regex.swift; path = Sources/Parser/Regex.swift; sourceTree = "<group>"; };
 		B507ADF22CBF3E15B94F138A7C57BA78 /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
@@ -632,14 +632,14 @@
 		CAD96E9313C15FEA05C9B50D19E5F102 /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
 		CB00BEBA67B1678264E40429319D5C3C /* JTAppleCalendarDelegateProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCalendarDelegateProtocol.swift; path = Sources/JTAppleCalendarDelegateProtocol.swift; sourceTree = "<group>"; };
 		CCC328D39E679DAE934EB768886C1C3C /* JTAppleCalendar-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JTAppleCalendar-umbrella.h"; sourceTree = "<group>"; };
-		CD93B65BC276886EF678822653223AE9 /* StepIndicator.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = StepIndicator.bundle; path = "StepIndicator-StepIndicator.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD93B65BC276886EF678822653223AE9 /* StepIndicator.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StepIndicator.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDE27DA3AED648DC3DC9DC0ABC2C6FCC /* SwiftSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftSupport.swift; path = Sources/SwiftSupport.swift; sourceTree = "<group>"; };
 		CF8808173C135719DF275643AC2BCF47 /* JTCalendarProtocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTCalendarProtocols.swift; path = Sources/JTCalendarProtocols.swift; sourceTree = "<group>"; };
 		D0F7690B934CEF9E7CC8DAE1D4BD4F8B /* Pods-CalDoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CalDoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D111A674585309026684852F452E82C6 /* Nodes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Nodes.swift; path = Sources/Parser/Nodes.swift; sourceTree = "<group>"; };
 		D2DF766F62C20BCDBC08268637615871 /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
 		D3E3FA5B95D3A4D337F0F234184DC220 /* Hero-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Hero-Info.plist"; sourceTree = "<group>"; };
-		D4436B79B29EFDD5FC5D6EB6B02B11C7 /* SwiftyChrono.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyChrono.framework; path = SwiftyChrono.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4436B79B29EFDD5FC5D6EB6B02B11C7 /* SwiftyChrono.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyChrono.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D478B4BB1107907C3BA749F724713E48 /* TagListView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TagListView.release.xcconfig; sourceTree = "<group>"; };
 		D70656E94F42B69168FBFFD3D895AB81 /* ESDeadlineFormatParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ESDeadlineFormatParser.swift; path = Sources/Parsers/ES/ESDeadlineFormatParser.swift; sourceTree = "<group>"; };
 		D70F98BF811793376EF043D4AF19AFE1 /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
@@ -654,9 +654,9 @@
 		E010326EADDF8BE651EC9E212E35B8E1 /* Hero-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Hero-prefix.pch"; sourceTree = "<group>"; };
 		E065E0188ADBE8B16990FDA8F84C3FBC /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
 		E20FB30B75502E3B40C189747B2B6B8E /* DayDatePicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DayDatePicker-umbrella.h"; sourceTree = "<group>"; };
-		E23C076BA70925415F490FEDB215DA92 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyJSON.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E23C076BA70925415F490FEDB215DA92 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2BD139F14029635886D42CD9D81A1C3 /* ZHTimeExpressionParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZHTimeExpressionParser.swift; path = Sources/Parsers/ZH/ZHTimeExpressionParser.swift; sourceTree = "<group>"; };
-		E2E2DC17F9C135437FB1B6489C43A825 /* Pods_CalDo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CalDo.framework; path = "Pods-CalDo.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2E2DC17F9C135437FB1B6489C43A825 /* Pods_CalDo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalDo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2EEE15B37905AA94FA910311DF74116 /* HeroDebugPlugin.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HeroDebugPlugin.swift; path = "Sources/Debug Plugin/HeroDebugPlugin.swift"; sourceTree = "<group>"; };
 		E4AF729B1657166A90E766F12B247C3B /* PanModal-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PanModal-dummy.m"; sourceTree = "<group>"; };
 		E58CEC05B6C3980FC3EFC178CBD3AA84 /* OperationQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "OperationQueue+Alamofire.swift"; path = "Source/OperationQueue+Alamofire.swift"; sourceTree = "<group>"; };
@@ -834,7 +834,6 @@
 				6A8CB886FF43A5E8BDB6DB788449CF16 /* UserInteractionFunctions.swift */,
 				0EFDDD6306606B1DDFDDE6C000565F7A /* Support Files */,
 			);
-			name = JTAppleCalendar;
 			path = JTAppleCalendar;
 			sourceTree = "<group>";
 		};
@@ -857,7 +856,6 @@
 				B315C36D00AC15EC03790E8E2A0F7FC4 /* UIViewController+PanModalPresenter.swift */,
 				AC8B36023BA3C0CA3939EB59E6D5ABB5 /* Support Files */,
 			);
-			name = PanModal;
 			path = PanModal;
 			sourceTree = "<group>";
 		};
@@ -1020,7 +1018,6 @@
 				43B69BF18679A0241F99CD01301E73F7 /* ZHWeekdayParser.swift */,
 				15232025976CB0E149D71236A0B7996F /* Support Files */,
 			);
-			name = SwiftyChrono;
 			path = SwiftyChrono;
 			sourceTree = "<group>";
 		};
@@ -1125,7 +1122,6 @@
 				3AB0703E2492D21D432DC8A4BE23DF4B /* Resources */,
 				8B7815D0E8500E86BA9EB19BA1273DA3 /* Support Files */,
 			);
-			name = StepIndicator;
 			path = StepIndicator;
 			sourceTree = "<group>";
 		};
@@ -1166,7 +1162,6 @@
 				D70F98BF811793376EF043D4AF19AFE1 /* Validation.swift */,
 				B591B23042D3EC1C4E6390CA4B06AE02 /* Support Files */,
 			);
-			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
@@ -1189,7 +1184,6 @@
 				127BF84BC8F8A7DA9302DBA39F47AF18 /* YawRotationAnimatable.swift */,
 				826543ABA4A73C97F9770F5EB697BA0F /* Support Files */,
 			);
-			name = Gemini;
 			path = Gemini;
 			sourceTree = "<group>";
 		};
@@ -1228,7 +1222,6 @@
 				294F077B71FBE681FE14AF67BCC54B49 /* UITableView+ReloadAndLayout.swift */,
 				BD8C0B8A539226C41884DB18B4020272 /* Support Files */,
 			);
-			name = DayDatePicker;
 			path = DayDatePicker;
 			sourceTree = "<group>";
 		};
@@ -1238,7 +1231,6 @@
 				E6115FF1F25E59B4D89D4D994EC66262 /* SwiftyJSON.swift */,
 				781EF22CE84FD77C2B95D68270E8AAC3 /* Support Files */,
 			);
-			name = SwiftyJSON;
 			path = SwiftyJSON;
 			sourceTree = "<group>";
 		};
@@ -1309,7 +1301,6 @@
 				64963E76B9009C106F6B7BD893D9D2A3 /* UIViewController+Hero.swift */,
 				5FD9EDC7A82566F6157F5E1ED1B9D86D /* Support Files */,
 			);
-			name = Hero;
 			path = Hero;
 			sourceTree = "<group>";
 		};
@@ -1362,7 +1353,6 @@
 				A628FDEB5E259F5BB599F06AFCA79F01 /* TagView.swift */,
 				7D3386B52FF351BE291E02CC31673BD7 /* Support Files */,
 			);
-			name = TagListView;
 			path = TagListView;
 			sourceTree = "<group>";
 		};
@@ -1775,6 +1765,17 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 1100;
+				TargetAttributes = {
+					1FA7F43728E88BEA09BCA0DB2C35A078 = {
+						LastSwiftMigration = 1200;
+					};
+					421B6ABF460857FE6CA2905EFB5A4F74 = {
+						LastSwiftMigration = 1200;
+					};
+					78F4573E2ECF38D5D1BE8361A331EE25 = {
+						LastSwiftMigration = 1200;
+					};
+				};
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 8.0";
@@ -2371,7 +2372,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -2662,7 +2663,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -2792,7 +2793,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -2857,7 +2858,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -2987,7 +2988,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -3018,7 +3019,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -3078,8 +3079,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
