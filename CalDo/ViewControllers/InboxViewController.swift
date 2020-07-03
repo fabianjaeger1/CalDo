@@ -196,10 +196,43 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
+            
+        let todo = InboxTodo[indexPath.row]
+        
+    
+        // Smaller Table View cell without Projects and Tags
+        if todo.todoProject == nil && todo.todoTags!.count == 0{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SmallTableViewCell1", for: indexPath) as! SmallTableViewCell1
+            
+            
+            
+            return cell
+        }
+        // Smaller Table View cell without Time and Tags 
+        if todo.todoDate == nil && todo.todoTags!.count == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SmallTableViewCell2", for: indexPath) as! SmallTableViewCell2
+            
+            let shapeLayer = CAShapeLayer()
+            let center = CGPoint(x: cell.ProjectColor.frame.height/2, y: cell.ProjectColor.frame.width/2)
+            let circlePath = UIBezierPath(arcCenter: center, radius: CGFloat(4), startAngle: CGFloat(0), endAngle: CGFloat(Double.pi * 2), clockwise: true)
+
+            shapeLayer.path = circlePath.cgPath
+            shapeLayer.lineWidth = 3.0
+            cell.TodoTitle?.text = todo.todoTitle
+            cell.TodoTitle.textColor = UIColor.textColor
+            cell.ProjectLabel.textColor = UIColor.textColor
+            cell.ProjectLabel.text = todo.todoProject?.ProjectTitle
+            cell.backgroundColor = .BackgroundColor
+            
+            
+            return cell
+        }
+        
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellWithIcon", for: indexPath) as! InboxTableViewCell
         
         let shapeLayer = CAShapeLayer()
-        let todo = InboxTodo[indexPath.row]
+
         // let ConvertedDate = todo.todoDate?.DatetoString(dateFormat: "HH:mm")
 
         let center = CGPoint(x: cell.ProjectColor.frame.height/2, y: cell.ProjectColor.frame.width/2)

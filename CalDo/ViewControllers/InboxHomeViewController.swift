@@ -73,7 +73,6 @@ class InboxHomeViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.layer.cornerRadius = 20
         //        cell.layer.backgroundColor = UIColor(hexString: "F0F2F4").cgColor
-        cell.layer.backgroundColor = UIColor.clear.cgColor
         //
         //        cell.layer.backgroundColor = UIColor.clear.cgColor// very important
         cell.layer.masksToBounds = false
@@ -136,6 +135,7 @@ class InboxHomeViewController: UIViewController, UITableViewDataSource, UITableV
         cell.ProjectLabel.textColor = UIColor.textColor
         cell.accessoryView = nil
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        cell.backgroundColor = .BackgroundColor
         cell.delegate = self
         
         if todo.todoCompleted == true{

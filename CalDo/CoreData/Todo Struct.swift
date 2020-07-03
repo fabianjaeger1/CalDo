@@ -63,6 +63,7 @@ struct TodoItem {
     static func loadToDos() -> [TodoItem]? {
         return nil
     }
+
     
 
 //INBOX DATA TYPE
@@ -83,8 +84,10 @@ struct TodoItem {
         let todo3 = TodoItem(todoTitle: "Go Shopping", todoCompleted: false, todoDate: Date(), todoNotes: nil , todoTags: [tag1,tag2], todoPriority: [1], todoProject: Project1, todoLocation: nil, todoRecurrence: false)
         let todo4 = TodoItem(todoTitle: "Plan Holidays", todoCompleted: false, todoDate: Date(), todoNotes: "Notes", todoTags: [tag2,tag1,tag3], todoPriority: [2], todoProject: Project2, todoLocation: nil, todoRecurrence: false)
         let todo5 = TodoItem(todoTitle: "Go Bonkers", todoCompleted: false, todoDate: createDate2(), todoNotes: nil, todoTags: [], todoPriority: [1], todoProject: Project1, todoLocation: nil, todoRecurrence: false)
+        let todo6 = TodoItem(todoTitle: "Fuck my Life", todoCompleted: false, todoDate: Date(), todoNotes: nil, todoTags: [], todoPriority: [2], todoProject: Project2, todoLocation: nil, todoRecurrence: false)
+        let todo7 = TodoItem(todoTitle: "Smash  Nathan", todoCompleted: false, todoDate: Date(), todoNotes: nil, todoTags: [], todoPriority: [2], todoProject: Project2, todoLocation: nil, todoRecurrence: false)
         
-        return [todo1,todo2,todo3,todo4,todo5]
+        return [todo1,todo2,todo3,todo4,todo5,todo6,todo7]
     }
     
 }
