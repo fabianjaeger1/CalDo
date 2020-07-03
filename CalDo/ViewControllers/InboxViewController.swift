@@ -203,12 +203,12 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-            
-        let todo = InboxTodo[indexPath.row]
+        
+        let task = CoreDataManager.shared.inboxTasks[indexPath.row]
         
     
         // Smaller Table View cell without Projects and Tags
-        if todo.todoProject == nil && todo.todoTags!.count == 0{
+        if task.value(forKey: "project") == nil && (task.value(forKey: "tags") as! Set<TagEntity>).count == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SmallTableViewCell1", for: indexPath) as! SmallTableViewCell1
             
             
@@ -216,7 +216,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
             return cell
         }
         // Smaller Table View cell without Time and Tags 
-        if todo.todoDate == nil && todo.todoTags!.count == 0 {
+        if task.value(forKey: "date") == nil && (task.value(forKey: "tags") as! Set<TagEntity>).count == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SmallTableViewCell2", for: indexPath) as! SmallTableViewCell2
             
             let shapeLayer = CAShapeLayer()
@@ -225,10 +225,10 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
             shapeLayer.path = circlePath.cgPath
             shapeLayer.lineWidth = 3.0
-            cell.TodoTitle?.text = todo.todoTitle
+            cell.TodoTitle?.text = task.value(forKey: "title") as? String
             cell.TodoTitle.textColor = UIColor.textColor
             cell.ProjectLabel.textColor = UIColor.textColor
-            cell.ProjectLabel.text = todo.todoProject?.ProjectTitle
+            cell.ProjectLabel.text = (task.value(forKey: "project") as! ProjectEntity).value(forKey: "title") as? String
             cell.backgroundColor = .BackgroundColor
             
             
@@ -239,7 +239,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellWithIcon", for: indexPath) as! InboxTableViewCell
         
         let shapeLayer = CAShapeLayer()
-        let task = CoreDataManager.shared.inboxTasks[indexPath.row]
+
         //let ConvertedDate = todo.todoDate?.DatetoString(dateFormat: "HH:mm")
         let ConvertedDate = (task.value(forKey: "date") as! Date?)?.DatetoString(dateFormat: "HH:mm")
 
@@ -288,7 +288,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.TodoDate?.text = ConvertedDate
         cell.ProjectLabel.textColor = UIColor.textColor
         // cell.TodoDate?.text = DateToString(date: todo.todoDate!)
-        cell.ProjectLabel.text = todo.todoProject?.ProjectTitle
+        cell.ProjectLabel.text = (task.value(forKey: "project") as! ProjectEntity).value(forKey: "title") as? String
         cell.backgroundColor = .BackgroundColor
   
 // ====================== TAGS ================================
