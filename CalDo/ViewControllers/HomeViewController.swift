@@ -163,9 +163,11 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UICollect
         let dimtextcolor = UIColor(named: "TextColorDim")
 //        self.CollectionView.animateCell(cell)
         
-        if indexPath.row == 1{
-            cell.TaskAmountLabel.text = "\(InboxTodo.count)"
+        if indexPath.row == 1 {
+            CoreDataManager.shared.fetchInboxTasks()
+            cell.TaskAmountLabel.text = String(CoreDataManager.shared.inboxTasks.count)
         }
+        
         cell.TitleLabel.text = Sections[indexPath.row]
         cell.SectionImage.image = SectionImages[indexPath.row]
         cell.layer.cornerRadius = 28
@@ -316,6 +318,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UICollect
 //        layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
 //        CollectionView.contentInset = UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX)
         HabitView.alpha = 0.0
+        InboxView.alpha = 1.0
         configureAnimation()
         CollectionView?.delegate = self
         CollectionView?.dataSource = self
@@ -342,6 +345,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UICollect
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     
+        loadSampleTaskEntities()
     }
     
     override func didReceiveMemoryWarning() {

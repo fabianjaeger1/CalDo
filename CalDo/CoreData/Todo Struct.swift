@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+
+import CoreData
 import CoreLocation
 
 let latitude: CLLocationDegrees = 37.2
@@ -91,3 +93,87 @@ struct TodoItem {
     }
     
 }
+
+// Load (& save) sample CoreData tasks
+func loadSampleTaskEntities() {
+    // let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    let managedContext = CoreDataManager.shared.persistentContainer.viewContext
+    
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TaskEntity")
+    let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+
+    do {
+        try managedContext.execute(batchDeleteRequest)
+        // try managedContext.save()
+    } catch {
+        print("Error batch deleting \(error)")
+    }
+    
+    
+    
+    
+    let project1 = ProjectEntity(context: managedContext)
+    project1.title = "Personal"
+    project1.color = "98D468"
+    
+    let project2 = ProjectEntity(context: managedContext)
+    project2.title = "Work"
+    project2.color = "4FC2E8"
+    
+    
+    let tag1 = TagEntity(context: managedContext)
+    tag1.title = "Calls"
+    tag1.color = "98D468"
+    
+    let tag2 = TagEntity(context: managedContext)
+    tag2.title = "Mom"
+    tag2.color = "4FC2E8"
+    
+    
+    let task1 = TaskEntity(context: managedContext)
+    task1.title = "Call Mom"
+    task1.priority = 2
+    task1.project = project1
+    task1.tags = [tag1, tag2]
+    
+    let task2 = TaskEntity(context: managedContext)
+    task2.title = "Do Taxes"
+    task2.priority = 1
+    task2.project = project2
+    task2.tags = [tag1]
+    
+    let task3 = TaskEntity(context: managedContext)
+    task3.title = "Go Shopping"
+    task3.project = project1
+    task3.tags = [tag2]
+    
+    let task4 = TaskEntity(context: managedContext)
+    task4.title = "Plan Holidays"
+    task4.priority = 1
+    task4.project = project2
+    
+    // task4.tags = [TagEntity]()
+    
+    let task5 = TaskEntity(context: managedContext)
+    task5.title = "Go Bonkers!!!"
+    task5.project = project1
+    task5.tags = [tag1, tag2]
+    
+    let task6 = TaskEntity(context:managedContext)
+    task6.title = "Feed dogs"
+    task6.tags = [tag1]
+    
+    let task7 = TaskEntity(context: managedContext)
+    task7.title = "Go to dentist with mom"
+    task7.tags = [tag2]
+    
+    do {
+        try managedContext.save()
+    } catch {
+        print("Error saving data to context \(error)")
+    }
+    
+    // return [task1, task2, task3, task4, task5]
+}
+

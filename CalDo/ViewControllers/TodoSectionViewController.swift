@@ -35,7 +35,7 @@ var AllProjects: [Project]?
 
 class TodoSectionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    
+    // loadSampleTaskEntities()
 
 //    @IBOutlet weak var tableView: UITableView!
     
@@ -115,6 +115,21 @@ class TodoSectionViewController: UIViewController, UITableViewDelegate, UITableV
         cell.TodoSection.image = imageArray[indexPath.row]
         cell.TodoSectionLabel.text = TodoSections[indexPath.row]
         cell.TodoAmountLabel.textColor = UIColor.textColor
+        
+        
+        var todoAmountLabels = [String](repeating: "", count: 4)
+        
+        CoreDataManager.shared.fetchInboxTasks()
+        let inboxTaskAmount = CoreDataManager.shared.inboxTasks.count
+        if inboxTaskAmount == 1 {
+            todoAmountLabels[0] = "1 Task"
+        }
+        else {
+            todoAmountLabels[0] = "\(inboxTaskAmount) Tasks"
+        }
+        
+        cell.TodoAmountLabel.text = todoAmountLabels[indexPath.row]
+            
         cell.TodoSectionLabel.textColor = UIColor.textColor
 //        cell.TodoAmountLabel.textColor = UIColor(hexString: "C6CCD4")
         
@@ -127,6 +142,7 @@ class TodoSectionViewController: UIViewController, UITableViewDelegate, UITableV
         cell.contentView.layer.shadowRadius = 2.0
         cell.layer.shadowColor = UIColor.lightGray.cgColor
         cell.layer.shadowRadius = 2.0
+    
         
         
         // Need for implementation of shadows here
