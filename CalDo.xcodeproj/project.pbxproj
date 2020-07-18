@@ -44,11 +44,9 @@
 		019281551F8B884E00E895D4 /* InboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019281541F8B884E00E895D4 /* InboxViewController.swift */; };
 		019878132319C87300DE1F7E /* RepeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019878122319C87300DE1F7E /* RepeatViewController.swift */; };
 		01987817231AA1CE00DE1F7E /* EndRepeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01987816231AA1CE00DE1F7E /* EndRepeatViewController.swift */; };
-		0199B7AC24AE46C3007A9916 /* SmallTableViewCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0199B7AA24AE46C3007A9916 /* SmallTableViewCell1.swift */; };
-		0199B7AD24AE46C3007A9916 /* SmallTableViewCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0199B7AB24AE46C3007A9916 /* SmallTableViewCell1.xib */; };
-		0199B7B024AE48C4007A9916 /* SmallTableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0199B7AE24AE48C4007A9916 /* SmallTableViewCell2.swift */; };
-		0199B7B124AE48C4007A9916 /* SmallTableViewCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0199B7AF24AE48C4007A9916 /* SmallTableViewCell2.xib */; };
 		019A09FB242E82D5002434F0 /* DateHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019A09FA242E82D5002434F0 /* DateHeaderCell.swift */; };
+		01AE118424C3AB6700C9467F /* SmallTableViewCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AE118324C3AB6700C9467F /* SmallTableViewCell1.swift */; };
+		01AE118624C3AB7E00C9467F /* SmallTableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AE118524C3AB7E00C9467F /* SmallTableViewCell2.swift */; };
 		01B3CA0422EB8BEF00E5344D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B3CA0322EB8BEF00E5344D /* HomeViewController.swift */; };
 		01C954722115E2310047175F /* Todo Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C954712115E2310047175F /* Todo Struct.swift */; };
 		01D53465234F681800DE6776 /* CustomTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D53462234F681800DE6776 /* CustomTabBarItem.swift */; };
@@ -144,11 +142,9 @@
 		019281541F8B884E00E895D4 /* InboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxViewController.swift; sourceTree = "<group>"; };
 		019878122319C87300DE1F7E /* RepeatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatViewController.swift; sourceTree = "<group>"; };
 		01987816231AA1CE00DE1F7E /* EndRepeatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndRepeatViewController.swift; sourceTree = "<group>"; };
-		0199B7AA24AE46C3007A9916 /* SmallTableViewCell1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SmallTableViewCell1.swift; path = CalDo/ViewControllers/Cells/SmallTableViewCell1.swift; sourceTree = SOURCE_ROOT; };
-		0199B7AB24AE46C3007A9916 /* SmallTableViewCell1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SmallTableViewCell1.xib; path = CalDo/ViewControllers/Cells/SmallTableViewCell1.xib; sourceTree = SOURCE_ROOT; };
-		0199B7AE24AE48C4007A9916 /* SmallTableViewCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SmallTableViewCell2.swift; path = CalDo/ViewControllers/Cells/SmallTableViewCell2.swift; sourceTree = SOURCE_ROOT; };
-		0199B7AF24AE48C4007A9916 /* SmallTableViewCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SmallTableViewCell2.xib; path = CalDo/ViewControllers/Cells/SmallTableViewCell2.xib; sourceTree = SOURCE_ROOT; };
 		019A09FA242E82D5002434F0 /* DateHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHeaderCell.swift; sourceTree = "<group>"; };
+		01AE118324C3AB6700C9467F /* SmallTableViewCell1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallTableViewCell1.swift; sourceTree = "<group>"; };
+		01AE118524C3AB7E00C9467F /* SmallTableViewCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallTableViewCell2.swift; sourceTree = "<group>"; };
 		01B3CA0322EB8BEF00E5344D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		01C954712115E2310047175F /* Todo Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo Struct.swift"; sourceTree = "<group>"; };
 		01D53462234F681800DE6776 /* CustomTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarItem.swift; sourceTree = "<group>"; };
@@ -240,11 +236,9 @@
 				01C954712115E2310047175F /* Todo Struct.swift */,
 				830DB5EB24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld */,
 				832D3C6724ADE0A000A1E709 /* CoreDataManager.swift */,
-				0199B7AA24AE46C3007A9916 /* SmallTableViewCell1.swift */,
-				0199B7AB24AE46C3007A9916 /* SmallTableViewCell1.xib */,
-				0199B7AE24AE48C4007A9916 /* SmallTableViewCell2.swift */,
-				0199B7AF24AE48C4007A9916 /* SmallTableViewCell2.xib */,
 				015361C424AA7AB200D19DD2 /* TagStruct.swift */,
+				01AE118324C3AB6700C9467F /* SmallTableViewCell1.swift */,
+				01AE118524C3AB7E00C9467F /* SmallTableViewCell2.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -561,11 +555,9 @@
 				01D53469234F684100DE6776 /* Images.xcassets in Resources */,
 				014595742445EA6400AFB34D /* SF-Pro-Rounded-Ultralight.otf in Resources */,
 				0145956F2445EA6400AFB34D /* SF-Pro-Rounded-Light.otf in Resources */,
-				0199B7AD24AE46C3007A9916 /* SmallTableViewCell1.xib in Resources */,
 				01D53490234F733100DE6776 /* LaunchScreen.storyboard in Resources */,
 				0145956C2445EA6400AFB34D /* SF-Pro-Rounded-Black.otf in Resources */,
 				0145956D2445EA6400AFB34D /* SF-Pro-Rounded-Bold.otf in Resources */,
-				0199B7B124AE48C4007A9916 /* SmallTableViewCell2.xib in Resources */,
 				0165E1A02329A971002F5DA1 /* InboxHomeScreenTableViewCell.xib in Resources */,
 				0145956E2445EA6400AFB34D /* SF-Pro-Rounded-Heavy.otf in Resources */,
 				019280F01F8A615C00E895D4 /* Main.storyboard in Resources */,
@@ -707,6 +699,7 @@
 				01D53484234F705000DE6776 /* SelectionScreenViewController.swift in Sources */,
 				01D53465234F681800DE6776 /* CustomTabBarItem.swift in Sources */,
 				832D3C6824ADE0A000A1E709 /* CoreDataManager.swift in Sources */,
+				01AE118624C3AB7E00C9467F /* SmallTableViewCell2.swift in Sources */,
 				019281551F8B884E00E895D4 /* InboxViewController.swift in Sources */,
 				01D53481234F6EFC00DE6776 /* DateCell.swift in Sources */,
 				0165E1A52329F337002F5DA1 /* ScheduledHomeViewController.swift in Sources */,
@@ -714,7 +707,6 @@
 				01D53482234F6EFC00DE6776 /* PriorityTableViewCell.swift in Sources */,
 				019280EB1F8A615C00E895D4 /* AppDelegate.swift in Sources */,
 				01F389B323608C8B005DAE8E /* TagListViewController.swift in Sources */,
-				0199B7AC24AE46C3007A9916 /* SmallTableViewCell1.swift in Sources */,
 				01D53480234F6EFC00DE6776 /* TagCollectionViewCell.swift in Sources */,
 				015DA6A023C94E4900582851 /* ProjectHomeViewController.swift in Sources */,
 				01987817231AA1CE00DE1F7E /* EndRepeatViewController.swift in Sources */,
@@ -732,6 +724,7 @@
 				01D53467234F681800DE6776 /* CustomTabBar.swift in Sources */,
 				01D5347C234F6E3E00DE6776 /* Color.swift in Sources */,
 				01D53471234F6A1900DE6776 /* TodoSectionProjectsTableViewCell.swift in Sources */,
+				01AE118424C3AB6700C9467F /* SmallTableViewCell1.swift in Sources */,
 				830DB5ED24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld in Sources */,
 				012259A523F62854003BAAEE /* CalendarViewController.swift in Sources */,
 				01D53476234F6D3A00DE6776 /* TimePickerViewController.swift in Sources */,
@@ -745,7 +738,6 @@
 				015DA69E23C94B5300582851 /* HabitHomeScreenViewController.swift in Sources */,
 				019878132319C87300DE1F7E /* RepeatViewController.swift in Sources */,
 				019A09FB242E82D5002434F0 /* DateHeaderCell.swift in Sources */,
-				0199B7B024AE48C4007A9916 /* SmallTableViewCell2.swift in Sources */,
 				01D5348E234F727C00DE6776 /* RepeatViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -39,7 +39,9 @@
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="TodoDate" destination="taU-RG-Fcg" id="CjM-Ya-jCR"/>
                 <outlet property="TodoStatus" destination="Fdv-YL-WB0" id="kd5-i4-fHF"/>
                 <outlet property="TodoTitle" destination="dkp-6u-byg" id="HwD-DG-88u"/>
             </connections>
