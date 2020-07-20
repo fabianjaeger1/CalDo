@@ -35,10 +35,72 @@ class CoreDataManager {
         }
     }
     
+    
+    // MARK: - Task arrays & methods
+    
+    var allTasks = [TaskEntity]()
+
+    var inboxTasks = [TaskEntity]()
+    
+    var upcomingTasks = [TaskEntity]()
+    
+    var todayTasks = [TaskEntity]()
+    
+    // TODO: add separate class for functions that don't depend on the CoreData context/container?
+    // TODO: add functions for sorting by descending date/title or ascending priority?
+    
+    // Call: sortTasksByDate(&allTasks)
+    
+    // Sort by ascending date
+    func sortTasksByDate(tasks: inout [TaskEntity]) {
+        if !tasks.isEmpty {
+            tasks.sort {
+                ($0.value(forKey: "date") as! Date).compare($1.value(forKey: "date") as! Date) == .orderedAscending
+            }
+            var i = 0
+            for task in tasks {
+                task.setValue(i, forKey: "sortOrder")
+                i += 1
+            }
+            self.saveContext()
+        }
+    }
+    
+    // Sort by ascending title
+    func sortTasksByTitle(tasks: inout [TaskEntity]) {
+        if !tasks.isEmpty {
+            tasks.sort {
+                ($0.value(forKey: "title") as! String) < ($1.value(forKey: "title") as! String)
+            }
+            var i = 0
+            for task in tasks {
+                task.setValue(i, forKey: "sortOrder")
+                i += 1
+            }
+            self.saveContext()
+        }
+    }
+    
+    // Sort by descending priority
+    func sortTasksByPriority(tasks: inout [TaskEntity]) {
+        if !tasks.isEmpty {
+            tasks.sort {
+                ($0.value(forKey: "priority") as! Int) > ($1.value(forKey: "priority") as! Int)
+            }
+            var i = 0
+            for task in tasks {
+                task.setValue(i, forKey: "sortOrder")
+                i += 1
+            }
+            self.saveContext()
+        }
+    }
+        
+    
     // MARK: - Fetching, adding, deleting tasks
     
     // TODO: optional return value? what happens when there are no tasks?
-    func fetchAllTasks(){
+    func fetchAllTasks() {
         let managedContext = persistentContainer.viewContext
         
         let request : NSFetchRequest<TaskEntity> = TaskEntity.fetchRequest()
@@ -64,6 +126,8 @@ class CoreDataManager {
         }
     }
     
+    // TODO: sort them by default? Could interfere with custom sorting order -> how to deal with this? could add an attribute to the entity giving the sort order
+    
     // Fetches the upcoming tasks into the upcomingTasks variable, sorted by date
     func fetchUpcomingTasks() {
         let managedContext = persistentContainer.viewContext
@@ -82,7 +146,6 @@ class CoreDataManager {
             self.upcomingTasks.sort {
                 ($0.value(forKey: "date") as! Date).compare($1.value(forKey: "date") as! Date) == .orderedAscending
             }
-            
         }
     }
     
@@ -131,11 +194,32 @@ class CoreDataManager {
             print("Failed to delete task: \(saveError)")
         }
         
-        
     }
     
     
     // MARK: - Projects
+    
+    var projects = [ProjectEntity]()
+    
+    func sortProjectsByTitle() {
+        if !self.projects.isEmpty {
+            self.projects.sort {
+                ($0.value(forKey: "title") as! String) < ($1.value(forKey: "title") as! String)
+            }
+        }
+    }
+    
+    func fetchProjects() {
+        let managedContext = persistentContainer.viewContext
+        
+        let request : NSFetchRequest<ProjectEntity> = ProjectEntity.fetchRequest()
+        
+        do {
+            self.projects = try managedContext.fetch(request)
+        } catch {
+            print("Error fetching projects from context \(error)")
+        }
+    }
     
     func fetchProjectFromTask(task: TaskEntity) -> ProjectEntity? {
         let project = task.value(forKey: "project") as? ProjectEntity
@@ -183,13 +267,6 @@ class CoreDataManager {
         return taskTags
     }
     
-    var allTasks = [TaskEntity]()
-
-    var inboxTasks = [TaskEntity]()
-    
-    var upcomingTasks = [TaskEntity]()
-    
-    var todayTasks = [TaskEntity]()
     
 }
 
