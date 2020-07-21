@@ -162,11 +162,11 @@ func loadSampleTaskEntities() {
     
     let task6 = TaskEntity(context:managedContext)
     task6.title = "Feed dogs"
-    task6.tags = [tag1]
+//    task6.tags = [tag1]
     
     let task7 = TaskEntity(context: managedContext)
     task7.title = "Go to dentist with mom"
-    task7.tags = [tag2]
+//    task7.tags = [tag2]
     
     do {
         try managedContext.save()

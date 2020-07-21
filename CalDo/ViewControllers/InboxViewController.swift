@@ -29,6 +29,21 @@ import CoreData
 //    }
 //}
 
+
+
+// Part 1: Data Model; Model is written and initialised -> Todo item
+// In tutorial we have 3 different types, Profile, Friend and Attribute
+
+// Part 2: View Model;
+
+ enum InboxCellType{
+        case FullCell
+        case SmallCellType1
+        case SmallCellType2
+}
+
+
+
 extension Date {
 
     static func - (lhs: Date, rhs: Date) -> TimeInterval {
@@ -204,218 +219,321 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         
+        
         let task = CoreDataManager.shared.inboxTasks[indexPath.row]
+        print(task)
         
     
-        // Smaller Table View cell without Projects and Tags
+    // Smaller Table View cell without Projects and Tags
         if task.value(forKey: "project") == nil && (task.value(forKey: "tags") as! Set<TagEntity>).count == 0 {
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "SmallTableViewCell1", for: indexPath) as! SmallTableViewCell1
             
+            //========= DATE ===========
             
+            let ConvertedDate = (task.value(forKey: "date") as! Date?)?.DatetoString(dateFormat: "HH:mm")
+            cell.TodoDate?.text = ConvertedDate
+            cell.TodoDate.textColor = UIColor.textColor
+            
+            //========= TITLE ===========
+            cell.TodoTitle?.text = (task.value(forKey: "title") as! String)
+            cell.TodoTitle.textColor = UIColor.textColor
+            
+            // ======= CELL TODO BUTTON =========
+                    
+                    if (task.value(forKey: "recurrence") as! Bool) == true && (task.value(forKey: "priority") as! Int) == 1 {
+                        let image = UIImage(named: "Recurring Normal")
+                        cell.TodoStatus.setImage(image, for: .normal)
+                    }
+                     if (task.value(forKey: "recurrence") as! Bool) == true && (task.value(forKey: "priority") as! Int) == 2 {
+                        let image = UIImage(named: "Recurring High")
+                        cell.TodoStatus.setImage(image, for: .normal)
+                    }
+                    
+                    if (task.value(forKey: "recurrence") as! Bool) != true && (task.value(forKey: "priority") as! Int) == 1 {
+                        let image = UIImage(named: "Todo Medium Priority")
+                        cell.TodoStatus.setImage(image, for: .normal)
+                    }
+                    if (task.value(forKey: "recurrence") as! Bool) != true && (task.value(forKey: "priority") as! Int) == 2 {
+                        let image = UIImage(named: "Todo High Priority")
+                        cell.TodoStatus.setImage(image, for: .normal)
+                    }
+
+            // =========== ANIMATION ==================
+            
+            if (task.value(forKey: "completed") as! Bool) == true {
+                cell.alpha = 1
+                let image = UIImage(named: "DoneButtonPressed")
+            
+                UIView.animate(
+                    withDuration: 0.3,
+                    animations: {
+                        cell.TodoStatus.setImage(image, for: .normal)
+                })
+            }
+            else {
+                let image = UIImage(named: "TodoButton")
+                cell.TodoStatus.setImage(image, for: .normal)
+            }
+            
+//            cell.backgroundColor = .BackgroundColor
+            cell.backgroundColor = .clear
+            cell.layer.backgroundColor = UIColor.clear.cgColor
+//            cell.delegate = self
             
             return cell
         }
-        // Smaller Table View cell without Time and Tags 
+        
+        
+    // Smaller Table View cell without Time and Tags
         if task.value(forKey: "date") == nil && (task.value(forKey: "tags") as! Set<TagEntity>).count == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SmallTableViewCell2", for: indexPath) as! SmallTableViewCell2
             
+            //======== PROJECT ===============
+            
             let shapeLayer = CAShapeLayer()
+            let center = CGPoint(x: cell.ProjectColor.frame.height/2, y: cell.ProjectColor.frame.width/2)
+            let circlePath = UIBezierPath(arcCenter: center, radius: CGFloat(4), startAngle: CGFloat(0), endAngle: CGFloat(Double.pi * 2), clockwise: true)
+            shapeLayer.path = circlePath.cgPath
+            shapeLayer.lineWidth = 3.0
+            
+            if let project = CoreDataManager.shared.fetchProjectFromTask(task: task) {
+               shapeLayer.fillColor = CoreDataManager.shared.projectColor(project: project)?.cgColor
+               
+               cell.ProjectLabel.text = project.value(forKey: "title") as? String
+               cell.ProjectLabel.textColor = UIColor.textColor
+               cell.ProjectColor.layer.backgroundColor = UIColor.clear.cgColor
+               cell.ProjectColor.layer.addSublayer(shapeLayer)
+           }
+            
+            cell.ProjectLabel.textColor = UIColor.textColor
+            cell.ProjectLabel.text = (task.value(forKey: "project") as! ProjectEntity).value(forKey: "title") as? String
+            
+            
+            // ========== TITLE =================
+            cell.TodoTitle?.text = task.value(forKey: "title") as? String
+            cell.TodoTitle.textColor = UIColor.textColor
+ 
+            
+//            cell.backgroundColor = .BackgroundColor
+//            cell.layer.backgroundColor = UIColor.clear.cgColor
+//            cell.delegate = self
+            
+            
+            // =========== ANIMATION ==================
+            
+            if (task.value(forKey: "completed") as! Bool) == true {
+                cell.alpha = 1
+                let image = UIImage(named: "DoneButtonPressed")
+            
+                UIView.animate(
+                    withDuration: 0.3,
+                    animations: {
+                        cell.TodoStatus.setImage(image, for: .normal)
+                })
+            }
+            else {
+                let image = UIImage(named: "TodoButton")
+                cell.TodoStatus.setImage(image, for: .normal)
+            }
+            
+            // ================== CELL TODO BUTTON =======================
+                    
+                    if (task.value(forKey: "recurrence") as! Bool) == true && (task.value(forKey: "priority") as! Int) == 1 {
+                        let image = UIImage(named: "Recurring Normal")
+                        cell.TodoStatus.setImage(image, for: .normal)
+                    }
+                     if (task.value(forKey: "recurrence") as! Bool) == true && (task.value(forKey: "priority") as! Int) == 2 {
+                        let image = UIImage(named: "Recurring High")
+                        cell.TodoStatus.setImage(image, for: .normal)
+                    }
+                    
+                    if (task.value(forKey: "recurrence") as! Bool) != true && (task.value(forKey: "priority") as! Int) == 1 {
+                        let image = UIImage(named: "Todo Medium Priority")
+                        cell.TodoStatus.setImage(image, for: .normal)
+                    }
+                    if (task.value(forKey: "recurrence") as! Bool) != true && (task.value(forKey: "priority") as! Int) == 2 {
+                        let image = UIImage(named: "Todo High Priority")
+                        cell.TodoStatus.setImage(image, for: .normal)
+                    }
+            cell.backgroundColor = .clear
+            cell.layer.backgroundColor = UIColor.clear.cgColor
+            
+            return cell
+        }
+    
+    // GENERAL CASE
+
+        if task.value(forKey: "project") != nil && (task.value(forKey: "tags") as! Set<TagEntity>).count != 0 {
+
+
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CellWithIcon", for: indexPath) as! InboxTableViewCell
+
+            let shapeLayer = CAShapeLayer()
+
+            //let ConvertedDate = todo.todoDate?.DatetoString(dateFormat: "HH:mm")
+            let ConvertedDate = (task.value(forKey: "date") as! Date?)?.DatetoString(dateFormat: "HH:mm")
+
             let center = CGPoint(x: cell.ProjectColor.frame.height/2, y: cell.ProjectColor.frame.width/2)
             let circlePath = UIBezierPath(arcCenter: center, radius: CGFloat(4), startAngle: CGFloat(0), endAngle: CGFloat(Double.pi * 2), clockwise: true)
 
             shapeLayer.path = circlePath.cgPath
             shapeLayer.lineWidth = 3.0
-            cell.TodoTitle?.text = task.value(forKey: "title") as? String
+
+
+            // shapeLayer.fillColor = UIColor(hexString: (todo.todoProject?.ProjectColor)!).cgColor
+            // shapeLayer.fillColor = UIColor(hexString: (((task.value(forKey: "project") as! ProjectEntity?)?.value(forKey: "color") as! String?))!).cgColor
+             if let project = CoreDataManager.shared.fetchProjectFromTask(task: task) {
+                shapeLayer.fillColor = CoreDataManager.shared.projectColor(project: project)?.cgColor
+
+                cell.ProjectLabel.text = project.value(forKey: "title") as? String
+                cell.ProjectLabel.textColor = UIColor.textColor
+                cell.ProjectColor.layer.backgroundColor = UIColor.clear.cgColor
+                cell.ProjectColor.layer.addSublayer(shapeLayer)
+            }
+
+
+            if (task.value(forKey: "completed") as! Bool) == true {
+                cell.alpha = 1
+    //            let currentindex = IndexPath.init(row: indexPath.row, section: 0)
+                let image = UIImage(named: "DoneButtonPressed")
+
+                UIView.animate(
+                    withDuration: 0.3,
+                    animations: {
+                        cell.TodoStatus.setImage(image, for: .normal)
+                })
+            }
+            else {
+                let image = UIImage(named: "TodoButton")
+                cell.TodoStatus.setImage(image, for: .normal)
+            }
+
+            cell.delegate = self
+            cell.TodoTitle?.text = (task.value(forKey: "title") as! String)
             cell.TodoTitle.textColor = UIColor.textColor
+            cell.TodoDate.textColor = UIColor.textColor
+            cell.TodoDate?.text = ConvertedDate
             cell.ProjectLabel.textColor = UIColor.textColor
+            // cell.TodoDate?.text = DateToString(date: todo.todoDate!)
             cell.ProjectLabel.text = (task.value(forKey: "project") as! ProjectEntity).value(forKey: "title") as? String
             cell.backgroundColor = .BackgroundColor
-            
-            
+
+    // ====================== TAGS ================================
+
+//            print(task.value(forKey: "title") as! String)
+
+            let taskTagsSet = task.value(forKey: "tags") as! Set<TagEntity>
+            var taskTags = Array(taskTagsSet)
+
+
+            if !taskTags.isEmpty {taskTags.sort { ($0.value(forKey: "title") as! String) < ($1.value(forKey: "title") as! String)
+                }
+            }
+
+            var taskTagTitles = [String]()
+            var taskTagColors = [UIColor]()
+
+            for tag in taskTags {
+                taskTagTitles.append(tag.value(forKey: "title") as! String)
+                taskTagColors.append(UIColor(hexString: tag.value(forKey: "color") as! String))
+            }
+
+            //if todo.todoTags!.isEmpty {
+
+            //if (task.value(forKey: "tags") as! [TaskEntity]).isEmpty {
+
+            if taskTags.isEmpty {
+            }
+            else {
+                let count = taskTags.count
+                if count == 1 {
+                    //cell.Tag1.text = todo.todoTags![0].tagLabel!
+                    //cell.Tag1.textColor = todo.todoTags![0].tagColor!
+                    cell.Tag1.text = taskTagTitles[0]
+                    cell.Tag1.textColor = taskTagColors[0]
+                }
+                else if count == 2{
+                    cell.Tag1.text = taskTagTitles[0]
+                    cell.Tag1.textColor = taskTagColors[0]
+                    cell.Tag2.text = taskTagTitles[1]
+                    cell.Tag2.textColor = taskTagColors[1]
+                }
+                else if count == 3{
+                    cell.Tag1.text = taskTagTitles[0]
+                    cell.Tag1.textColor = taskTagColors[0]
+                    cell.Tag2.text = taskTagTitles[1]
+                    cell.Tag2.textColor = taskTagColors[1]
+                    cell.Tag3.text = taskTagTitles[2]
+                    cell.Tag3.textColor =  taskTagColors[2]
+                }
+                else if count == 4{
+                    cell.Tag1.text = taskTagTitles[0]
+                    cell.Tag1.textColor = taskTagColors[0]
+                    cell.Tag2.text = taskTagTitles[1]
+                    cell.Tag2.textColor = taskTagColors[1]
+                    cell.Tag3.text = taskTagTitles[2]
+                    cell.Tag3.textColor =  taskTagColors[2]
+                    cell.Tag4.text = taskTagTitles[3]
+                    cell.Tag4.textColor = taskTagColors[3]
+                }
+                else if count == 5{
+                    cell.Tag1.text = taskTagTitles[0]
+                    cell.Tag1.textColor = taskTagColors[0]
+                    cell.Tag2.text = taskTagTitles[1]
+                    cell.Tag2.textColor = taskTagColors[1]
+                    cell.Tag3.text = taskTagTitles[2]
+                    cell.Tag3.textColor =  taskTagColors[2]
+                    cell.Tag4.text = taskTagTitles[3]
+                    cell.Tag4.textColor = taskTagColors[3]
+                    cell.Tag5.text = taskTagTitles[4]
+                    cell.Tag5.textColor = taskTagColors[4]
+                }
+            }
+
+
+    // =============== CELL ICONS =======================
+            if task.value(forKey: "notes") != nil {
+                cell.TodoNotesIcon.alpha = 1
+            }
+            else {
+                cell.TodoNotesIcon.alpha = 0
+            }
+
+            if task.value(forKey: "location") == nil {
+                cell.TodoLocationIcon.alpha = 0
+            }
+            else {
+                cell.TodoLocationIcon.alpha = 1
+            }
+    // ================== CELL TODO BUTTON =======================
+
+            if (task.value(forKey: "recurrence") as! Bool) == true && (task.value(forKey: "priority") as! Int) == 1 {
+                let image = UIImage(named: "Recurring Normal")
+                cell.TodoStatus.setImage(image, for: .normal)
+            }
+             if (task.value(forKey: "recurrence") as! Bool) == true && (task.value(forKey: "priority") as! Int) == 2 {
+                let image = UIImage(named: "Recurring High")
+                cell.TodoStatus.setImage(image, for: .normal)
+            }
+
+            if (task.value(forKey: "recurrence") as! Bool) != true && (task.value(forKey: "priority") as! Int) == 1 {
+                let image = UIImage(named: "Todo Medium Priority")
+                cell.TodoStatus.setImage(image, for: .normal)
+            }
+            if (task.value(forKey: "recurrence") as! Bool) != true && (task.value(forKey: "priority") as! Int) == 2 {
+                let image = UIImage(named: "Todo High Priority")
+                cell.TodoStatus.setImage(image, for: .normal)
+            }
+
+            // To return default case of no above Cell type
+
             return cell
         }
-        
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CellWithIcon", for: indexPath) as! InboxTableViewCell
-        
-        let shapeLayer = CAShapeLayer()
-
-        //let ConvertedDate = todo.todoDate?.DatetoString(dateFormat: "HH:mm")
-        let ConvertedDate = (task.value(forKey: "date") as! Date?)?.DatetoString(dateFormat: "HH:mm")
-
-        let center = CGPoint(x: cell.ProjectColor.frame.height/2, y: cell.ProjectColor.frame.width/2)
-        let circlePath = UIBezierPath(arcCenter: center, radius: CGFloat(4), startAngle: CGFloat(0), endAngle: CGFloat(Double.pi * 2), clockwise: true)
-
-        shapeLayer.path = circlePath.cgPath
-        shapeLayer.lineWidth = 3.0
-
-
-        shapeLayer.path = circlePath.cgPath
-        shapeLayer.lineWidth = 3.0
-        
-        // shapeLayer.fillColor = UIColor(hexString: (todo.todoProject?.ProjectColor)!).cgColor
-        // shapeLayer.fillColor = UIColor(hexString: (((task.value(forKey: "project") as! ProjectEntity?)?.value(forKey: "color") as! String?))!).cgColor
-         if let project = CoreDataManager.shared.fetchProjectFromTask(task: task) {
-            shapeLayer.fillColor = CoreDataManager.shared.projectColor(project: project)?.cgColor
-            
-            cell.ProjectLabel.text = project.value(forKey: "title") as? String
-            cell.ProjectLabel.textColor = UIColor.textColor
-            cell.ProjectColor.layer.backgroundColor = UIColor.clear.cgColor
-            cell.ProjectColor.layer.addSublayer(shapeLayer)
-        }
-
-        
-        if (task.value(forKey: "completed") as! Bool) == true {
-            cell.alpha = 1
-//            let currentindex = IndexPath.init(row: indexPath.row, section: 0)
-            let image = UIImage(named: "DoneButtonPressed")
-        
-            UIView.animate(
-                withDuration: 0.3,
-                animations: {
-                    cell.TodoStatus.setImage(image, for: .normal)
-            })
-        }
-        else {
-            let image = UIImage(named: "TodoButton")
-            cell.TodoStatus.setImage(image, for: .normal)
-        }
-        
-        cell.delegate = self
-        cell.TodoTitle?.text = (task.value(forKey: "title") as! String)
-        cell.TodoTitle.textColor = UIColor.textColor
-        cell.TodoDate.textColor = UIColor.textColor
-        cell.TodoDate?.text = ConvertedDate
-        cell.ProjectLabel.textColor = UIColor.textColor
-        // cell.TodoDate?.text = DateToString(date: todo.todoDate!)
-        cell.ProjectLabel.text = (task.value(forKey: "project") as! ProjectEntity).value(forKey: "title") as? String
-        cell.backgroundColor = .BackgroundColor
-  
-// ====================== TAGS ================================
-        
-        print(task.value(forKey: "title") as! String)
-        
-        let taskTagsSet = task.value(forKey: "tags") as! Set<TagEntity>
-        var taskTags = Array(taskTagsSet)
-        
-        
-        if !taskTags.isEmpty {taskTags.sort { ($0.value(forKey: "title") as! String) < ($1.value(forKey: "title") as! String)
-            }
-        }
-        
-        var taskTagTitles = [String]()
-        var taskTagColors = [UIColor]()
-        
-        for tag in taskTags {
-            taskTagTitles.append(tag.value(forKey: "title") as! String)
-            taskTagColors.append(UIColor(hexString: tag.value(forKey: "color") as! String))
-        }
-        
-        //if todo.todoTags!.isEmpty {
-        
-        //if (task.value(forKey: "tags") as! [TaskEntity]).isEmpty {
-        
-        if taskTags.isEmpty {
-        }
-        else {
-            let count = taskTags.count
-            if count == 1 {
-                //cell.Tag1.text = todo.todoTags![0].tagLabel!
-                //cell.Tag1.textColor = todo.todoTags![0].tagColor!
-                cell.Tag1.text = taskTagTitles[0]
-                cell.Tag1.textColor = taskTagColors[0]
-            }
-            else if count == 2{
-                cell.Tag1.text = taskTagTitles[0]
-                cell.Tag1.textColor = taskTagColors[0]
-                cell.Tag2.text = taskTagTitles[1]
-                cell.Tag2.textColor = taskTagColors[1]
-            }
-            else if count == 3{
-                cell.Tag1.text = taskTagTitles[0]
-                cell.Tag1.textColor = taskTagColors[0]
-                cell.Tag2.text = taskTagTitles[1]
-                cell.Tag2.textColor = taskTagColors[1]
-                cell.Tag3.text = taskTagTitles[2]
-                cell.Tag3.textColor =  taskTagColors[2]
-            }
-            else if count == 4{
-                cell.Tag1.text = taskTagTitles[0]
-                cell.Tag1.textColor = taskTagColors[0]
-                cell.Tag2.text = taskTagTitles[1]
-                cell.Tag2.textColor = taskTagColors[1]
-                cell.Tag3.text = taskTagTitles[2]
-                cell.Tag3.textColor =  taskTagColors[2]
-                cell.Tag4.text = taskTagTitles[3]
-                cell.Tag4.textColor = taskTagColors[3]
-            }
-            else if count == 5{
-                cell.Tag1.text = taskTagTitles[0]
-                cell.Tag1.textColor = taskTagColors[0]
-                cell.Tag2.text = taskTagTitles[1]
-                cell.Tag2.textColor = taskTagColors[1]
-                cell.Tag3.text = taskTagTitles[2]
-                cell.Tag3.textColor =  taskTagColors[2]
-                cell.Tag4.text = taskTagTitles[3]
-                cell.Tag4.textColor = taskTagColors[3]
-                cell.Tag5.text = taskTagTitles[4]
-                cell.Tag5.textColor = taskTagColors[4]
-            }
-        }
-        
-        cell.layer.backgroundColor = UIColor.clear.cgColor
-        
-// =============== CELL ICONS =======================
-        if task.value(forKey: "notes") != nil {
-            cell.TodoNotesIcon.alpha = 1
-        }
-        else {
-            cell.TodoNotesIcon.alpha = 0
-        }
-        
-        if task.value(forKey: "location") == nil {
-            cell.TodoLocationIcon.alpha = 0
-        }
-        else {
-            cell.TodoLocationIcon.alpha = 1
-        }
-// ================== CELL TODO BUTTON =======================
-        
-        if (task.value(forKey: "recurrence") as! Bool) == true && (task.value(forKey: "priority") as! Int) == 1 {
-            let image = UIImage(named: "Recurring Normal")
-            cell.TodoStatus.setImage(image, for: .normal)
-        }
-         if (task.value(forKey: "recurrence") as! Bool) == true && (task.value(forKey: "priority") as! Int) == 2 {
-            let image = UIImage(named: "Recurring High")
-            cell.TodoStatus.setImage(image, for: .normal)
-        }
-        
-        if (task.value(forKey: "recurrence") as! Bool) != true && (task.value(forKey: "priority") as! Int) == 1 {
-            let image = UIImage(named: "Todo Medium Priority")
-            cell.TodoStatus.setImage(image, for: .normal)
-        }
-        if (task.value(forKey: "recurrence") as! Bool) != true && (task.value(forKey: "priority") as! Int) == 2 {
-            let image = UIImage(named: "Todo High Priority")
-            cell.TodoStatus.setImage(image, for: .normal)
-        }
-        
-        return cell
+         return UITableViewCell()
         
     }
     
-//        cell.layer.backgroundColor = UIColor(hexFromString: "F0F2F4", alpha: 0.6).cgColor
-//        cell.layer.cornerRadius = 20
-    
-    
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath){
-//        if editingStyle == UITableViewCell.EditingStyle.delete
-//        {
-//            InboxTodo.remove(at: indexPath.section)
-//            myTableView.deleteSections([indexPath.section], with: .bottom)
-////            myTableView.deleteRows(at: [indexPath], with: .bottom)
-//            myTableView.reloadData()
-//        }
-//    }
     
 //================== SWIPE ACTIONS ==================
     
@@ -471,6 +589,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     override func viewDidLoad() {
+        
         
         if #available(iOS 12.0, *) {
             if traitCollection.userInterfaceStyle == .light {
