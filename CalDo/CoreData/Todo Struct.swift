@@ -18,7 +18,7 @@ let longitude: CLLocationDegrees = 22.9
 let location: CLLocation = CLLocation(latitude: latitude,
 longitude: longitude)
 
-func createDate() -> Date{
+func createDate() -> Date {
     var dateComponents = DateComponents()
     dateComponents.year = 2020
     dateComponents.month = 7
@@ -32,7 +32,7 @@ func createDate() -> Date{
     return someDateTime!
 }
 
-func createDate2() -> Date{
+func createDate2() -> Date {
     var dateComponents = DateComponents()
      dateComponents.year = 2020
      dateComponents.month = 7
@@ -121,7 +121,7 @@ func loadSampleTaskEntities() {
     project2.title = "Work"
     project2.color = "4FC2E8"
     
-    
+
     let tag1 = TagEntity(context: managedContext)
     tag1.title = "Calls"
     tag1.color = "98D468"
@@ -131,11 +131,17 @@ func loadSampleTaskEntities() {
     tag2.color = "4FC2E8"
     
     
+// Tasks with project, tags, date
+    
     let task1 = TaskEntity(context: managedContext)
     task1.title = "Call Mom"
     task1.priority = 2
     task1.project = project1
     task1.tags = [tag1, tag2]
+    task1.date = Date.init(timeIntervalSinceNow: 3600)
+    
+    
+// Tasks with project, tags, no date
     
     let task2 = TaskEntity(context: managedContext)
     task2.title = "Do Taxes"
@@ -148,26 +154,55 @@ func loadSampleTaskEntities() {
     task3.project = project1
     task3.tags = [tag2]
     
+// Tasks with project, no tags, date
+
     let task4 = TaskEntity(context: managedContext)
     task4.title = "Plan Holidays"
     task4.priority = 1
     task4.project = project2
+    task4.date = Date.init(timeIntervalSinceNow: 604800)
     
-    // task4.tags = [TagEntity]()
+// Tasks with no project, tags, date
     
     let task5 = TaskEntity(context: managedContext)
-    task5.title = "Go Bonkers!!!"
-    task5.project = project1
-    task5.tags = [tag1, tag2]
+    task5.title = "Call Obama"
+    task5.tags = [tag1]
+    task5.date = Date.init(timeIntervalSinceNow: 86400)
+
+    let task6 = TaskEntity(context: managedContext)
+    task6.title = "Go Bonkers!!!"
+    task6.tags = [tag1, tag2]
+    task6.date = Date.init()
     
-    let task6 = TaskEntity(context:managedContext)
-    task6.title = "Feed dogs"
-//    task6.tags = [tag1]
+
+// Tasks with no project, no tags, date
     
     let task7 = TaskEntity(context: managedContext)
-    task7.title = "Go to dentist with mom"
-//    task7.tags = [tag2]
+    task7.title = "Invent time travel"
+    task7.date = Date.init(timeIntervalSinceNow: 5 * 7776000)
     
+    let task7a = TaskEntity(context: managedContext)
+    task7a.title = "Time travel"
+    task7a.date = Date.init(timeIntervalSinceNow: -7776000)
+    
+// Tasks with no project, tags, no date
+
+    let task8 = TaskEntity(context:managedContext)
+    task8.title = "Feed dogs"
+    task8.tags = [tag1]
+
+// Tasks with project, no tags, no date
+    let task9 = TaskEntity(context:managedContext)
+    task9.title = "Bring donuts to work"
+    task9.project = project2
+
+    
+// Tasks with no project, no tags, no date
+    let task10 = TaskEntity(context: managedContext)
+    task10.title = "Go to dentist with mom"
+    
+
+
     do {
         try managedContext.save()
     } catch {
