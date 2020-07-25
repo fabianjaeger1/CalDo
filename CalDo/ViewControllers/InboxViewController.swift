@@ -49,10 +49,7 @@ extension Date {
     static func - (lhs: Date, rhs: Date) -> TimeInterval {
         return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
     }
-
 }
-
-
 
 func computeNewDate(from fromDate: Date, to toDate: Date) -> Date {
      let delta = toDate - fromDate // `Date` - `Date` = `TimeInterval`
@@ -221,7 +218,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         
         let task = CoreDataManager.shared.inboxTasks[indexPath.row]
-        print(task)
+        // print(task)
         
     
     // Smaller Table View cell without Projects and Tags
@@ -231,8 +228,8 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             //========= DATE ===========
             
-            let ConvertedDate = (task.value(forKey: "date") as! Date?)?.DatetoString(dateFormat: "HH:mm")
-            cell.TodoDate?.text = ConvertedDate
+            // TODO: simplify by adding function returning a task's todoString
+            cell.TodoDate?.text = (task.value(forKey: "date") as? Date)?.todoString(withTime: task.value(forKey: "dateHasTime") as! Bool)
             cell.TodoDate.textColor = UIColor.textColor
             
             //========= TITLE ===========
@@ -371,8 +368,8 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
             let shapeLayer = CAShapeLayer()
 
-            //let ConvertedDate = todo.todoDate?.DatetoString(dateFormat: "HH:mm")
-            let ConvertedDate = (task.value(forKey: "date") as! Date?)?.DatetoString(dateFormat: "HH:mm")
+            // let ConvertedDate = todo.todoDate?.DatetoString(dateFormat: "HH:mm")
+            // let ConvertedDate = (task.value(forKey: "date") as! Date?)?.DatetoString(dateFormat: "HH:mm")
 
             let center = CGPoint(x: cell.ProjectColor.frame.height/2, y: cell.ProjectColor.frame.width/2)
             let circlePath = UIBezierPath(arcCenter: center, radius: CGFloat(4), startAngle: CGFloat(0), endAngle: CGFloat(Double.pi * 2), clockwise: true)
@@ -413,7 +410,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.TodoTitle?.text = (task.value(forKey: "title") as! String)
             cell.TodoTitle.textColor = UIColor.textColor
             cell.TodoDate.textColor = UIColor.textColor
-            cell.TodoDate?.text = ConvertedDate
+            cell.TodoDate?.text = (task.value(forKey: "date") as? Date)?.todoString(withTime: task.value(forKey: "dateHasTime") as! Bool)
             cell.ProjectLabel.textColor = UIColor.textColor
             // cell.TodoDate?.text = DateToString(date: todo.todoDate!)
             cell.ProjectLabel.text = (task.value(forKey: "project") as! ProjectEntity).value(forKey: "title") as? String

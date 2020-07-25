@@ -12,13 +12,69 @@ import UIKit
 
 extension Date
 {
-    func DatetoString( dateFormat format  : String ) -> String
+    func DatetoString(dateFormat format: String ) -> String
     {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
         return dateFormatter.string(from: self)
     }
     
+}
+
+extension Date {
+    func todoString(withTime: Bool) -> String {
+        let cal = Calendar.current
+
+        let timeformatter = DateFormatter()
+        timeformatter.dateFormat = "HH:mm"
+        
+        var timeString = ""
+        if (withTime) {
+            timeString = timeformatter.string(from: self)
+        }
+        
+        let dateformatter = DateFormatter()
+        dateformatter.dateFormat = "EEEE"
+        
+        let dateformatter2 = DateFormatter()
+        if (withTime) {
+            dateformatter2.dateFormat = "d MMM HH:mm"
+        }
+        else {
+            dateformatter2.dateFormat = "d MMM"
+        }
+
+        let date1 = cal.startOfDay(for: Date())
+        let date2 = cal.startOfDay(for: self)
+
+        let components2 = cal.dateComponents([.day], from: date1, to: date2)
+        
+        // TODO: leave out space if there is no time
+        if Calendar.current.isDateInToday(self) {
+            return "Today " + timeString
+        }
+        if Calendar.current.isDateInTomorrow(self) {
+            return "Tomorrow " + timeString
+        }
+        if Calendar.current.isDateInYesterday(self) {
+            return "Yesterday " + timeString
+        }
+        if components2.day! > 2 && components2.day! < 7 {
+            return "\(dateformatter.string(from: self)) \(timeString)"
+        }
+        if components2.day! > 7 {
+            return dateformatter2.string(from: self)
+        }
+        
+//        if (withTime) {
+//            return self.DatetoString(dateFormat: "MMM d yyyy HH:mm" )
+//        }
+//        else {
+//            return self.DatetoString(dateFormat: "MMM d yyyy" )
+//        }
+        // TODO: check if the year is the same, if yes, leave out the year?
+        return self.DatetoString(dateFormat: "MMM d yyyy ") + timeString
+    }
 }
 
 extension Date {

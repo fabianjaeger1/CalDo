@@ -129,7 +129,9 @@ func loadSampleTaskEntities() {
     let tag2 = TagEntity(context: managedContext)
     tag2.title = "Mom"
     tag2.color = "4FC2E8"
+
     
+// TODO: test more dates (& times)
     
 // Tasks with project, tags, date
     
@@ -184,6 +186,7 @@ func loadSampleTaskEntities() {
     let task7a = TaskEntity(context: managedContext)
     task7a.title = "Time travel"
     task7a.date = Date.init(timeIntervalSinceNow: -7776000)
+    task7a.dateHasTime = true
     
 // Tasks with no project, tags, no date
 

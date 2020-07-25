@@ -19,6 +19,7 @@
     <entity name="TaskEntity" representedClassName=".TaskEntity" syncable="YES" codeGenerationType="class">
         <attribute name="completed" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dateHasTime" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="priority" attributeType="Integer 16" minValueString="0" maxValueString="2" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="recurrence" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
@@ -32,6 +33,6 @@
         <element name="LocationEntity" positionX="-235.01171875" positionY="-113.875" width="128" height="88"/>
         <element name="ProjectEntity" positionX="314.96875" positionY="-413.34375" width="128" height="103"/>
         <element name="TagEntity" positionX="-204.578125" positionY="2.484375" width="128" height="88"/>
-        <element name="TaskEntity" positionX="51.87890625" positionY="-291.0625" width="137.0078125" height="193"/>
+        <element name="TaskEntity" positionX="51.87890625" positionY="-291.0625" width="137.0078125" height="208"/>
     </elements>
 </model>
