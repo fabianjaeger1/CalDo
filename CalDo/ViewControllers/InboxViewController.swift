@@ -95,7 +95,7 @@ func DateToString(date:Date) -> String {
         return dateformatter2.string(from: date)
     }
     
-    return date.DatetoString(dateFormat: "MMM d yyyy HH:mm" )
+    return date.dateToString(dateFormat: "MMM d yyyy HH:mm" )
 }
 
 
@@ -230,7 +230,8 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             // TODO: simplify by adding function returning a task's todoString
             cell.TodoDate?.text = (task.value(forKey: "date") as? Date)?.todoString(withTime: task.value(forKey: "dateHasTime") as! Bool)
-            cell.TodoDate.textColor = UIColor.textColor
+            //cell.TodoDate.textColor = UIColor.textColor
+            cell.TodoDate.textColor = (task.value(forKey: "date") as? Date)?.todoColor
             
             //========= TITLE ===========
             cell.TodoTitle?.text = (task.value(forKey: "title") as! String)
@@ -409,8 +410,10 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.delegate = self
             cell.TodoTitle?.text = (task.value(forKey: "title") as! String)
             cell.TodoTitle.textColor = UIColor.textColor
-            cell.TodoDate.textColor = UIColor.textColor
+            
             cell.TodoDate?.text = (task.value(forKey: "date") as? Date)?.todoString(withTime: task.value(forKey: "dateHasTime") as! Bool)
+            cell.TodoDate.textColor = (task.value(forKey: "date") as? Date)?.todoColor
+            
             cell.ProjectLabel.textColor = UIColor.textColor
             // cell.TodoDate?.text = DateToString(date: todo.todoDate!)
             cell.ProjectLabel.text = (task.value(forKey: "project") as! ProjectEntity).value(forKey: "title") as? String
