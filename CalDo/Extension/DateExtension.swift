@@ -84,7 +84,7 @@ extension Date {
 }
 
 extension Date {
-    var todoColor: UIColor {
+    func todoColor(withTime: Bool) -> UIColor {
         let cal = Calendar.current
         
         let date1 = cal.startOfDay(for: Date())
@@ -92,12 +92,23 @@ extension Date {
         
         let dayDifference = cal.dateComponents([.day], from: date1, to: date2)
         
-        if (self < Date()) {
-            return UIColor.systemRed
+        if (withTime) {
+            if (self < Date()) {
+                return UIColor.systemRed
+            }
+            if cal.isDateInToday(self) {
+                return UIColor.systemGreen
+            }
         }
-        if cal.isDateInToday(self) {
-            return UIColor.systemGreen
+        else {
+            if cal.isDateInToday(self) {
+                return UIColor.systemGreen
+            }
+            if (self < Date()) {
+                return UIColor.systemRed
+            }
         }
+        
         if cal.isDateInTomorrow(self) {
             return UIColor.systemOrange
         }
