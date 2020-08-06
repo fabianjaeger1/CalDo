@@ -19,6 +19,24 @@ extension Date {
 }
 
 extension Date {
+
+    static func - (lhs: Date, rhs: Date) -> TimeInterval {
+        return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
+    }
+
+func computeNewDate(from fromDate: Date, to toDate: Date) -> Date {
+     let delta = toDate - fromDate // `Date` - `Date` = `TimeInterval`
+     let today = Date()
+     if delta < 0 {
+         return today
+     } else {
+         return today + delta // `Date` + `TimeInterval` = `Date`
+     }
+    }
+}
+
+
+extension Date {
     func todoString(withTime: Bool) -> String {
         let cal = Calendar.current
 

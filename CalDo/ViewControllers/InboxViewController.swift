@@ -6,6 +6,7 @@
 //  Copyright © 2017 CalDo. All rights reserved.
 //
 
+
 import UIKit
 import CoreData
 //import ViewAnimator
@@ -43,62 +44,6 @@ import CoreData
 }
 
 
-
-extension Date {
-
-    static func - (lhs: Date, rhs: Date) -> TimeInterval {
-        return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
-    }
-}
-
-func computeNewDate(from fromDate: Date, to toDate: Date) -> Date {
-     let delta = toDate - fromDate // `Date` - `Date` = `TimeInterval`
-     let today = Date()
-     if delta < 0 {
-         return today
-     } else {
-         return today + delta // `Date` + `TimeInterval` = `Date`
-     }
-}
-
-func DateToString(date:Date) -> String {
-    let cal = Calendar.current
-
-    let timeformatter = DateFormatter()
-    timeformatter.dateFormat = "HH:mm"
-    let time = timeformatter.string(from: date)
-    
-    let dateformatter = DateFormatter()
-    dateformatter.dateFormat = "EEEE"
-    
-    let dateformatter2 = DateFormatter()
-    dateformatter2.dateFormat = "d MMM HH:mm"
-
-    let date1 = cal.startOfDay(for: Date())
-    let date2 = cal.startOfDay(for: date)
-
-    let components2 = cal.dateComponents([.day], from: date1, to: date2)
-    
-    if Calendar.current.isDateInToday(date){
-        return "Today " + time
-    }
-    if Calendar.current.isDateInTomorrow(date){
-        return "Tomorrow " + time
-    }
-    if Calendar.current.isDateInYesterday(date){
-        return "Yesterday " + time
-    }
-    if components2.day! > 2 && components2.day! < 7 {
-        return "\(dateformatter.string(from: date)) \(time)"
-    }
-    if components2.day! > 7{
-        return dateformatter2.string(from: date)
-    }
-    
-    return date.dateToString(dateFormat: "MMM d yyyy HH:mm" )
-}
-
-
 // var InboxTodo = [TodoItem]() // Globally defined variable for Todo items in Inbox
 
 class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ToDoCellDelegate {
@@ -128,6 +73,10 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var SearchBar: UISearchBar!
     @IBOutlet weak var InboxLabel: UILabel!
     @IBOutlet weak var MenuButton: UIButton!
+    
+    class TaskTableView: UITableView{
+        
+    }
     @IBOutlet weak var myTableView: UITableView!
     
     @IBAction func showActionSheet(_ sender : AnyObject) {
@@ -207,7 +156,9 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CoreDataManager.shared.inboxTasks.count
+        // return CoreDataManager.shared.inboxTasks.count
+        // ALLTASKS
+        return CoreDataManager.shared.allTasks.count
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -216,8 +167,9 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         
-        
-        let task = CoreDataManager.shared.inboxTasks[indexPath.row]
+        // let task = CoreDataManager.shared.inboxTasks[indexPath.row]
+        // ALLTASKS
+        let task = CoreDataManager.shared.allTasks[indexPath.row]
         // print(task)
         
     
@@ -313,7 +265,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.TodoTitle.textColor = UIColor.textColor
  
             
-//            cell.backgroundColor = .BackgroundColor
+            cell.backgroundColor = .clear
 //            cell.layer.backgroundColor = UIColor.clear.cgColor
 //            cell.delegate = self
             
@@ -362,26 +314,28 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // GENERAL CASE
 
-        if task.value(forKey: "project") != nil && (task.value(forKey: "tags") as! Set<TagEntity>).count != 0 {
+        if task.value(forKey: "project") == nil && (task.value(forKey: "tags") as! Set<TagEntity>).count != 0 {
 
 
             let cell = tableView.dequeueReusableCell(withIdentifier: "CellWithIcon", for: indexPath) as! InboxTableViewCell
 
-            let shapeLayer = CAShapeLayer()
-
-            // let ConvertedDate = todo.todoDate?.DatetoString(dateFormat: "HH:mm")
-            // let ConvertedDate = (task.value(forKey: "date") as! Date?)?.DatetoString(dateFormat: "HH:mm")
-
-            let center = CGPoint(x: cell.ProjectColor.frame.height/2, y: cell.ProjectColor.frame.width/2)
-            let circlePath = UIBezierPath(arcCenter: center, radius: CGFloat(4), startAngle: CGFloat(0), endAngle: CGFloat(Double.pi * 2), clockwise: true)
-
-            shapeLayer.path = circlePath.cgPath
-            shapeLayer.lineWidth = 3.0
+    
 
 
             // shapeLayer.fillColor = UIColor(hexString: (todo.todoProject?.ProjectColor)!).cgColor
             // shapeLayer.fillColor = UIColor(hexString: (((task.value(forKey: "project") as! ProjectEntity?)?.value(forKey: "color") as! String?))!).cgColor
              if let project = CoreDataManager.shared.fetchProjectFromTask(task: task) {
+                let shapeLayer = CAShapeLayer()
+                shapeLayer.backgroundColor = UIColor.clear.cgColor
+
+                    // let ConvertedDate = todo.todoDate?.DatetoString(dateFormat: "HH:mm")
+                    // let ConvertedDate = (task.value(forKey: "date") as! Date?)?.DatetoString(dateFormat: "HH:mm")
+
+                let center = CGPoint(x: cell.ProjectColor.frame.height/2, y: cell.ProjectColor.frame.width/2)
+                let circlePath = UIBezierPath(arcCenter: center, radius: CGFloat(4), startAngle: CGFloat(0), endAngle: CGFloat(Double.pi * 2), clockwise: true)
+
+                shapeLayer.path = circlePath.cgPath
+                shapeLayer.lineWidth = 3.0
                 shapeLayer.fillColor = CoreDataManager.shared.projectColor(project: project)?.cgColor
 
                 cell.ProjectLabel.text = project.value(forKey: "title") as? String
@@ -408,16 +362,16 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
 
             cell.delegate = self
-            cell.TodoTitle?.text = (task.value(forKey: "title") as! String)
+            cell.TodoTitle.text = (task.value(forKey: "title") as! String)
             cell.TodoTitle.textColor = UIColor.textColor
             
-            cell.TodoDate?.text = (task.value(forKey: "date") as? Date)?.todoString(withTime: task.value(forKey: "dateHasTime") as! Bool)
+            cell.TodoDate.text = (task.value(forKey: "date") as? Date)?.todoString(withTime: task.value(forKey: "dateHasTime") as! Bool)
             cell.TodoDate.textColor = (task.value(forKey: "date") as? Date)?.todoColor(withTime: task.value(forKey: "dateHasTime") as! Bool)
             
             cell.ProjectLabel.textColor = UIColor.textColor
             // cell.TodoDate?.text = DateToString(date: todo.todoDate!)
-            cell.ProjectLabel.text = (task.value(forKey: "project") as! ProjectEntity).value(forKey: "title") as? String
-            cell.backgroundColor = .BackgroundColor
+            cell.ProjectLabel.text = (task.value(forKey: "project") as? ProjectEntity)?.value(forKey: "title") as? String
+            cell.backgroundColor = .clear
 
     // ====================== TAGS ================================
 
@@ -585,7 +539,9 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     override func viewWillAppear(_ animated: Bool) {
-        CoreDataManager.shared.fetchInboxTasks()
+        // CoreDataManager.shared.fetchInboxTasks()
+        // ALLTASKS
+        CoreDataManager.shared.fetchAllTasks()
     }
     
     override func viewDidLoad() {
