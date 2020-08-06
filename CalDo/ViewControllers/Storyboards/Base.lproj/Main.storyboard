@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="slE-JG-14w">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="slE-JG-14w">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -18,7 +18,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Calendar-->
+        <!--Ib Calendar Data Source-->
         <scene sceneID="oxp-WT-HUS">
             <objects>
                 <viewController id="1zT-Gl-PBh" customClass="CalendarViewController" customModule="CalDo" customModuleProvider="target" sceneMemberID="viewController">
@@ -369,7 +369,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="57"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xi0-b1-yRN" id="36i-Wf-uLV">
-                                            <rect key="frame" x="0.0" y="0.0" width="349" height="57"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="348.5" height="57"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PJO-jw-km7">
@@ -546,7 +546,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookmark.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5jy-mn-IT9">
-                                                    <rect key="frame" x="116" y="14" width="18" height="18"/>
+                                                    <rect key="frame" x="116" y="14" width="18" height="18.5"/>
                                                     <color key="tintColor" name="TextColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="18" id="5ov-DN-XOJ"/>
@@ -554,7 +554,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Gwf-Yh-W6c">
-                                                    <rect key="frame" x="143" y="14.5" width="18" height="17"/>
+                                                    <rect key="frame" x="143" y="14.5" width="18" height="17.5"/>
                                                     <color key="tintColor" name="TextColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="JHa-YX-qFK"/>
@@ -661,9 +661,6 @@
                                                         <constraint firstAttribute="width" constant="50" id="j5f-CO-HMB"/>
                                                     </constraints>
                                                     <state key="normal" image="TodoButton"/>
-                                                    <connections>
-                                                        <action selector="completeButtonTapped:" destination="A1m-tX-3jR" eventType="touchUpInside" id="hMy-sP-csU"/>
-                                                    </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2mE-6E-LHl">
                                                     <rect key="frame" x="297" y="15" width="17" height="17"/>
@@ -680,7 +677,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookmark.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="JvC-ZN-plc">
-                                                    <rect key="frame" x="116" y="14" width="18" height="18"/>
+                                                    <rect key="frame" x="116" y="14" width="18" height="18.5"/>
                                                     <color key="tintColor" name="TextColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="18" id="50H-xm-G8s"/>
@@ -688,7 +685,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gjg-iz-dmt">
-                                                    <rect key="frame" x="143" y="14.5" width="18" height="17"/>
+                                                    <rect key="frame" x="143" y="14.5" width="18" height="17.5"/>
                                                     <color key="tintColor" name="TextColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="18" id="7SF-cl-a1o"/>
@@ -743,9 +740,6 @@
                                                         <constraint firstAttribute="width" constant="50" id="U69-yh-ai2"/>
                                                     </constraints>
                                                     <state key="normal" image="TodoButton"/>
-                                                    <connections>
-                                                        <action selector="completeButtonTapped:" destination="thv-qF-oLy" eventType="touchUpInside" id="At7-st-4lF"/>
-                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b01-9m-gyI">
                                                     <rect key="frame" x="316" y="11" width="43" height="20.5"/>
@@ -754,7 +748,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookmark.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="vZA-kB-Ewe">
-                                                    <rect key="frame" x="116" y="14" width="18" height="18"/>
+                                                    <rect key="frame" x="116" y="14" width="18" height="18.5"/>
                                                     <color key="tintColor" name="TextColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="Mm4-on-srQ"/>
@@ -762,7 +756,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="l1X-rR-s8C">
-                                                    <rect key="frame" x="143" y="14.5" width="18" height="17"/>
+                                                    <rect key="frame" x="143" y="14.5" width="18" height="17.5"/>
                                                     <color key="tintColor" name="TextColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="18" id="UJp-MA-Ehv"/>
@@ -1553,7 +1547,7 @@
             </objects>
             <point key="canvasLocation" x="2077.5999999999999" y="-873.01349325337333"/>
         </scene>
-        <!--Date Pop Up View Controller-->
+        <!--Ib Calendar Data Source-->
         <scene sceneID="nT0-Xk-VP0">
             <objects>
                 <viewController modalPresentationStyle="overCurrentContext" id="8hS-BN-AWw" customClass="DatePopUpViewController" customModule="CalDo" customModuleProvider="target" sceneMemberID="viewController">
@@ -2800,9 +2794,6 @@
             <point key="canvasLocation" x="1418" y="1558"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="fiX-NY-lbz"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="Account" width="30" height="35"/>
         <image name="AccountSelected" width="29" height="34"/>
@@ -2835,11 +2826,14 @@
         <image name="TrashCan" width="49" height="49"/>
         <image name="Weather Sun" width="50" height="51"/>
         <image name="When_Todo" width="25" height="24"/>
-        <image name="bookmark.fill" catalog="system" width="112" height="128"/>
-        <image name="flag.fill" catalog="system" width="128" height="121"/>
-        <image name="location.fill" catalog="system" width="128" height="115"/>
+        <image name="bookmark.fill" catalog="system" width="54" height="64"/>
+        <image name="flag.fill" catalog="system" width="64" height="64"/>
+        <image name="location.fill" catalog="system" width="64" height="60"/>
         <namedColor name="TextColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="fiX-NY-lbz"/>
+    </inferredMetricsTieBreakers>
 </document>

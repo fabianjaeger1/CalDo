@@ -1,179 +1,48 @@
 //
-//  FirstViewController.swift
+//  TaskTableView.swift
 //  CalDo
 //
-//  Created by Fabian Jaeger on 09.10.17.
-//  Copyright © 2017 CalDo. All rights reserved.
+//  Created by Nathan Baudis  on 8/6/20.
+//  Copyright © 2020 CalDo. All rights reserved.
 //
 
-
+import Foundation
 import UIKit
-import CoreData
-//import ViewAnimator
 
-//extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-//    func collectionView(collectionView: UICollectionView,
-//        numberOfItemsInSection section: Int) -> Int {
-//
-//        return model[collectionView.tag].count
-//    }
-//
-//    func collectionView(collectionView: UICollectionView,
-//        cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-//
-//        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell",
-//            forIndexPath: indexPath)
-//
-//        cell.backgroundColor = model[collectionView.tag][indexPath.item]
-//
-//        return cell
-//    }
-//}
-
-
-
-// Part 1: Data Model; Model is written and initialised -> Todo item
-// In tutorial we have 3 different types, Profile, Friend and Attribute
-
-// Part 2: View Model;
-
- enum InboxCellType{
-        case FullCell
-        case SmallCellType1
-        case SmallCellType2
-}
-
-
-// var InboxTodo = [TodoItem]() // Globally defined variable for Todo items in Inbox
-
-class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ToDoCellDelegate {
+class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate {
     
-    // Get the CoreData context
-    // let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
-    // var InboxTasks = [NSManagedObject]()
-    // var InboxTasks = loadSampleTaskEntities()
-  
-    @IBOutlet var toolbarView: UIView!
-    @IBOutlet weak var textfield: UITextField!
-    
-    @IBOutlet weak var AddTaskTextField: UITextField!
-    
-    @IBAction func PlusButtonPressed(_ sender: Any) {
-        AddTaskTextField.becomeFirstResponder()
-    }
- 
-    
-    let impact = UIImpactFeedbackGenerator()
-    
-    var myIndex = 0
-    var deleteThisPlease = [TodoItem]()
-    
-    @IBOutlet weak var AddButton: UIButton!
-    @IBOutlet weak var SearchBar: UISearchBar!
-    @IBOutlet weak var InboxLabel: UILabel!
-    @IBOutlet weak var MenuButton: UIButton!
-    
-    class TaskTableView: UITableView{
-        
-    }
-    @IBOutlet weak var myTableView: UITableView!
-    
-    @IBAction func showActionSheet(_ sender : AnyObject) {
-        // Print out what button was tapped
-        func printActionTitle(_ action: UIAlertAction) {
-            print("You tapped \(action.title!)")
-        }
 
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alertController.addAction(UIAlertAction(title: "Select Tasks", style: .default, handler: printActionTitle))
-        alertController.addAction(UIAlertAction(title: "Filter", style: .default, handler: printActionTitle))
-        alertController.addAction(UIAlertAction(title: "Share Chat", style: .destructive, handler: printActionTitle))
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: printActionTitle))
-        self.present(alertController, animated: true, completion: nil)
+    
+    var tableView: UITableView
+    var tableViewData: [TaskEntity]
+
+    init(_ tv: UITableView, _ data: [TaskEntity])
+    {
+        tableViewData = data
+        tableView = tv
+        super.init()
+        tableView.delegate = self
+        tableView.dataSource = self
+
+        // Register all of your cells
+//        tableView.register(UINib(nibName: "SomeNib", bundle: nil), forCellReuseIdentifier: "SmallTableViewCell1")
+//        tableView.register(UINib(nibName: "SomeOtherNib", bundle: nil), forCellReuseIdentifier: "other-example-id")
+
     }
 
-//    @IBAction func BackButtonPressed(_ sender: Any) {
-//        dismiss(animated: true, completion: nil)
-//    }
-    
-    
-//    func animateTable() {
-//        self.myTableView.reloadData()
-//        let cells = myTableView.visibleCells
-//        let tableHeight: CGFloat = myTableView.bounds.size.height
-//
-//        for i in cells {
-//            let cell: UITableViewCell = i as! InboxTableViewCell
-//            cell.transform = CGAffineTransform(translationX: 0, y: tableHeight)
-//        }
-//
-//        var index = 0
-//
-//        for a in cells {
-//            self.myTableView.isHidden = false
-//            UIView.animate(withDuration: 1.5, delay: 0.005 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options:  .transitionFlipFromTop, animations: {
-//            }, completion: nil)
-//            index += 1
-//        }
-//
-//    }
-//
-    
-    
-//==================== TABLE VIEW METHODS ===========================
-    
-//    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-//    {
-////        return (InboxTodo.count)
-//        return 1
-//    }
-//
-//    let cellSpacingHeight: CGFloat = 10
-//
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return InboxTodo.count
-//    }
-//
-//    // Set the spacing between sections
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return cellSpacingHeight
-//    }
-//
-//    // Make the background color show through
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let headerView = UIView()
-//        headerView.backgroundColor = UIColor.clear
-//        return headerView
-//    }
-    
-//
-//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//
-//        guard let tableViewCell = cell as? InboxTableViewCell else { return }
-//        tableViewCell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.row)
-//    }
-    
-    
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // return CoreDataManager.shared.inboxTasks.count
-        // ALLTASKS
-        return CoreDataManager.shared.allTasks.count
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tableViewData.count
     }
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
-        
-        // let task = CoreDataManager.shared.inboxTasks[indexPath.row]
-        // ALLTASKS
-        let task = CoreDataManager.shared.allTasks[indexPath.row]
-        // print(task)
-        
-    
-    // Smaller Table View cell without Projects and Tags
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        let task = self.tableViewData[indexPath.row]
+            
+        // Smaller Table View cell without Projects and Tags
         if task.value(forKey: "project") == nil && (task.value(forKey: "tags") as! Set<TagEntity>).count == 0 {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "SmallTableViewCell1", for: indexPath) as! SmallTableViewCell1
@@ -226,16 +95,16 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 cell.TodoStatus.setImage(image, for: .normal)
             }
             
-//            cell.backgroundColor = .BackgroundColor
+        //            cell.backgroundColor = .BackgroundColor
             cell.backgroundColor = .clear
             cell.layer.backgroundColor = UIColor.clear.cgColor
-//            cell.delegate = self
+        //            cell.delegate = self
             
             return cell
         }
-        
-        
-    // Smaller Table View cell without Time and Tags
+
+
+        // Smaller Table View cell without Time and Tags
         if task.value(forKey: "date") == nil && (task.value(forKey: "tags") as! Set<TagEntity>).count == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SmallTableViewCell2", for: indexPath) as! SmallTableViewCell2
             
@@ -263,11 +132,11 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
             // ========== TITLE =================
             cell.TodoTitle?.text = task.value(forKey: "title") as? String
             cell.TodoTitle.textColor = UIColor.textColor
- 
+
             
             cell.backgroundColor = .clear
-//            cell.layer.backgroundColor = UIColor.clear.cgColor
-//            cell.delegate = self
+        //            cell.layer.backgroundColor = UIColor.clear.cgColor
+        //            cell.delegate = self
             
             
             // =========== ANIMATION ==================
@@ -311,16 +180,13 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             return cell
         }
-    
-    // GENERAL CASE
+
+        // GENERAL CASE
 
         if task.value(forKey: "project") == nil && (task.value(forKey: "tags") as! Set<TagEntity>).count != 0 {
 
 
             let cell = tableView.dequeueReusableCell(withIdentifier: "CellWithIcon", for: indexPath) as! InboxTableViewCell
-
-    
-
 
             // shapeLayer.fillColor = UIColor(hexString: (todo.todoProject?.ProjectColor)!).cgColor
             // shapeLayer.fillColor = UIColor(hexString: (((task.value(forKey: "project") as! ProjectEntity?)?.value(forKey: "color") as! String?))!).cgColor
@@ -347,7 +213,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
             if (task.value(forKey: "completed") as! Bool) == true {
                 cell.alpha = 1
-    //            let currentindex = IndexPath.init(row: indexPath.row, section: 0)
+        //            let currentindex = IndexPath.init(row: indexPath.row, section: 0)
                 let image = UIImage(named: "DoneButtonPressed")
 
                 UIView.animate(
@@ -361,7 +227,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 cell.TodoStatus.setImage(image, for: .normal)
             }
 
-            cell.delegate = self
+            // cell.delegate = self
             cell.TodoTitle.text = (task.value(forKey: "title") as! String)
             cell.TodoTitle.textColor = UIColor.textColor
             
@@ -373,9 +239,8 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.ProjectLabel.text = (task.value(forKey: "project") as? ProjectEntity)?.value(forKey: "title") as? String
             cell.backgroundColor = .clear
 
-    // ====================== TAGS ================================
+        // ====================== TAGS ================================
 
-//            print(task.value(forKey: "title") as! String)
 
             let taskTagsSet = task.value(forKey: "tags") as! Set<TagEntity>
             var taskTags = Array(taskTagsSet)
@@ -392,10 +257,6 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 taskTagTitles.append(tag.value(forKey: "title") as! String)
                 taskTagColors.append(UIColor(hexString: tag.value(forKey: "color") as! String))
             }
-
-            //if todo.todoTags!.isEmpty {
-
-            //if (task.value(forKey: "tags") as! [TaskEntity]).isEmpty {
 
             if taskTags.isEmpty {
             }
@@ -446,7 +307,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
 
 
-    // =============== CELL ICONS =======================
+        // =============== CELL ICONS =======================
             if task.value(forKey: "notes") != nil {
                 cell.TodoNotesIcon.alpha = 1
             }
@@ -460,7 +321,7 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
             else {
                 cell.TodoLocationIcon.alpha = 1
             }
-    // ================== CELL TODO BUTTON =======================
+        // ================== CELL TODO BUTTON =======================
 
             if (task.value(forKey: "recurrence") as! Bool) == true && (task.value(forKey: "priority") as! Int) == 1 {
                 let image = UIImage(named: "Recurring Normal")
@@ -484,13 +345,14 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
             return cell
         }
-         return UITableViewCell()
-        
+        else {
+            return tableView.dequeueReusableCell(withIdentifier: "CellWithIcon", for: indexPath) as! InboxTableViewCell
+        }
     }
     
-    
-//================== SWIPE ACTIONS ==================
-    
+        
+    //================== SWIPE ACTIONS ==================
+        
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let Schedule = ScheduleAction(at: indexPath)
         return UISwipeActionsConfiguration(actions: [Schedule])
@@ -531,82 +393,10 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
     }
     
-    
-    
-    override func viewDidAppear(_ animated: Bool) {
-        myTableView.reloadData()
-    }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        // CoreDataManager.shared.fetchInboxTasks()
-        // ALLTASKS
-        CoreDataManager.shared.fetchAllTasks()
-    }
-    
-    override func viewDidLoad() {
+    //=============== DELEGATE METHODS =======================
         
-        
-        if #available(iOS 12.0, *) {
-            if traitCollection.userInterfaceStyle == .light {
-                self.MenuButton.setImage(UIImage(named: "Down_bright"), for: .normal)
-            }
-        } else {
-            // Fallback on earlier versions
-        }
-        
-        
-        toolbarView.backgroundColor = .BackgroundColor
-        
-        InboxLabel.textColor = UIColor.textColor
-        SearchBar.barTintColor = UIColor.white
-        SearchBar.isTranslucent = false
-        SearchBar.tintColor = UIColor.blue
-        myTableView.backgroundColor = .BackgroundColor
-        
-        self.view.backgroundColor = UIColor.BackgroundColor
-        
-        AddButton.createFloatingActionButton()
-        
-        super.viewDidLoad()
-        
-        textfield.inputAccessoryView = toolbarView
-        
-        toolbarView.layer.cornerRadius = 20
-        
-
-        
-        // Load the view using bundle.
-        // Make sure a nib name should be correct
-        // And cast it to the class, something like this
-       
-
-        // Load tasks
-        // loadSampleTaskEntities()
-        // loadTasks()
-        
-        
-        // InboxTodo = TodoItem.loadSampleToDos()
-//        if let savedToDos = TodoItem.loadToDos() {
-//            InboxTodo = savedToDos
-//        } else {
-//            TodoItem.loadSampleToDos()
-    
-//
-//        // IF there are saved todos append to InboxTodo or else load SampleToDos from Todo Struct
-
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    
-    
-//=============== DELEGATE METHODS =======================
-    
     func checkmarkTapped(sender: InboxTableViewCell) {
-        if let indexPath = myTableView.indexPath(for: sender) {
+        if let indexPath = self.tableView.indexPath(for: sender) {
             
             CoreDataManager.shared.inboxTasks[indexPath.row].setValue(true, forKey: "completed")
             print(CoreDataManager.shared.inboxTasks[indexPath.row].value(forKey: "title") as! String)
@@ -615,24 +405,26 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
             // task.completed = !task.completed
             // InboxTasks[indexPath.row] = task
-            impact.impactOccurred()
-            myTableView.reloadRows(at: [indexPath], with: .automatic)
+            
+            // TODO: implement haptic
+            // impact.impactOccurred()
+            self.tableView.reloadRows(at: [indexPath], with: .automatic)
             
             // TODO: replace with fetch tasks?
             CoreDataManager.shared.inboxTasks.remove(at: indexPath.row)
             
             UIView.animate(withDuration: 0.8){
 //                self.myTableView.deleteSections(at: [indexPath], with: .fade)
-                self.myTableView.deleteRows(at: [indexPath], with: .fade)
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
             }
             
 //            myTableView.reloadData()
             
-         
-        
-        }
+            }
     }
-    
-    
 }
+
+
+
+
 

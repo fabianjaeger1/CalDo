@@ -80,6 +80,9 @@
 		832D3C6824ADE0A000A1E709 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832D3C6724ADE0A000A1E709 /* CoreDataManager.swift */; };
 		832D3C6924ADE0A000A1E709 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832D3C6724ADE0A000A1E709 /* CoreDataManager.swift */; };
 		832D3C6A24ADE0A000A1E709 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832D3C6724ADE0A000A1E709 /* CoreDataManager.swift */; };
+		83626C7A24DCACA200AFD9EE /* TaskTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83626C7924DCACA200AFD9EE /* TaskTableView.swift */; };
+		83626C7B24DCACA200AFD9EE /* TaskTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83626C7924DCACA200AFD9EE /* TaskTableView.swift */; };
+		83626C7C24DCACA200AFD9EE /* TaskTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83626C7924DCACA200AFD9EE /* TaskTableView.swift */; };
 		8F6C6E659FD3852843D034AD /* Pods_CalDoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4247D29744B391B96999F1B9 /* Pods_CalDoUITests.framework */; };
 		F6E9E984C58F4D327C9B4ECA /* Pods_CalDoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC9F82338562CAE3409D475 /* Pods_CalDoTests.framework */; };
 /* End PBXBuildFile section */
@@ -103,7 +106,7 @@
 
 /* Begin PBXFileReference section */
 		01036E5022ECF0E1008D6B16 /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewTaskViewController.swift; path = CalDo/ViewControllers/NewTaskViewController.swift; sourceTree = SOURCE_ROOT; };
-		010B3A11232E5D24008B3684 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TodayViewController.swift; path = ../../TodayViewController.swift; sourceTree = "<group>"; };
+		010B3A11232E5D24008B3684 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		012259A423F62854003BAAEE /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		0130AD4522EF25AB00C3EF47 /* Projects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projects.swift; sourceTree = "<group>"; };
 		0130AD4722EF279300C3EF47 /* ChooseProjectsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChooseProjectsViewController.swift; path = CalDo/ViewControllers/ChooseProjectsViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -185,6 +188,7 @@
 		72A7FC944A6AFBB00A63585F /* Pods-CalDo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalDo.release.xcconfig"; path = "Target Support Files/Pods-CalDo/Pods-CalDo.release.xcconfig"; sourceTree = "<group>"; };
 		830DB5EC24A8EC35006B16E3 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		832D3C6724ADE0A000A1E709 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		83626C7924DCACA200AFD9EE /* TaskTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableView.swift; sourceTree = "<group>"; };
 		929E004114D27D044565F86A /* Pods-CalDoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalDoTests.debug.xcconfig"; path = "Target Support Files/Pods-CalDoTests/Pods-CalDoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AADC4FA7D5CB265C6C07244D /* Pods-CalDo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalDo.debug.xcconfig"; path = "Target Support Files/Pods-CalDo/Pods-CalDo.debug.xcconfig"; sourceTree = "<group>"; };
 		ACC9F82338562CAE3409D475 /* Pods_CalDoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalDoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -394,6 +398,7 @@
 			children = (
 				01D53475234F6D3A00DE6776 /* TimePickerViewController.swift */,
 				0179EDD422EC63F700F2A48B /* Storyboards */,
+				83626C7824DCABF600AFD9EE /* Task ViewControllers */,
 				017B4E81234F60E600142AD1 /* Custom Tab Bar */,
 				016033702469A45B0032DA23 /* AddTodoInboxViewController.swift */,
 				015DA69F23C94E4900582851 /* ProjectHomeViewController.swift */,
@@ -404,18 +409,14 @@
 				012259A423F62854003BAAEE /* CalendarViewController.swift */,
 				01B3CA0322EB8BEF00E5344D /* HomeViewController.swift */,
 				0130AD4722EF279300C3EF47 /* ChooseProjectsViewController.swift */,
-				019281541F8B884E00E895D4 /* InboxViewController.swift */,
 				01036E5022ECF0E1008D6B16 /* NewTaskViewController.swift */,
 				013E66BE22F0BFD80048AF18 /* DatePopUpViewController.swift */,
-				010B3A11232E5D24008B3684 /* TodayViewController.swift */,
 				014C23A02313176500A3EA4F /* TagListViewController.swift */,
 				019878122319C87300DE1F7E /* RepeatViewController.swift */,
 				01987816231AA1CE00DE1F7E /* EndRepeatViewController.swift */,
 				0142AAC0231BF78300324DA1 /* OnDateRepeatViewController.swift */,
 				01EAFEE5231CAACA00F3EA9D /* RepetitionViewController.swift */,
-				0165E1A12329AAE9002F5DA1 /* InboxHomeViewController.swift */,
 				0165E1A32329F337002F5DA1 /* ScheduledHomeViewController.swift */,
-				0160336B24694EA00032DA23 /* HabitViewController.swift */,
 				0165E19D2329A971002F5DA1 /* InboxHomeScreenTableViewCell.swift */,
 				0165E19E2329A971002F5DA1 /* InboxHomeScreenTableViewCell.xib */,
 				0179EDD922EC672B00F2A48B /* Cells */,
@@ -444,6 +445,18 @@
 				1EE98E7D15441A57A60D79CF /* Pods-CalDoUITests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		83626C7824DCABF600AFD9EE /* Task ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				019281541F8B884E00E895D4 /* InboxViewController.swift */,
+				010B3A11232E5D24008B3684 /* TodayViewController.swift */,
+				0165E1A12329AAE9002F5DA1 /* InboxHomeViewController.swift */,
+				0160336B24694EA00032DA23 /* HabitViewController.swift */,
+				83626C7924DCACA200AFD9EE /* TaskTableView.swift */,
+			);
+			path = "Task ViewControllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -707,6 +720,7 @@
 				010B3A12232E5D24008B3684 /* TodayViewController.swift in Sources */,
 				01D53466234F681800DE6776 /* CustomTabBarController.swift in Sources */,
 				0179EDDC22EC820200F2A48B /* DateExtension.swift in Sources */,
+				83626C7A24DCACA200AFD9EE /* TaskTableView.swift in Sources */,
 				013E66BF22F0BFD80048AF18 /* DatePopUpViewController.swift in Sources */,
 				015DA6A223C952EF00582851 /* ChooseProjectTableViewCell.swift in Sources */,
 				0135B2A8231DC66800E43638 /* WeatherModel.swift in Sources */,
@@ -762,6 +776,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83626C7B24DCACA200AFD9EE /* TaskTableView.swift in Sources */,
 				832D3C6924ADE0A000A1E709 /* CoreDataManager.swift in Sources */,
 				019281001F8A615C00E895D4 /* CalDoTests.swift in Sources */,
 				830DB5EE24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld in Sources */,
@@ -772,6 +787,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83626C7C24DCACA200AFD9EE /* TaskTableView.swift in Sources */,
 				832D3C6A24ADE0A000A1E709 /* CoreDataManager.swift in Sources */,
 				0192810B1F8A615C00E895D4 /* CalDoUITests.swift in Sources */,
 				830DB5EF24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld in Sources */,
