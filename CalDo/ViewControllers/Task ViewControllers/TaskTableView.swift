@@ -25,8 +25,8 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate {
         tableView.dataSource = self
 
         // Register all of your cells
-//        tableView.register(UINib(nibName: "SomeNib", bundle: nil), forCellReuseIdentifier: "SmallTableViewCell1")
-//        tableView.register(UINib(nibName: "SomeOtherNib", bundle: nil), forCellReuseIdentifier: "other-example-id")
+        tableView.register(UINib(nibName: "TaskTableViewCell", bundle: nil), forCellReuseIdentifier: "TaskTableViewCell")
+        tableView.register(UINib(nibName: "SmallTaskTableViewCell", bundle: nil), forCellReuseIdentifier: "SmallTaskTableViewCell")
 
     }
 
@@ -45,7 +45,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate {
         // Smaller Table View cell without Projects and Tags
         if task.value(forKey: "project") == nil && (task.value(forKey: "tags") as! Set<TagEntity>).count == 0 {
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SmallTableViewCell1", for: indexPath) as! SmallTableViewCell1
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SmallTaskTableViewCell", for: indexPath) as! SmallTaskTableViewCell
             
             //========= DATE ===========
             
@@ -103,90 +103,11 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate {
             return cell
         }
 
-
-        // Smaller Table View cell without Time and Tags
-        if task.value(forKey: "date") == nil && (task.value(forKey: "tags") as! Set<TagEntity>).count == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SmallTableViewCell2", for: indexPath) as! SmallTableViewCell2
-            
-            //======== PROJECT ===============
-            
-            let shapeLayer = CAShapeLayer()
-            let center = CGPoint(x: cell.ProjectColor.frame.height/2, y: cell.ProjectColor.frame.width/2)
-            let circlePath = UIBezierPath(arcCenter: center, radius: CGFloat(4), startAngle: CGFloat(0), endAngle: CGFloat(Double.pi * 2), clockwise: true)
-            shapeLayer.path = circlePath.cgPath
-            shapeLayer.lineWidth = 3.0
-            
-            if let project = CoreDataManager.shared.fetchProjectFromTask(task: task) {
-               shapeLayer.fillColor = CoreDataManager.shared.projectColor(project: project)?.cgColor
-               
-               cell.ProjectLabel.text = project.value(forKey: "title") as? String
-               cell.ProjectLabel.textColor = UIColor.textColor
-               cell.ProjectColor.layer.backgroundColor = UIColor.clear.cgColor
-               cell.ProjectColor.layer.addSublayer(shapeLayer)
-           }
-            
-            cell.ProjectLabel.textColor = UIColor.textColor
-            cell.ProjectLabel.text = (task.value(forKey: "project") as! ProjectEntity).value(forKey: "title") as? String
-            
-            
-            // ========== TITLE =================
-            cell.TodoTitle?.text = task.value(forKey: "title") as? String
-            cell.TodoTitle.textColor = UIColor.textColor
-
-            
-            cell.backgroundColor = .clear
-        //            cell.layer.backgroundColor = UIColor.clear.cgColor
-        //            cell.delegate = self
-            
-            
-            // =========== ANIMATION ==================
-            
-            if (task.value(forKey: "completed") as! Bool) == true {
-                cell.alpha = 1
-                let image = UIImage(named: "DoneButtonPressed")
-            
-                UIView.animate(
-                    withDuration: 0.3,
-                    animations: {
-                        cell.TodoStatus.setImage(image, for: .normal)
-                })
-            }
-            else {
-                let image = UIImage(named: "TodoButton")
-                cell.TodoStatus.setImage(image, for: .normal)
-            }
-            
-            // ================== CELL TODO BUTTON =======================
-                    
-                    if (task.value(forKey: "recurrence") as! Bool) == true && (task.value(forKey: "priority") as! Int) == 1 {
-                        let image = UIImage(named: "Recurring Normal")
-                        cell.TodoStatus.setImage(image, for: .normal)
-                    }
-                     if (task.value(forKey: "recurrence") as! Bool) == true && (task.value(forKey: "priority") as! Int) == 2 {
-                        let image = UIImage(named: "Recurring High")
-                        cell.TodoStatus.setImage(image, for: .normal)
-                    }
-                    
-                    if (task.value(forKey: "recurrence") as! Bool) != true && (task.value(forKey: "priority") as! Int) == 1 {
-                        let image = UIImage(named: "Todo Medium Priority")
-                        cell.TodoStatus.setImage(image, for: .normal)
-                    }
-                    if (task.value(forKey: "recurrence") as! Bool) != true && (task.value(forKey: "priority") as! Int) == 2 {
-                        let image = UIImage(named: "Todo High Priority")
-                        cell.TodoStatus.setImage(image, for: .normal)
-                    }
-            cell.backgroundColor = .clear
-            cell.layer.backgroundColor = UIColor.clear.cgColor
-            
-            return cell
-        }
-
         // GENERAL CASE
 
-        if task.value(forKey: "project") == nil && (task.value(forKey: "tags") as! Set<TagEntity>).count != 0 {
-
-
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CellWithIcon", for: indexPath) as! InboxTableViewCell
+        else {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath) as! TaskTableViewCell
 
             // shapeLayer.fillColor = UIColor(hexString: (todo.todoProject?.ProjectColor)!).cgColor
             // shapeLayer.fillColor = UIColor(hexString: (((task.value(forKey: "project") as! ProjectEntity?)?.value(forKey: "color") as! String?))!).cgColor
@@ -344,9 +265,6 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate {
             // To return default case of no above Cell type
 
             return cell
-        }
-        else {
-            return tableView.dequeueReusableCell(withIdentifier: "CellWithIcon", for: indexPath) as! InboxTableViewCell
         }
     }
     

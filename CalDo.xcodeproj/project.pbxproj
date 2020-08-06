@@ -49,8 +49,6 @@
 		019878132319C87300DE1F7E /* RepeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019878122319C87300DE1F7E /* RepeatViewController.swift */; };
 		01987817231AA1CE00DE1F7E /* EndRepeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01987816231AA1CE00DE1F7E /* EndRepeatViewController.swift */; };
 		019A09FB242E82D5002434F0 /* DateHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019A09FA242E82D5002434F0 /* DateHeaderCell.swift */; };
-		01AE118424C3AB6700C9467F /* SmallTableViewCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AE118324C3AB6700C9467F /* SmallTableViewCell1.swift */; };
-		01AE118624C3AB7E00C9467F /* SmallTableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AE118524C3AB7E00C9467F /* SmallTableViewCell2.swift */; };
 		01B3CA0422EB8BEF00E5344D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B3CA0322EB8BEF00E5344D /* HomeViewController.swift */; };
 		01C954722115E2310047175F /* Todo Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C954712115E2310047175F /* Todo Struct.swift */; };
 		01D53465234F681800DE6776 /* CustomTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D53462234F681800DE6776 /* CustomTabBarItem.swift */; };
@@ -154,8 +152,6 @@
 		019878122319C87300DE1F7E /* RepeatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatViewController.swift; sourceTree = "<group>"; };
 		01987816231AA1CE00DE1F7E /* EndRepeatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndRepeatViewController.swift; sourceTree = "<group>"; };
 		019A09FA242E82D5002434F0 /* DateHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHeaderCell.swift; sourceTree = "<group>"; };
-		01AE118324C3AB6700C9467F /* SmallTableViewCell1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallTableViewCell1.swift; sourceTree = "<group>"; };
-		01AE118524C3AB7E00C9467F /* SmallTableViewCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallTableViewCell2.swift; sourceTree = "<group>"; };
 		01B3CA0322EB8BEF00E5344D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		01C954712115E2310047175F /* Todo Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo Struct.swift"; sourceTree = "<group>"; };
 		01D53462234F681800DE6776 /* CustomTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarItem.swift; sourceTree = "<group>"; };
@@ -358,8 +354,6 @@
 		019280E91F8A615C00E895D4 /* CalDo */ = {
 			isa = PBXGroup;
 			children = (
-				01AE118324C3AB6700C9467F /* SmallTableViewCell1.swift */,
-				01AE118524C3AB7E00C9467F /* SmallTableViewCell2.swift */,
 				01F5F482232727F600FE8D62 /* SwiftExample-Bridging-Header.h */,
 				019280F61F8A615C00E895D4 /* Info.plist */,
 				019280EA1F8A615C00E895D4 /* AppDelegate.swift */,
@@ -727,7 +721,6 @@
 				01D53484234F705000DE6776 /* SelectionScreenViewController.swift in Sources */,
 				01D53465234F681800DE6776 /* CustomTabBarItem.swift in Sources */,
 				832D3C6824ADE0A000A1E709 /* CoreDataManager.swift in Sources */,
-				01AE118624C3AB7E00C9467F /* SmallTableViewCell2.swift in Sources */,
 				019281551F8B884E00E895D4 /* InboxViewController.swift in Sources */,
 				016CF84E24DCB393006DEC65 /* TaskTableViewCell.swift in Sources */,
 				01D53481234F6EFC00DE6776 /* DateCell.swift in Sources */,
@@ -753,7 +746,6 @@
 				01D53467234F681800DE6776 /* CustomTabBar.swift in Sources */,
 				01D5347C234F6E3E00DE6776 /* Color.swift in Sources */,
 				01D53471234F6A1900DE6776 /* TodoSectionProjectsTableViewCell.swift in Sources */,
-				01AE118424C3AB6700C9467F /* SmallTableViewCell1.swift in Sources */,
 				830DB5ED24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld in Sources */,
 				012259A523F62854003BAAEE /* CalendarViewController.swift in Sources */,
 				01D53476234F6D3A00DE6776 /* TimePickerViewController.swift in Sources */,
