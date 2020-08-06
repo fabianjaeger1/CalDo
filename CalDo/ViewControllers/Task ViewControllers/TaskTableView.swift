@@ -325,7 +325,9 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate {
             // InboxTasks[indexPath.row] = task
             
             // TODO: implement haptic
-            // impact.impactOccurred()
+            let impact = UIImpactFeedbackGenerator()
+            impact.impactOccurred()
+            
             self.tableView.reloadRows(at: [indexPath], with: .automatic)
             
             // TODO: replace with fetch tasks?

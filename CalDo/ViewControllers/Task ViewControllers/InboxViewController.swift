@@ -63,10 +63,8 @@ class InboxViewController: UIViewController {
         AddTaskTextField.becomeFirstResponder()
     }
     
-    let impact = UIImpactFeedbackGenerator()
     
-    var myIndex = 0
-    var deleteThisPlease = [TodoItem]()
+    // var myIndex = 0
     
     @IBOutlet weak var AddButton: UIButton!
     @IBOutlet weak var SearchBar: UISearchBar!
@@ -169,6 +167,7 @@ class InboxViewController: UIViewController {
         
         CoreDataManager.shared.fetchAllTasks()
         
+        // TODO: unnecessary declaration every time?
         inboxTableView = TaskTableView(myTableView, CoreDataManager.shared.allTasks)
         inboxTableView.tableView.reloadData()
         
@@ -226,11 +225,6 @@ class InboxViewController: UIViewController {
 //        // IF there are saved todos append to InboxTodo or else load SampleToDos from Todo Struct
 
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     
     
     

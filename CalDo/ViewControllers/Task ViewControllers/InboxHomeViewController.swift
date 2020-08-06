@@ -11,6 +11,7 @@ import CoreData
 
 extension UITableView {
     
+    // Set background image when there are no inbox tasks
     func setEmptyMessage(_ message: String) {
         
         let messageLabel = UILabel(frame: CGRect(x: 100 , y: 100, width: self.bounds.size.width, height: self.bounds.size.height))
@@ -42,7 +43,7 @@ extension UITableView {
     }
 }
 
-class InboxHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, InboxCellDelegate {
+class InboxHomeViewController: UIViewController, InboxCellDelegate {
     
     // Get the CoreData context
     // let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -70,11 +71,7 @@ class InboxHomeViewController: UIViewController, UITableViewDataSource, UITableV
 
     let cellSpacingHeight: CGFloat = 15
     
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return InboxTodo.count
-        return 1
-    }
+
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.layer.cornerRadius = 20
@@ -89,21 +86,25 @@ class InboxHomeViewController: UIViewController, UITableViewDataSource, UITableV
 //        cell.layer.shadowColor = UIColor.gray.cgColor
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        
-        if CoreDataManager.shared.inboxTasks.count == 0 {
-            self.tableView.setEmptyMessage("""
-            Nothing to see here
-            Start adding Tasks
-            """
-            )
-        }
-        else {
-            self.tableView.restore()
-            self.tableView.separatorStyle = .none
-        }
-        return CoreDataManager.shared.inboxTasks.count
-    }
+    
+    
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//
+//        if CoreDataManager.shared.inboxTasks.count == 0 {
+//            self.tableView.setEmptyMessage("""
+//            Nothing to see here
+//            Start adding Tasks
+//            """
+//            )
+//        }
+//        else {
+//            self.tableView.restore()
+//            self.tableView.separatorStyle = .none
+//        }
+//        return CoreDataManager.shared.inboxTasks.count
+//    }
+//
+    
     
 //    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 //        return cellSpacingHeight
@@ -115,64 +116,67 @@ class InboxHomeViewController: UIViewController, UITableViewDataSource, UITableV
 //        return headerView
 //    }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "InboxHomeScreenTableViewCell", for: indexPath) as! InboxHomeScreenTableViewCell
-        let task = CoreDataManager.shared.inboxTasks[indexPath.section]
-        
-        let shapeLayer = CAShapeLayer()
-        let center = CGPoint(x: cell.ProjectColor.frame.height/2, y: cell.ProjectColor.frame.width/2)
-        let circlePath = UIBezierPath(arcCenter: center, radius: CGFloat(4), startAngle: CGFloat(0), endAngle: CGFloat(Double.pi * 2), clockwise: true)
-        
-        
-        shapeLayer.path = circlePath.cgPath
-        shapeLayer.lineWidth = 3.0
-        
-        
-        shapeLayer.path = circlePath.cgPath
-        shapeLayer.lineWidth = 3.0
-        
-        if let project = CoreDataManager.shared.fetchProjectFromTask(task: task as! TaskEntity) {
-            shapeLayer.fillColor = CoreDataManager.shared.projectColor(project: project)?.cgColor
-            
-            cell.ProjectLabel.text = project.value(forKey: "title") as? String
-            cell.ProjectLabel.textColor = UIColor.textColor
-            cell.ProjectColor.layer.backgroundColor = UIColor.clear.cgColor
-            cell.ProjectColor.layer.addSublayer(shapeLayer)
-        }
-
-        
-        cell.TodoTitle.text = task.value(forKey: "title") as? String
-        cell.TodoTitle.textColor = UIColor.textColor
-        cell.accessoryView = nil
-        cell.selectionStyle = UITableViewCell.SelectionStyle.none
-        cell.backgroundColor = .BackgroundColor
-        cell.delegate = self
-        
-        if task.value(forKey: "completed") as! Bool == true{
-            cell.alpha = 1
-            //            let currentindex = IndexPath.init(row: indexPath.row, section: 0)
-            let image = UIImage(named: "DoneButtonPressed")
-            
-            UIView.animate(
-                withDuration: 0.3,
-                animations: {
-                    cell.TodoStatus.setImage(image, for: .normal)
-            })
-        }
-        else {
-            let image = UIImage(named: "TodoButton")
-            cell.TodoStatus.setImage(image, for: .normal)
-        }
-
-        return cell
-        
-    }
+    
+    
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "InboxHomeScreenTableViewCell", for: indexPath) as! InboxHomeScreenTableViewCell
+//        let task = CoreDataManager.shared.inboxTasks[indexPath.section]
+//
+//        let shapeLayer = CAShapeLayer()
+//        let center = CGPoint(x: cell.ProjectColor.frame.height/2, y: cell.ProjectColor.frame.width/2)
+//        let circlePath = UIBezierPath(arcCenter: center, radius: CGFloat(4), startAngle: CGFloat(0), endAngle: CGFloat(Double.pi * 2), clockwise: true)
+//
+//
+//        shapeLayer.path = circlePath.cgPath
+//        shapeLayer.lineWidth = 3.0
+//
+//
+//        shapeLayer.path = circlePath.cgPath
+//        shapeLayer.lineWidth = 3.0
+//
+//        if let project = CoreDataManager.shared.fetchProjectFromTask(task: task) {
+//            shapeLayer.fillColor = CoreDataManager.shared.projectColor(project: project)?.cgColor
+//
+//            cell.ProjectLabel.text = project.value(forKey: "title") as? String
+//            cell.ProjectLabel.textColor = UIColor.textColor
+//            cell.ProjectColor.layer.backgroundColor = UIColor.clear.cgColor
+//            cell.ProjectColor.layer.addSublayer(shapeLayer)
+//        }
+//
+//
+//        cell.TodoTitle.text = task.value(forKey: "title") as? String
+//        cell.TodoTitle.textColor = UIColor.textColor
+//        cell.accessoryView = nil
+//        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+//        cell.backgroundColor = .BackgroundColor
+//        cell.delegate = self
+//
+//        if task.value(forKey: "completed") as! Bool == true{
+//            cell.alpha = 1
+//            //            let currentindex = IndexPath.init(row: indexPath.row, section: 0)
+//            let image = UIImage(named: "DoneButtonPressed")
+//
+//            UIView.animate(
+//                withDuration: 0.3,
+//                animations: {
+//                    cell.TodoStatus.setImage(image, for: .normal)
+//            })
+//        }
+//        else {
+//            let image = UIImage(named: "TodoButton")
+//            cell.TodoStatus.setImage(image, for: .normal)
+//        }
+//
+//        return cell
+//
+//    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 56
     }
 
     @IBOutlet weak var tableView: UITableView!
+    var inboxHomeTableView: TaskTableView!
 
     
     
@@ -193,31 +197,33 @@ class InboxHomeViewController: UIViewController, UITableViewDataSource, UITableV
 //        }
 //    }
     
-    func animateTable() {
-        self.tableView.reloadData()
-        let cells = tableView.visibleCells
-        let tableHeight: CGFloat = tableView.bounds.size.height
-        
-        for i in cells {
-            let cell: UITableViewCell = i as! InboxHomeScreenTableViewCell
-            cell.transform = CGAffineTransform(translationX: 0, y: tableHeight)
-        }
-        
-        var index = 0
-        
-        for a in cells {
-            self.tableView.isHidden = false
-            let cell: UITableViewCell = a as! InboxHomeScreenTableViewCell
-            UIView.animate(withDuration: 1.5, delay: 0.005 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options:  .transitionFlipFromTop, animations: {
-            }, completion: nil)
-            index += 1
-        }
-        
-    }
+//    func animateTable() {
+//        self.tableView.reloadData()
+//        let cells = tableView.visibleCells
+//        let tableHeight: CGFloat = tableView.bounds.size.height
+//
+//        for i in cells {
+//            // let cell: UITableViewCell = i as! InboxHomeScreenTableViewCell
+//            let cell: UITableViewCell = i
+//            cell.transform = CGAffineTransform(translationX: 0, y: tableHeight)
+//        }
+//
+//        var index = 0
+//
+//        for a in cells {
+//            self.tableView.isHidden = false
+//            UIView.animate(withDuration: 1.5, delay: 0.005 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options:  .transitionFlipFromTop, animations: {
+//            }, completion: nil)
+//            index += 1
+//        }
+//
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
-                animateTable()
+        super.viewWillAppear(animated)
         CoreDataManager.shared.fetchInboxTasks()
+        inboxHomeTableView = TaskTableView(tableView, CoreDataManager.shared.inboxTasks)
+        inboxHomeTableView.tableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -231,10 +237,8 @@ class InboxHomeViewController: UIViewController, UITableViewDataSource, UITableV
         
         // CoreDataManager.shared.inboxTasks = CoreDataManager.shared.fetchInboxTasks()
         
-        tableView.register(UINib(nibName: "InboxHomeScreenTableViewCell", bundle: nil), forCellReuseIdentifier: "InboxHomeScreenTableViewCell")
-        
-        tableView.delegate = self
-        tableView.dataSource = self
+        // tableView.register(UINib(nibName: "InboxHomeScreenTableViewCell", bundle: nil), forCellReuseIdentifier: "InboxHomeScreenTableViewCell")
+    
         tableView.backgroundColor = .BackgroundColor
         
         super.viewDidLoad()
