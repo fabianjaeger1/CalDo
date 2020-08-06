@@ -11,14 +11,7 @@ import UIKit
 class SmallTableViewCell1: UITableViewCell {
     
     //Cell with no Project and Tags
-    
-    @IBOutlet weak var ProjectLabel: UILabel!
-    @IBOutlet weak var ProjectColor: UIView!
-    @IBOutlet weak var TodoStatus: UIButton!
-    @IBOutlet weak var TodoTitle: UILabel!
-    @IBOutlet weak var TodoDate: UILabel!
-    @IBOutlet weak var TodoNotesIcon: UIImageView!
-    @IBOutlet weak var TodoLocationIcon: UIImageView!
+
     
 
     override func awakeFromNib() {

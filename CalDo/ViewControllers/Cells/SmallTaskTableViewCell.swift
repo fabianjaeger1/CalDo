@@ -8,7 +8,14 @@
 
 import UIKit
 
-class SmallTableViewCell: UITableViewCell {
+class SmallTaskTableViewCell: UITableViewCell {
+    
+
+    @IBOutlet weak var TodoStatus: UIButton!
+    @IBOutlet weak var TodoTitle: UILabel!
+    @IBOutlet weak var TodoDate: UILabel!
+    @IBOutlet weak var TodoNotesIcon: UIImageView!
+    @IBOutlet weak var TodoLocationIcon: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

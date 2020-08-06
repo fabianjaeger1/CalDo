@@ -36,8 +36,10 @@
 		0165E1A02329A971002F5DA1 /* InboxHomeScreenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0165E19E2329A971002F5DA1 /* InboxHomeScreenTableViewCell.xib */; };
 		0165E1A22329AAE9002F5DA1 /* InboxHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0165E1A12329AAE9002F5DA1 /* InboxHomeViewController.swift */; };
 		0165E1A52329F337002F5DA1 /* ScheduledHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0165E1A32329F337002F5DA1 /* ScheduledHomeViewController.swift */; };
-		016CF84A24DC8EB1006DEC65 /* SmallTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016CF84824DC8EB1006DEC65 /* SmallTableViewCell.swift */; };
-		016CF84B24DC8EB1006DEC65 /* SmallTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 016CF84924DC8EB1006DEC65 /* SmallTableViewCell.xib */; };
+		016CF84A24DC8EB1006DEC65 /* SmallTaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016CF84824DC8EB1006DEC65 /* SmallTaskTableViewCell.swift */; };
+		016CF84B24DC8EB1006DEC65 /* SmallTaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 016CF84924DC8EB1006DEC65 /* SmallTaskTableViewCell.xib */; };
+		016CF84E24DCB393006DEC65 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016CF84C24DCB393006DEC65 /* TaskTableViewCell.swift */; };
+		016CF84F24DCB393006DEC65 /* TaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 016CF84D24DCB393006DEC65 /* TaskTableViewCell.xib */; };
 		0179EDDC22EC820200F2A48B /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0179EDDB22EC820200F2A48B /* DateExtension.swift */; };
 		019280EB1F8A615C00E895D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019280EA1F8A615C00E895D4 /* AppDelegate.swift */; };
 		019280F01F8A615C00E895D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 019280EE1F8A615C00E895D4 /* Main.storyboard */; };
@@ -130,8 +132,10 @@
 		0165E19E2329A971002F5DA1 /* InboxHomeScreenTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InboxHomeScreenTableViewCell.xib; sourceTree = "<group>"; };
 		0165E1A12329AAE9002F5DA1 /* InboxHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxHomeViewController.swift; sourceTree = "<group>"; };
 		0165E1A32329F337002F5DA1 /* ScheduledHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledHomeViewController.swift; sourceTree = "<group>"; };
-		016CF84824DC8EB1006DEC65 /* SmallTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallTableViewCell.swift; sourceTree = "<group>"; };
-		016CF84924DC8EB1006DEC65 /* SmallTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SmallTableViewCell.xib; sourceTree = "<group>"; };
+		016CF84824DC8EB1006DEC65 /* SmallTaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallTaskTableViewCell.swift; sourceTree = "<group>"; };
+		016CF84924DC8EB1006DEC65 /* SmallTaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SmallTaskTableViewCell.xib; sourceTree = "<group>"; };
+		016CF84C24DCB393006DEC65 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		016CF84D24DCB393006DEC65 /* TaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTableViewCell.xib; sourceTree = "<group>"; };
 		0179EDDB22EC820200F2A48B /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		019280E71F8A615C00E895D4 /* CalDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		019280EA1F8A615C00E895D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -241,8 +245,6 @@
 				830DB5EB24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld */,
 				832D3C6724ADE0A000A1E709 /* CoreDataManager.swift */,
 				015361C424AA7AB200D19DD2 /* TagStruct.swift */,
-				01AE118324C3AB6700C9467F /* SmallTableViewCell1.swift */,
-				01AE118524C3AB7E00C9467F /* SmallTableViewCell2.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -291,8 +293,10 @@
 		0179EDD922EC672B00F2A48B /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				016CF84824DC8EB1006DEC65 /* SmallTableViewCell.swift */,
-				016CF84924DC8EB1006DEC65 /* SmallTableViewCell.xib */,
+				016CF84C24DCB393006DEC65 /* TaskTableViewCell.swift */,
+				016CF84D24DCB393006DEC65 /* TaskTableViewCell.xib */,
+				016CF84824DC8EB1006DEC65 /* SmallTaskTableViewCell.swift */,
+				016CF84924DC8EB1006DEC65 /* SmallTaskTableViewCell.xib */,
 				015DA6A123C952EF00582851 /* ChooseProjectTableViewCell.swift */,
 				019A09FA242E82D5002434F0 /* DateHeaderCell.swift */,
 				01F389AA23608BE7005DAE8E /* InboxTableViewCell.swift */,
@@ -350,6 +354,8 @@
 		019280E91F8A615C00E895D4 /* CalDo */ = {
 			isa = PBXGroup;
 			children = (
+				01AE118324C3AB6700C9467F /* SmallTableViewCell1.swift */,
+				01AE118524C3AB7E00C9467F /* SmallTableViewCell2.swift */,
 				01F5F482232727F600FE8D62 /* SwiftExample-Bridging-Header.h */,
 				019280F61F8A615C00E895D4 /* Info.plist */,
 				019280EA1F8A615C00E895D4 /* AppDelegate.swift */,
@@ -387,8 +393,8 @@
 			isa = PBXGroup;
 			children = (
 				01D53475234F6D3A00DE6776 /* TimePickerViewController.swift */,
-				017B4E81234F60E600142AD1 /* Custom Tab Bar */,
 				0179EDD422EC63F700F2A48B /* Storyboards */,
+				017B4E81234F60E600142AD1 /* Custom Tab Bar */,
 				016033702469A45B0032DA23 /* AddTodoInboxViewController.swift */,
 				015DA69F23C94E4900582851 /* ProjectHomeViewController.swift */,
 				0165E19723294AAA002F5DA1 /* TodoSectionViewController.swift */,
@@ -561,8 +567,9 @@
 				01D53469234F684100DE6776 /* Images.xcassets in Resources */,
 				014595742445EA6400AFB34D /* SF-Pro-Rounded-Ultralight.otf in Resources */,
 				0145956F2445EA6400AFB34D /* SF-Pro-Rounded-Light.otf in Resources */,
-				016CF84B24DC8EB1006DEC65 /* SmallTableViewCell.xib in Resources */,
+				016CF84B24DC8EB1006DEC65 /* SmallTaskTableViewCell.xib in Resources */,
 				01D53490234F733100DE6776 /* LaunchScreen.storyboard in Resources */,
+				016CF84F24DCB393006DEC65 /* TaskTableViewCell.xib in Resources */,
 				0145956C2445EA6400AFB34D /* SF-Pro-Rounded-Black.otf in Resources */,
 				0145956D2445EA6400AFB34D /* SF-Pro-Rounded-Bold.otf in Resources */,
 				0165E1A02329A971002F5DA1 /* InboxHomeScreenTableViewCell.xib in Resources */,
@@ -708,6 +715,7 @@
 				832D3C6824ADE0A000A1E709 /* CoreDataManager.swift in Sources */,
 				01AE118624C3AB7E00C9467F /* SmallTableViewCell2.swift in Sources */,
 				019281551F8B884E00E895D4 /* InboxViewController.swift in Sources */,
+				016CF84E24DCB393006DEC65 /* TaskTableViewCell.swift in Sources */,
 				01D53481234F6EFC00DE6776 /* DateCell.swift in Sources */,
 				0165E1A52329F337002F5DA1 /* ScheduledHomeViewController.swift in Sources */,
 				01EAFEE6231CAACA00F3EA9D /* RepetitionViewController.swift in Sources */,
@@ -746,7 +754,7 @@
 				019878132319C87300DE1F7E /* RepeatViewController.swift in Sources */,
 				019A09FB242E82D5002434F0 /* DateHeaderCell.swift in Sources */,
 				01D5348E234F727C00DE6776 /* RepeatViewCell.swift in Sources */,
-				016CF84A24DC8EB1006DEC65 /* SmallTableViewCell.swift in Sources */,
+				016CF84A24DC8EB1006DEC65 /* SmallTaskTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
