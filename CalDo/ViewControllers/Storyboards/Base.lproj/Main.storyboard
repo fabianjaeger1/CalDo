@@ -204,11 +204,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fSO-9k-d5H">
-                                <rect key="frame" x="16" y="275.5" width="343" height="306"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="343" id="i66-o2-LxQ"/>
-                                    <constraint firstAttribute="height" constant="306" id="tVI-bA-hWi"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="276" width="375" height="343"/>
                                 <connections>
                                     <segue destination="6W2-w2-6sp" kind="embed" id="lgl-36-Os3"/>
                                 </connections>
@@ -220,16 +216,14 @@
                                     <constraint firstAttribute="height" constant="51" id="UdA-Jb-uHT"/>
                                 </constraints>
                             </imageView>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eqh-sW-SgC">
+                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eqh-sW-SgC">
                                 <rect key="frame" x="16" y="275" width="343" height="307"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="Re7-JB-skL" kind="embed" id="y1l-Hu-mOW"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x5R-LF-T3a">
+                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x5R-LF-T3a">
                                 <rect key="frame" x="16" y="275" width="343" height="307"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="Re7-qY-5lB" kind="embed" id="vmk-Pf-pcV"/>
                                 </connections>
@@ -237,23 +231,26 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="fSO-9k-d5H" firstAttribute="top" secondItem="rfz-OO-GMX" secondAttribute="bottom" constant="2" id="5KW-K7-CBa"/>
                             <constraint firstItem="wHa-qe-0op" firstAttribute="trailing" secondItem="Ihq-p0-EgW" secondAttribute="trailing" constant="-16" id="B0r-YG-7h0"/>
+                            <constraint firstItem="fSO-9k-d5H" firstAttribute="trailing" secondItem="rfz-OO-GMX" secondAttribute="trailing" id="Bpy-n7-qyy"/>
                             <constraint firstItem="rfz-OO-GMX" firstAttribute="trailing" secondItem="Ihq-p0-EgW" secondAttribute="trailing" id="Dyp-dg-xOn"/>
                             <constraint firstItem="SkK-gH-vdC" firstAttribute="top" secondItem="k2R-JK-Do0" secondAttribute="bottom" constant="8" id="FaQ-gJ-rEH"/>
                             <constraint firstItem="wHa-qe-0op" firstAttribute="leading" secondItem="Ihq-p0-EgW" secondAttribute="leading" constant="16" id="LjV-oq-ZpP"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="fSO-9k-d5H" secondAttribute="bottom" constant="-1" id="NGb-Wh-aw0"/>
+                            <constraint firstItem="fSO-9k-d5H" firstAttribute="centerX" secondItem="Eqh-sW-SgC" secondAttribute="centerX" id="V98-gX-LlK"/>
                             <constraint firstItem="rfz-OO-GMX" firstAttribute="top" secondItem="SkK-gH-vdC" secondAttribute="bottom" constant="-1.5" id="W2h-Fa-bCa"/>
                             <constraint firstItem="wHa-qe-0op" firstAttribute="trailing" secondItem="Ihq-p0-EgW" secondAttribute="trailing" constant="-16" id="YMu-65-1zb"/>
-                            <constraint firstItem="fSO-9k-d5H" firstAttribute="trailing" secondItem="Ihq-p0-EgW" secondAttribute="trailing" constant="-16" id="Z8L-d1-hp1"/>
                             <constraint firstItem="Ihq-p0-EgW" firstAttribute="trailing" secondItem="SkK-gH-vdC" secondAttribute="trailing" constant="33" id="bij-mx-XOl"/>
                             <constraint firstItem="Ihq-p0-EgW" firstAttribute="trailing" secondItem="k2R-JK-Do0" secondAttribute="trailing" constant="40" id="cA7-cr-VIT"/>
                             <constraint firstItem="wHa-qe-0op" firstAttribute="leading" secondItem="Ihq-p0-EgW" secondAttribute="leading" constant="16" id="cRi-cv-MH2"/>
                             <constraint firstItem="wHa-qe-0op" firstAttribute="top" secondItem="rfz-OO-GMX" secondAttribute="bottom" constant="2" id="cmG-Xv-6TL"/>
                             <constraint firstItem="k2R-JK-Do0" firstAttribute="top" secondItem="Ihq-p0-EgW" secondAttribute="top" constant="40" id="d9x-Cr-DVd"/>
                             <constraint firstItem="wHa-qe-0op" firstAttribute="top" secondItem="rfz-OO-GMX" secondAttribute="bottom" constant="2" id="dZB-5b-T32"/>
+                            <constraint firstItem="fSO-9k-d5H" firstAttribute="centerX" secondItem="x5R-LF-T3a" secondAttribute="centerX" id="hcT-el-EVu"/>
                             <constraint firstItem="rfz-OO-GMX" firstAttribute="leading" secondItem="Ihq-p0-EgW" secondAttribute="leading" id="kKE-o8-m8u"/>
+                            <constraint firstItem="fSO-9k-d5H" firstAttribute="top" secondItem="rfz-OO-GMX" secondAttribute="bottom" constant="2.5" id="noN-qB-LBm"/>
+                            <constraint firstItem="fSO-9k-d5H" firstAttribute="leading" secondItem="rfz-OO-GMX" secondAttribute="leading" id="xIe-Mj-CBs"/>
                             <constraint firstItem="wHa-qe-0op" firstAttribute="top" secondItem="rfz-OO-GMX" secondAttribute="bottom" constant="2" id="xw8-x0-2Oa"/>
-                            <constraint firstItem="fSO-9k-d5H" firstAttribute="leading" secondItem="Ihq-p0-EgW" secondAttribute="leading" constant="16" id="yPr-3F-EVb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ihq-p0-EgW"/>
                     </view>
@@ -2447,18 +2444,18 @@
             <objects>
                 <viewController id="6W2-w2-6sp" customClass="InboxHomeViewController" customModule="CalDo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NtE-FQ-BDA">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="306"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="343"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="o82-iJ-sSj">
-                                <rect key="frame" x="0.0" y="0.0" width="343" height="306"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="o82-iJ-sSj">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="343"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="59" id="AO8-gf-spk">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="59"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AO8-gf-spk" id="GeA-Q5-LIr">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>

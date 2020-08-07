@@ -345,7 +345,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UICollect
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     
-        loadSampleTaskEntities()
+        // loadSampleTaskEntities()
     }
     
     override func didReceiveMemoryWarning() {

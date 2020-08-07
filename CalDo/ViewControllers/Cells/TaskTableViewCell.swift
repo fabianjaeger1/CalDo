@@ -8,7 +8,17 @@
 
 import UIKit
 
+@objc protocol TaskTableViewCellDelegate: class {
+    func checkmarkTapped1(sender: TaskTableViewCell)
+}
+
+//protocol TaskCellDelegate: class{
+//    func checkmarkTapped(sender: )
+//}
+
 class TaskTableViewCell: UITableViewCell {
+    
+     weak var delegate: TaskTableViewCellDelegate?
     
      @IBOutlet weak var Tag1: UILabel!
      @IBOutlet weak var Tag2: UILabel!
@@ -23,6 +33,11 @@ class TaskTableViewCell: UITableViewCell {
      @IBOutlet weak var TodoDate: UILabel!
      @IBOutlet weak var TodoNotesIcon: UIImageView!
      @IBOutlet weak var TodoLocationIcon: UIImageView!
+    
+    @IBAction func completeButtonTapped(_ sender: Any) {
+        print("Test")
+        delegate?.checkmarkTapped1(sender: self)
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()

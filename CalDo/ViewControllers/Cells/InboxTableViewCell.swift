@@ -8,9 +8,6 @@
 
 import UIKit
 
-@objc protocol ToDoCellDelegate: class {
-    func checkmarkTapped(sender: InboxTableViewCell)
-}
 
 class InboxTableViewCell: UITableViewCell{
     

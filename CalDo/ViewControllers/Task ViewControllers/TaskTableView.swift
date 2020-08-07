@@ -9,10 +9,12 @@
 import Foundation
 import UIKit
 
-class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate {
+
+class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, SmallTaskTableViewCellDelegate, TaskTableViewCellDelegate{
     
 
-    
+//    weak var delegate1: SmallTaskTableViewCellDelegate?
+//    weak var delegate2: TaskTableViewCellDelegate?
     var tableView: UITableView
     var tableViewData: [TaskEntity]
 
@@ -45,6 +47,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate {
         // Smaller Table View cell without Projects and Tags
         if task.value(forKey: "project") == nil && (task.value(forKey: "tags") as! Set<TagEntity>).count == 0 {
             
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "SmallTaskTableViewCell", for: indexPath) as! SmallTaskTableViewCell
             
             //========= DATE ===========
@@ -57,6 +60,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate {
             //========= TITLE ===========
             cell.TodoTitle?.text = (task.value(forKey: "title") as! String)
             cell.TodoTitle.textColor = UIColor.textColor
+            cell.delegate = self
             
             if task.value(forKey: "notes") != nil {
                           cell.TodoNotesIcon.alpha = 1
@@ -122,6 +126,8 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate {
         else {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath) as! TaskTableViewCell
+            
+            cell.delegate = self
 
             // shapeLayer.fillColor = UIColor(hexString: (todo.todoProject?.ProjectColor)!).cgColor
             // shapeLayer.fillColor = UIColor(hexString: (((task.value(forKey: "project") as! ProjectEntity?)?.value(forKey: "color") as! String?))!).cgColor
@@ -327,13 +333,19 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     //=============== DELEGATE METHODS =======================
         
-    func checkmarkTapped(sender: InboxTableViewCell) {
+    func checkmarkTapped(sender: SmallTaskTableViewCell) {
         if let indexPath = self.tableView.indexPath(for: sender) {
+            print("test")
             
-            CoreDataManager.shared.inboxTasks[indexPath.row].setValue(true, forKey: "completed")
-            print(CoreDataManager.shared.inboxTasks[indexPath.row].value(forKey: "title") as! String)
+            // ALLTASKS
+            
+            CoreDataManager.shared.allTasks[indexPath.row].setValue(true, forKey: "completed")
+            print(CoreDataManager.shared.allTasks[indexPath.row].value(forKey: "title") as! String)
             // saveTasks()
             CoreDataManager.shared.saveContext()
+            CoreDataManager.shared.allTasks.remove(at: indexPath.row)
+            
+            self.tableViewData = CoreDataManager.shared.allTasks
 
             // task.completed = !task.completed
             // InboxTasks[indexPath.row] = task
@@ -342,19 +354,60 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate {
             let impact = UIImpactFeedbackGenerator()
             impact.impactOccurred()
             
-            self.tableView.reloadRows(at: [indexPath], with: .automatic)
+
             
             // TODO: replace with fetch tasks?
-            CoreDataManager.shared.inboxTasks.remove(at: indexPath.row)
+            
             
             UIView.animate(withDuration: 0.8){
 //                self.myTableView.deleteSections(at: [indexPath], with: .fade)
                 self.tableView.deleteRows(at: [indexPath], with: .fade)
             }
             
+            self.tableView.reloadRows(at: [indexPath], with: .automatic)
+            
 //            myTableView.reloadData()
             
             }
+    }
+    
+    
+    func checkmarkTapped1(sender: TaskTableViewCell) {
+           if let indexPath = self.tableView.indexPath(for: sender) {
+                    print("test")
+                    
+                    // ALLTASKS
+                    
+                    CoreDataManager.shared.allTasks[indexPath.row].setValue(true, forKey: "completed")
+                    print(CoreDataManager.shared.allTasks[indexPath.row].value(forKey: "title") as! String)
+                    // saveTasks()
+                    CoreDataManager.shared.saveContext()
+                    CoreDataManager.shared.allTasks.remove(at: indexPath.row)
+                    
+                    self.tableViewData = CoreDataManager.shared.allTasks
+
+                    // task.completed = !task.completed
+                    // InboxTasks[indexPath.row] = task
+                    
+                    // TODO: implement haptic
+                    let impact = UIImpactFeedbackGenerator()
+                    impact.impactOccurred()
+                    
+
+                    
+                    // TODO: replace with fetch tasks?
+                    
+                    
+                    UIView.animate(withDuration: 0.8){
+        //                self.myTableView.deleteSections(at: [indexPath], with: .fade)
+                        self.tableView.deleteRows(at: [indexPath], with: .fade)
+                    }
+                    
+                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                    
+        //            myTableView.reloadData()
+                    
+                    }
     }
 }
 

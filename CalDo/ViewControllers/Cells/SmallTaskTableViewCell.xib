@@ -30,6 +30,9 @@
                             <constraint firstAttribute="height" constant="32" id="mHk-4Y-9FM"/>
                         </constraints>
                         <state key="normal" image="TodoButton"/>
+                        <connections>
+                            <action selector="completeButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="GFq-dj-teE"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cW-uZ-3sq">
                         <rect key="frame" x="320.5" y="14" width="40.5" height="22"/>

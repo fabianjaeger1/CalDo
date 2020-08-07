@@ -69,7 +69,6 @@
 		01D5348E234F727C00DE6776 /* RepeatViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5348D234F727C00DE6776 /* RepeatViewCell.swift */; };
 		01D53490234F733100DE6776 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01D5348F234F733100DE6776 /* LaunchScreen.storyboard */; };
 		01EAFEE6231CAACA00F3EA9D /* RepetitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EAFEE5231CAACA00F3EA9D /* RepetitionViewController.swift */; };
-		01F389AB23608BE7005DAE8E /* InboxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F389AA23608BE7005DAE8E /* InboxTableViewCell.swift */; };
 		01F389B323608C8B005DAE8E /* TagListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F389B223608C8B005DAE8E /* TagListViewController.swift */; };
 		1672103DAFACBE7365B8437F /* Pods_CalDo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4726741C17ABDA6BE135D3FF /* Pods_CalDo.framework */; };
 		830DB5ED24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 830DB5EB24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld */; };
@@ -172,7 +171,6 @@
 		01D5348D234F727C00DE6776 /* RepeatViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatViewCell.swift; sourceTree = "<group>"; };
 		01D5348F234F733100DE6776 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01EAFEE5231CAACA00F3EA9D /* RepetitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepetitionViewController.swift; sourceTree = "<group>"; };
-		01F389AA23608BE7005DAE8E /* InboxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxTableViewCell.swift; sourceTree = "<group>"; };
 		01F389B223608C8B005DAE8E /* TagListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagListViewController.swift; sourceTree = "<group>"; };
 		01F5F480232727F500FE8D62 /* CalDo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CalDo-Bridging-Header.h"; sourceTree = "<group>"; };
 		01F5F482232727F600FE8D62 /* SwiftExample-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SwiftExample-Bridging-Header.h"; path = "../../../Desktop/SwiftExample-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -299,7 +297,6 @@
 				016CF84924DC8EB1006DEC65 /* SmallTaskTableViewCell.xib */,
 				015DA6A123C952EF00582851 /* ChooseProjectTableViewCell.swift */,
 				019A09FA242E82D5002434F0 /* DateHeaderCell.swift */,
-				01F389AA23608BE7005DAE8E /* InboxTableViewCell.swift */,
 				01D5348D234F727C00DE6776 /* RepeatViewCell.swift */,
 				01D5347E234F6EFC00DE6776 /* DateCell.swift */,
 				01D5347F234F6EFC00DE6776 /* PriorityTableViewCell.swift */,
@@ -735,7 +732,6 @@
 				01D53472234F6A1900DE6776 /* HomeSectionCollectionViewCell.swift in Sources */,
 				01036E5122ECF0E1008D6B16 /* NewTaskViewController.swift in Sources */,
 				0130AD4622EF25AB00C3EF47 /* Projects.swift in Sources */,
-				01F389AB23608BE7005DAE8E /* InboxTableViewCell.swift in Sources */,
 				0142AAC1231BF78300324DA1 /* OnDateRepeatViewController.swift in Sources */,
 				0165E19823294AAA002F5DA1 /* TodoSectionViewController.swift in Sources */,
 				0165E19F2329A971002F5DA1 /* InboxHomeScreenTableViewCell.swift in Sources */,
