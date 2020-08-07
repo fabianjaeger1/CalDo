@@ -58,6 +58,20 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate {
             cell.TodoTitle?.text = (task.value(forKey: "title") as! String)
             cell.TodoTitle.textColor = UIColor.textColor
             
+            if task.value(forKey: "notes") != nil {
+                          cell.TodoNotesIcon.alpha = 1
+                      }
+                      else {
+                          cell.TodoNotesIcon.alpha = 0
+                      }
+
+                      if task.value(forKey: "location") == nil {
+                          cell.TodoLocationIcon.alpha = 0
+                      }
+                      else {
+                          cell.TodoLocationIcon.alpha = 1
+                      }
+            
             // ======= CELL TODO BUTTON =========
                     
                     if (task.value(forKey: "recurrence") as! Bool) == true && (task.value(forKey: "priority") as! Int) == 1 {
