@@ -1171,7 +1171,7 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kff-tf-nqV">
-                                        <rect key="frame" x="21" y="163" width="326" height="24"/>
+                                        <rect key="frame" x="21" y="139" width="326" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="326" id="Nnv-0w-XUj"/>
                                         </constraints>
