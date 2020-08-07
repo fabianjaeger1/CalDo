@@ -9,6 +9,23 @@ import UIKit
 
 class TodayViewController: UIViewController {
     
+    @IBOutlet weak var myTableView: UITableView!
+    var todayTableView: TaskTableView!
+    
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // CoreDataManager.shared.fetchInboxTasks()
+        // ALLTASKS
+        super.viewWillAppear(animated)
+        
+        CoreDataManager.shared.fetchTodayTasks()
+        
+        todayTableView = TaskTableView(myTableView, CoreDataManager.shared.todayTasks)
+        todayTableView.tableView.reloadData()
+        
+    }
+
 //    
 //    func clearNavigationBar(forBar navBar: UINavigationBar) {
 //        navBar.setBackgroundImage(UIImage(), for: .default)
