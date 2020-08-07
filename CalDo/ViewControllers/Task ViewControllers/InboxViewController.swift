@@ -37,12 +37,6 @@ import CoreData
 
 // Part 2: View Model;
 
- enum InboxCellType{
-        case FullCell
-        case SmallCellType1
-        case SmallCellType2
-}
-
 
 // var InboxTodo = [TodoItem]() // Globally defined variable for Todo items in Inbox
 

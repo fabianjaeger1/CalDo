@@ -150,6 +150,7 @@ func loadSampleTaskEntities() {
     task2.priority = 1
     task2.project = project2
     task2.tags = [tag1]
+    task2.recurrence = true
     
     let task3 = TaskEntity(context: managedContext)
     task3.title = "Go Shopping"
