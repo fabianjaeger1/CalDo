@@ -104,6 +104,8 @@ class CoreDataManager {
         let managedContext = persistentContainer.viewContext
         
         let request : NSFetchRequest<TaskEntity> = TaskEntity.fetchRequest()
+        let predicate = NSPredicate(format: "(completed == false)")
+        request.predicate = predicate
         
         do {
             self.allTasks = try managedContext.fetch(request)

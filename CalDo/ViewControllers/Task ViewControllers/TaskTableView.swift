@@ -340,23 +340,15 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             // ALLTASKS
             
             CoreDataManager.shared.allTasks[indexPath.row].setValue(true, forKey: "completed")
-            print(CoreDataManager.shared.allTasks[indexPath.row].value(forKey: "title") as! String)
-            // saveTasks()
             CoreDataManager.shared.saveContext()
             CoreDataManager.shared.allTasks.remove(at: indexPath.row)
             
-            self.tableViewData = CoreDataManager.shared.allTasks
-
-            // task.completed = !task.completed
-            // InboxTasks[indexPath.row] = task
-            
+            // self.tableViewData = CoreDataManager.shared.allTasks
+            self.tableViewData.remove(at: indexPath.row)
+        
             // TODO: implement haptic
             let impact = UIImpactFeedbackGenerator()
             impact.impactOccurred()
-            
-
-            
-            // TODO: replace with fetch tasks?
             
             
             UIView.animate(withDuration: 0.8){
@@ -364,50 +356,40 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
                 self.tableView.deleteRows(at: [indexPath], with: .fade)
             }
             
-            self.tableView.reloadRows(at: [indexPath], with: .automatic)
+            // self.tableView.reloadRows(at: [indexPath], with: .automatic)
             
-//            myTableView.reloadData()
             
             }
     }
     
     
     func checkmarkTapped1(sender: TaskTableViewCell) {
-           if let indexPath = self.tableView.indexPath(for: sender) {
-                    print("test")
-                    
-                    // ALLTASKS
-                    
-                    CoreDataManager.shared.allTasks[indexPath.row].setValue(true, forKey: "completed")
-                    print(CoreDataManager.shared.allTasks[indexPath.row].value(forKey: "title") as! String)
-                    // saveTasks()
-                    CoreDataManager.shared.saveContext()
-                    CoreDataManager.shared.allTasks.remove(at: indexPath.row)
-                    
-                    self.tableViewData = CoreDataManager.shared.allTasks
+        if let indexPath = self.tableView.indexPath(for: sender) {
+            print("test")
+            
+            // ALLTASKS
+            
+            CoreDataManager.shared.allTasks[indexPath.row].setValue(true, forKey: "completed")
+            CoreDataManager.shared.saveContext()
+            CoreDataManager.shared.allTasks.remove(at: indexPath.row)
+            
+            // self.tableViewData = CoreDataManager.shared.allTasks
+            self.tableViewData.remove(at: indexPath.row)
+            
+            // TODO: implement haptic
+            let impact = UIImpactFeedbackGenerator()
+            impact.impactOccurred()
+        
+            
+            UIView.animate(withDuration: 0.8){
+    //          self.myTableView.deleteSections(at: [indexPath], with: .fade)
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            
+            // self.tableView.reloadRows(at: [indexPath], with: .automatic)
 
-                    // task.completed = !task.completed
-                    // InboxTasks[indexPath.row] = task
-                    
-                    // TODO: implement haptic
-                    let impact = UIImpactFeedbackGenerator()
-                    impact.impactOccurred()
-                    
-
-                    
-                    // TODO: replace with fetch tasks?
-                    
-                    
-                    UIView.animate(withDuration: 0.8){
-        //                self.myTableView.deleteSections(at: [indexPath], with: .fade)
-                        self.tableView.deleteRows(at: [indexPath], with: .fade)
-                    }
-                    
-                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
-                    
-        //            myTableView.reloadData()
-                    
-                    }
+            
+        }
     }
 }
 
