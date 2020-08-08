@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 
 class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, SmallTaskTableViewCellDelegate, TaskTableViewCellDelegate{
@@ -17,19 +18,58 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
 //    weak var delegate2: TaskTableViewCellDelegate?
     var tableView: UITableView
     var tableViewData: [TaskEntity]
+    var taskPredicate: NSPredicate
 
-    init(_ tv: UITableView, _ data: [TaskEntity])
-    {
-        tableViewData = data
+    init?(_ tv: UITableView, _ predicate: NSPredicate) {
+        
         tableView = tv
+        taskPredicate = predicate
+        
+        let managedContext = CoreDataManager.shared.persistentContainer.viewContext
+        let request : NSFetchRequest<TaskEntity> = TaskEntity.fetchRequest()
+        let predicate = self.taskPredicate
+        request.predicate = predicate
+        
+//        throws {
+//        do {
+//                self.tableViewData = try managedContext.fetch(request)
+//            } catch let error as NSError {
+//                print("Error fetching tasks from context \(error)")
+//                throw error
+//            }
+//        }
+//
+        do {
+            self.tableViewData = try managedContext.fetch(request)
+        } catch {
+            print("Error fetching tasks from context \(error)")
+            return nil
+        }
+        
         super.init()
+
         tableView.delegate = self
         tableView.dataSource = self
 
         // Register all of your cells
         tableView.register(UINib(nibName: "TaskTableViewCell", bundle: nil), forCellReuseIdentifier: "TaskTableViewCell")
         tableView.register(UINib(nibName: "SmallTaskTableViewCell", bundle: nil), forCellReuseIdentifier: "SmallTaskTableViewCell")
-
+    }
+    
+    func refreshTableViewData() {
+        let managedContext = CoreDataManager.shared.persistentContainer.viewContext
+        let request : NSFetchRequest<TaskEntity> = TaskEntity.fetchRequest()
+        let predicate = self.taskPredicate
+        request.predicate = predicate
+          
+        do {
+            self.tableViewData = try managedContext.fetch(request)
+        } catch {
+            print("Error fetching tasks from context \(error)")
+        }
+        
+        // TODO: necessary?
+        self.tableView.reloadData()
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -339,10 +379,14 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             
             // ALLTASKS
             
-            CoreDataManager.shared.allTasks[indexPath.row].setValue(true, forKey: "completed")
-            CoreDataManager.shared.saveContext()
-            CoreDataManager.shared.allTasks.remove(at: indexPath.row)
             
+//            CoreDataManager.shared.allTasks[indexPath.row].setValue(true, forKey: "completed")
+//            CoreDataManager.shared.saveContext()
+//            CoreDataManager.shared.allTasks.remove(at: indexPath.row)
+            
+            self.tableViewData[indexPath.row].setValue(true, forKey: "completed")
+            CoreDataManager.shared.saveContext()
+                
             // self.tableViewData = CoreDataManager.shared.allTasks
             self.tableViewData.remove(at: indexPath.row)
         
@@ -369,9 +413,12 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             
             // ALLTASKS
             
-            CoreDataManager.shared.allTasks[indexPath.row].setValue(true, forKey: "completed")
+//            CoreDataManager.shared.allTasks[indexPath.row].setValue(true, forKey: "completed")
+//            CoreDataManager.shared.saveContext()
+//            CoreDataManager.shared.allTasks.remove(at: indexPath.row)
+            
+            self.tableViewData[indexPath.row].setValue(true, forKey: "completed")
             CoreDataManager.shared.saveContext()
-            CoreDataManager.shared.allTasks.remove(at: indexPath.row)
             
             // self.tableViewData = CoreDataManager.shared.allTasks
             self.tableViewData.remove(at: indexPath.row)

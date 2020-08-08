@@ -69,6 +69,7 @@ class InboxViewController: UIViewController {
     @IBOutlet weak var myTableView: UITableView!
     var inboxTableView: TaskTableView!
     
+    
     @IBAction func showActionSheet(_ sender : AnyObject) {
         // Print out what button was tapped
         func printActionTitle(_ action: UIAlertAction) {
@@ -82,6 +83,8 @@ class InboxViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: printActionTitle))
         self.present(alertController, animated: true, completion: nil)
     }
+    
+
 
 //    @IBAction func BackButtonPressed(_ sender: Any) {
 //        dismiss(animated: true, completion: nil)
@@ -155,20 +158,17 @@ class InboxViewController: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        // CoreDataManager.shared.fetchInboxTasks()
-        // ALLTASKS
         super.viewWillAppear(animated)
         
-        CoreDataManager.shared.fetchAllTasks()
-        
-        // TODO: unnecessary declaration every time?
-        inboxTableView = TaskTableView(myTableView, CoreDataManager.shared.allTasks)
-        inboxTableView.tableView.reloadData()
-        
+        // inboxTableView.refreshTableViewData()
+        // inboxTableView.tableView.reloadData()
     }
     
     override func viewDidLoad() {
         
+        // TODO: unnecessary declaration every time?
+        let predicate = NSPredicate(format: "(completed == false)")
+        inboxTableView = TaskTableView(myTableView, predicate)
         
         if #available(iOS 12.0, *) {
             if traitCollection.userInterfaceStyle == .light {

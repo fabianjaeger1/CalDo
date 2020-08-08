@@ -221,9 +221,8 @@ class InboxHomeViewController: UIViewController, InboxCellDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        CoreDataManager.shared.fetchInboxTasks()
-        inboxHomeTableView = TaskTableView(tableView, CoreDataManager.shared.inboxTasks)
-        inboxHomeTableView.tableView.reloadData()
+        
+        inboxHomeTableView.refreshTableViewData()
     }
     
     override func viewDidLoad() {
@@ -239,6 +238,9 @@ class InboxHomeViewController: UIViewController, InboxCellDelegate {
         
         // tableView.register(UINib(nibName: "InboxHomeScreenTableViewCell", bundle: nil), forCellReuseIdentifier: "InboxHomeScreenTableViewCell")
     
+        let predicate = NSPredicate(format: "(completed == false)")
+        inboxHomeTableView = TaskTableView(tableView, predicate)
+        
         tableView.backgroundColor = .BackgroundColor
         
         super.viewDidLoad()

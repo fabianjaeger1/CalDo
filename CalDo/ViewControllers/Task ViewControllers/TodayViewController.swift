@@ -15,18 +15,25 @@ class TodayViewController: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        // CoreDataManager.shared.fetchInboxTasks()
-        // ALLTASKS
+
         super.viewWillAppear(animated)
         
-        CoreDataManager.shared.fetchTodayTasks()
-        
-        todayTableView = TaskTableView(myTableView, CoreDataManager.shared.todayTasks)
-        todayTableView.tableView.reloadData()
-        
+        // todayTableView.tableView.reloadData()
     }
 
-//    
+    override func viewDidLoad() {
+        var calendar = Calendar.current
+        calendar.timeZone = NSTimeZone.local
+        
+        var dateTo = calendar.startOfDay(for: Date())
+        dateTo = calendar.date(byAdding: .day, value: 1, to: dateTo)!
+        
+        let predicate = NSPredicate(format: "(completed == false) AND (date <= %@)", dateTo as NSDate)
+        
+        todayTableView = TaskTableView(myTableView, predicate)
+    }
+    
+//
 //    func clearNavigationBar(forBar navBar: UINavigationBar) {
 //        navBar.setBackgroundImage(UIImage(), for: .default)
 //        navBar.shadowImage = UIImage()
