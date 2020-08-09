@@ -138,6 +138,8 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
 
             // =========== ANIMATION ==================
             
+            // TODO: remove, moved to checkmarktapped
+            
             if (task.value(forKey: "completed") as! Bool) == true {
                 cell.alpha = 1
                 let image = UIImage(named: "DoneButtonPressed")
@@ -395,6 +397,14 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             impact.impactOccurred()
             
             
+            let image = UIImage(named: "DoneButtonPressed")
+            
+            UIView.animate(
+                withDuration: 0.3,
+                animations: {
+                    sender.TodoStatus.setImage(image, for: .normal)
+            })
+            
             UIView.animate(withDuration: 0.8){
 //                self.myTableView.deleteSections(at: [indexPath], with: .fade)
                 self.tableView.deleteRows(at: [indexPath], with: .fade)
@@ -427,6 +437,14 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             let impact = UIImpactFeedbackGenerator()
             impact.impactOccurred()
         
+            let image = UIImage(named: "DoneButtonPressed")
+            
+            UIView.animate(
+                withDuration: 0.3,
+                animations: {
+                    sender.TodoStatus.setImage(image, for: .normal)
+            })
+
             
             UIView.animate(withDuration: 0.8){
     //          self.myTableView.deleteSections(at: [indexPath], with: .fade)

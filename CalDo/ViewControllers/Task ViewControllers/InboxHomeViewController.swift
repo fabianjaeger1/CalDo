@@ -43,34 +43,10 @@ extension UITableView {
     }
 }
 
-class InboxHomeViewController: UIViewController, InboxCellDelegate {
-    
-    // Get the CoreData context
-    // let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
-    // var InboxTasks = [NSManagedObject]()
-    
-    func checkmarkTapped(sender: InboxHomeScreenTableViewCell) {
-        if let indexPath = tableView.indexPath(for: sender) {
-            // var todo = InboxTodo[indexPath.row]
-            var task = CoreDataManager.shared.inboxTasks[indexPath.section]
-            
-            CoreDataManager.shared.inboxTasks[indexPath.row].setValue(true, forKey: "completed")
-            CoreDataManager.shared.saveContext()
-            
-            tableView.reloadRows(at: [indexPath], with: .automatic)
-            CoreDataManager.shared.inboxTasks.remove(at: indexPath.row)
-            
-            UIView.animate(withDuration: 0.8){
-                //                self.myTableView.deleteSections(at: [indexPath], with: .fade)
-            self.tableView.deleteSections([indexPath.section], with: .fade)
-            }
-        }
-    }
+class InboxHomeViewController: UIViewController {
     
 
     let cellSpacingHeight: CGFloat = 15
-    
 
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -85,25 +61,6 @@ class InboxHomeViewController: UIViewController, InboxCellDelegate {
 //        cell.layer.shadowOffset = CGSize(width: 0, height: 2)
 //        cell.layer.shadowColor = UIColor.gray.cgColor
     }
-    
-    
-    
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//
-//        if CoreDataManager.shared.inboxTasks.count == 0 {
-//            self.tableView.setEmptyMessage("""
-//            Nothing to see here
-//            Start adding Tasks
-//            """
-//            )
-//        }
-//        else {
-//            self.tableView.restore()
-//            self.tableView.separatorStyle = .none
-//        }
-//        return CoreDataManager.shared.inboxTasks.count
-//    }
-//
     
     
 //    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -178,25 +135,6 @@ class InboxHomeViewController: UIViewController, InboxCellDelegate {
     @IBOutlet weak var tableView: UITableView!
     var inboxHomeTableView: TaskTableView!
 
-    
-    
-//    func checkmarkTapped(sender: InboxHomeScreenTableViewCell) {
-//        print("test")
-//        if let indexPath = tableView.indexPath(for: sender) {
-//            //            var todo = InboxTodo[indexPath.row]
-//            var todo = InboxTodo[indexPath.section]
-//
-//            todo.todoCompleted = !todo.todoCompleted
-//            InboxTodo[indexPath.section] = todo
-//            tableView.reloadRows(at: [indexPath], with: .automatic)
-//            InboxTodo.remove(at: indexPath.section)
-//
-//            UIView.animate(withDuration: 0.8){
-//            self.tableView.deleteSections([indexPath.section], with: .fade)
-//            }
-//        }
-//    }
-    
 //    func animateTable() {
 //        self.tableView.reloadData()
 //        let cells = tableView.visibleCells
