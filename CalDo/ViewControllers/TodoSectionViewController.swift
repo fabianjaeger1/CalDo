@@ -29,34 +29,34 @@ class var textColor: UIColor {
     }
 }
 
-let TodoSections = ["Inbox", "Today", "Next", "Habits"]
+let todoSections = ["Inbox", "Today", "Next", "Habits"]
 
-var AllProjects: [Project]?
+var allProjects: [Project]?
 
-class TodoSectionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate {
+class TodoSectionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate, UIAdaptivePresentationControllerDelegate {
     
     // loadSampleTaskEntities()
 
 //    @IBOutlet weak var tableView: UITableView!
     
     
-    @IBOutlet weak var ProjectTableView: UITableView!
+    @IBOutlet weak var projectTableView: UITableView!
     
-    @IBOutlet weak var CollectionView: UICollectionView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet var myView: UIView!
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return AllProjects!.count
+        return allProjects!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = ProjectTableView.dequeueReusableCell(withIdentifier: "TodoSectionProjectsTableViewCell", for: indexPath) as! TodoSectionProjectsTableViewCell
+        let cell = projectTableView.dequeueReusableCell(withIdentifier: "TodoSectionProjectsTableViewCell", for: indexPath) as! TodoSectionProjectsTableViewCell
         
         
-        cell.ProjectLabel.text = AllProjects![indexPath.row].ProjectTitle
+        cell.ProjectLabel.text = allProjects![indexPath.row].ProjectTitle
         
         let shapeLayer = CAShapeLayer()
         
@@ -69,7 +69,7 @@ class TodoSectionViewController: UIViewController, UITableViewDelegate, UITableV
         
         shapeLayer.path = circlePath.cgPath
         shapeLayer.lineWidth = 3.0
-        shapeLayer.fillColor = UIColor(hexString: AllProjects![indexPath.row].ProjectColor!).cgColor
+        shapeLayer.fillColor = UIColor(hexString: allProjects![indexPath.row].ProjectColor!).cgColor
         cell.ProjectColor.layer.addSublayer(shapeLayer)
         cell.ProjectLabel.textColor = UIColor.textColor
         cell.backgroundColor = UIColor.BackgroundColor
@@ -82,7 +82,7 @@ class TodoSectionViewController: UIViewController, UITableViewDelegate, UITableV
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return TodoSections.count
+        return todoSections.count
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -103,35 +103,56 @@ class TodoSectionViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = CollectionView.dequeueReusableCell(withReuseIdentifier: "TodoSectionCollectionViewCell", for: indexPath) as! TodoSectionCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TodoSectionCollectionViewCell", for: indexPath) as! TodoSectionCollectionViewCell
     
-        let InboxImage = UIImage(named: "Inbox_Home")
-        let TodayImage = UIImage(named: "Today_Todo")
-        let UpcomingImage = UIImage(named: "Scheduled")
-        let HabitImage = UIImage(named: "Habits_Home")
-        let imageArray = [InboxImage,TodayImage,UpcomingImage,HabitImage]
+        switch indexPath.row {
+        case 0:
+            cell.TodoSection.image = UIImage(named: "Inbox_Home")
+            
+            CoreDataManager.shared.fetchInboxTasks()
+            let inboxTaskAmount = CoreDataManager.shared.inboxTasks.count
+            if inboxTaskAmount == 1 {
+                cell.TodoAmountLabel.text = "1 Task"
+            }
+            else {
+                cell.TodoAmountLabel.text = "\(inboxTaskAmount) Tasks"
+            }
+
+        case 1:
+            cell.TodoSection.image = UIImage(named: "Today_Todo")
+            
+            CoreDataManager.shared.fetchTodayTasks()
+            let todayTaskAmount = CoreDataManager.shared.todayTasks.count
+            if todayTaskAmount == 1 {
+                cell.TodoAmountLabel.text = "1 Task"
+            }
+            else {
+                cell.TodoAmountLabel.text = "\(todayTaskAmount) Tasks"
+            }
+            
+        case 2:
+             cell.TodoSection.image = UIImage(named: "Scheduled")
+            
+            CoreDataManager.shared.fetchUpcomingTasks()
+            let upcomingTaskAmount = CoreDataManager.shared.upcomingTasks.count
+            if upcomingTaskAmount == 1 {
+                cell.TodoAmountLabel.text = "1 Task"
+            }
+            else {
+                cell.TodoAmountLabel.text = "\(upcomingTaskAmount) Tasks"
+            }
+            
+        case 3:
+            cell.TodoSection.image = UIImage(named: "Habits_Home")
+        default:
+            print("Bad indexPath for TodoSection CollectionView")
+        }
         
         cell.layer.cornerRadius = 25
-        cell.TodoSection.image = imageArray[indexPath.row]
-        cell.TodoSectionLabel.text = TodoSections[indexPath.row]
+        
         cell.TodoAmountLabel.textColor = UIColor.textColor
-        
-        
-        var todoAmountLabels = [String](repeating: "", count: 4)
-        
-        CoreDataManager.shared.fetchInboxTasks()
-        let inboxTaskAmount = CoreDataManager.shared.inboxTasks.count
-        if inboxTaskAmount == 1 {
-            todoAmountLabels[0] = "1 Task"
-        }
-        else {
-            todoAmountLabels[0] = "\(inboxTaskAmount) Tasks"
-        }
-        
-        cell.TodoAmountLabel.text = todoAmountLabels[indexPath.row]
-            
+        cell.TodoSectionLabel.text = todoSections[indexPath.row]
         cell.TodoSectionLabel.textColor = UIColor.textColor
-//        cell.TodoAmountLabel.textColor = UIColor(hexString: "C6CCD4")
         
         cell.contentView.layer.cornerRadius = 25
         cell.contentView.layer.borderWidth = 1.0
@@ -144,7 +165,6 @@ class TodoSectionViewController: UIViewController, UITableViewDelegate, UITableV
         cell.layer.shadowRadius = 2.0
     
         
-        
         // Need for implementation of shadows here
     
         
@@ -153,14 +173,14 @@ class TodoSectionViewController: UIViewController, UITableViewDelegate, UITableV
 //        cell.layer.applySketchShadow(color: UIColor.textColor, alpha: 0.1, x: 0, y: 3, blur: 13, spread: 4
 //        )
         
-
-        
         return cell
 
     }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segue.destination.presentationController?.delegate = self
+        
         if segue.identifier == "InboxDetail" {
             //            let destinationVC = segue.destination as? InboxViewController
         }
@@ -175,6 +195,9 @@ class TodoSectionViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        collectionView.reloadData()
+    }
     
     
 // ================ Old TableView =================
@@ -263,7 +286,7 @@ class TodoSectionViewController: UIViewController, UITableViewDelegate, UITableV
 
     override func viewDidLoad() {
         
-        AllProjects = Project.loadProjects()
+        allProjects = Project.loadProjects()
         
         if #available(iOS 13.0, *) {
             self.view.backgroundColor = .BackgroundColor
@@ -272,17 +295,24 @@ class TodoSectionViewController: UIViewController, UITableViewDelegate, UITableV
         }
     
 
-        CollectionView.delegate = self
-        CollectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
-        ProjectTableView.delegate = self
-        ProjectTableView.dataSource = self
-        ProjectTableView.backgroundColor = .BackgroundColor
+        projectTableView.delegate = self
+        projectTableView.dataSource = self
+        projectTableView.backgroundColor = .BackgroundColor
+        
+        
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        collectionView.reloadData()
+        super.viewWillAppear(animated)
+    }
 
     // MARK: - Navigation
 
