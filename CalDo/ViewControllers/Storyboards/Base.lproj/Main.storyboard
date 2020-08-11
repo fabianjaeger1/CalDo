@@ -677,9 +677,8 @@
                                 <rect key="frame" x="0.0" y="10" width="375" height="627"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Project" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mle-YZ-aFU">
-                                        <rect key="frame" x="78" y="30" width="97" height="36"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mle-YZ-aFU">
+                                        <rect key="frame" x="58" y="30" width="97" height="36"/>
                                         <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -689,7 +688,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3hg-R7-3MA">
-                                        <rect key="frame" x="25" y="29" width="38" height="38"/>
+                                        <rect key="frame" x="15" y="29" width="38" height="38"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="38" id="4sN-5a-w48"/>
@@ -701,10 +700,12 @@
                                 <constraints>
                                     <constraint firstItem="G7K-Vw-10m" firstAttribute="bottom" secondItem="oW1-rv-AhF" secondAttribute="bottom" id="EB1-DH-VwJ"/>
                                     <constraint firstItem="G7K-Vw-10m" firstAttribute="trailing" secondItem="oW1-rv-AhF" secondAttribute="trailing" id="ESj-gN-ppm"/>
+                                    <constraint firstItem="3hg-R7-3MA" firstAttribute="leading" secondItem="oW1-rv-AhF" secondAttribute="leading" constant="15" id="RtO-Xx-1wA"/>
+                                    <constraint firstItem="Mle-YZ-aFU" firstAttribute="top" secondItem="oW1-rv-AhF" secondAttribute="top" constant="30" id="a2A-sx-Ln4"/>
+                                    <constraint firstItem="Mle-YZ-aFU" firstAttribute="leading" secondItem="3hg-R7-3MA" secondAttribute="trailing" constant="5" id="e4z-v5-iZz"/>
                                     <constraint firstItem="G7K-Vw-10m" firstAttribute="leading" secondItem="oW1-rv-AhF" secondAttribute="leading" id="j0e-kA-bKo"/>
                                     <constraint firstItem="3hg-R7-3MA" firstAttribute="top" secondItem="oW1-rv-AhF" secondAttribute="top" constant="29" id="kZd-Ze-cXN"/>
                                     <constraint firstItem="G7K-Vw-10m" firstAttribute="top" secondItem="3hg-R7-3MA" secondAttribute="bottom" constant="27" id="uUL-C9-wmw"/>
-                                    <constraint firstItem="3hg-R7-3MA" firstAttribute="leading" secondItem="oW1-rv-AhF" secondAttribute="leading" constant="25" id="wrh-Az-EnL"/>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="oW1-rv-AhF"/>
                             </view>
@@ -714,6 +715,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="n7K-0D-rCv"/>
                     <connections>
+                        <outlet property="myTableView" destination="G7K-Vw-10m" id="Myu-Ca-Fp1"/>
                         <outlet property="projectColor" destination="3hg-R7-3MA" id="E1J-wC-K6x"/>
                         <outlet property="projectLabel" destination="Mle-YZ-aFU" id="IC3-Ky-4Ae"/>
                     </connections>

@@ -75,8 +75,6 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected project")
-        // self.performSegue(withIdentifier: "ProjectDetail", sender: self)
         delegate?.projectSelected(sender: self)
     }
 

@@ -34,7 +34,22 @@ class ProjectTaskViewController: UIViewController {
         let predicate = NSPredicate(format: "(completed == false) AND (project == %@)", project)
         projectTaskTableView = TaskTableView(myTableView, predicate)
         
+        // Set text
         projectLabel.text = project.value(forKey: "title") as? String
+        
+        // Set color
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.backgroundColor = UIColor.clear.cgColor
+
+        let center = CGPoint(x: projectColor.frame.height/2, y: projectColor.frame.width/2)
+        let circlePath = UIBezierPath(arcCenter: center, radius: CGFloat(8), startAngle: CGFloat(0), endAngle: CGFloat(Double.pi * 2), clockwise: true)
+
+        shapeLayer.path = circlePath.cgPath
+        shapeLayer.lineWidth = 3.0
+        shapeLayer.fillColor = UIColor(hexFromString: project.value(forKey: "color") as! String).cgColor
+
+        projectColor.layer.backgroundColor = UIColor.clear.cgColor
+        projectColor.layer.addSublayer(shapeLayer)
     }
     
 

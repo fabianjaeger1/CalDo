@@ -41,8 +41,11 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
     
     
     @IBOutlet weak var myTableView: UITableView!
-    var projectTableView: ProjectTableView!
-    
+    var projectTableView: ProjectTableView! {
+        didSet {
+            projectTableView.delegate = self
+        }
+    }
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -180,7 +183,6 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
     }
     
     func projectSelected(sender: ProjectTableView) {
-        print("delegate received")
         self.performSegue(withIdentifier: "ProjectDetail", sender: self)
     }
     
