@@ -100,16 +100,25 @@ func loadSampleTaskEntities() {
     
     let managedContext = CoreDataManager.shared.persistentContainer.viewContext
     
-    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TaskEntity")
-    let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+    let fetchRequestTasks = NSFetchRequest<NSFetchRequestResult>(entityName: "TaskEntity")
+    let batchDeleteRequestTasks = NSBatchDeleteRequest(fetchRequest: fetchRequestTasks)
 
     do {
-        try managedContext.execute(batchDeleteRequest)
+        try managedContext.execute(batchDeleteRequestTasks)
         // try managedContext.save()
     } catch {
-        print("Error batch deleting \(error)")
+        print("Error batch deleting tasks \(error)")
     }
     
+    let fetchRequestProjects = NSFetchRequest<NSFetchRequestResult>(entityName: "ProjectEntity")
+    let batchDeleteRequestProjects = NSBatchDeleteRequest(fetchRequest: fetchRequestProjects)
+
+    do {
+        try managedContext.execute(batchDeleteRequestProjects)
+        // try managedContext.save()
+    } catch {
+        print("Error batch deleting projects \(error)")
+    }
     
     
     
