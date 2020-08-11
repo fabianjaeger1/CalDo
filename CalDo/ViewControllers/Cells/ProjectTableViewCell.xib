@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Rounded-Semibold.otf">
+            <string>SFProRounded-Semibold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -13,7 +18,7 @@
             <rect key="frame" x="0.0" y="0.0" width="387" height="49"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wzj-02-PLR" id="BWE-mf-sAh">
-                <rect key="frame" x="0.0" y="0.0" width="355.5" height="49"/>
+                <rect key="frame" x="0.0" y="0.0" width="356" height="49"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jny-bM-I6H">
@@ -25,19 +30,21 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dpo-Uh-KKI">
-                        <rect key="frame" x="47" y="14" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="52" y="14" width="43.5" height="21.5"/>
+                        <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="Dpo-Uh-KKI" firstAttribute="leading" secondItem="jny-bM-I6H" secondAttribute="trailing" constant="6" id="MFe-iL-nYM"/>
+                    <constraint firstItem="Dpo-Uh-KKI" firstAttribute="leading" secondItem="jny-bM-I6H" secondAttribute="trailing" constant="11" id="MFe-iL-nYM"/>
                     <constraint firstItem="jny-bM-I6H" firstAttribute="centerY" secondItem="BWE-mf-sAh" secondAttribute="centerY" id="Pwd-Eg-aDV"/>
                     <constraint firstItem="jny-bM-I6H" firstAttribute="leading" secondItem="BWE-mf-sAh" secondAttribute="leading" constant="14" id="XIS-wB-qlm"/>
                     <constraint firstItem="Dpo-Uh-KKI" firstAttribute="centerY" secondItem="BWE-mf-sAh" secondAttribute="centerY" id="mpG-5Q-9bp"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="projectColor" destination="jny-bM-I6H" id="WIB-Na-rlQ"/>
                 <outlet property="projectLabel" destination="Dpo-Uh-KKI" id="w0A-GO-OVY"/>

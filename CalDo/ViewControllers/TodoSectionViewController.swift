@@ -287,6 +287,8 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
 
     override func viewDidLoad() {
         
+        myTableView.layer.backgroundColor = UIColor.clear.cgColor
+        
         
         
         if #available(iOS 13.0, *) {
