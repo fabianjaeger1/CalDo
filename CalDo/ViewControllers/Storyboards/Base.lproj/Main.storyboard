@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="slE-JG-14w">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="slE-JG-14w">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,7 +17,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Calendar-->
+        <!--Ib Calendar Data Source-->
         <scene sceneID="oxp-WT-HUS">
             <objects>
                 <viewController id="1zT-Gl-PBh" customClass="CalendarViewController" customModule="CalDo" customModuleProvider="target" sceneMemberID="viewController">
@@ -357,15 +357,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3gY-hn-W1B">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3gY-hn-W1B">
                                 <rect key="frame" x="0.0" y="377" width="375" height="241"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TodoSectionProjectsTableViewCell" rowHeight="57" id="Xi0-b1-yRN" customClass="TodoSectionProjectsTableViewCell" customModule="CalDo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="57"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xi0-b1-yRN" id="36i-Wf-uLV">
-                                            <rect key="frame" x="0.0" y="0.0" width="349" height="57"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="348.5" height="57"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PJO-jw-km7">
@@ -426,8 +427,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="CollectionView" destination="K52-sD-qCa" id="qpP-Vv-lOD"/>
-                        <outlet property="ProjectTableView" destination="3gY-hn-W1B" id="GF4-jf-Ikh"/>
-                        <outlet property="View" destination="uiv-tz-9rL" id="yc6-gb-unz"/>
+                        <outlet property="myTableView" destination="3gY-hn-W1B" id="g11-2t-U8i"/>
                         <segue destination="5tz-U2-p73" kind="show" identifier="InboxDetail" id="LwU-8O-VQV"/>
                         <segue destination="rht-Yz-jkJ" kind="show" identifier="UpcomingDetail" id="xhB-ua-xfO"/>
                         <segue destination="NFI-oE-5dt" kind="show" identifier="HabitDetail" id="53T-OQ-IXG"/>
@@ -1272,7 +1272,7 @@
             </objects>
             <point key="canvasLocation" x="2077.5999999999999" y="-873.01349325337333"/>
         </scene>
-        <!--Date Pop Up View Controller-->
+        <!--Ib Calendar Data Source-->
         <scene sceneID="nT0-Xk-VP0">
             <objects>
                 <viewController modalPresentationStyle="overCurrentContext" id="8hS-BN-AWw" customClass="DatePopUpViewController" customModule="CalDo" customModuleProvider="target" sceneMemberID="viewController">
@@ -2519,9 +2519,6 @@
             <point key="canvasLocation" x="1418" y="1558"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="fiX-NY-lbz"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="Account" width="30" height="35"/>
         <image name="AccountSelected" width="29" height="34"/>
@@ -2553,7 +2550,10 @@
         <image name="TrashCan" width="49" height="49"/>
         <image name="Weather Sun" width="50" height="51"/>
         <image name="When_Todo" width="25" height="24"/>
-        <image name="flag.fill" catalog="system" width="128" height="121"/>
-        <image name="location.fill" catalog="system" width="128" height="115"/>
+        <image name="flag.fill" catalog="system" width="64" height="64"/>
+        <image name="location.fill" catalog="system" width="64" height="60"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="fiX-NY-lbz"/>
+    </inferredMetricsTieBreakers>
 </document>

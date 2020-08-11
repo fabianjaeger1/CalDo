@@ -77,6 +77,18 @@
 		832D3C6824ADE0A000A1E709 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832D3C6724ADE0A000A1E709 /* CoreDataManager.swift */; };
 		832D3C6924ADE0A000A1E709 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832D3C6724ADE0A000A1E709 /* CoreDataManager.swift */; };
 		832D3C6A24ADE0A000A1E709 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832D3C6724ADE0A000A1E709 /* CoreDataManager.swift */; };
+		834F82C524E2ACF8007DB362 /* ProjectTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834F82C424E2ACF8007DB362 /* ProjectTaskViewController.swift */; };
+		834F82C624E2ACF8007DB362 /* ProjectTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834F82C424E2ACF8007DB362 /* ProjectTaskViewController.swift */; };
+		834F82C724E2ACF8007DB362 /* ProjectTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834F82C424E2ACF8007DB362 /* ProjectTaskViewController.swift */; };
+		834F82D124E2ADDF007DB362 /* ProjectTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834F82D024E2ADDF007DB362 /* ProjectTableView.swift */; };
+		834F82D224E2ADDF007DB362 /* ProjectTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834F82D024E2ADDF007DB362 /* ProjectTableView.swift */; };
+		834F82D324E2ADDF007DB362 /* ProjectTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834F82D024E2ADDF007DB362 /* ProjectTableView.swift */; };
+		834F82D524E2AF49007DB362 /* ProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 834F82D424E2AF49007DB362 /* ProjectTableViewCell.xib */; };
+		834F82D624E2AF49007DB362 /* ProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 834F82D424E2AF49007DB362 /* ProjectTableViewCell.xib */; };
+		834F82D724E2AF49007DB362 /* ProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 834F82D424E2AF49007DB362 /* ProjectTableViewCell.xib */; };
+		834F82D924E2AFCD007DB362 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834F82D824E2AFCD007DB362 /* ProjectTableViewCell.swift */; };
+		834F82DA24E2AFCD007DB362 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834F82D824E2AFCD007DB362 /* ProjectTableViewCell.swift */; };
+		834F82DB24E2AFCD007DB362 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834F82D824E2AFCD007DB362 /* ProjectTableViewCell.swift */; };
 		83626C7A24DCACA200AFD9EE /* TaskTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83626C7924DCACA200AFD9EE /* TaskTableView.swift */; };
 		83626C7B24DCACA200AFD9EE /* TaskTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83626C7924DCACA200AFD9EE /* TaskTableView.swift */; };
 		83626C7C24DCACA200AFD9EE /* TaskTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83626C7924DCACA200AFD9EE /* TaskTableView.swift */; };
@@ -182,6 +194,10 @@
 		72A7FC944A6AFBB00A63585F /* Pods-CalDo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalDo.release.xcconfig"; path = "Target Support Files/Pods-CalDo/Pods-CalDo.release.xcconfig"; sourceTree = "<group>"; };
 		830DB5EC24A8EC35006B16E3 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		832D3C6724ADE0A000A1E709 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		834F82C424E2ACF8007DB362 /* ProjectTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTaskViewController.swift; sourceTree = "<group>"; };
+		834F82D024E2ADDF007DB362 /* ProjectTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableView.swift; sourceTree = "<group>"; };
+		834F82D424E2AF49007DB362 /* ProjectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectTableViewCell.xib; sourceTree = "<group>"; };
+		834F82D824E2AFCD007DB362 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
 		83626C7924DCACA200AFD9EE /* TaskTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableView.swift; sourceTree = "<group>"; };
 		929E004114D27D044565F86A /* Pods-CalDoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalDoTests.debug.xcconfig"; path = "Target Support Files/Pods-CalDoTests/Pods-CalDoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AADC4FA7D5CB265C6C07244D /* Pods-CalDo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalDo.debug.xcconfig"; path = "Target Support Files/Pods-CalDo/Pods-CalDo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -305,6 +321,8 @@
 				01D5346F234F6A1900DE6776 /* TodoSectionCollectionViewCell.swift */,
 				01D5346D234F6A1900DE6776 /* TodoSectionProjectsTableViewCell.swift */,
 				01D53470234F6A1900DE6776 /* TodoSectionsTableViewCell.swift */,
+				834F82D424E2AF49007DB362 /* ProjectTableViewCell.xib */,
+				834F82D824E2AFCD007DB362 /* ProjectTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -446,6 +464,8 @@
 				0165E1A12329AAE9002F5DA1 /* InboxHomeViewController.swift */,
 				0160336B24694EA00032DA23 /* HabitViewController.swift */,
 				83626C7924DCACA200AFD9EE /* TaskTableView.swift */,
+				834F82C424E2ACF8007DB362 /* ProjectTaskViewController.swift */,
+				834F82D024E2ADDF007DB362 /* ProjectTableView.swift */,
 			);
 			path = "Task ViewControllers";
 			sourceTree = "<group>";
@@ -567,6 +587,7 @@
 				014595702445EA6400AFB34D /* SF-Pro-Rounded-Medium.otf in Resources */,
 				014595712445EA6400AFB34D /* SF-Pro-Rounded-Regular.otf in Resources */,
 				014595722445EA6400AFB34D /* SF-Pro-Rounded-Semibold.otf in Resources */,
+				834F82D524E2AF49007DB362 /* ProjectTableViewCell.xib in Resources */,
 				014595732445EA6400AFB34D /* SF-Pro-Rounded-Thin.otf in Resources */,
 				01D53469234F684100DE6776 /* Images.xcassets in Resources */,
 				014595742445EA6400AFB34D /* SF-Pro-Rounded-Ultralight.otf in Resources */,
@@ -586,6 +607,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				834F82D624E2AF49007DB362 /* ProjectTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,6 +615,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				834F82D724E2AF49007DB362 /* ProjectTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -711,11 +734,13 @@
 				010B3A12232E5D24008B3684 /* TodayViewController.swift in Sources */,
 				01D53466234F681800DE6776 /* CustomTabBarController.swift in Sources */,
 				0179EDDC22EC820200F2A48B /* DateExtension.swift in Sources */,
+				834F82D924E2AFCD007DB362 /* ProjectTableViewCell.swift in Sources */,
 				83626C7A24DCACA200AFD9EE /* TaskTableView.swift in Sources */,
 				013E66BF22F0BFD80048AF18 /* DatePopUpViewController.swift in Sources */,
 				015DA6A223C952EF00582851 /* ChooseProjectTableViewCell.swift in Sources */,
 				0135B2A8231DC66800E43638 /* WeatherModel.swift in Sources */,
 				01D53484234F705000DE6776 /* SelectionScreenViewController.swift in Sources */,
+				834F82D124E2ADDF007DB362 /* ProjectTableView.swift in Sources */,
 				01D53465234F681800DE6776 /* CustomTabBarItem.swift in Sources */,
 				832D3C6824ADE0A000A1E709 /* CoreDataManager.swift in Sources */,
 				019281551F8B884E00E895D4 /* InboxViewController.swift in Sources */,
@@ -723,6 +748,7 @@
 				01D53481234F6EFC00DE6776 /* DateCell.swift in Sources */,
 				0165E1A52329F337002F5DA1 /* ScheduledHomeViewController.swift in Sources */,
 				01EAFEE6231CAACA00F3EA9D /* RepetitionViewController.swift in Sources */,
+				834F82C524E2ACF8007DB362 /* ProjectTaskViewController.swift in Sources */,
 				01D53482234F6EFC00DE6776 /* PriorityTableViewCell.swift in Sources */,
 				019280EB1F8A615C00E895D4 /* AppDelegate.swift in Sources */,
 				01F389B323608C8B005DAE8E /* TagListViewController.swift in Sources */,
@@ -764,10 +790,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				834F82C624E2ACF8007DB362 /* ProjectTaskViewController.swift in Sources */,
+				834F82DA24E2AFCD007DB362 /* ProjectTableViewCell.swift in Sources */,
 				83626C7B24DCACA200AFD9EE /* TaskTableView.swift in Sources */,
 				832D3C6924ADE0A000A1E709 /* CoreDataManager.swift in Sources */,
 				019281001F8A615C00E895D4 /* CalDoTests.swift in Sources */,
 				830DB5EE24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld in Sources */,
+				834F82D224E2ADDF007DB362 /* ProjectTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -775,10 +804,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				834F82C724E2ACF8007DB362 /* ProjectTaskViewController.swift in Sources */,
+				834F82DB24E2AFCD007DB362 /* ProjectTableViewCell.swift in Sources */,
 				83626C7C24DCACA200AFD9EE /* TaskTableView.swift in Sources */,
 				832D3C6A24ADE0A000A1E709 /* CoreDataManager.swift in Sources */,
 				0192810B1F8A615C00E895D4 /* CalDoUITests.swift in Sources */,
 				830DB5EF24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld in Sources */,
+				834F82D324E2ADDF007DB362 /* ProjectTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

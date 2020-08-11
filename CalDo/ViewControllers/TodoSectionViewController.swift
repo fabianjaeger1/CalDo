@@ -31,50 +31,51 @@ class var textColor: UIColor {
 
 let todoSections = ["Inbox", "Today", "Next", "Habits"]
 
-var allProjects: [Project]?
 
-class TodoSectionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate, UIAdaptivePresentationControllerDelegate {
+class TodoSectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIAdaptivePresentationControllerDelegate {
     
     // loadSampleTaskEntities()
 
 //    @IBOutlet weak var tableView: UITableView!
     
     
-    @IBOutlet weak var projectTableView: UITableView!
+    @IBOutlet weak var myTableView: UITableView!
+    var projectTableView: ProjectTableView!
+    
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet var myView: UIView!
     
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return allProjects!.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = projectTableView.dequeueReusableCell(withIdentifier: "TodoSectionProjectsTableViewCell", for: indexPath) as! TodoSectionProjectsTableViewCell
-        
-        
-        cell.ProjectLabel.text = allProjects![indexPath.row].ProjectTitle
-        
-        let shapeLayer = CAShapeLayer()
-        
-        let center = CGPoint(x: cell.ProjectColor.frame.height/2, y: cell.ProjectColor.frame.width/2)
-        let circlePath = UIBezierPath(arcCenter: center, radius: CGFloat(6), startAngle: CGFloat(0), endAngle: CGFloat(Double.pi * 2), clockwise: true)
-        
-        shapeLayer.path = circlePath.cgPath
-        shapeLayer.lineWidth = 3.0
-        
-        
-        shapeLayer.path = circlePath.cgPath
-        shapeLayer.lineWidth = 3.0
-        shapeLayer.fillColor = UIColor(hexString: allProjects![indexPath.row].ProjectColor!).cgColor
-        cell.ProjectColor.layer.addSublayer(shapeLayer)
-        cell.ProjectLabel.textColor = UIColor.textColor
-        cell.backgroundColor = UIColor.BackgroundColor
-        return cell
-    }
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//
+//        return allProjects!.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = projectTableView.dequeueReusableCell(withIdentifier: "TodoSectionProjectsTableViewCell", for: indexPath) as! TodoSectionProjectsTableViewCell
+//
+//
+//        cell.ProjectLabel.text = allProjects![indexPath.row].ProjectTitle
+//
+//        let shapeLayer = CAShapeLayer()
+//
+//        let center = CGPoint(x: cell.ProjectColor.frame.height/2, y: cell.ProjectColor.frame.width/2)
+//        let circlePath = UIBezierPath(arcCenter: center, radius: CGFloat(6), startAngle: CGFloat(0), endAngle: CGFloat(Double.pi * 2), clockwise: true)
+//
+//        shapeLayer.path = circlePath.cgPath
+//        shapeLayer.lineWidth = 3.0
+//
+//
+//        shapeLayer.path = circlePath.cgPath
+//        shapeLayer.lineWidth = 3.0
+//        shapeLayer.fillColor = UIColor(hexString: allProjects![indexPath.row].ProjectColor!).cgColor
+//        cell.ProjectColor.layer.addSublayer(shapeLayer)
+//        cell.ProjectLabel.textColor = UIColor.textColor
+//        cell.backgroundColor = UIColor.BackgroundColor
+//        return cell
+//    }
     
     
     
@@ -286,7 +287,7 @@ class TodoSectionViewController: UIViewController, UITableViewDelegate, UITableV
 
     override func viewDidLoad() {
         
-        allProjects = Project.loadProjects()
+        
         
         if #available(iOS 13.0, *) {
             self.view.backgroundColor = .BackgroundColor
@@ -298,10 +299,11 @@ class TodoSectionViewController: UIViewController, UITableViewDelegate, UITableV
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        projectTableView.delegate = self
-        projectTableView.dataSource = self
-        projectTableView.backgroundColor = .BackgroundColor
+//        projectTableView.delegate = self
+//        projectTableView.dataSource = self
+//        projectTableView.backgroundColor = .BackgroundColor
         
+        projectTableView = ProjectTableView(myTableView)
         
         super.viewDidLoad()
 
