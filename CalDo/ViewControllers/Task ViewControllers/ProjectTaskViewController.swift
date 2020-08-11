@@ -11,6 +11,10 @@ import UIKit
 
 
 class ProjectTaskViewController: UIViewController {
+    
+    @IBOutlet weak var projectLabel: UILabel!
+    @IBOutlet weak var projectColor: UIView!
+    
 
     @IBOutlet weak var myTableView: UITableView!
     var projectTaskTableView: TaskTableView!
@@ -27,10 +31,10 @@ class ProjectTaskViewController: UIViewController {
 
     override func viewDidLoad() {
         
-        
         let predicate = NSPredicate(format: "(completed == false) AND (project == %@)", project)
-        
         projectTaskTableView = TaskTableView(myTableView, predicate)
+        
+        projectLabel.text = project.value(forKey: "title") as? String
     }
     
 

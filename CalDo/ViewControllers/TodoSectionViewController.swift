@@ -32,7 +32,8 @@ class var textColor: UIColor {
 let todoSections = ["Inbox", "Today", "Next", "Habits"]
 
 
-class TodoSectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIAdaptivePresentationControllerDelegate {
+class TodoSectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIAdaptivePresentationControllerDelegate, ProjectTableViewDelegate {
+    
     
     // loadSampleTaskEntities()
 
@@ -178,6 +179,10 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
 
     }
     
+    func projectSelected(sender: ProjectTableView) {
+        print("delegate received")
+        self.performSegue(withIdentifier: "ProjectDetail", sender: self)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         segue.destination.presentationController?.delegate = self
@@ -193,6 +198,14 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
         }
         else if segue.identifier == "HabitDetail"{
             
+        }
+        else if segue.identifier == "ProjectDetail" {
+            let projectTaskVC = segue.destination as! ProjectTaskViewController
+            
+            if let indexPath = myTableView.indexPathForSelectedRow {
+                let project = projectTableView.tableViewData[indexPath.row]
+                projectTaskVC.project = project
+            }
         }
     }
     

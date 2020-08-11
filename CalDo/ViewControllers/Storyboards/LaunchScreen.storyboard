@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -25,7 +25,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" name="BackgroundColor"/>
+                        <color key="backgroundColor" name="CustomBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="qan-fJ-Yz6" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="2e1-ra-rMW"/>
                             <constraint firstItem="qan-fJ-Yz6" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="pfF-NR-Eo2"/>
@@ -40,7 +40,7 @@
     </scenes>
     <resources>
         <image name="CalDoIcon" width="394" height="393"/>
-        <namedColor name="BackgroundColor">
+        <namedColor name="CustomBackgroundColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

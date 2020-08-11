@@ -14,6 +14,8 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate {
 
     var tableView: UITableView
     var tableViewData: [ProjectEntity]
+    
+    weak var delegate: ProjectTableViewDelegate?
 
     init?(_ tv: UITableView) {
         
@@ -71,5 +73,15 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("selected project")
+        // self.performSegue(withIdentifier: "ProjectDetail", sender: self)
+        delegate?.projectSelected(sender: self)
+    }
 
+}
+
+@objc protocol ProjectTableViewDelegate: class {
+    func projectSelected(sender: ProjectTableView)
 }
