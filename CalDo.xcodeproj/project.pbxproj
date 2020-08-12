@@ -92,6 +92,9 @@
 		83626C7A24DCACA200AFD9EE /* TaskTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83626C7924DCACA200AFD9EE /* TaskTableView.swift */; };
 		83626C7B24DCACA200AFD9EE /* TaskTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83626C7924DCACA200AFD9EE /* TaskTableView.swift */; };
 		83626C7C24DCACA200AFD9EE /* TaskTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83626C7924DCACA200AFD9EE /* TaskTableView.swift */; };
+		83F9F70D24E3E80C0008FCF9 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9F70C24E3E80C0008FCF9 /* UIViewControllerExtension.swift */; };
+		83F9F70E24E3E80C0008FCF9 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9F70C24E3E80C0008FCF9 /* UIViewControllerExtension.swift */; };
+		83F9F70F24E3E80C0008FCF9 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9F70C24E3E80C0008FCF9 /* UIViewControllerExtension.swift */; };
 		8F6C6E659FD3852843D034AD /* Pods_CalDoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4247D29744B391B96999F1B9 /* Pods_CalDoUITests.framework */; };
 		F6E9E984C58F4D327C9B4ECA /* Pods_CalDoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC9F82338562CAE3409D475 /* Pods_CalDoTests.framework */; };
 /* End PBXBuildFile section */
@@ -199,6 +202,7 @@
 		834F82D424E2AF49007DB362 /* ProjectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectTableViewCell.xib; sourceTree = "<group>"; };
 		834F82D824E2AFCD007DB362 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
 		83626C7924DCACA200AFD9EE /* TaskTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableView.swift; sourceTree = "<group>"; };
+		83F9F70C24E3E80C0008FCF9 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		929E004114D27D044565F86A /* Pods-CalDoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalDoTests.debug.xcconfig"; path = "Target Support Files/Pods-CalDoTests/Pods-CalDoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AADC4FA7D5CB265C6C07244D /* Pods-CalDo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalDo.debug.xcconfig"; path = "Target Support Files/Pods-CalDo/Pods-CalDo.debug.xcconfig"; sourceTree = "<group>"; };
 		ACC9F82338562CAE3409D475 /* Pods_CalDoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalDoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -300,6 +304,7 @@
 			children = (
 				0160336D2469A21E0032DA23 /* FloatingButtonExtension.swift */,
 				0179EDDB22EC820200F2A48B /* DateExtension.swift */,
+				83F9F70C24E3E80C0008FCF9 /* UIViewControllerExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -743,6 +748,7 @@
 				834F82D124E2ADDF007DB362 /* ProjectTableView.swift in Sources */,
 				01D53465234F681800DE6776 /* CustomTabBarItem.swift in Sources */,
 				832D3C6824ADE0A000A1E709 /* CoreDataManager.swift in Sources */,
+				83F9F70D24E3E80C0008FCF9 /* UIViewControllerExtension.swift in Sources */,
 				019281551F8B884E00E895D4 /* InboxViewController.swift in Sources */,
 				016CF84E24DCB393006DEC65 /* TaskTableViewCell.swift in Sources */,
 				01D53481234F6EFC00DE6776 /* DateCell.swift in Sources */,
@@ -794,6 +800,7 @@
 				834F82DA24E2AFCD007DB362 /* ProjectTableViewCell.swift in Sources */,
 				83626C7B24DCACA200AFD9EE /* TaskTableView.swift in Sources */,
 				832D3C6924ADE0A000A1E709 /* CoreDataManager.swift in Sources */,
+				83F9F70E24E3E80C0008FCF9 /* UIViewControllerExtension.swift in Sources */,
 				019281001F8A615C00E895D4 /* CalDoTests.swift in Sources */,
 				830DB5EE24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld in Sources */,
 				834F82D224E2ADDF007DB362 /* ProjectTableView.swift in Sources */,
@@ -808,6 +815,7 @@
 				834F82DB24E2AFCD007DB362 /* ProjectTableViewCell.swift in Sources */,
 				83626C7C24DCACA200AFD9EE /* TaskTableView.swift in Sources */,
 				832D3C6A24ADE0A000A1E709 /* CoreDataManager.swift in Sources */,
+				83F9F70F24E3E80C0008FCF9 /* UIViewControllerExtension.swift in Sources */,
 				0192810B1F8A615C00E895D4 /* CalDoUITests.swift in Sources */,
 				830DB5EF24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld in Sources */,
 				834F82D324E2ADDF007DB362 /* ProjectTableView.swift in Sources */,

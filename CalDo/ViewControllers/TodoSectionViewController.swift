@@ -211,8 +211,17 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
         }
     }
     
-    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+    func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
+        // viewWillAppear(true)
         collectionView.reloadData()
+        // myTableView.reloadData()
+        
+        smoothlyDeselectRows(tableView: myTableView)
+        
+//        if let selectedRow: IndexPath = myTableView.indexPathForSelectedRow {
+//            myTableView.deselectRow(at: selectedRow, animated: true)
+//        }
+        
     }
     
     
@@ -330,7 +339,13 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
     
     override func viewWillAppear(_ animated: Bool) {
         collectionView.reloadData()
+        myTableView.reloadData()
         super.viewWillAppear(animated)
+        
+        if let selectedRow: IndexPath = myTableView.indexPathForSelectedRow {
+            myTableView.deselectRow(at: selectedRow, animated: true)
+        }
+        
     }
 
     // MARK: - Navigation
