@@ -11,7 +11,7 @@ import UIKit
 import CoreData
 
 
-class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, SmallTaskTableViewCellDelegate, TaskTableViewCellDelegate{
+class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, SmallTaskTableViewCellDelegate, TaskTableViewCellDelegate {
     
 
 //    weak var delegate1: SmallTaskTableViewCellDelegate?
@@ -155,9 +155,9 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
                 cell.TodoStatus.setImage(image, for: .normal)
             }
             
-        //            cell.backgroundColor = .BackgroundColor
-            cell.backgroundColor = .clear
-            cell.layer.backgroundColor = UIColor.clear.cgColor
+            cell.backgroundColor = .BackgroundColor
+            // cell.backgroundColor = .clear
+            // cell.layer.backgroundColor = UIColor.clear.cgColor
         //            cell.delegate = self
             
             return cell
@@ -220,7 +220,9 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             cell.ProjectLabel.textColor = UIColor.textColor
             // cell.TodoDate?.text = DateToString(date: todo.todoDate!)
             cell.ProjectLabel.text = (task.value(forKey: "project") as? ProjectEntity)?.value(forKey: "title") as? String
-            cell.backgroundColor = .clear
+            // cell.backgroundColor = .clear
+            cell.backgroundColor = .BackgroundColor
+
 
         // ====================== TAGS ================================
 
@@ -456,6 +458,56 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             
         }
     }
+    
+    // MARK: - Context menu
+    
+    @available(iOS 13.0, *)
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+
+        // let task = tableViewData[indexPath.row]
+        let identifier = "\(indexPath.row)" as NSString
+        
+        let scheduleAction = UIAction(title: "Schedule", image: UIImage(systemName: "calendar")) { action in
+                   
+               }
+        
+        let priorityAction = UIAction(title: "Priority", image: UIImage(systemName: "flag")) { action in
+            
+        }
+        
+        let renameAction = UIAction(title: "Rename", image: UIImage(systemName: "square.and.pencil")) { action in
+            
+        }
+        
+        let deleteAction = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) { action in
+            
+        }
+        
+        // Inline submenu (to get a separator)
+        let editMenu = UIMenu(title: "Edit...", options: .displayInline, children: [scheduleAction, priorityAction, renameAction])
+        
+        return UIContextMenuConfiguration(identifier: identifier, previewProvider: nil, actionProvider: { _ in
+            UIMenu(title: "", identifier: nil, children: [editMenu, deleteAction])
+        })
+    }
+    
+//    @available(iOS 13.0, *)
+//    func tableView(_ tableView: UITableView, previewForHighlightingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+//
+//        guard
+//            let identifier = configuration.identifier as? String,
+//            let index = Int(identifier),
+//            let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0))
+//            // cell.backgroundColor == UIColor.BackgroundColor
+//
+//        else {
+//            return nil
+//        }
+//
+//        print("preview used")
+//        return UITargetedPreview(view: cell)
+//    }
+    
 }
 
 

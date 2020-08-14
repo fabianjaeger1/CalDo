@@ -30,6 +30,9 @@ class TodayViewController: UIViewController {
         
         let predicate = NSPredicate(format: "(completed == false) AND (date <= %@)", dateTo as NSDate)
         
+        myTableView.backgroundColor = .BackgroundColor
+        self.view.backgroundColor = .BackgroundColor
+        
         todayTableView = TaskTableView(myTableView, predicate)
     }
     

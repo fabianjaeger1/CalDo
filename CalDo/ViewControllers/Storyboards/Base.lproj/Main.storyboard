@@ -678,7 +678,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mle-YZ-aFU">
-                                        <rect key="frame" x="58" y="30" width="94.5" height="35"/>
+                                        <rect key="frame" x="58" y="30" width="97" height="36"/>
                                         <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -696,7 +696,6 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="G7K-Vw-10m" firstAttribute="bottom" secondItem="oW1-rv-AhF" secondAttribute="bottom" id="EB1-DH-VwJ"/>
                                     <constraint firstItem="G7K-Vw-10m" firstAttribute="trailing" secondItem="oW1-rv-AhF" secondAttribute="trailing" id="ESj-gN-ppm"/>

@@ -50,6 +50,11 @@ class ProjectTaskViewController: UIViewController {
 
         projectColor.layer.backgroundColor = UIColor.clear.cgColor
         projectColor.layer.addSublayer(shapeLayer)
+        
+        // Background color
+        myTableView.backgroundColor = .BackgroundColor
+        self.view.backgroundColor = .BackgroundColor
+        //self.
     }
     
 

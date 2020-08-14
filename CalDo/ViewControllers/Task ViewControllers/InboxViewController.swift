@@ -185,9 +185,9 @@ class InboxViewController: UIViewController {
         SearchBar.barTintColor = UIColor.white
         SearchBar.isTranslucent = false
         SearchBar.tintColor = UIColor.blue
-        myTableView.backgroundColor = .BackgroundColor
         
-        self.view.backgroundColor = UIColor.BackgroundColor
+        myTableView.backgroundColor = .BackgroundColor
+        self.view.backgroundColor = .BackgroundColor
         
         AddButton.createFloatingActionButton()
         
@@ -196,27 +196,6 @@ class InboxViewController: UIViewController {
         textfield.inputAccessoryView = toolbarView
         
         toolbarView.layer.cornerRadius = 20
-        
-
-        
-        // Load the view using bundle.
-        // Make sure a nib name should be correct
-        // And cast it to the class, something like this
-       
-
-        // Load tasks
-        // loadSampleTaskEntities()
-        // loadTasks()
-        
-        
-        // InboxTodo = TodoItem.loadSampleToDos()
-//        if let savedToDos = TodoItem.loadToDos() {
-//            InboxTodo = savedToDos
-//        } else {
-//            TodoItem.loadSampleToDos()
-    
-//
-//        // IF there are saved todos append to InboxTodo or else load SampleToDos from Todo Struct
 
     }
     
