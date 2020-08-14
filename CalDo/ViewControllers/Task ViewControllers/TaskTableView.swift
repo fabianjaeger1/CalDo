@@ -90,51 +90,54 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "SmallTaskTableViewCell", for: indexPath) as! SmallTaskTableViewCell
             
-            //========= DATE ===========
+            // ========= DATE ===========
             
             // TODO: simplify by adding function returning a task's todoString
             cell.TodoDate?.text = (task.value(forKey: "date") as? Date)?.todoString(withTime: task.value(forKey: "dateHasTime") as! Bool)
             //cell.TodoDate.textColor = UIColor.textColor
             cell.TodoDate.textColor = (task.value(forKey: "date") as? Date)?.todoColor(withTime: task.value(forKey: "dateHasTime") as! Bool)
             
-            //========= TITLE ===========
+            // ========= TITLE ===========
             cell.TodoTitle?.text = (task.value(forKey: "title") as! String)
             cell.TodoTitle.textColor = UIColor.textColor
             cell.delegate = self
             
             if task.value(forKey: "notes") != nil {
-                          cell.TodoNotesIcon.alpha = 1
-                      }
-                      else {
-                          cell.TodoNotesIcon.alpha = 0
-                      }
-
-                      if task.value(forKey: "location") == nil {
-                          cell.TodoLocationIcon.alpha = 0
-                      }
-                      else {
-                          cell.TodoLocationIcon.alpha = 1
-                      }
+                cell.TodoNotesIcon.alpha = 1
+            }
+            else {
+                cell.TodoNotesIcon.alpha = 0
+            }
+            if task.value(forKey: "location") == nil {
+                cell.TodoLocationIcon.alpha = 0
+            }
+            else {
+                cell.TodoLocationIcon.alpha = 1
+            }
             
-            // ======= CELL TODO BUTTON =========
-                    
-                    if (task.value(forKey: "recurrence") as! Bool) == true && (task.value(forKey: "priority") as! Int) == 1 {
-                        let image = UIImage(named: "Recurring Normal")
-                        cell.TodoStatus.setImage(image, for: .normal)
-                    }
-                     if (task.value(forKey: "recurrence") as! Bool) == true && (task.value(forKey: "priority") as! Int) == 2 {
-                        let image = UIImage(named: "Recurring High")
-                        cell.TodoStatus.setImage(image, for: .normal)
-                    }
-                    
-                    if (task.value(forKey: "recurrence") as! Bool) != true && (task.value(forKey: "priority") as! Int) == 1 {
-                        let image = UIImage(named: "Todo Medium Priority")
-                        cell.TodoStatus.setImage(image, for: .normal)
-                    }
-                    if (task.value(forKey: "recurrence") as! Bool) != true && (task.value(forKey: "priority") as! Int) == 2 {
-                        let image = UIImage(named: "Todo High Priority")
-                        cell.TodoStatus.setImage(image, for: .normal)
-                    }
+            // ================== CELL TODO BUTTON =======================
+                
+            switch(task.value(forKey: "recurrence") as! Bool, task.value(forKey: "priority") as! Int) {
+            case (true, 0):
+                let image = UIImage(named: "Recurring")
+                cell.TodoStatus.setImage(image, for: .normal)
+            case (true, 1):
+                let image = UIImage(named: "Recurring Normal")
+                cell.TodoStatus.setImage(image, for: .normal)
+            case (true, 2):
+                let image = UIImage(named: "Recurring High")
+                cell.TodoStatus.setImage(image, for: .normal)
+            case (false, 0):
+                break
+            case (false, 1):
+                let image = UIImage(named: "Todo Medium Priority")
+                cell.TodoStatus.setImage(image, for: .normal)
+            case (false, 2):
+                let image = UIImage(named: "Todo High Priority")
+                cell.TodoStatus.setImage(image, for: .normal)
+            default:
+                print("Recurrence and/or priority outside of range")
+            }
 
             // =========== ANIMATION ==================
             
@@ -307,26 +310,30 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
                 cell.TodoLocationIcon.alpha = 1
             }
         // ================== CELL TODO BUTTON =======================
-
-            if (task.value(forKey: "recurrence") as! Bool) == true && (task.value(forKey: "priority") as! Int) == 1 {
+            
+            switch(task.value(forKey: "recurrence") as! Bool, task.value(forKey: "priority") as! Int) {
+            case (true, 0):
+                let image = UIImage(named: "Recurring")
+                cell.TodoStatus.setImage(image, for: .normal)
+            case (true, 1):
                 let image = UIImage(named: "Recurring Normal")
                 cell.TodoStatus.setImage(image, for: .normal)
-            }
-             if (task.value(forKey: "recurrence") as! Bool) == true && (task.value(forKey: "priority") as! Int) == 2 {
+            case (true, 2):
                 let image = UIImage(named: "Recurring High")
                 cell.TodoStatus.setImage(image, for: .normal)
-            }
-
-            if (task.value(forKey: "recurrence") as! Bool) != true && (task.value(forKey: "priority") as! Int) == 1 {
+            case (false, 0):
+                break
+            case (false, 1):
                 let image = UIImage(named: "Todo Medium Priority")
                 cell.TodoStatus.setImage(image, for: .normal)
-            }
-            if (task.value(forKey: "recurrence") as! Bool) != true && (task.value(forKey: "priority") as! Int) == 2 {
+            case (false, 2):
                 let image = UIImage(named: "Todo High Priority")
                 cell.TodoStatus.setImage(image, for: .normal)
+            default:
+                print("Recurrence and/or priority outside of range")
             }
 
-            // To return default case of no above Cell type
+            // To return default case of no above cell type
 
             return cell
         }
@@ -464,27 +471,45 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
     @available(iOS 13.0, *)
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
 
-        // let task = tableViewData[indexPath.row]
+        let task = tableViewData[indexPath.row]
         let identifier = "\(indexPath.row)" as NSString
         
         let scheduleAction = UIAction(title: "Schedule", image: UIImage(systemName: "calendar")) { action in
                    
                }
         
-        let priorityAction = UIAction(title: "Priority", image: UIImage(systemName: "flag")) { action in
-            
+        let priority0Action = UIAction(title: "Priority 3", image: UIImage(systemName: "flag")?.withTintColor(.systemGray, renderingMode: .alwaysOriginal)) { action in
+            CoreDataManager.shared.setTaskPriority(task: task, priority: 0)
+            tableView.reloadRows(at: [indexPath], with: .none)
         }
+        
+        let priority1Action = UIAction(title: "Priority 2", image: UIImage(systemName: "flag")?.withTintColor(.systemOrange, renderingMode: .alwaysOriginal)) { action in
+            CoreDataManager.shared.setTaskPriority(task: task, priority: 1)
+            tableView.reloadRows(at: [indexPath], with: .none)
+        }
+        
+        let priority2Action = UIAction(title: "Priority 1", image: UIImage(systemName: "flag")?.withTintColor(.systemRed, renderingMode: .alwaysOriginal)) { action in
+            CoreDataManager.shared.setTaskPriority(task: task, priority: 2)
+            tableView.reloadRows(at: [indexPath], with: .none)
+        }
+        
+        let priorityMenu = UIMenu(title: "Priority", image: UIImage(systemName: "flag"), children: [priority2Action, priority1Action, priority0Action])
         
         let renameAction = UIAction(title: "Rename", image: UIImage(systemName: "square.and.pencil")) { action in
             
         }
         
         let deleteAction = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) { action in
+            self.tableViewData.remove(at: indexPath.row)
+            CoreDataManager.shared.deleteTask(task: task)
             
+            UIView.animate(withDuration: 0.5) {
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+            }
         }
         
         // Inline submenu (to get a separator)
-        let editMenu = UIMenu(title: "Edit...", options: .displayInline, children: [scheduleAction, priorityAction, renameAction])
+        let editMenu = UIMenu(title: "Edit...", options: .displayInline, children: [scheduleAction, priorityMenu, renameAction])
         
         return UIContextMenuConfiguration(identifier: identifier, previewProvider: nil, actionProvider: { _ in
             UIMenu(title: "", identifier: nil, children: [editMenu, deleteAction])
@@ -497,7 +522,8 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
 //        guard
 //            let identifier = configuration.identifier as? String,
 //            let index = Int(identifier),
-//            let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0))
+//            let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)),
+//            let cellBackground = cell.backgroundView
 //            // cell.backgroundColor == UIColor.BackgroundColor
 //
 //        else {
@@ -505,7 +531,24 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
 //        }
 //
 //        print("preview used")
-//        return UITargetedPreview(view: cell)
+//        return UITargetedPreview(view: cellBackground)
+//    }
+//
+//    @available(iOS 13.0, *)
+//    func tableView(_ tableView: UITableView, previewForDismissingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+//
+//            guard
+//                let identifier = configuration.identifier as? String,
+//                let index = Int(identifier),
+//                let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)),
+//                let cellBackground = cell.backgroundView
+//                // cell.backgroundColor == UIColor.BackgroundColor
+//
+//            else {
+//                return nil
+//            }
+//
+//        return UITargetedPreview(view: cellBackground)
 //    }
     
 }

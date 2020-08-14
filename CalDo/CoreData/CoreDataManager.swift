@@ -198,6 +198,24 @@ class CoreDataManager {
         
     }
     
+    func setTaskPriority(task: TaskEntity, priority: Int) {
+        
+        if (priority < 0 || priority > 2) {
+            return
+        }
+        
+        let managedContext = persistentContainer.viewContext
+        task.setValue(priority, forKey: "priority")
+        
+        do {
+            try managedContext.save()
+        } catch let saveError {
+            print("Failed to set task priority: \(saveError)")
+        }
+        
+        
+    }
+    
     
     // MARK: - Projects
     
