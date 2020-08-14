@@ -480,17 +480,17 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         
         let priority0Action = UIAction(title: "Priority 3", image: UIImage(systemName: "flag")?.withTintColor(.systemGray, renderingMode: .alwaysOriginal)) { action in
             CoreDataManager.shared.setTaskPriority(task: task, priority: 0)
-            tableView.reloadRows(at: [indexPath], with: .none)
+            // tableView.reloadRows(at: [indexPath], with: .none)
         }
         
         let priority1Action = UIAction(title: "Priority 2", image: UIImage(systemName: "flag")?.withTintColor(.systemOrange, renderingMode: .alwaysOriginal)) { action in
             CoreDataManager.shared.setTaskPriority(task: task, priority: 1)
-            tableView.reloadRows(at: [indexPath], with: .none)
+            //tableView.reloadRows(at: [indexPath], with: .none)
         }
         
         let priority2Action = UIAction(title: "Priority 1", image: UIImage(systemName: "flag")?.withTintColor(.systemRed, renderingMode: .alwaysOriginal)) { action in
             CoreDataManager.shared.setTaskPriority(task: task, priority: 2)
-            tableView.reloadRows(at: [indexPath], with: .none)
+            //tableView.reloadRows(at: [indexPath], with: .none)
         }
         
         let priorityMenu = UIMenu(title: "Priority", image: UIImage(systemName: "flag"), children: [priority2Action, priority1Action, priority0Action])
@@ -500,12 +500,32 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         }
         
         let deleteAction = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) { action in
-            self.tableViewData.remove(at: indexPath.row)
-            CoreDataManager.shared.deleteTask(task: task)
             
-            UIView.animate(withDuration: 0.5) {
-            self.tableView.deleteRows(at: [indexPath], with: .fade)
+            let alert = UIAlertController(title: "Delete task?", message: "This action cannot be undone.", preferredStyle: .alert)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+                self.tableViewData.remove(at: indexPath.row)
+                CoreDataManager.shared.deleteTask(task: task)
+                UIView.animate(withDuration: 0.35) {
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
+                }
             }
+
+            // Add the actions to the alert controller
+            alert.addAction(cancelAction)
+            alert.addAction(deleteAction)
+
+            // Present the alert controller
+            var rootViewController = UIApplication.shared.keyWindow?.rootViewController
+            if let navigationController = rootViewController as? UINavigationController {
+                rootViewController = navigationController.viewControllers.first
+            }
+            if let tabBarController = rootViewController as? UITabBarController {
+                rootViewController = tabBarController.selectedViewController
+            }
+            rootViewController?.present(alert, animated: true, completion: nil)
         }
         
         // Inline submenu (to get a separator)
@@ -534,22 +554,24 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
 //        return UITargetedPreview(view: cellBackground)
 //    }
 //
-//    @available(iOS 13.0, *)
-//    func tableView(_ tableView: UITableView, previewForDismissingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
-//
-//            guard
-//                let identifier = configuration.identifier as? String,
-//                let index = Int(identifier),
-//                let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)),
-//                let cellBackground = cell.backgroundView
-//                // cell.backgroundColor == UIColor.BackgroundColor
-//
-//            else {
-//                return nil
-//            }
-//
-//        return UITargetedPreview(view: cellBackground)
-//    }
+    @available(iOS 13.0, *)
+    func tableView(_ tableView: UITableView, previewForDismissingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+
+        guard
+            let identifier = configuration.identifier as? String
+        else {
+            return nil
+        }
+
+        let index = Int(identifier)! as Int
+        let indexPath = IndexPath(row: index, section:0)
+        tableView.reloadRows(at: [indexPath], with: .none)
+        let cell = tableView.cellForRow(at: indexPath)
+        // let cellBackground = cell.backgroundView
+        // cell.backgroundColor == UIColor.BackgroundColor
+
+        return UITargetedPreview(view: cell!)
+    }
     
 }
 
