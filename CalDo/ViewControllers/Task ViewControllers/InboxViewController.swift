@@ -77,10 +77,78 @@ class InboxViewController: UIViewController {
         }
 
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let sortController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let sortByDateAction = UIAlertAction(title: "Sort by date", style: .default) { _ in
+            let tasksBeforeSort = self.inboxTableView.tableViewData
+            let numberOfTasks = tasksBeforeSort.count
+            
+            self.inboxTableView.tableViewData.sortByDate()
+
+            self.inboxTableView.tableView.performBatchUpdates({
+                for i in 0..<numberOfTasks {
+                    let newRow = self.inboxTableView.tableViewData.firstIndex(of: tasksBeforeSort[i])
+                    self.inboxTableView.tableView.moveRow(at: IndexPath(row: i, section: 0), to: IndexPath(row: newRow!, section: 0))
+                }
+            })
+        }
+        sortByDateAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+        
+        let sortByTitleAction = UIAlertAction(title: "Sort by title", style: .default) { _ in
+            let tasksBeforeSort = self.inboxTableView.tableViewData
+            let numberOfTasks = tasksBeforeSort.count
+            
+            self.inboxTableView.tableViewData.sortByTitle()
+            
+            self.inboxTableView.tableView.performBatchUpdates({
+                for i in 0..<numberOfTasks {
+                    let newRow = self.inboxTableView.tableViewData.firstIndex(of: tasksBeforeSort[i])
+                    self.inboxTableView.tableView.moveRow(at: IndexPath(row: i, section: 0), to: IndexPath(row: newRow!, section: 0))
+                }
+            })
+            
+        }
+        sortByTitleAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+        
+        let sortByPriorityAction = UIAlertAction(title: "Sort by priority", style: .default) { _ in
+            let tasksBeforeSort = self.inboxTableView.tableViewData
+            let numberOfTasks = tasksBeforeSort.count
+            
+            self.inboxTableView.tableViewData.sortByPriority()
+            
+            self.inboxTableView.tableView.performBatchUpdates({
+                for i in 0..<numberOfTasks {
+                    let newRow = self.inboxTableView.tableViewData.firstIndex(of: tasksBeforeSort[i])
+                    self.inboxTableView.tableView.moveRow(at: IndexPath(row: i, section: 0), to: IndexPath(row: newRow!, section: 0))
+                }
+            })
+            
+        }
+        sortByPriorityAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+        
+        if #available(iOS 13.0, *) {
+            sortByDateAction.setValue(UIImage(systemName: "calendar"), forKey: "image")
+            sortByTitleAction.setValue(UIImage(systemName: "textformat"), forKey: "image")
+            sortByPriorityAction.setValue(UIImage(systemName: "flag"), forKey: "image")
+        } else {
+            // Fallback on earlier versions
+        }
+        
+        sortController.addAction(sortByTitleAction)
+        sortController.addAction(sortByDateAction)
+        sortController.addAction(sortByPriorityAction)
+        sortController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
         alertController.addAction(UIAlertAction(title: "Select Tasks", style: .default, handler: printActionTitle))
         alertController.addAction(UIAlertAction(title: "Filter", style: .default, handler: printActionTitle))
+        alertController.addAction(UIAlertAction(title: "Sort Tasks", style: .default, handler: { _ in self.present(sortController, animated: true, completion: nil)
+        }))
         alertController.addAction(UIAlertAction(title: "Share Chat", style: .destructive, handler: printActionTitle))
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: printActionTitle))
+        
+
+        
         self.present(alertController, animated: true, completion: nil)
     }
     
