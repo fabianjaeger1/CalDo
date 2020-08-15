@@ -11,9 +11,9 @@ import UIKit
 import CoreData
 
 
-class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, SmallTaskTableViewCellDelegate, TaskTableViewCellDelegate {
+class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, SmallTaskTableViewCellDelegate, TaskTableViewCellDelegate, UITableViewDragDelegate {
     
-
+    
 //    weak var delegate1: SmallTaskTableViewCellDelegate?
 //    weak var delegate2: TaskTableViewCellDelegate?
     var tableView: UITableView
@@ -47,6 +47,10 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         }
         
         super.init()
+        
+        // Enable dragging tasks
+        tableView.dragDelegate = self
+        tableView.dragInteractionEnabled = true
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -465,6 +469,22 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             
         }
     }
+    
+    // MARK: - Dragging to reorder
+    
+    // TODO: save order after reordering
+    
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        let dragItem = UIDragItem(itemProvider: NSItemProvider())
+        dragItem.localObject = tableViewData[indexPath.row]
+        return [dragItem]
+    }
+
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let mover = tableViewData.remove(at: sourceIndexPath.row)
+        tableViewData.insert(mover, at: destinationIndexPath.row)
+    }
+    
     
     // MARK: - Context menu
     
