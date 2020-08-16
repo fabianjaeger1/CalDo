@@ -51,24 +51,26 @@ class InboxViewController: UIViewController {
     @IBOutlet var toolbarView: UIView!
     @IBOutlet weak var textfield: UITextField!
     
-    @IBOutlet weak var AddTaskTextField: UITextField!
+    @IBOutlet weak var addTaskTextField: UITextField!
     
-    @IBAction func PlusButtonPressed(_ sender: Any) {
-        AddTaskTextField.becomeFirstResponder()
+    @IBAction func plusButtonPressed(_ sender: Any) {
+        addTaskTextField.becomeFirstResponder()
     }
     
     
     // var myIndex = 0
     
-    @IBOutlet weak var AddButton: UIButton!
-    @IBOutlet weak var SearchBar: UISearchBar!
-    @IBOutlet weak var InboxLabel: UILabel!
-    @IBOutlet weak var MenuButton: UIButton!
+    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var inboxLabel: UILabel!
+    @IBOutlet weak var menuButton: UIButton!
     
     
     @IBOutlet weak var myTableView: UITableView!
     var inboxTableView: TaskTableView!
     
+    
+    // MARK: - Action Sheet
     
     @IBAction func showActionSheet(_ sender : AnyObject) {
         // Print out what button was tapped
@@ -140,14 +142,26 @@ class InboxViewController: UIViewController {
         sortController.addAction(sortByPriorityAction)
         sortController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         
-        alertController.addAction(UIAlertAction(title: "Select Tasks", style: .default, handler: printActionTitle))
+        alertController.addAction(UIAlertAction(title: "Select Tasks", style: .default) { _ in
+            self.myTableView.setEditing(true, animated: true)
+            
+            let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: nil)
+            self.toolbarItems = [editButton]
+            self.navigationController?.setToolbarHidden(false, animated: true)
+//            let navigationController = UINavigationController(rootViewController: self)
+//            navigationController.setToolbarHidden(false, animated: true)
+
+        })
+        
+        
         alertController.addAction(UIAlertAction(title: "Filter", style: .default, handler: printActionTitle))
         alertController.addAction(UIAlertAction(title: "Sort Tasks", style: .default, handler: { _ in self.present(sortController, animated: true, completion: nil)
         }))
         alertController.addAction(UIAlertAction(title: "Share Chat", style: .destructive, handler: printActionTitle))
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: printActionTitle))
         
-
+        // alertController.view.tintColor = .systemTeal
+        // sortController.view.tintColor = .systemTeal
         
         self.present(alertController, animated: true, completion: nil)
     }
@@ -240,24 +254,25 @@ class InboxViewController: UIViewController {
         
         if #available(iOS 12.0, *) {
             if traitCollection.userInterfaceStyle == .light {
-                self.MenuButton.setImage(UIImage(named: "Down_bright"), for: .normal)
+                self.menuButton.setImage(UIImage(named: "Down_bright"), for: .normal)
             }
         } else {
             // Fallback on earlier versions
         }
         
+        myTableView.allowsMultipleSelectionDuringEditing = true
         
         toolbarView.backgroundColor = .BackgroundColor
         
-        InboxLabel.textColor = UIColor.textColor
-        SearchBar.barTintColor = UIColor.white
-        SearchBar.isTranslucent = false
-        SearchBar.tintColor = UIColor.blue
+        inboxLabel.textColor = UIColor.textColor
+        searchBar.barTintColor = UIColor.white
+        searchBar.isTranslucent = false
+        searchBar.tintColor = UIColor.blue
         
         myTableView.backgroundColor = .BackgroundColor
         self.view.backgroundColor = .BackgroundColor
         
-        AddButton.createFloatingActionButton()
+        addButton.createFloatingActionButton()
         
         super.viewDidLoad()
         

@@ -24,6 +24,10 @@ class SmallTaskTableViewCell: UITableViewCell {
     @IBOutlet weak var TodoNotesIcon: UIImageView!
     @IBOutlet weak var TodoLocationIcon: UIImageView!
     
+    @IBOutlet weak var todoStatusWidth: NSLayoutConstraint!
+    @IBOutlet weak var todoStatusLeading: NSLayoutConstraint!
+    
+    
     @IBAction func completeButtonTapped(_ sender: Any) {
         print("Test")
         delegate?.checkmarkTapped(sender: self)
@@ -39,5 +43,26 @@ class SmallTaskTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+//        if (editing) {
+//            TodoStatus?.removeFromSuperview()
+//        }
+        if (editing) {
+            showsReorderControl = false
+            UIView.animate(
+                withDuration: 0.3,
+                animations: {
+                    self.TodoStatus.setImage(nil, for: .normal)
+            }, completion: { _ in
+                self.todoStatusWidth.constant = 0
+                self.todoStatusLeading.constant = 8
+                self.TodoStatus.isEnabled = false
+                super.setEditing(editing, animated: animated)
+            })
+        }
+    }
+
+    
     
 }
