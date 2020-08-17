@@ -563,8 +563,29 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             }
         }
         
+        let duplicateAction = UIAction(title: "Duplicate", image: UIImage(systemName: "plus.square.on.square")) {_ in
+            let newTask = TaskEntity(context: CoreDataManager.shared.persistentContainer.viewContext)
+            
+            // TODO: add function to copy tasks
+            newTask.completed = task.completed
+            newTask.title = task.title
+            newTask.project = task.project
+            newTask.tags = task.tags
+            newTask.location = task.location
+            newTask.date = task.date
+            newTask.dateHasTime = task.dateHasTime
+            newTask.notes = task.notes
+            newTask.priority = task.priority
+            newTask.recurrence = task.recurrence
+            newTask.sortOrder = task.sortOrder
+            
+            self.tableViewData.insert(newTask, at: indexPath.row)
+            CoreDataManager.shared.saveContext()
+            self.tableView.insertRows(at: [indexPath], with: .fade)
+        }
+        
         // Inline submenu (to get a separator)
-        let editMenu = UIMenu(title: "Edit...", options: .displayInline, children: [scheduleAction, priorityMenu, renameAction])
+        let editMenu = UIMenu(title: "Edit...", options: .displayInline, children: [scheduleAction, priorityMenu, renameAction, duplicateAction])
         
         return UIContextMenuConfiguration(identifier: identifier, previewProvider: nil, actionProvider: { _ in
             UIMenu(title: "", identifier: nil, children: [editMenu, deleteAction])

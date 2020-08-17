@@ -186,8 +186,8 @@ class InboxViewController: UIViewController {
         alertController.addAction(sortAction)
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: printActionTitle))
         
-        // alertController.view.tintColor = .systemTeal
-        // sortController.view.tintColor = .systemTeal
+        alertController.view.tintColor = .label
+        sortController.view.tintColor = .label
         
         self.present(alertController, animated: true, completion: nil)
     }
