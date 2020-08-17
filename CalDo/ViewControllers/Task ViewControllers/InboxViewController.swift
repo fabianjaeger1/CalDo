@@ -86,9 +86,9 @@ class InboxViewController: UIViewController {
         }
 
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
         let sortController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
+        // Sorting actions
         let sortByDateAction = UIAlertAction(title: "Sort by date", style: .default) { _ in
             let tasksBeforeSort = self.inboxTableView.tableViewData
             let numberOfTasks = tasksBeforeSort.count
@@ -146,7 +146,8 @@ class InboxViewController: UIViewController {
         sortController.addAction(sortByPriorityAction)
         sortController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         
-        alertController.addAction(UIAlertAction(title: "Select Tasks", style: .default) { _ in
+        // Top-level actions
+        let selectAction = UIAlertAction(title: "Select Tasks", style: .default) { _ in
             self.myTableView.setEditing(true, animated: true)
             UIView.animate(withDuration: 0.5) {
                 self.editToolbar.isHidden = false
@@ -167,13 +168,22 @@ class InboxViewController: UIViewController {
 //            let navigationController = UINavigationController(rootViewController: self)
 //            navigationController.setToolbarHidden(false, animated: true)
 
+        }
+        selectAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+        selectAction.setValue(UIImage(systemName: "square.stack"), forKey: "image")
+        
+        let filterAction = UIAlertAction(title: "Filter", style: .default)
+        filterAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+        filterAction.setValue(UIImage(systemName: "tag"), forKey: "image")
+        
+        let sortAction = UIAlertAction(title: "Sort Tasks", style: .default, handler: { _ in self.present(sortController, animated: true, completion: nil)
         })
+        sortAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+        sortAction.setValue(UIImage(systemName: "arrow.up.arrow.down"), forKey: "image")
         
-        
-        alertController.addAction(UIAlertAction(title: "Filter", style: .default, handler: printActionTitle))
-        alertController.addAction(UIAlertAction(title: "Sort Tasks", style: .default, handler: { _ in self.present(sortController, animated: true, completion: nil)
-        }))
-        alertController.addAction(UIAlertAction(title: "Share Chat", style: .destructive, handler: printActionTitle))
+        alertController.addAction(filterAction)
+        alertController.addAction(selectAction)
+        alertController.addAction(sortAction)
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: printActionTitle))
         
         // alertController.view.tintColor = .systemTeal
