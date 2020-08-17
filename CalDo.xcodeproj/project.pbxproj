@@ -55,10 +55,8 @@
 		01D53466234F681800DE6776 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D53463234F681800DE6776 /* CustomTabBarController.swift */; };
 		01D53467234F681800DE6776 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D53464234F681800DE6776 /* CustomTabBar.swift */; };
 		01D53469234F684100DE6776 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01D53468234F684100DE6776 /* Images.xcassets */; };
-		01D53471234F6A1900DE6776 /* TodoSectionProjectsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5346D234F6A1900DE6776 /* TodoSectionProjectsTableViewCell.swift */; };
 		01D53472234F6A1900DE6776 /* HomeSectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5346E234F6A1900DE6776 /* HomeSectionCollectionViewCell.swift */; };
 		01D53473234F6A1900DE6776 /* TodoSectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5346F234F6A1900DE6776 /* TodoSectionCollectionViewCell.swift */; };
-		01D53474234F6A1900DE6776 /* TodoSectionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D53470234F6A1900DE6776 /* TodoSectionsTableViewCell.swift */; };
 		01D53476234F6D3A00DE6776 /* TimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D53475234F6D3A00DE6776 /* TimePickerViewController.swift */; };
 		01D5347B234F6E3E00DE6776 /* DateAndTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D53479234F6E3E00DE6776 /* DateAndTime.swift */; };
 		01D5347C234F6E3E00DE6776 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5347A234F6E3E00DE6776 /* Color.swift */; };
@@ -175,10 +173,8 @@
 		01D53463234F681800DE6776 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		01D53464234F681800DE6776 /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		01D53468234F684100DE6776 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		01D5346D234F6A1900DE6776 /* TodoSectionProjectsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoSectionProjectsTableViewCell.swift; sourceTree = "<group>"; };
 		01D5346E234F6A1900DE6776 /* HomeSectionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeSectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		01D5346F234F6A1900DE6776 /* TodoSectionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoSectionCollectionViewCell.swift; sourceTree = "<group>"; };
-		01D53470234F6A1900DE6776 /* TodoSectionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoSectionsTableViewCell.swift; sourceTree = "<group>"; };
 		01D53475234F6D3A00DE6776 /* TimePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePickerViewController.swift; sourceTree = "<group>"; };
 		01D53479234F6E3E00DE6776 /* DateAndTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateAndTime.swift; sourceTree = "<group>"; };
 		01D5347A234F6E3E00DE6776 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -329,8 +325,6 @@
 				01D5347D234F6EFC00DE6776 /* TagCollectionViewCell.swift */,
 				01D5346E234F6A1900DE6776 /* HomeSectionCollectionViewCell.swift */,
 				01D5346F234F6A1900DE6776 /* TodoSectionCollectionViewCell.swift */,
-				01D5346D234F6A1900DE6776 /* TodoSectionProjectsTableViewCell.swift */,
-				01D53470234F6A1900DE6776 /* TodoSectionsTableViewCell.swift */,
 				834F82D424E2AF49007DB362 /* ProjectTableViewCell.xib */,
 				834F82D824E2AFCD007DB362 /* ProjectTableViewCell.swift */,
 			);
@@ -775,10 +769,8 @@
 				01C954722115E2310047175F /* Todo Struct.swift in Sources */,
 				01D5347B234F6E3E00DE6776 /* DateAndTime.swift in Sources */,
 				0165E1A22329AAE9002F5DA1 /* InboxHomeViewController.swift in Sources */,
-				01D53474234F6A1900DE6776 /* TodoSectionsTableViewCell.swift in Sources */,
 				01D53467234F681800DE6776 /* CustomTabBar.swift in Sources */,
 				01D5347C234F6E3E00DE6776 /* Color.swift in Sources */,
-				01D53471234F6A1900DE6776 /* TodoSectionProjectsTableViewCell.swift in Sources */,
 				830DB5ED24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld in Sources */,
 				012259A523F62854003BAAEE /* CalendarViewController.swift in Sources */,
 				01D53476234F6D3A00DE6776 /* TimePickerViewController.swift in Sources */,
