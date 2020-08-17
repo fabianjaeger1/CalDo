@@ -343,6 +343,9 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         }
     }
     
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return UITableViewCell.EditingStyle.none
+    }
         
     //================== SWIPE ACTIONS ==================
         
@@ -467,6 +470,20 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             // self.tableView.reloadRows(at: [indexPath], with: .automatic)
 
             
+        }
+    }
+    
+    func finishEditing(sender: SmallTaskTableViewCell) {
+        if let cellIndexPath = self.tableView.indexPath(for: sender) {
+            // TODO: only update todostatus to stop flickering
+            self.tableView.reloadRows(at: [cellIndexPath], with: .automatic)
+        }
+    }
+    
+    func finishEditing1(sender: TaskTableViewCell) {
+        if let cellIndexPath = self.tableView.indexPath(for: sender) {
+            // TODO: only update todostatus to stop flickering
+            self.tableView.reloadRows(at: [cellIndexPath], with: .automatic)
         }
     }
     

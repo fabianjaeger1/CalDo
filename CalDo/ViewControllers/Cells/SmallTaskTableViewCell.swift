@@ -10,6 +10,7 @@ import UIKit
 
 @objc protocol SmallTaskTableViewCellDelegate: class {
     func checkmarkTapped(sender: SmallTaskTableViewCell)
+    func finishEditing(sender: SmallTaskTableViewCell)
 }
 
 
@@ -27,6 +28,7 @@ class SmallTaskTableViewCell: UITableViewCell {
     @IBOutlet weak var todoStatusWidth: NSLayoutConstraint!
     @IBOutlet weak var todoStatusLeading: NSLayoutConstraint!
     
+    var isInEditingMode: Bool = false
     
     @IBAction func completeButtonTapped(_ sender: Any) {
         print("Test")
@@ -44,24 +46,46 @@ class SmallTaskTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    override func setEditing(_ editing: Bool, animated: Bool) {
-//        if (editing) {
-//            TodoStatus?.removeFromSuperview()
-//        }
-        if (editing) {
-            showsReorderControl = false
-            UIView.animate(
-                withDuration: 0.3,
-                animations: {
-                    self.TodoStatus.setImage(nil, for: .normal)
-            }, completion: { _ in
-                self.todoStatusWidth.constant = 0
-                self.todoStatusLeading.constant = 8
-                self.TodoStatus.isEnabled = false
-                super.setEditing(editing, animated: animated)
-            })
+        override func setEditing(_ editing: Bool, animated: Bool) {
+
+            if (editing) {
+                showsReorderControl = false
+                UIView.animate(
+                    withDuration: 0.3,
+                    animations: {
+                        self.TodoStatus.setImage(nil, for: .normal)
+                }, completion: { _ in
+                    self.todoStatusWidth.constant = 0
+                    self.todoStatusLeading.constant = 8
+                    // self.TodoStatus.isEnabled = false
+                    super.setEditing(editing, animated: animated)
+                    self.isInEditingMode = true
+                })
+            }
+            else {
+    //            UIView.animate(
+    //                withDuration: 0.3,
+    //                animations: {
+    //                    // self = TaskTableView.tableView(self)
+    //            }, completion: { _ in
+    //                self.todoStatusWidth.constant = 42
+    //                self.todoStatusLeading.constant = 10
+    //                self.stackLeading.constant = 52
+    //                self.TodoStatus.isEnabled = true
+    //                super.setEditing(editing, animated: animated)
+    //            })
+                if (self.isInEditingMode) {
+                    self.todoStatusWidth.constant = 42
+                    self.todoStatusLeading.constant = 10
+
+                    super.setEditing(editing, animated: animated)
+                    
+                    delegate?.finishEditing(sender: self)
+                    //self.isInEditingMode = false
+                    //self.TodoStatus.isEnabled = true
+                }
+            }
         }
-    }
 
     
     

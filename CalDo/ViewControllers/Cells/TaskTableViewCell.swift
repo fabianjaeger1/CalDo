@@ -10,6 +10,7 @@ import UIKit
 
 @objc protocol TaskTableViewCellDelegate: class {
     func checkmarkTapped1(sender: TaskTableViewCell)
+    func finishEditing1(sender: TaskTableViewCell)
 }
 
 //protocol TaskCellDelegate: class{
@@ -38,6 +39,8 @@ class TaskTableViewCell: UITableViewCell {
     @IBOutlet weak var todoStatusLeading: NSLayoutConstraint!
     @IBOutlet weak var stackLeading: NSLayoutConstraint!
     
+    var isInEditingMode: Bool = false
+    
     @IBAction func completeButtonTapped(_ sender: Any) {
         print("Test")
         delegate?.checkmarkTapped1(sender: self)
@@ -55,9 +58,7 @@ class TaskTableViewCell: UITableViewCell {
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
-//        if (editing) {
-//            TodoStatus?.removeFromSuperview()
-//        }
+
         if (editing) {
             showsReorderControl = false
             UIView.animate(
@@ -68,13 +69,35 @@ class TaskTableViewCell: UITableViewCell {
                 self.todoStatusWidth.constant = 0
                 self.todoStatusLeading.constant = 8
                 self.stackLeading.constant = 8
-                self.TodoStatus.isEnabled = false
+                // self.TodoStatus.isEnabled = false
                 super.setEditing(editing, animated: animated)
+                self.isInEditingMode = true
             })
-
-
         }
-        
+        else {
+//            UIView.animate(
+//                withDuration: 0.3,
+//                animations: {
+//                    // self = TaskTableView.tableView(self)
+//            }, completion: { _ in
+//                self.todoStatusWidth.constant = 42
+//                self.todoStatusLeading.constant = 10
+//                self.stackLeading.constant = 52
+//                self.TodoStatus.isEnabled = true
+//                super.setEditing(editing, animated: animated)
+//            })
+            if (self.isInEditingMode) {
+                self.todoStatusWidth.constant = 42
+                self.todoStatusLeading.constant = 10
+                self.stackLeading.constant = 52
+                
+                super.setEditing(editing, animated: animated)
+                
+                delegate?.finishEditing1(sender: self)
+                //self.isInEditingMode = false
+                //self.TodoStatus.isEnabled = true
+            }
+        }
     }
     
 }

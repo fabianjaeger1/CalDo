@@ -65,12 +65,19 @@ class InboxViewController: UIViewController {
     @IBOutlet weak var inboxLabel: UILabel!
     @IBOutlet weak var menuButton: UIButton!
     
+    @IBOutlet weak var editToolbar: UIToolbar!
+    
     
     @IBOutlet weak var myTableView: UITableView!
     var inboxTableView: TaskTableView!
     
     
     // MARK: - Action Sheet
+    
+    @objc func tapCancelButton() {
+        self.myTableView.setEditing(false, animated: true)
+        self.editToolbar.isHidden = true
+    }
     
     @IBAction func showActionSheet(_ sender : AnyObject) {
         // Print out what button was tapped
@@ -144,10 +151,22 @@ class InboxViewController: UIViewController {
         
         alertController.addAction(UIAlertAction(title: "Select Tasks", style: .default) { _ in
             self.myTableView.setEditing(true, animated: true)
+            UIView.animate(withDuration: 0.5) {
+                self.editToolbar.isHidden = false
+            }
+            let verticalSpaceConstraint = NSLayoutConstraint(item: self.editToolbar!, attribute: .top, relatedBy: .equal, toItem: self.addButton, attribute: .bottom, multiplier: 1, constant: 20)
+            // NSLayoutConstraint.activate([verticalSpaceConstraint])
+            self.view.addConstraint(verticalSpaceConstraint)
             
-            let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: nil)
-            self.toolbarItems = [editButton]
-            self.navigationController?.setToolbarHidden(false, animated: true)
+
+            let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.tapCancelButton))
+            
+
+            
+            self.editToolbar.setItems([cancelButton], animated: true)
+            
+//            self.toolbarItems = [editButton]
+//            self.navigationController?.setToolbarHidden(false, animated: true)
 //            let navigationController = UINavigationController(rootViewController: self)
 //            navigationController.setToolbarHidden(false, animated: true)
 
