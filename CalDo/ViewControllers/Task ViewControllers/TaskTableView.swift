@@ -538,7 +538,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         
         let deleteAction = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) { action in
             
-            let alert = UIAlertController(title: "Delete task?", message: "This action cannot be undone.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Delete task?", message: "This action cannot be undone.", preferredStyle: .actionSheet)
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
 
@@ -555,14 +555,12 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             alert.addAction(deleteAction)
 
             // Present the alert controller
-            var rootViewController = UIApplication.shared.keyWindow?.rootViewController
-            if let navigationController = rootViewController as? UINavigationController {
-                rootViewController = navigationController.viewControllers.first
+            if var rootViewController = UIApplication.shared.keyWindow?.rootViewController {
+                while let presentedViewController = rootViewController.presentedViewController {
+                    rootViewController = presentedViewController
+                }
+                rootViewController.present(alert, animated: true, completion: nil)
             }
-            if let tabBarController = rootViewController as? UITabBarController {
-                rootViewController = tabBarController.selectedViewController
-            }
-            rootViewController?.present(alert, animated: true, completion: nil)
         }
         
         // Inline submenu (to get a separator)

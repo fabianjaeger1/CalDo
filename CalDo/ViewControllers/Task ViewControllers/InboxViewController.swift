@@ -270,6 +270,7 @@ class InboxViewController: UIViewController {
         
         if traitCollection.userInterfaceStyle == .light {
             self.menuButton.setImage(UIImage(named: "Down_bright"), for: .normal)
+        }
     
         myTableView.allowsMultipleSelectionDuringEditing = true
         
@@ -290,9 +291,8 @@ class InboxViewController: UIViewController {
         textfield.inputAccessoryView = toolbarView
         
         toolbarView.layer.cornerRadius = 20
-
+            
     }
-    
     
     
     
