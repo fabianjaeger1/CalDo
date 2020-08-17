@@ -136,14 +136,11 @@ class InboxViewController: UIViewController {
         }
         sortByPriorityAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
         
-        if #available(iOS 13.0, *) {
-            sortByDateAction.setValue(UIImage(systemName: "calendar"), forKey: "image")
-            sortByTitleAction.setValue(UIImage(systemName: "textformat"), forKey: "image")
-            sortByPriorityAction.setValue(UIImage(systemName: "flag"), forKey: "image")
-        } else {
-            // Fallback on earlier versions
-        }
-        
+
+        sortByDateAction.setValue(UIImage(systemName: "calendar"), forKey: "image")
+        sortByTitleAction.setValue(UIImage(systemName: "textformat"), forKey: "image")
+        sortByPriorityAction.setValue(UIImage(systemName: "flag"), forKey: "image")
+            
         sortController.addAction(sortByTitleAction)
         sortController.addAction(sortByDateAction)
         sortController.addAction(sortByPriorityAction)
@@ -271,14 +268,9 @@ class InboxViewController: UIViewController {
         let predicate = NSPredicate(format: "(completed == false)")
         inboxTableView = TaskTableView(myTableView, predicate)
         
-        if #available(iOS 12.0, *) {
-            if traitCollection.userInterfaceStyle == .light {
-                self.menuButton.setImage(UIImage(named: "Down_bright"), for: .normal)
-            }
-        } else {
-            // Fallback on earlier versions
-        }
-        
+        if traitCollection.userInterfaceStyle == .light {
+            self.menuButton.setImage(UIImage(named: "Down_bright"), for: .normal)
+    
         myTableView.allowsMultipleSelectionDuringEditing = true
         
         toolbarView.backgroundColor = .BackgroundColor

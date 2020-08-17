@@ -315,11 +315,7 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
         
         
         
-        if #available(iOS 13.0, *) {
-            self.view.backgroundColor = .BackgroundColor
-        } else {
-            // Fallback on earlier versions
-        }
+        self.view.backgroundColor = .BackgroundColor
     
 
         collectionView.delegate = self

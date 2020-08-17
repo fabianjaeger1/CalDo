@@ -272,11 +272,8 @@ override func viewDidLoad() {
     layoutSubview()
     
     
-    if #available(iOS 13.0, *) {
-        self.BackgroundView.backgroundColor = .systemBackground
-        } else {
-            // Fallback on earlier versions
-        } // Change Color of Background based on system preference
+    self.BackgroundView.backgroundColor = .systemBackground
+
         
 
 // ================== TAG COLLECTION DATASOURCE AND DELEGATE ==========================

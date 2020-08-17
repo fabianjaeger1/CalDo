@@ -34,11 +34,7 @@ class CustomTabBar: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        if #available(iOS 13.0, *) {
-            self.backgroundColor = .BackgroundColor
-        } else {
-            // Fallback on earlier versions
-        }
+        self.backgroundColor = .BackgroundColor
         
     }
     

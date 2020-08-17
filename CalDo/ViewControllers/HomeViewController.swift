@@ -322,11 +322,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UICollect
         configureAnimation()
         CollectionView?.delegate = self
         CollectionView?.dataSource = self
-        if #available(iOS 13.0, *) {
-            self.view.backgroundColor = .BackgroundColor
-        } else {
-            // Fallback on earlier versions
-        } // Change Color of Background based on system preference
+        
+        self.view.backgroundColor = .BackgroundColor
         super.viewDidLoad()
         
         
