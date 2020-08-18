@@ -35,7 +35,7 @@ func computeNewDate(from fromDate: Date, to toDate: Date) -> Date {
     }
 }
 
-
+// TODO: localization
 extension Date {
     func todoString(withTime: Bool) -> String {
         let cal = Calendar.current

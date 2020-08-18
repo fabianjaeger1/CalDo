@@ -88,6 +88,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
 
         let task = self.tableViewData[indexPath.row]
             
+        // MARK: - Small TableView Cell
         // Smaller Table View cell without Projects and Tags
         if task.value(forKey: "project") == nil && (task.value(forKey: "tags") as! Set<TagEntity>).count == 0 {
             
@@ -170,7 +171,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             return cell
         }
 
-        // GENERAL CASE
+        // MARK: - Large TableView Cell
 
         else {
             
@@ -314,7 +315,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
                 cell.TodoLocationIcon.alpha = 1
             }
         // ================== CELL TODO BUTTON =======================
-            
+
             switch(task.value(forKey: "recurrence") as! Bool, task.value(forKey: "priority") as! Int) {
             case (true, 0):
                 let image = UIImage(named: "Recurring")
@@ -347,7 +348,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         return UITableViewCell.EditingStyle.none
     }
         
-    //================== SWIPE ACTIONS ==================
+// MARK: - Swipe Actions
         
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let Schedule = ScheduleAction(at: indexPath)
@@ -389,11 +390,11 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             }
     }
     
-    //=============== DELEGATE METHODS =======================
+    
+// MARK: - Delegate Methods
         
     func checkmarkTapped(sender: SmallTaskTableViewCell) {
         if let indexPath = self.tableView.indexPath(for: sender) {
-            print("test")
             
             // ALLTASKS
             
@@ -404,22 +405,37 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             
             self.tableViewData[indexPath.row].setValue(true, forKey: "completed")
             CoreDataManager.shared.saveContext()
-                
-            // self.tableViewData = CoreDataManager.shared.allTasks
-            self.tableViewData.remove(at: indexPath.row)
         
             // TODO: implement haptic
             let impact = UIImpactFeedbackGenerator()
             impact.impactOccurred()
             
+            let image: UIImage?
             
-            let image = UIImage(named: "DoneButtonPressed")
+            switch (tableViewData[indexPath.row].value(forKey: "recurrence") as! Bool, tableViewData[indexPath.row].value(forKey: "priority") as! Int) {
+            case (true, 0):
+                image = UIImage(named: "RecurringButtonPressed")
+            case (true, 1):
+                image = UIImage(named: "MediumRecurringButtonPressed")
+            case (true, 2):
+                image = UIImage(named: "HighRecurringButtonPressed")
+            case (false, 0):
+                image = UIImage(named: "ButtonPressed")
+            case (false, 1):
+                image = UIImage(named: "MediumButtonPressed")
+            case (false, 2):
+                image = UIImage(named: "HighButtonPressed")
+            default:
+                image = nil
+            }
             
             UIView.animate(
                 withDuration: 0.3,
                 animations: {
                     sender.TodoStatus.setImage(image, for: .normal)
             })
+            
+            self.tableViewData.remove(at: indexPath.row)
             
             UIView.animate(withDuration: 0.8){
 //                self.myTableView.deleteSections(at: [indexPath], with: .fade)
@@ -435,7 +451,6 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
     
     func checkmarkTapped1(sender: TaskTableViewCell) {
         if let indexPath = self.tableView.indexPath(for: sender) {
-            print("test")
             
             // ALLTASKS
             
@@ -446,14 +461,29 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             self.tableViewData[indexPath.row].setValue(true, forKey: "completed")
             CoreDataManager.shared.saveContext()
             
-            // self.tableViewData = CoreDataManager.shared.allTasks
-            self.tableViewData.remove(at: indexPath.row)
             
             // TODO: implement haptic
             let impact = UIImpactFeedbackGenerator()
             impact.impactOccurred()
         
-            let image = UIImage(named: "DoneButtonPressed")
+            let image: UIImage?
+            
+            switch (tableViewData[indexPath.row].value(forKey: "recurrence") as! Bool, tableViewData[indexPath.row].value(forKey: "priority") as! Int) {
+            case (true, 0):
+                image = UIImage(named: "RecurringButtonPressed")
+            case (true, 1):
+                image = UIImage(named: "MediumRecurringButtonPressed")
+            case (true, 2):
+                image = UIImage(named: "HighRecurringButtonPressed")
+            case (false, 0):
+                image = UIImage(named: "ButtonPressed")
+            case (false, 1):
+                image = UIImage(named: "MediumButtonPressed")
+            case (false, 2):
+                image = UIImage(named: "HighButtonPressed")
+            default:
+                image = nil
+            }
             
             UIView.animate(
                 withDuration: 0.3,
@@ -461,6 +491,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
                     sender.TodoStatus.setImage(image, for: .normal)
             })
 
+            self.tableViewData.remove(at: indexPath.row)
             
             UIView.animate(withDuration: 0.8){
     //          self.myTableView.deleteSections(at: [indexPath], with: .fade)
@@ -505,7 +536,6 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
     
     // MARK: - Context menu
     
-    @available(iOS 13.0, *)
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
 
         let task = tableViewData[indexPath.row]
@@ -592,7 +622,6 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         })
     }
     
-//    @available(iOS 13.0, *)
 //    func tableView(_ tableView: UITableView, previewForHighlightingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
 //
 //        guard
@@ -610,7 +639,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
 //        return UITargetedPreview(view: cellBackground)
 //    }
 //
-    @available(iOS 13.0, *)
+
     func tableView(_ tableView: UITableView, previewForDismissingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
 
         guard

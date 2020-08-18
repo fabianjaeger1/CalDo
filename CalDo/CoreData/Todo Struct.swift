@@ -203,6 +203,7 @@ func loadSampleTaskEntities() {
     let task8 = TaskEntity(context:managedContext)
     task8.title = "Feed dogs"
     task8.tags = [tag1]
+    task8.recurrence = true
 
 // Tasks with project, no tags, no date
     let task9 = TaskEntity(context:managedContext)
