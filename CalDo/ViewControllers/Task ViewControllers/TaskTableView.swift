@@ -205,7 +205,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             if (task.value(forKey: "completed") as! Bool) == true {
                 cell.alpha = 1
         //            let currentindex = IndexPath.init(row: indexPath.row, section: 0)
-                let image = UIImage(named: "DoneButtonPressed")
+                let image = UIImage(named: "DoneButton")
 
                 UIView.animate(
                     withDuration: 0.3,
@@ -261,13 +261,13 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
                     cell.Tag1.text = taskTagTitles[0]
                     cell.Tag1.textColor = taskTagColors[0]
                 }
-                else if count == 2{
+                else if count == 2 {
                     cell.Tag1.text = taskTagTitles[0]
                     cell.Tag1.textColor = taskTagColors[0]
                     cell.Tag2.text = taskTagTitles[1]
                     cell.Tag2.textColor = taskTagColors[1]
                 }
-                else if count == 3{
+                else if count == 3 {
                     cell.Tag1.text = taskTagTitles[0]
                     cell.Tag1.textColor = taskTagColors[0]
                     cell.Tag2.text = taskTagTitles[1]
@@ -275,7 +275,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
                     cell.Tag3.text = taskTagTitles[2]
                     cell.Tag3.textColor =  taskTagColors[2]
                 }
-                else if count == 4{
+                else if count == 4 {
                     cell.Tag1.text = taskTagTitles[0]
                     cell.Tag1.textColor = taskTagColors[0]
                     cell.Tag2.text = taskTagTitles[1]
@@ -285,7 +285,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
                     cell.Tag4.text = taskTagTitles[3]
                     cell.Tag4.textColor = taskTagColors[3]
                 }
-                else if count == 5{
+                else if count == 5 {
                     cell.Tag1.text = taskTagTitles[0]
                     cell.Tag1.textColor = taskTagColors[0]
                     cell.Tag2.text = taskTagTitles[1]

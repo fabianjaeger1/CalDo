@@ -149,7 +149,7 @@ func loadSampleTaskEntities() {
     task1.priority = 2
     task1.project = project1
     task1.tags = [tag1, tag2]
-    task1.date = Date.init(timeIntervalSinceNow: 3600)
+    task1.date = Date.init(timeIntervalSinceNow: 86400*3)
     
     
 // Tasks with project, tags, no date

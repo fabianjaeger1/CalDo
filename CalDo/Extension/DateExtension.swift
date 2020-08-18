@@ -35,32 +35,28 @@ func computeNewDate(from fromDate: Date, to toDate: Date) -> Date {
     }
 }
 
-// TODO: localization
 extension Date {
     func todoString(withTime: Bool) -> String {
         let cal = Calendar.current
 
-        let timeformatter = DateFormatter()
-        timeformatter.dateFormat = "HH:mm"
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateStyle = .none
+        timeFormatter.timeStyle = .short
         
         var timeString = ""
         if (withTime) {
-            timeString = " " + timeformatter.string(from: self)
+            timeString = " " + timeFormatter.string(from: self)
         }
         
-        let dateformatter = DateFormatter()
-        dateformatter.dateFormat = "EEEE"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
         
-        let dateformatter2 = DateFormatter()
-//        if (withTime) {
-//            dateformatter2.dateFormat = "d MMM HH:mm"
-//        }
-//        else {
-//            dateformatter2.dateFormat = "d MMM"
-//        }
+        let weekdayFormatter = DateFormatter()
+        weekdayFormatter.setLocalizedDateFormatFromTemplate("EEEE")
         
-        // TODO: change to MMM d for consistency?
-        dateformatter2.dateFormat = "d MMM"
+        let dateNoYearFormatter = DateFormatter()
+        dateNoYearFormatter.setLocalizedDateFormatFromTemplate("MMM d")
 
         let date1 = cal.startOfDay(for: Date())
         let date2 = cal.startOfDay(for: self)
@@ -78,7 +74,7 @@ extension Date {
         }
         if components2.day! > 2 && components2.day! < 7 {
             // return "\(dateformatter.string(from: self)) \(timeString)"
-            return "\(dateformatter.string(from: self))" + timeString
+            return "\(weekdayFormatter.string(from: self))" + timeString
         }
 //        if components2.day! > 7 {
 //            return dateformatter2.string(from: self) + timeString
@@ -91,12 +87,12 @@ extension Date {
 //        else {
 //            return self.DatetoString(dateFormat: "MMM d yyyy" )
 //        }
-        
+
         if cal.dateComponents([.year], from: date1) == cal.dateComponents([.year], from: date2) {
-            return self.dateToString(dateFormat: "MMM d") + timeString
+            return "\(dateNoYearFormatter.string(from: self))" + timeString
         }
         else {
-            return self.dateToString(dateFormat: "MMM d yyyy") + timeString
+            return "\(dateFormatter.string(from: self))" + timeString
         }
     }
 }
