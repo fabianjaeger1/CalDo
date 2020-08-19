@@ -409,9 +409,16 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             }
     }
     
+// MARK: - Cell Sizing
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        //return self.cellHeightsDictionary[indexPath] ??  UITableView.automaticDimension
+        return 70
+    }
     
 // MARK: - Delegate Methods
         
+    
     func checkmarkTapped(sender: SmallTaskTableViewCell) {
         if let indexPath = self.tableView.indexPath(for: sender) {
             
@@ -470,7 +477,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
                 tableViewData.remove(at: indexPath.row)
             }
             
-            UIView.animate(withDuration: 0.8){
+            UIView.animate(withDuration: 0.5) {
 //                self.myTableView.deleteSections(at: [indexPath], with: .fade)
                 self.tableView.deleteRows(at: [indexPath], with: .fade)
             }
@@ -542,7 +549,9 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
                 tableViewData.remove(at: indexPath.row)
             }
             
-            UIView.animate(withDuration: 0.8) {
+            cellHeightsDictionary.removeValue(forKey: indexPath)
+            
+            UIView.animate(withDuration: 0.5) {
     //          self.myTableView.deleteSections(at: [indexPath], with: .fade)
                 self.tableView.deleteRows(at: [indexPath], with: .fade)
             }
