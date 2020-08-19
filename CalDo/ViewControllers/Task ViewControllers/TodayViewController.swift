@@ -12,7 +12,7 @@ class TodayViewController: UIViewController {
     @IBOutlet weak var myTableView: UITableView!
     var todayTableView: TaskTableView!
     
-    
+    // let searchController = UISearchController(searchResultsController: nil)
     
     override func viewWillAppear(_ animated: Bool) {
 
@@ -33,9 +33,23 @@ class TodayViewController: UIViewController {
         myTableView.backgroundColor = .BackgroundColor
         self.view.backgroundColor = .BackgroundColor
         
+        
         todayTableView = TaskTableView(myTableView, predicate)
+        
+        // Search bar
+        myTableView.tableHeaderView = todayTableView.searchController.searchBar
+        navigationItem.searchController = todayTableView.searchController
+        definesPresentationContext = true
     }
-    
+}
+
+//extension TodayViewController: UISearchResultsUpdating {
+//    func updateSearchResults(for searchController: UISearchController) {
+//        let searchBar = todayTableView.searchController.searchBar
+//        todayTableView.filterTasksForSearchText(searchBar.text!)
+//    }
+//}
+
 //
 //    func clearNavigationBar(forBar navBar: UINavigationBar) {
 //        navBar.setBackgroundImage(UIImage(), for: .default)
@@ -120,4 +134,3 @@ class TodayViewController: UIViewController {
     }
     */
 
-}

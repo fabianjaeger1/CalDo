@@ -19,6 +19,9 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
     var tableView: UITableView
     var tableViewData: [TaskEntity]
     var taskPredicate: NSPredicate
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    var filteredTableViewData: [TaskEntity] = []
 
     init?(_ tv: UITableView, _ predicate: NSPredicate) {
         
@@ -58,6 +61,13 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         // Register all of your cells
         tableView.register(UINib(nibName: "TaskTableViewCell", bundle: nil), forCellReuseIdentifier: "TaskTableViewCell")
         tableView.register(UINib(nibName: "SmallTaskTableViewCell", bundle: nil), forCellReuseIdentifier: "SmallTaskTableViewCell")
+        
+        // Set up search bar
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.searchBarStyle = .minimal
+        searchController.searchBar.placeholder = "Search Tasks"
+        searchController.searchBar.backgroundColor = .BackgroundColor
     }
     
     func refreshTableViewData() {
@@ -77,6 +87,9 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isFiltering {
+            return filteredTableViewData.count
+        }
         return tableViewData.count
     }
 
@@ -85,9 +98,15 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        let task = self.tableViewData[indexPath.row]
-            
+        
+        let task: TaskEntity
+        if isFiltering {
+            task = filteredTableViewData[indexPath.row]
+        }
+        else {
+            task = self.tableViewData[indexPath.row]
+        }
+        
         // MARK: - Small TableView Cell
         // Smaller Table View cell without Projects and Tags
         if task.value(forKey: "project") == nil && (task.value(forKey: "tags") as! Set<TagEntity>).count == 0 {
@@ -402,17 +421,23 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
 //            CoreDataManager.shared.allTasks[indexPath.row].setValue(true, forKey: "completed")
 //            CoreDataManager.shared.saveContext()
 //            CoreDataManager.shared.allTasks.remove(at: indexPath.row)
-            
-            self.tableViewData[indexPath.row].setValue(true, forKey: "completed")
+            let task: TaskEntity
+            if isFiltering {
+                task = filteredTableViewData[indexPath.row]
+            }
+            else {
+                task = tableViewData[indexPath.row]
+            }
+            task.setValue(true, forKey: "completed")
             CoreDataManager.shared.saveContext()
         
-            // TODO: implement haptic
+            // TODO: implement haptic feedback
             let impact = UIImpactFeedbackGenerator()
             impact.impactOccurred()
             
             let image: UIImage?
             
-            switch (tableViewData[indexPath.row].value(forKey: "recurrence") as! Bool, tableViewData[indexPath.row].value(forKey: "priority") as! Int) {
+            switch (task.value(forKey: "recurrence") as! Bool, task.value(forKey: "priority") as! Int) {
             case (true, 0):
                 image = UIImage(named: "RecurringButtonPressed")
             case (true, 1):
@@ -435,7 +460,15 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
                     sender.TodoStatus.setImage(image, for: .normal)
             })
             
-            self.tableViewData.remove(at: indexPath.row)
+            if isFiltering {
+                filteredTableViewData.remove(at: indexPath.row)
+                tableViewData.removeAll(where: {taskInList -> Bool in
+                    return taskInList == task
+                })
+            }
+            else {
+                tableViewData.remove(at: indexPath.row)
+            }
             
             UIView.animate(withDuration: 0.8){
 //                self.myTableView.deleteSections(at: [indexPath], with: .fade)
@@ -458,7 +491,14 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
 //            CoreDataManager.shared.saveContext()
 //            CoreDataManager.shared.allTasks.remove(at: indexPath.row)
             
-            self.tableViewData[indexPath.row].setValue(true, forKey: "completed")
+            let task: TaskEntity
+            if isFiltering {
+                task = filteredTableViewData[indexPath.row]
+            }
+            else {
+                task = tableViewData[indexPath.row]
+            }
+            task.setValue(true, forKey: "completed")
             CoreDataManager.shared.saveContext()
             
             
@@ -468,7 +508,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         
             let image: UIImage?
             
-            switch (tableViewData[indexPath.row].value(forKey: "recurrence") as! Bool, tableViewData[indexPath.row].value(forKey: "priority") as! Int) {
+            switch (task.value(forKey: "recurrence") as! Bool, task.value(forKey: "priority") as! Int) {
             case (true, 0):
                 image = UIImage(named: "RecurringButtonPressed")
             case (true, 1):
@@ -491,13 +531,22 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
                     sender.TodoStatus.setImage(image, for: .normal)
             })
 
-            self.tableViewData.remove(at: indexPath.row)
             
-            UIView.animate(withDuration: 0.8){
+            if isFiltering {
+                filteredTableViewData.remove(at: indexPath.row)
+                tableViewData.removeAll(where: {taskInList -> Bool in
+                    return taskInList == task
+                })
+            }
+            else {
+                tableViewData.remove(at: indexPath.row)
+            }
+            
+            UIView.animate(withDuration: 0.8) {
     //          self.myTableView.deleteSections(at: [indexPath], with: .fade)
                 self.tableView.deleteRows(at: [indexPath], with: .fade)
             }
-            
+            //self.tableView.reloadData()
             // self.tableView.reloadRows(at: [indexPath], with: .automatic)
 
             
@@ -533,6 +582,23 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         tableViewData.insert(mover, at: destinationIndexPath.row)
     }
     
+    
+    // MARK: - Search Bar
+    
+    var isSearchBarEmpty: Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    var isFiltering: Bool {
+        return searchController.isActive && !isSearchBarEmpty
+    }
+    
+    func filterTasksForSearchText(_ searchText: String) {
+        filteredTableViewData = tableViewData.filter { (task: TaskEntity) -> Bool in
+            return task.title!.lowercased().contains(searchText.lowercased())
+        }
+        tableView.reloadData()
+    }
     
     // MARK: - Context menu
     
@@ -660,7 +726,12 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
     
 }
 
-
+extension TaskTableView: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        filterTasksForSearchText(searchBar.text!)
+    }
+}
 
 
 

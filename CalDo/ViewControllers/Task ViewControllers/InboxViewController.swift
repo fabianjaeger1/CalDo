@@ -192,78 +192,8 @@ class InboxViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-
-
-//    @IBAction func BackButtonPressed(_ sender: Any) {
-//        dismiss(animated: true, completion: nil)
-//    }
     
-    
-//    func animateTable() {
-//        self.myTableView.reloadData()
-//        let cells = myTableView.visibleCells
-//        let tableHeight: CGFloat = myTableView.bounds.size.height
-//
-//        for i in cells {
-//            let cell: UITableViewCell = i as! InboxTableViewCell
-//            cell.transform = CGAffineTransform(translationX: 0, y: tableHeight)
-//        }
-//
-//        var index = 0
-//
-//        for a in cells {
-//            self.myTableView.isHidden = false
-//            UIView.animate(withDuration: 1.5, delay: 0.005 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options:  .transitionFlipFromTop, animations: {
-//            }, completion: nil)
-//            index += 1
-//        }
-//
-//    }
-//
-    
-    
-//==================== TABLE VIEW METHODS ===========================
-    
-//    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-//    {
-////        return (InboxTodo.count)
-//        return 1
-//    }
-//
-//    let cellSpacingHeight: CGFloat = 10
-//
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return InboxTodo.count
-//    }
-//
-//    // Set the spacing between sections
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return cellSpacingHeight
-//    }
-//
-//    // Make the background color show through
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let headerView = UIView()
-//        headerView.backgroundColor = UIColor.clear
-//        return headerView
-//    }
-    
-//
-//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//
-//        guard let tableViewCell = cell as? InboxTableViewCell else { return }
-//        tableViewCell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.row)
-//    }
-    
-    
-
-    
-    
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//        myTableView.reloadData()
-//    }
-    
+    // MARK: - View Setup
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -301,6 +231,11 @@ class InboxViewController: UIViewController {
         textfield.inputAccessoryView = toolbarView
         
         toolbarView.layer.cornerRadius = 20
+        
+        // Search bar
+        myTableView.tableHeaderView = inboxTableView.searchController.searchBar
+        navigationItem.searchController = inboxTableView.searchController
+        definesPresentationContext = true
             
     }
     
@@ -308,3 +243,56 @@ class InboxViewController: UIViewController {
     
 }
 
+
+//extension InboxViewController: UISearchResultsUpdating {
+//    func updateSearchResults(for searchController: UISearchController) {
+//        let searchBar = searchController.searchBar
+//        filterTasksForSearchText(searchBar.text!)
+//    }
+//
+//
+//}
+
+
+//    @IBAction func BackButtonPressed(_ sender: Any) {
+//        dismiss(animated: true, completion: nil)
+//    }
+    
+    
+//    func animateTable() {
+//        self.myTableView.reloadData()
+//        let cells = myTableView.visibleCells
+//        let tableHeight: CGFloat = myTableView.bounds.size.height
+//
+//        for i in cells {
+//            let cell: UITableViewCell = i as! InboxTableViewCell
+//            cell.transform = CGAffineTransform(translationX: 0, y: tableHeight)
+//        }
+//
+//        var index = 0
+//
+//        for a in cells {
+//            self.myTableView.isHidden = false
+//            UIView.animate(withDuration: 1.5, delay: 0.005 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options:  .transitionFlipFromTop, animations: {
+//            }, completion: nil)
+//            index += 1
+//        }
+//
+//    }
+//
+    
+    
+//==================== TABLE VIEW METHODS ===========================
+//    let cellSpacingHeight: CGFloat = 10
+
+//    // Set the spacing between sections
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return cellSpacingHeight
+//    }
+//
+//    // Make the background color show through
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let headerView = UIView()
+//        headerView.backgroundColor = UIColor.clear
+//        return headerView
+//    }
