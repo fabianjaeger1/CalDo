@@ -29,10 +29,39 @@ class var textColor: UIColor {
     }
 }
 
-let todoSections = ["Inbox", "Today", "Next", "Habits"]
+let todoSections = ["Inbox", "Today", "Upcoming", "All Tasks"]
 
 
 class TodoSectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIAdaptivePresentationControllerDelegate, ProjectTableViewDelegate {
+    
+//  MARK: Collapsible Sections
+    var hiddenSections = Set<Int>()
+//
+//    @objc
+//    private func hideSection(sender: UIButton) {
+//        let section = sender.tag
+//
+//        func indexPathsForSection() -> [IndexPath] {
+//            var indexPaths = [IndexPath]()
+//
+//            for row in 0..<self.proje[section].count {
+//                indexPaths.append(IndexPath(row: row,
+//                                            section: section))
+//            }
+//
+//            return indexPaths
+//        }
+//
+//        if self.hiddenSections.contains(section) {
+//            self.hiddenSections.remove(section)
+//            self.tableView.insertRows(at: indexPathsForSection(),
+//                                      with: .fade)
+//        } else {
+//            self.hiddenSections.insert(section)
+//            self.tableView.deleteRows(at: indexPathsForSection(),
+//                                      with: .fade)
+//        }
+//    }
     
     
     // loadSampleTaskEntities()
@@ -107,6 +136,7 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
         
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TodoSectionCollectionViewCell", for: indexPath) as! TodoSectionCollectionViewCell
     
@@ -148,7 +178,7 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
             }
             
         case 3:
-            cell.TodoSection.image = UIImage(named: "Habits_Home")
+            cell.TodoSection.image = UIImage(named: "All_Tasks")
         default:
             print("Bad indexPath for TodoSection CollectionView")
         }

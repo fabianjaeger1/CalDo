@@ -68,6 +68,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         searchController.searchBar.searchBarStyle = .minimal
         searchController.searchBar.placeholder = "Search Tasks"
         searchController.searchBar.backgroundColor = .BackgroundColor
+        searchController.hidesNavigationBarDuringPresentation = false
     }
     
     func refreshTableViewData() {
@@ -548,9 +549,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             else {
                 tableViewData.remove(at: indexPath.row)
             }
-            
-            cellHeightsDictionary.removeValue(forKey: indexPath)
-            
+        
             UIView.animate(withDuration: 0.5) {
     //          self.myTableView.deleteSections(at: [indexPath], with: .fade)
                 self.tableView.deleteRows(at: [indexPath], with: .fade)
@@ -608,6 +607,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         }
         tableView.reloadData()
     }
+    
     
     // MARK: - Context menu
     

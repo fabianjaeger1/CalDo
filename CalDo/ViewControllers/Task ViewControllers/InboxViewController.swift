@@ -217,11 +217,12 @@ class InboxViewController: UIViewController {
         toolbarView.backgroundColor = .BackgroundColor
         
         inboxLabel.textColor = UIColor.textColor
-        searchBar.barTintColor = UIColor.white
-        searchBar.isTranslucent = false
-        searchBar.tintColor = UIColor.blue
+//        searchBar.barTintColor = UIColor.white
+//        searchBar.isTranslucent = false
+//        searchBar.tintColor = UIColor.blue
         
         myTableView.backgroundColor = .BackgroundColor
+        myTableView.layer.backgroundColor = UIColor.BackgroundColor.cgColor
         self.view.backgroundColor = .BackgroundColor
         
         addButton.createFloatingActionButton()
@@ -233,7 +234,13 @@ class InboxViewController: UIViewController {
         toolbarView.layer.cornerRadius = 20
         
         // Search bar
+        inboxTableView.searchController.searchBar.backgroundColor = UIColor.BackgroundColor
         myTableView.tableHeaderView = inboxTableView.searchController.searchBar
+        
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = .BackgroundColor
+        myTableView.backgroundView = backgroundView
+
         navigationItem.searchController = inboxTableView.searchController
         definesPresentationContext = true
             
