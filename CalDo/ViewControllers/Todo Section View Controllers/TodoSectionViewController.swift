@@ -34,40 +34,6 @@ let todoSections = ["Inbox", "Today", "Upcoming", "All Tasks"]
 
 class TodoSectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIAdaptivePresentationControllerDelegate, ProjectTableViewDelegate {
     
-//  MARK: Collapsible Sections
-    var hiddenSections = Set<Int>()
-//
-//    @objc
-//    private func hideSection(sender: UIButton) {
-//        let section = sender.tag
-//
-//        func indexPathsForSection() -> [IndexPath] {
-//            var indexPaths = [IndexPath]()
-//
-//            for row in 0..<self.proje[section].count {
-//                indexPaths.append(IndexPath(row: row,
-//                                            section: section))
-//            }
-//
-//            return indexPaths
-//        }
-//
-//        if self.hiddenSections.contains(section) {
-//            self.hiddenSections.remove(section)
-//            self.tableView.insertRows(at: indexPathsForSection(),
-//                                      with: .fade)
-//        } else {
-//            self.hiddenSections.insert(section)
-//            self.tableView.deleteRows(at: indexPathsForSection(),
-//                                      with: .fade)
-//        }
-//    }
-    
-    
-    // loadSampleTaskEntities()
-
-//    @IBOutlet weak var tableView: UITableView!
-    
     
     @IBOutlet weak var myTableView: UITableView!
     var projectTableView: ProjectTableView! {
@@ -81,38 +47,7 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
     @IBOutlet var myView: UIView!
     
     
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//
-//        return allProjects!.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = projectTableView.dequeueReusableCell(withIdentifier: "TodoSectionProjectsTableViewCell", for: indexPath) as! TodoSectionProjectsTableViewCell
-//
-//
-//        cell.ProjectLabel.text = allProjects![indexPath.row].ProjectTitle
-//
-//        let shapeLayer = CAShapeLayer()
-//
-//        let center = CGPoint(x: cell.ProjectColor.frame.height/2, y: cell.ProjectColor.frame.width/2)
-//        let circlePath = UIBezierPath(arcCenter: center, radius: CGFloat(6), startAngle: CGFloat(0), endAngle: CGFloat(Double.pi * 2), clockwise: true)
-//
-//        shapeLayer.path = circlePath.cgPath
-//        shapeLayer.lineWidth = 3.0
-//
-//
-//        shapeLayer.path = circlePath.cgPath
-//        shapeLayer.lineWidth = 3.0
-//        shapeLayer.fillColor = UIColor(hexString: allProjects![indexPath.row].ProjectColor!).cgColor
-//        cell.ProjectColor.layer.addSublayer(shapeLayer)
-//        cell.ProjectLabel.textColor = UIColor.textColor
-//        cell.backgroundColor = UIColor.BackgroundColor
-//        return cell
-//    }
-    
-    
-    
-// ============================== COLLECTION VIEW ==============================================
+// MARK: Todo Collection View Methods
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -179,30 +114,30 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
             
         case 3:
             cell.TodoSection.image = UIImage(named: "All_Tasks")
+            
+            CoreDataManager.shared.fetchAllTasks()
+            let allTasksAmount = CoreDataManager.shared.allTasks.count
+            if allTasksAmount == 1 {
+                cell.TodoAmountLabel.text = "1 Task"
+            }
+            else {
+                cell.TodoAmountLabel.text = "\(allTasksAmount) Tasks"
+            }
         default:
-            print("Bad indexPath for TodoSection CollectionView")
+            print("None")
         }
-        
         cell.layer.cornerRadius = 25
-        
         cell.TodoAmountLabel.textColor = UIColor.textColor
         cell.TodoSectionLabel.text = todoSections[indexPath.row]
         cell.TodoSectionLabel.textColor = UIColor.textColor
-        
         cell.contentView.layer.cornerRadius = 25
         cell.contentView.layer.borderWidth = 1.0
         cell.contentView.layer.borderColor = UIColor.clear.cgColor
         cell.contentView.backgroundColor = UIColor.backgroundColor
-//        cell.contentView.layer.masksToBounds = false;
         cell.contentView.layer.shadowColor = UIColor.lightGray.cgColor
         cell.contentView.layer.shadowRadius = 2.0
         cell.layer.shadowColor = UIColor.lightGray.cgColor
         cell.layer.shadowRadius = 2.0
-    
-        
-        // Need for implementation of shadows here
-    
-        
         cell.layer.shadowOffset = CGSize(width:0,height: 2.0)
         
 //        cell.layer.applySketchShadow(color: UIColor.textColor, alpha: 0.1, x: 0, y: 3, blur: 13, spread: 4
@@ -211,6 +146,8 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
         return cell
 
     }
+    
+// MARK: Segue Methods
     
     func projectSelected(sender: ProjectTableView) {
         self.performSegue(withIdentifier: "ProjectDetail", sender: self)
@@ -242,103 +179,12 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
     }
     
     func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
-        // viewWillAppear(true)
         collectionView.reloadData()
-        // myTableView.reloadData()
-        
         smoothlyDeselectRows(tableView: myTableView)
-        
-//        if let selectedRow: IndexPath = myTableView.indexPathForSelectedRow {
-//            myTableView.deselectRow(at: selectedRow, animated: true)
-//        }
         
     }
     
     
-// ================ Old TableView =================
-    
-    let cellSpacingHeight: CGFloat = 20
-    
-    
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 1
-//    }
-//
-//
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "TodoSectionCell", for: indexPath) as! TodoSectionsTableViewCell
-//        cell.TodoLabel.text = TodoSections[indexPath.section]
-//
-//        let InboxImage = UIImage(named: "Inbox")
-//        let TodayImage = UIImage(named: "Today")
-//        let UpcomingImage = UIImage(named: "Upcoming")
-//        let HabitImage = UIImage(named: "Habits")
-//        let imageArray = [InboxImage,TodayImage,UpcomingImage,HabitImage]
-//
-//        cell.TodoImage.image = imageArray[indexPath.section]
-//
-//        return cell
-//    }
-    
- 
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if  segue.identifier == blogSegueIdentifier,
-//            let destination = segue.destination as? BlogViewController,
-//            let blogIndex = tableView.indexPathForSelectedRow?.row
-//        {
-//            destination.blogName = swiftBlogs[blogIndex]
-//        }
-//
-//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        cell.selectionStyle = UITableViewCell.SelectionStyle.none
-//        cell.layer.cornerRadius = 20
-////        cell.layer.backgroundColor = UIColor(hexString: "F0F2F4").cgColor
-//
-//        cell.layer.masksToBounds = false
-//        cell.backgroundColor = UIColor(hexFromString: "F0F2F4", alpha: 0.6)
-//
-    
-// ============ SHADOWS ================
-//        cell.layer.shadowOpacity = 0.20
-//        cell.layer.shadowRadius = 10
-//        cell.layer.shadowOffset = CGSize(width: 0, height: 2)
-//        cell.layer.shadowColor = UIColor.gray.cgColor
-//        cell.layer.backgroundColor = UIColor.white.cgColor
-//
-//    }
-    
-
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return TodoSections.count
-//    }
-//
-//
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return cellSpacingHeight
-//    }
-//
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let headerView = UIView()
-//        headerView.backgroundColor = UIColor.clear
-//        return headerView
-//    }
-//
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if indexPath == NSIndexPath(row: 0, section: 0) as IndexPath{
-//            self.performSegue(withIdentifier: "InboxDetail", sender: self)
-//        }
-//        if indexPath == NSIndexPath(row: 0, section: 1) as IndexPath{
-//            self.performSegue(withIdentifier: "TodayDetail", sender: self)
-//        }
-//        if indexPath == NSIndexPath(row: 0, section: 2) as IndexPath{
-//            self.performSegue(withIdentifier: "UpcomingDetail", sender: self)
-//        }
-//
-//    }
-    
-
     override func viewDidLoad() {
         
         myTableView.layer.backgroundColor = UIColor.clear.cgColor
@@ -350,16 +196,10 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
 
         collectionView.delegate = self
         collectionView.dataSource = self
-        
-//        projectTableView.delegate = self
-//        projectTableView.dataSource = self
-//        projectTableView.backgroundColor = .BackgroundColor
-        
+    
         projectTableView = ProjectTableView(myTableView)
         
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
     
@@ -373,13 +213,4 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
         }
         
     }
-
-    // MARK: - Navigation
-
-//    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        // Get the new view controller using segue.destination.
-//        // Pass the selected object to the new view controller.
-//    }
-
 }

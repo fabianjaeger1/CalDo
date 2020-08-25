@@ -10,9 +10,39 @@ import Foundation
 import UIKit
 import CoreData
 
+// MARK: Table Animations
+typealias TableCellAnimation = (UITableViewCell,IndexPath,UITableView) -> Void
+
+final class TableVIewAnimator {
+    private let animation: TableCellAnimation
+    
+    init(animation: @escaping TableCellAnimation) {
+        self.animation = animation
+    }
+    
+    func animate(cell: UITableViewCell, at indexPath: IndexPath, in tableView: UITableView) {
+        animation(cell,indexPath, tableView)
+    }
+}
+
+//enum TableAnimation {
+//    case fadeIn(duration: TimeInterval, delay: TimeInterval)
+//    case moveUp(rowHeight: CGFloat, duration: TimeInterval, delay: TimeInterval)
+//    case moveUpWithFade(rowHeight: CGFloat, duration: TimeInterval, delay: TimeInterval)
+//    case moveUpBounce(rowHeight: CGFloat, duration: TimeInterval, delay: TimeInterval)
+//
+//    //provides an animation with duration and delay associated with the case
+//    func getAnimation() -> TableCellAnimation {
+//        switch.self {
+//
+//        }
+//    }
+//
+//}
+
 
 class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, SmallTaskTableViewCellDelegate, TaskTableViewCellDelegate, UITableViewDragDelegate {
-    
+        
     
 //    weak var delegate1: SmallTaskTableViewCellDelegate?
 //    weak var delegate2: TaskTableViewCellDelegate?
@@ -466,6 +496,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
                 withDuration: 0.3,
                 animations: {
                     sender.TodoStatus.setImage(image, for: .normal)
+                    sender.TodoTitle.textColor = .gray
             })
             
             if isFiltering {
@@ -534,8 +565,9 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             }
             
             UIView.animate(
-                withDuration: 0.3,
+                withDuration: 1.5,
                 animations: {
+                    sender.TodoTitle.textColor = .gray
                     sender.TodoStatus.setImage(image, for: .normal)
             })
 

@@ -1,33 +1,21 @@
 //
-//  AddTodoInboxViewController.swift
+//  HabitHomeScreenViewController.swift
 //  CalDo
 //
-//  Created by Fabian Jaeger on 5/11/20.
+//  Created by Fabian Jaeger on 1/11/20.
 //  Copyright © 2020 CalDo. All rights reserved.
 //
 
 import UIKit
-import Foundation
 
-class AddTodoInboxViewController: UIViewController {
-    
-    
-    @IBOutlet weak var AddView: UIView!
-    
-    @IBOutlet weak var TodoTitle: UITextField!
-    
+class HabitHomeViewController: UIViewController {
+
     override func viewDidLoad() {
+        self.view.backgroundColor = UIColor.BackgroundColor
         super.viewDidLoad()
-        
-        AddView.layer.cornerRadius = 20
-        
-        TodoTitle.becomeFirstResponder()
-        
 
         // Do any additional setup after loading the view.
     }
-    
-
     
 
     /*

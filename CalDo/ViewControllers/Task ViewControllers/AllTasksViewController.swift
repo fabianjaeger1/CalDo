@@ -60,10 +60,21 @@ protocol GenericDataSourceDelegate: class {
             // Delegate callbacks methods
 }
 
-class HabitViewController: UIViewController {
+class AllTasksViewController: UIViewController {
+    
+    @IBOutlet weak var myTableView: UITableView!
+    
+    var allTasksTableView: TaskTableView!
     
     
     override func viewDidLoad() {
+        myTableView.backgroundColor = .BackgroundColor
+        myTableView.layer.backgroundColor = UIColor.BackgroundColor.cgColor
+        self.view.backgroundColor = .BackgroundColor
+        
+        
+        let predicate = NSPredicate(format: "(completed == false)")
+        allTasksTableView = TaskTableView(myTableView, predicate)
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.

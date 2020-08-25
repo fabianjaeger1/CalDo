@@ -205,7 +205,7 @@ class InboxViewController: UIViewController {
     override func viewDidLoad() {
         
         // TODO: unnecessary declaration every time?
-        let predicate = NSPredicate(format: "(completed == false)")
+        let predicate = NSPredicate(format: "(completed == false) AND (project == nil)")
         inboxTableView = TaskTableView(myTableView, predicate)
         
         if traitCollection.userInterfaceStyle == .light {

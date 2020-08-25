@@ -44,6 +44,8 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate {
 
         // Register all of your cells
         tableView.register(UINib(nibName: "ProjectTableViewCell", bundle: nil), forCellReuseIdentifier: "ProjectTableViewCell")
+        let nib = UINib(nibName: "ProjectExpandableHeaderView", bundle: nil)
+        tableView.register(nib, forHeaderFooterViewReuseIdentifier: "expandableHeaderView")
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -61,38 +63,7 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate {
         return tableViewData.count
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
-//
-//                let label = UILabel()
-//                label.frame = CGRect.init(x: 5, y: 5, width: headerView.frame.width-10, height: headerView.frame.height-10)
-//                label.text = "Projects"
-//
-//
-//                headerView.addSubview(label)
-//
-//                return headerView
-        
-        let sectionButton = UIButton()
-         
-         // 2
-         sectionButton.setTitle(String(section),
-                                for: .normal)
-         
-         // 3
-         sectionButton.backgroundColor = .systemBlue
-         
-         // 4
-         sectionButton.tag = section
-         
-         // 5
-         sectionButton.addTarget(self,
-                                 action: #selector(self.hideSection(sender:)),
-                                 for: .touchUpInside)
 
-         return sectionButton
-    }
-//
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let project = tableViewData[indexPath.row]
         
@@ -126,15 +97,6 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate {
         delegate?.projectSelected(sender: self)
     }
     
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-      if let headerView = view as? UITableViewHeaderFooterView {
-          headerView.contentView.backgroundColor = .clear
-          headerView.backgroundView?.backgroundColor = .clear
-          headerView.textLabel?.textColor = .textColor
-        headerView.textLabel?.font = UIFont(name: "Avenir", size: 20)
-      }
-  }
-
 }
 
 @objc protocol ProjectTableViewDelegate: class {
