@@ -70,6 +70,7 @@
 		01F3A08E24F534EC00368C6A /* ProjectExpandableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01F3A08D24F534EC00368C6A /* ProjectExpandableHeaderView.xib */; };
 		01F3A09524F53F7200368C6A /* TagListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014C23A02313176500A3EA4F /* TagListViewController.swift */; };
 		01F3A09C24F5411700368C6A /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3A09B24F5411700368C6A /* ProjectTableViewCell.swift */; };
+		01F3A0A224F543CF00368C6A /* UpcomingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3A0A124F543CF00368C6A /* UpcomingViewController.swift */; };
 		1672103DAFACBE7365B8437F /* Pods_CalDo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4726741C17ABDA6BE135D3FF /* Pods_CalDo.framework */; };
 		830DB5ED24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 830DB5EB24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld */; };
 		830DB5EE24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 830DB5EB24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld */; };
@@ -87,8 +88,6 @@
 		834F82D624E2AF49007DB362 /* ProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 834F82D424E2AF49007DB362 /* ProjectTableViewCell.xib */; };
 		834F82D724E2AF49007DB362 /* ProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 834F82D424E2AF49007DB362 /* ProjectTableViewCell.xib */; };
 		83626C7A24DCACA200AFD9EE /* TaskTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83626C7924DCACA200AFD9EE /* TaskTableView.swift */; };
-		83626C7B24DCACA200AFD9EE /* TaskTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83626C7924DCACA200AFD9EE /* TaskTableView.swift */; };
-		83626C7C24DCACA200AFD9EE /* TaskTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83626C7924DCACA200AFD9EE /* TaskTableView.swift */; };
 		83C0019924E84E3D0016B68E /* EntityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C0019824E84E3D0016B68E /* EntityExtension.swift */; };
 		83C0019A24E84E3D0016B68E /* EntityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C0019824E84E3D0016B68E /* EntityExtension.swift */; };
 		83C0019B24E84E3D0016B68E /* EntityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C0019824E84E3D0016B68E /* EntityExtension.swift */; };
@@ -187,6 +186,7 @@
 		01F3A08D24F534EC00368C6A /* ProjectExpandableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectExpandableHeaderView.xib; sourceTree = "<group>"; };
 		01F3A09B24F5411700368C6A /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectTableViewCell.swift; path = ../../../../../../.Trash/ProjectTableViewCell.swift; sourceTree = "<group>"; };
 		01F3A09F24F5418800368C6A /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProjectTableViewCell.swift; path = ../../../../../../.Trash/ProjectTableViewCell.swift; sourceTree = "<group>"; };
+		01F3A0A124F543CF00368C6A /* UpcomingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingViewController.swift; sourceTree = "<group>"; };
 		01F5F480232727F500FE8D62 /* CalDo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CalDo-Bridging-Header.h"; sourceTree = "<group>"; };
 		1848A7A760F8301A9C4DABF0 /* Pods-CalDoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalDoUITests.debug.xcconfig"; path = "Target Support Files/Pods-CalDoUITests/Pods-CalDoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		1EE98E7D15441A57A60D79CF /* Pods-CalDoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalDoUITests.release.xcconfig"; path = "Target Support Files/Pods-CalDoUITests/Pods-CalDoUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -374,7 +374,6 @@
 			isa = PBXGroup;
 			children = (
 				0179EDD422EC63F700F2A48B /* Storyboards */,
-				83626C7824DCABF600AFD9EE /* Task ViewControllers */,
 				017B4E81234F60E600142AD1 /* Custom Tab Bar */,
 				01F3A09324F53F3800368C6A /* Calendar Section View Controllers */,
 				01F3A09224F53F1A00368C6A /* Todo Section View Controllers */,
@@ -396,6 +395,8 @@
 		01F3A09224F53F1A00368C6A /* Todo Section View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				83626C7924DCACA200AFD9EE /* TaskTableView.swift */,
+				83626C7824DCABF600AFD9EE /* Task ViewControllers */,
 				0165E19723294AAA002F5DA1 /* TodoSectionViewController.swift */,
 				01F3A09424F53F6100368C6A /* Adding Tasks View Controllers */,
 			);
@@ -430,6 +431,7 @@
 		01F3A09624F53FD600368C6A /* Category View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0165E1A12329AAE9002F5DA1 /* InboxHomeViewController.swift */,
 				015DA69D23C94B5300582851 /* HabitHomeViewController.swift */,
 				015DA69F23C94E4900582851 /* ProjectHomeViewController.swift */,
 				0165E1A32329F337002F5DA1 /* ScheduledHomeViewController.swift */,
@@ -519,11 +521,10 @@
 		83626C7824DCABF600AFD9EE /* Task ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				01F3A0A124F543CF00368C6A /* UpcomingViewController.swift */,
 				019281541F8B884E00E895D4 /* InboxViewController.swift */,
 				010B3A11232E5D24008B3684 /* TodayViewController.swift */,
-				0165E1A12329AAE9002F5DA1 /* InboxHomeViewController.swift */,
 				0160336B24694EA00032DA23 /* AllTasksViewController.swift */,
-				83626C7924DCACA200AFD9EE /* TaskTableView.swift */,
 				834F82C424E2ACF8007DB362 /* ProjectTaskViewController.swift */,
 				834F82D024E2ADDF007DB362 /* ProjectTableView.swift */,
 			);
@@ -826,6 +827,7 @@
 				01F3A08C24F534D500368C6A /* ProjectExpandableHeaderView.swift in Sources */,
 				01C954722115E2310047175F /* Todo Struct.swift in Sources */,
 				01D5347B234F6E3E00DE6776 /* DateAndTime.swift in Sources */,
+				01F3A0A224F543CF00368C6A /* UpcomingViewController.swift in Sources */,
 				0165E1A22329AAE9002F5DA1 /* InboxHomeViewController.swift in Sources */,
 				01D53467234F681800DE6776 /* CustomTabBar.swift in Sources */,
 				01D5347C234F6E3E00DE6776 /* Color.swift in Sources */,
@@ -853,7 +855,6 @@
 			files = (
 				834F82C624E2ACF8007DB362 /* ProjectTaskViewController.swift in Sources */,
 				83C0019A24E84E3D0016B68E /* EntityExtension.swift in Sources */,
-				83626C7B24DCACA200AFD9EE /* TaskTableView.swift in Sources */,
 				832D3C6924ADE0A000A1E709 /* CoreDataManager.swift in Sources */,
 				83F9F70E24E3E80C0008FCF9 /* UIViewControllerExtension.swift in Sources */,
 				019281001F8A615C00E895D4 /* CalDoTests.swift in Sources */,
@@ -868,7 +869,6 @@
 			files = (
 				834F82C724E2ACF8007DB362 /* ProjectTaskViewController.swift in Sources */,
 				83C0019B24E84E3D0016B68E /* EntityExtension.swift in Sources */,
-				83626C7C24DCACA200AFD9EE /* TaskTableView.swift in Sources */,
 				832D3C6A24ADE0A000A1E709 /* CoreDataManager.swift in Sources */,
 				83F9F70F24E3E80C0008FCF9 /* UIViewControllerExtension.swift in Sources */,
 				0192810B1F8A615C00E895D4 /* CalDoUITests.swift in Sources */,

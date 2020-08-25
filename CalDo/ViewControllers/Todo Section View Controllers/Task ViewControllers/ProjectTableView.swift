@@ -12,12 +12,27 @@ import CoreData
 
 
 
-class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate {
+class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, ExpandableHeaderViewDelegate {
+    
+    
+    func toggleSection(header: ProjectExpandableHeaderView, section: Int) {
+        
+        if isCollapsed == true {
+            isCollapsed = false
+        }
+        else {
+            isCollapsed = true
+        }
+        tableView.reloadSections(int)
+    }
+    
     
     
 
     var tableView: UITableView
     var tableViewData: [ProjectEntity]
+    
+    var isCollapsed: Bool
     
     
     
@@ -35,7 +50,7 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate {
             print("Error fetching projects from context \(error)")
             return nil
         }
-        
+        self.isCollapsed = false
         super.init()
 
         tableView.delegate = self
@@ -44,15 +59,10 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate {
 
         // Register all of your cells
         tableView.register(UINib(nibName: "ProjectTableViewCell", bundle: nil), forCellReuseIdentifier: "ProjectTableViewCell")
-        let nib = UINib(nibName: "ProjectExpandableHeaderView", bundle: nil)
-        tableView.register(nib, forHeaderFooterViewReuseIdentifier: "expandableHeaderView")
+        tableView.register(ProjectExpandableHeaderView.nib, forHeaderFooterViewReuseIdentifier: ProjectExpandableHeaderView.identifier)
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Projects"
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -60,9 +70,22 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isCollapsed == true {
+            return 0
+        }
         return tableViewData.count
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ProjectExpandableHeaderView.identifier) as? ProjectExpandableHeaderView {
+            headerView.section = section
+            headerView.headerLabel.text = "Projects"
+            headerView.image.image = UIImage(named: "ProjectImageLabel")
+            headerView.delegate = self
+            return headerView
+        }
+        return UIView()
+    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let project = tableViewData[indexPath.row]
