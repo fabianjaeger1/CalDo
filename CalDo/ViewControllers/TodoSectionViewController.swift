@@ -98,7 +98,9 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
             self.present(vc, animated: true, completion: nil)
         }
         if indexPath == NSIndexPath(row: 1, section: 0) as IndexPath{
-            self.performSegue(withIdentifier: "TodayDetail", sender: self)
+            let vc = TodayViewController(nibName: "TaskTableViewController", bundle: nil)
+            vc.presentationController?.delegate = self
+            self.present(vc, animated: true, completion: nil)
         }
         if indexPath == NSIndexPath(row: 2, section: 0) as IndexPath{
             self.performSegue(withIdentifier: "UpcomingDetail", sender: self)

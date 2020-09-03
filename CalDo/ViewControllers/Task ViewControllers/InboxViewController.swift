@@ -57,9 +57,9 @@ class InboxViewController: TaskTableViewController {
 //    }
 
     override func viewDidLoad() {
-        predicate = NSPredicate(format: "(completed == false)")
+        predicate = NSPredicate(format: "(completed == false) AND (project == nil)")
 
-        titleLabel.text = "Today"
+        titleLabel.text = "Inbox"
         
         let imageView = UIImageView(image: UIImage(named: "Inbox_Home"))
         imageView.frame = titleIcon.bounds
