@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="slE-JG-14w">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -385,7 +384,7 @@
                     <connections>
                         <outlet property="CollectionView" destination="K52-sD-qCa" id="qpP-Vv-lOD"/>
                         <outlet property="myTableView" destination="3gY-hn-W1B" id="g11-2t-U8i"/>
-                        <segue destination="5tz-U2-p73" kind="show" identifier="InboxDetail" id="LwU-8O-VQV"/>
+                        <segue destination="5tz-U2-p73" kind="show" identifier="InboxDetailOld" id="LwU-8O-VQV"/>
                         <segue destination="rht-Yz-jkJ" kind="show" identifier="UpcomingDetail" id="xhB-ua-xfO"/>
                         <segue destination="NFI-oE-5dt" kind="show" identifier="HabitDetail" id="53T-OQ-IXG"/>
                         <segue destination="tND-UQ-A2O" kind="show" identifier="TodayDetail" id="IhV-yJ-gvK"/>
@@ -432,9 +431,6 @@
                                     <constraint firstAttribute="height" constant="35" id="4ep-0Y-qOv"/>
                                 </constraints>
                                 <state key="normal" image="Down"/>
-                                <connections>
-                                    <action selector="showActionSheet:" destination="5tz-U2-p73" eventType="touchUpInside" id="WbB-1y-oYq"/>
-                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="-1" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xz1-Ad-PUD">
                                 <rect key="frame" x="0.0" y="82" width="375" height="565"/>
@@ -1188,7 +1184,7 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kff-tf-nqV">
-                                        <rect key="frame" x="21" y="139" width="326" height="48"/>
+                                        <rect key="frame" x="21" y="163" width="326" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="326" id="Nnv-0w-XUj"/>
                                         </constraints>

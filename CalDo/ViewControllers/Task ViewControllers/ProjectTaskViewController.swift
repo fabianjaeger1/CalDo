@@ -54,7 +54,6 @@ class ProjectTaskViewController: UIViewController {
         // Background color
         myTableView.backgroundColor = .BackgroundColor
         self.view.backgroundColor = .BackgroundColor
-        //self.
     }
     
 

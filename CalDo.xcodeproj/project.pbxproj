@@ -75,6 +75,12 @@
 		832D3C6824ADE0A000A1E709 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832D3C6724ADE0A000A1E709 /* CoreDataManager.swift */; };
 		832D3C6924ADE0A000A1E709 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832D3C6724ADE0A000A1E709 /* CoreDataManager.swift */; };
 		832D3C6A24ADE0A000A1E709 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832D3C6724ADE0A000A1E709 /* CoreDataManager.swift */; };
+		833339BB24F32EEA00D7626D /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833339BA24F32EEA00D7626D /* TaskTableViewController.swift */; };
+		833339BC24F32EEA00D7626D /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833339BA24F32EEA00D7626D /* TaskTableViewController.swift */; };
+		833339BD24F32EEA00D7626D /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833339BA24F32EEA00D7626D /* TaskTableViewController.swift */; };
+		833339BF24F3467200D7626D /* TaskTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 833339BE24F3467200D7626D /* TaskTableViewController.xib */; };
+		833339C024F3467200D7626D /* TaskTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 833339BE24F3467200D7626D /* TaskTableViewController.xib */; };
+		833339C124F3467200D7626D /* TaskTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 833339BE24F3467200D7626D /* TaskTableViewController.xib */; };
 		834F82C524E2ACF8007DB362 /* ProjectTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834F82C424E2ACF8007DB362 /* ProjectTaskViewController.swift */; };
 		834F82C624E2ACF8007DB362 /* ProjectTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834F82C424E2ACF8007DB362 /* ProjectTaskViewController.swift */; };
 		834F82C724E2ACF8007DB362 /* ProjectTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834F82C424E2ACF8007DB362 /* ProjectTaskViewController.swift */; };
@@ -196,6 +202,8 @@
 		72A7FC944A6AFBB00A63585F /* Pods-CalDo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalDo.release.xcconfig"; path = "Target Support Files/Pods-CalDo/Pods-CalDo.release.xcconfig"; sourceTree = "<group>"; };
 		830DB5EC24A8EC35006B16E3 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		832D3C6724ADE0A000A1E709 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		833339BA24F32EEA00D7626D /* TaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewController.swift; sourceTree = "<group>"; };
+		833339BE24F3467200D7626D /* TaskTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTableViewController.xib; sourceTree = "<group>"; };
 		834F82C424E2ACF8007DB362 /* ProjectTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTaskViewController.swift; sourceTree = "<group>"; };
 		834F82D024E2ADDF007DB362 /* ProjectTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableView.swift; sourceTree = "<group>"; };
 		834F82D424E2AF49007DB362 /* ProjectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectTableViewCell.xib; sourceTree = "<group>"; };
@@ -327,6 +335,7 @@
 				01D5346F234F6A1900DE6776 /* TodoSectionCollectionViewCell.swift */,
 				834F82D424E2AF49007DB362 /* ProjectTableViewCell.xib */,
 				834F82D824E2AFCD007DB362 /* ProjectTableViewCell.swift */,
+				833339BE24F3467200D7626D /* TaskTableViewController.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -470,6 +479,7 @@
 				83626C7924DCACA200AFD9EE /* TaskTableView.swift */,
 				834F82C424E2ACF8007DB362 /* ProjectTaskViewController.swift */,
 				834F82D024E2ADDF007DB362 /* ProjectTableView.swift */,
+				833339BA24F32EEA00D7626D /* TaskTableViewController.swift */,
 			);
 			path = "Task ViewControllers";
 			sourceTree = "<group>";
@@ -600,6 +610,7 @@
 				01D53490234F733100DE6776 /* LaunchScreen.storyboard in Resources */,
 				016CF84F24DCB393006DEC65 /* TaskTableViewCell.xib in Resources */,
 				0145956C2445EA6400AFB34D /* SF-Pro-Rounded-Black.otf in Resources */,
+				833339BF24F3467200D7626D /* TaskTableViewController.xib in Resources */,
 				0145956D2445EA6400AFB34D /* SF-Pro-Rounded-Bold.otf in Resources */,
 				0165E1A02329A971002F5DA1 /* InboxHomeScreenTableViewCell.xib in Resources */,
 				0145956E2445EA6400AFB34D /* SF-Pro-Rounded-Heavy.otf in Resources */,
@@ -611,6 +622,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				833339C024F3467200D7626D /* TaskTableViewController.xib in Resources */,
 				834F82D624E2AF49007DB362 /* ProjectTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -619,6 +631,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				833339C124F3467200D7626D /* TaskTableViewController.xib in Resources */,
 				834F82D724E2AF49007DB362 /* ProjectTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -776,6 +789,7 @@
 				01D53476234F6D3A00DE6776 /* TimePickerViewController.swift in Sources */,
 				01D53473234F6A1900DE6776 /* TodoSectionCollectionViewCell.swift in Sources */,
 				0160336E2469A21E0032DA23 /* FloatingButtonExtension.swift in Sources */,
+				833339BB24F32EEA00D7626D /* TaskTableViewController.swift in Sources */,
 				01B3CA0422EB8BEF00E5344D /* HomeViewController.swift in Sources */,
 				0130AD4822EF279300C3EF47 /* ChooseProjectsViewController.swift in Sources */,
 				016033712469A45B0032DA23 /* AddTodoInboxViewController.swift in Sources */,
@@ -794,6 +808,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				833339BC24F32EEA00D7626D /* TaskTableViewController.swift in Sources */,
 				834F82C624E2ACF8007DB362 /* ProjectTaskViewController.swift in Sources */,
 				83C0019A24E84E3D0016B68E /* EntityExtension.swift in Sources */,
 				834F82DA24E2AFCD007DB362 /* ProjectTableViewCell.swift in Sources */,
@@ -810,6 +825,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				833339BD24F32EEA00D7626D /* TaskTableViewController.swift in Sources */,
 				834F82C724E2ACF8007DB362 /* ProjectTaskViewController.swift in Sources */,
 				83C0019B24E84E3D0016B68E /* EntityExtension.swift in Sources */,
 				834F82DB24E2AFCD007DB362 /* ProjectTableViewCell.swift in Sources */,

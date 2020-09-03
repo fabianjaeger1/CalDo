@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Rounded-Bold.otf">
+            <string>SFProRounded-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TaskTableViewController" customModule="CalDo" customModuleProvider="target">
+            <connections>
+                <outlet property="menuButton" destination="9Kb-YO-OYl" id="gvs-i2-pFu"/>
+                <outlet property="myTableView" destination="JJ9-Vh-eTF" id="kcH-EU-toE"/>
+                <outlet property="titleIcon" destination="vb5-F0-xoL" id="8s5-0O-tnH"/>
+                <outlet property="titleLabel" destination="pqC-0S-vqf" id="LmP-Qb-1Tn"/>
+                <outlet property="titleLabelLeadingConstraint" destination="onp-hK-mb6" id="Dfp-Dv-9bV"/>
+                <outlet property="view" destination="mdP-dm-js5" id="kDB-S1-pmU"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="mdP-dm-js5">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pqC-0S-vqf">
+                    <rect key="frame" x="78" y="74" width="59.5" height="36"/>
+                    <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="30"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JJ9-Vh-eTF">
+                    <rect key="frame" x="0.0" y="138" width="414" height="724"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vb5-F0-xoL">
+                    <rect key="frame" x="25" y="73" width="38" height="38"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="38" id="LZe-dB-1vz"/>
+                        <constraint firstAttribute="width" constant="38" id="jfo-xH-Uar"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Kb-YO-OYl">
+                    <rect key="frame" x="354" y="74" width="35" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="30f-D0-nbY"/>
+                        <constraint firstAttribute="width" constant="35" id="OCE-aa-ra9"/>
+                    </constraints>
+                </button>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="tu1-1D-NhW" firstAttribute="trailing" secondItem="9Kb-YO-OYl" secondAttribute="trailing" constant="25" id="1s7-9b-BLF"/>
+                <constraint firstItem="vb5-F0-xoL" firstAttribute="top" secondItem="tu1-1D-NhW" secondAttribute="top" constant="29" id="8e0-zv-Ccq"/>
+                <constraint firstItem="JJ9-Vh-eTF" firstAttribute="trailing" secondItem="tu1-1D-NhW" secondAttribute="trailing" id="Hcr-8b-p9e"/>
+                <constraint firstItem="vb5-F0-xoL" firstAttribute="leading" secondItem="tu1-1D-NhW" secondAttribute="leading" constant="25" id="QfD-J7-8pa"/>
+                <constraint firstItem="JJ9-Vh-eTF" firstAttribute="leading" secondItem="tu1-1D-NhW" secondAttribute="leading" id="SsC-25-02h"/>
+                <constraint firstItem="JJ9-Vh-eTF" firstAttribute="bottom" secondItem="tu1-1D-NhW" secondAttribute="bottom" id="YgM-aX-PhL"/>
+                <constraint firstItem="9Kb-YO-OYl" firstAttribute="top" secondItem="tu1-1D-NhW" secondAttribute="top" constant="30" id="gt9-wo-nEB"/>
+                <constraint firstItem="JJ9-Vh-eTF" firstAttribute="top" secondItem="vb5-F0-xoL" secondAttribute="bottom" constant="27" id="iFF-RK-GiP"/>
+                <constraint firstItem="pqC-0S-vqf" firstAttribute="leading" secondItem="vb5-F0-xoL" secondAttribute="trailing" constant="15" id="onp-hK-mb6"/>
+                <constraint firstItem="pqC-0S-vqf" firstAttribute="top" secondItem="tu1-1D-NhW" secondAttribute="top" constant="30" id="q4f-JL-N65"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="tu1-1D-NhW"/>
+            <point key="canvasLocation" x="5011.594202898551" y="625.44642857142856"/>
+        </view>
+    </objects>
+</document>

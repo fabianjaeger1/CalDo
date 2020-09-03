@@ -548,8 +548,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             else {
                 tableViewData.remove(at: indexPath.row)
             }
-            
-            cellHeightsDictionary.removeValue(forKey: indexPath)
+
             
             UIView.animate(withDuration: 0.5) {
     //          self.myTableView.deleteSections(at: [indexPath], with: .fade)
