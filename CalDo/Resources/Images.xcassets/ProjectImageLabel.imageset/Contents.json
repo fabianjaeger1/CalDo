@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Scheduled.png",
+      "filename" : "ProjectImageLabel.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Scheduled@2x.png",
+      "filename" : "ProjectImageLabel@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Scheduled@3x.png",
+      "filename" : "ProjectImageLabel@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

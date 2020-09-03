@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 
 class ProjectTableViewCell: UITableViewCell {
-    
+
     @IBOutlet weak var projectColor: UIView!
     @IBOutlet weak var projectLabel: UILabel!
-    
-    
+
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
