@@ -23,7 +23,7 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
         else {
             isCollapsed = true
         }
-        tableView.reloadSections(int)
+        //tableView.reloadSections(int)
     }
     
     

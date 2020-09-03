@@ -6,20 +6,10 @@
 //
 
 import UIKit
+import CoreData
 
-class TodayViewController: UIViewController {
+class TodayViewController: TaskTableViewController {
     
-    @IBOutlet weak var myTableView: UITableView!
-    var todayTableView: TaskTableView!
-    
-    // let searchController = UISearchController(searchResultsController: nil)
-    
-    override func viewWillAppear(_ animated: Bool) {
-
-        super.viewWillAppear(animated)
-        
-        // todayTableView.tableView.reloadData()
-    }
 
     override func viewDidLoad() {
         var calendar = Calendar.current
@@ -28,18 +18,17 @@ class TodayViewController: UIViewController {
         var dateTo = calendar.startOfDay(for: Date())
         dateTo = calendar.date(byAdding: .day, value: 1, to: dateTo)!
         
-        let predicate = NSPredicate(format: "(completed == false) AND (date <= %@)", dateTo as NSDate)
+        predicate = NSPredicate(format: "(completed == false) AND (date <= %@)", dateTo as NSDate)
         
-        myTableView.backgroundColor = .BackgroundColor
-        self.view.backgroundColor = .BackgroundColor
+        titleLabel.text = "Today"
         
+        let imageView = UIImageView(image: UIImage(named: "Today_Todo"))
+        imageView.frame = titleIcon.bounds
+        imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        titleIcon.addSubview(imageView)
         
-        todayTableView = TaskTableView(myTableView, predicate)
+        super.viewDidLoad()
         
-        // Search bar
-        myTableView.tableHeaderView = todayTableView.searchController.searchBar
-        navigationItem.searchController = todayTableView.searchController
-        definesPresentationContext = true
     }
 }
 
