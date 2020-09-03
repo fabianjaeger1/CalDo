@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 
 
 //class GenericDataSource: NSObject {
@@ -60,35 +59,18 @@ protocol GenericDataSourceDelegate: class {
             // Delegate callbacks methods
 }
 
-class AllTasksViewController: UIViewController {
-    
-    @IBOutlet weak var myTableView: UITableView!
-    
-    var allTasksTableView: TaskTableView!
-    
-    
-    override func viewDidLoad() {
-        myTableView.backgroundColor = .BackgroundColor
-        myTableView.layer.backgroundColor = UIColor.BackgroundColor.cgColor
-        self.view.backgroundColor = .BackgroundColor
+class AllTasksViewController: TaskTableViewController {
+        override func viewDidLoad() {
+        predicate = NSPredicate(format: "(completed == false)")
         
+        titleLabel.text = "All Tasks"
         
-        let predicate = NSPredicate(format: "(completed == false)")
-        allTasksTableView = TaskTableView(myTableView, predicate)
+        let imageView = UIImageView(image: UIImage(named: "All_Tasks"))
+        imageView.frame = titleIcon.bounds
+        imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        titleIcon.addSubview(imageView)
+        
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+

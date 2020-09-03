@@ -8,17 +8,18 @@
 
 import UIKit
 
-class UpcomingViewController: UIViewController {
-    
-    @IBOutlet weak var myTableView: UITableView!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.backgroundColor = .BackgroundColor
+class UpcomingViewController: TaskTableViewController {
         
-        myTableView.backgroundColor = .BackgroundColor
+    override func viewDidLoad() {
+        predicate = NSPredicate(format: "(completed == false) AND (date != nil)")
+        
+        titleLabel.text = "Upcoming"
+        
+        let imageView = UIImageView(image: UIImage(named: "Scheduled"))
+        imageView.frame = titleIcon.bounds
+        imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        titleIcon.addSubview(imageView)
+        
+        super.viewDidLoad()
     }
-    
-
-
 }

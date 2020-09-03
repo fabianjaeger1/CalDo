@@ -8,7 +8,7 @@
 
 
 import UIKit
-import CoreData
+
 //import ViewAnimator
 
 //extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {

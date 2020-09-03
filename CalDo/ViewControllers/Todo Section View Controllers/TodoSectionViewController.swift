@@ -67,10 +67,14 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
             self.present(vc, animated: true, completion: nil)
         }
         if indexPath == NSIndexPath(row: 2, section: 0) as IndexPath{
-            self.performSegue(withIdentifier: "UpcomingDetail", sender: self)
+            let vc = UpcomingViewController(nibName: "TaskTableViewController", bundle: nil)
+            vc.presentationController?.delegate = self
+            self.present(vc, animated: true, completion: nil)
         }
         if indexPath == NSIndexPath(row: 3, section: 0) as IndexPath{
-            self.performSegue(withIdentifier: "HabitDetail", sender: self)
+            let vc = AllTasksViewController(nibName: "TaskTableViewController", bundle: nil)
+            vc.presentationController?.delegate = self
+            self.present(vc, animated: true, completion: nil)
         }
         
     }
@@ -154,7 +158,14 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
 // MARK: Segue Methods
     
     func projectSelected(sender: ProjectTableView) {
-        self.performSegue(withIdentifier: "ProjectDetail", sender: self)
+        //self.performSegue(withIdentifier: "ProjectDetail", sender: self)
+        //let project: ProjectEntity
+        if let indexPath = myTableView.indexPathForSelectedRow {
+            let project = projectTableView.tableViewData[indexPath.row]
+            let vc = ProjectTaskViewController(nibName: "TaskTableViewController", bundle: nil, project: project)
+            vc.presentationController?.delegate = self
+            self.present(vc, animated: true, completion: nil)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
