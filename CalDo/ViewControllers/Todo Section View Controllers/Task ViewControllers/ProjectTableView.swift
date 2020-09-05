@@ -14,6 +14,13 @@ import CoreData
 
 class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, ExpandableHeaderViewDelegate {
     
+    var tableView: UITableView
+    var tableViewData: [ProjectEntity]
+    
+    var isCollapsed: Bool
+    
+    weak var delegate: ProjectTableViewDelegate?
+    
     
     func toggleSection(header: ProjectExpandableHeaderView, section: Int) {
         
@@ -23,20 +30,9 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
         else {
             isCollapsed = true
         }
-        //tableView.reloadSections(int)
+        tableView.reloadSections(IndexSet(integer: section), with: .none)
     }
     
-    
-    
-
-    var tableView: UITableView
-    var tableViewData: [ProjectEntity]
-    
-    var isCollapsed: Bool
-    
-    
-    
-    weak var delegate: ProjectTableViewDelegate?
 
     init?(_ tv: UITableView) {
         
