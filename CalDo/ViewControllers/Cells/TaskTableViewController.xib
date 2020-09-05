@@ -14,6 +14,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TaskTableViewController" customModule="CalDo" customModuleProvider="target">
             <connections>
+                <outlet property="addButton" destination="xXw-mM-AWy" id="Iy6-vh-zG1"/>
+                <outlet property="editToolbar" destination="2k7-x5-7W0" id="vi2-ty-SKN"/>
                 <outlet property="menuButton" destination="9Kb-YO-OYl" id="gvs-i2-pFu"/>
                 <outlet property="myTableView" destination="JJ9-Vh-eTF" id="kcH-EU-toE"/>
                 <outlet property="titleIcon" destination="vb5-F0-xoL" id="8s5-0O-tnH"/>
@@ -37,6 +39,13 @@
                     <rect key="frame" x="0.0" y="138" width="414" height="724"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xXw-mM-AWy">
+                    <rect key="frame" x="346" y="790" width="52" height="52"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="52" id="Bse-2Q-VQO"/>
+                        <constraint firstAttribute="width" constant="52" id="Ytj-rA-QAU"/>
+                    </constraints>
+                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vb5-F0-xoL">
                     <rect key="frame" x="25" y="73" width="38" height="38"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -52,18 +61,29 @@
                         <constraint firstAttribute="width" constant="35" id="OCE-aa-ra9"/>
                     </constraints>
                 </button>
+                <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2k7-x5-7W0">
+                    <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                    <items>
+                        <barButtonItem title="Item" id="nSG-to-DzG"/>
+                    </items>
+                </toolbar>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="tu1-1D-NhW" firstAttribute="trailing" secondItem="9Kb-YO-OYl" secondAttribute="trailing" constant="25" id="1s7-9b-BLF"/>
                 <constraint firstItem="vb5-F0-xoL" firstAttribute="top" secondItem="tu1-1D-NhW" secondAttribute="top" constant="29" id="8e0-zv-Ccq"/>
+                <constraint firstItem="tu1-1D-NhW" firstAttribute="trailing" secondItem="xXw-mM-AWy" secondAttribute="trailing" constant="16" id="Den-8r-19V"/>
                 <constraint firstItem="JJ9-Vh-eTF" firstAttribute="trailing" secondItem="tu1-1D-NhW" secondAttribute="trailing" id="Hcr-8b-p9e"/>
+                <constraint firstItem="2k7-x5-7W0" firstAttribute="leading" secondItem="tu1-1D-NhW" secondAttribute="leading" id="K8m-fo-hNW"/>
                 <constraint firstItem="vb5-F0-xoL" firstAttribute="leading" secondItem="tu1-1D-NhW" secondAttribute="leading" constant="25" id="QfD-J7-8pa"/>
                 <constraint firstItem="JJ9-Vh-eTF" firstAttribute="leading" secondItem="tu1-1D-NhW" secondAttribute="leading" id="SsC-25-02h"/>
                 <constraint firstItem="JJ9-Vh-eTF" firstAttribute="bottom" secondItem="tu1-1D-NhW" secondAttribute="bottom" id="YgM-aX-PhL"/>
+                <constraint firstItem="tu1-1D-NhW" firstAttribute="bottom" secondItem="xXw-mM-AWy" secondAttribute="bottom" constant="20" id="ZEX-mw-g6P"/>
                 <constraint firstItem="9Kb-YO-OYl" firstAttribute="top" secondItem="tu1-1D-NhW" secondAttribute="top" constant="30" id="gt9-wo-nEB"/>
                 <constraint firstItem="JJ9-Vh-eTF" firstAttribute="top" secondItem="vb5-F0-xoL" secondAttribute="bottom" constant="27" id="iFF-RK-GiP"/>
+                <constraint firstItem="tu1-1D-NhW" firstAttribute="bottom" secondItem="2k7-x5-7W0" secondAttribute="bottom" id="oB2-my-wXF"/>
                 <constraint firstItem="pqC-0S-vqf" firstAttribute="leading" secondItem="vb5-F0-xoL" secondAttribute="trailing" constant="15" id="onp-hK-mb6"/>
+                <constraint firstItem="2k7-x5-7W0" firstAttribute="trailing" secondItem="tu1-1D-NhW" secondAttribute="trailing" id="peH-ke-zBV"/>
                 <constraint firstItem="pqC-0S-vqf" firstAttribute="top" secondItem="tu1-1D-NhW" secondAttribute="top" constant="30" id="q4f-JL-N65"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="tu1-1D-NhW"/>

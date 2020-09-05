@@ -21,7 +21,7 @@ class TaskTableViewController: UIViewController {
     
     @IBOutlet weak var menuButton: UIButton!
     
-    @IBOutlet weak var editToolbar: UIToolbar!
+    @IBOutlet var editToolbar: UIToolbar!
     
     @IBOutlet weak var myTableView: UITableView!
     var taskTableView: TaskTableView!
@@ -49,7 +49,14 @@ class TaskTableViewController: UIViewController {
     
     @objc func tapCancelButton() {
         self.myTableView.setEditing(false, animated: true)
-        self.editToolbar.isHidden = true
+        
+        UIView.transition(with: self.addButton, duration: 0.3, options: .transitionCrossDissolve, animations: {
+            self.addButton.isHidden = false
+        })
+        
+        UIView.transition(with: self.editToolbar, duration: 0.3, options: .transitionCrossDissolve, animations: {
+            self.editToolbar.isHidden = true
+        })
     }
 
     
@@ -123,22 +130,36 @@ class TaskTableViewController: UIViewController {
         // Top-level actions
         let selectAction = UIAlertAction(title: "Select Tasks", style: .default) { _ in
             self.myTableView.setEditing(true, animated: true)
-            UIView.animate(withDuration: 0.5) {
-                self.editToolbar.isHidden = false
-            }
-            let verticalSpaceConstraint = NSLayoutConstraint(item: self.editToolbar!, attribute: .top, relatedBy: .equal, toItem: self.addButton, attribute: .bottom, multiplier: 1, constant: 20)
-            // NSLayoutConstraint.activate([verticalSpaceConstraint])
-            self.view.addConstraint(verticalSpaceConstraint)
             
-
             let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.tapCancelButton))
-            
 
+            self.editToolbar.setItems([cancelButton], animated: false)
             
-            self.editToolbar.setItems([cancelButton], animated: true)
+//            UIView.animate(withDuration: 0.5) {
+////                self.editToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 35))
+////                self.editToolbar.sizeToFit()
+////                self.editToolbar.translatesAutoresizingMaskIntoConstraints = false
+////                self.view.addSubview(self.editToolbar)
+////                self.view.bottomAnchor.constraint(equalTo: self.editToolbar.bottomAnchor).isActive = true
+////                self.editToolbar.heightAnchor.constraint(equalToConstant: 100).isActive = true
+////                self.myTableView.bottomAnchor.constraint(equalTo: self.editToolbar.topAnchor).isActive = true
+//
+//                // self.editToolbar.isTranslucent = false
+//
+//                self.editToolbar.isHidden = false
+//
+//                self.addButton.isHidden = true
+//            }
             
-//            self.toolbarItems = [editButton]
-//            self.navigationController?.setToolbarHidden(false, animated: true)
+            UIView.transition(with: self.addButton, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                self.addButton.isHidden = true
+            })
+            
+            UIView.transition(with: self.editToolbar, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                self.editToolbar.isHidden = false
+            })
+            
+            
 //            let navigationController = UINavigationController(rootViewController: self)
 //            navigationController.setToolbarHidden(false, animated: true)
 
@@ -196,6 +217,10 @@ class TaskTableViewController: UIViewController {
         myTableView.tableHeaderView = taskTableView.searchController.searchBar
         navigationItem.searchController = taskTableView.searchController
         definesPresentationContext = true
+        
+        // Add Button
+        let addButtonImage = UIImage(named: "Plus Sign")
+        addButton.setImage(addButtonImage, for: .normal)
         
         //toolbarView.backgroundColor = .BackgroundColor
         myTableView.backgroundColor = .BackgroundColor

@@ -506,7 +506,6 @@
                         <outlet property="AddTaskTextField" destination="pJW-Kg-uyR" id="6DM-ts-buL"/>
                         <outlet property="InboxLabel" destination="DZ9-VM-dlc" id="M7n-Xt-EOk"/>
                         <outlet property="MenuButton" destination="Zyf-lD-p4N" id="lWQ-Dl-q4U"/>
-                        <outlet property="editToolbar" destination="Sat-Bv-b1Q" id="vyn-8p-qc4"/>
                         <outlet property="myTableView" destination="xz1-Ad-PUD" id="Nlc-HU-5Ju"/>
                         <outlet property="textfield" destination="CAG-hS-mhh" id="6rA-X2-g8J"/>
                         <outlet property="toolbarView" destination="Jds-Rb-FhI" id="gu3-eq-s4c"/>
