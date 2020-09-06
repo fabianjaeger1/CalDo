@@ -19,21 +19,22 @@ import UIKit
 
 class TaskTableViewCell: UITableViewCell {
     
-     weak var delegate: TaskTableViewCellDelegate?
+    weak var delegate: TaskTableViewCellDelegate?
+    var myViewController: TaskTableViewController?
     
-     @IBOutlet weak var Tag1: UILabel!
-     @IBOutlet weak var Tag2: UILabel!
-     @IBOutlet weak var Tag3: UILabel!
-     @IBOutlet weak var Tag4: UILabel!
-     @IBOutlet weak var Tag5: UILabel!
+    @IBOutlet weak var Tag1: UILabel!
+    @IBOutlet weak var Tag2: UILabel!
+    @IBOutlet weak var Tag3: UILabel!
+    @IBOutlet weak var Tag4: UILabel!
+    @IBOutlet weak var Tag5: UILabel!
      
-     @IBOutlet weak var ProjectLabel: UILabel!
-     @IBOutlet weak var ProjectColor: UIView!
-     @IBOutlet weak var TodoStatus: UIButton!
-     @IBOutlet weak var TodoTitle: UILabel!
-     @IBOutlet weak var TodoDate: UILabel!
-     @IBOutlet weak var TodoNotesIcon: UIImageView!
-     @IBOutlet weak var TodoLocationIcon: UIImageView!
+    @IBOutlet weak var ProjectLabel: UILabel!
+    @IBOutlet weak var ProjectColor: UIView!
+    @IBOutlet weak var TodoStatus: UIButton!
+    @IBOutlet weak var TodoTitle: UILabel!
+    @IBOutlet weak var TodoDate: UILabel!
+    @IBOutlet weak var TodoNotesIcon: UIImageView!
+    @IBOutlet weak var TodoLocationIcon: UIImageView!
     
     @IBOutlet weak var todoStatusWidth: NSLayoutConstraint!
     @IBOutlet weak var todoStatusLeading: NSLayoutConstraint!
@@ -58,8 +59,16 @@ class TaskTableViewCell: UITableViewCell {
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
-
-        if (editing) {
+        
+        var realEditing: Bool
+        if let vc = myViewController {
+            realEditing = vc.realIsEditing
+        }
+        else {
+            realEditing = false
+        }
+        
+        if (editing && realEditing) {
             showsReorderControl = false
             UIView.animate(
                 withDuration: 0.3,

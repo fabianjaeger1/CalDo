@@ -17,7 +17,7 @@ import UIKit
 class SmallTaskTableViewCell: UITableViewCell {
     
     weak var delegate: SmallTaskTableViewCellDelegate?
-    
+    var myViewController: TaskTableViewController?
 
     @IBOutlet weak var TodoStatus: UIButton!
     @IBOutlet weak var TodoTitle: UILabel!
@@ -47,8 +47,16 @@ class SmallTaskTableViewCell: UITableViewCell {
     }
     
         override func setEditing(_ editing: Bool, animated: Bool) {
+            
+            var realEditing: Bool
+            if let vc = myViewController {
+                realEditing = vc.realIsEditing
+            }
+            else {
+                realEditing = false
+            }
 
-            if (editing) {
+            if (editing && realEditing) {
                 showsReorderControl = false
                 UIView.animate(
                     withDuration: 0.3,

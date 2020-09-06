@@ -29,6 +29,8 @@ class TaskTableViewController: UIViewController {
     // Predicate to fetch tasks
     var predicate: NSPredicate!
     
+    var realIsEditing: Bool = false
+    
 //    @IBAction func plusButtonPressed(_ sender: Any) {
 //        addTaskTextField.becomeFirstResponder()
 //    }
@@ -49,6 +51,7 @@ class TaskTableViewController: UIViewController {
     
     @objc func tapCancelButton() {
         self.myTableView.setEditing(false, animated: true)
+        self.realIsEditing = false
         
         UIView.transition(with: self.addButton, duration: 0.3, options: .transitionCrossDissolve, animations: {
             self.addButton.isHidden = false
@@ -129,6 +132,7 @@ class TaskTableViewController: UIViewController {
         
         // Top-level actions
         let selectAction = UIAlertAction(title: "Select Tasks", style: .default) { _ in
+            self.realIsEditing = true
             self.myTableView.setEditing(true, animated: true)
             
             let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.tapCancelButton))
@@ -211,6 +215,7 @@ class TaskTableViewController: UIViewController {
 
         // Table View
         taskTableView = TaskTableView(myTableView, predicate)
+        taskTableView.myViewController = self
         myTableView.allowsMultipleSelectionDuringEditing = true
         
         // Search Bar

@@ -52,6 +52,8 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
     
     let searchController = UISearchController(searchResultsController: nil)
     var filteredTableViewData: [TaskEntity] = []
+    
+    var myViewController: TaskTableViewController?
 
     init?(_ tv: UITableView, _ predicate: NSPredicate) {
         
@@ -145,6 +147,9 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "SmallTaskTableViewCell", for: indexPath) as! SmallTaskTableViewCell
             
+            cell.delegate = self
+            cell.myViewController = self.myViewController
+            
             // ========= DATE ===========
             
             // TODO: simplify by adding function returning a task's todoString
@@ -155,7 +160,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             // ========= TITLE ===========
             cell.TodoTitle?.text = (task.value(forKey: "title") as! String)
             cell.TodoTitle.textColor = UIColor.textColor
-            cell.delegate = self
+
             
             if task.value(forKey: "notes") != nil {
                 cell.TodoNotesIcon.alpha = 1
@@ -228,6 +233,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath) as! TaskTableViewCell
             
             cell.delegate = self
+            cell.myViewController = self.myViewController
 
             // shapeLayer.fillColor = UIColor(hexString: (todo.todoProject?.ProjectColor)!).cgColor
             // shapeLayer.fillColor = UIColor(hexString: (((task.value(forKey: "project") as! ProjectEntity?)?.value(forKey: "color") as! String?))!).cgColor
@@ -401,16 +407,16 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
 // MARK: - Swipe Actions
         
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let Schedule = ScheduleAction(at: indexPath)
-        return UISwipeActionsConfiguration(actions: [Schedule])
+        let schedule = scheduleAction(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [schedule])
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let Select = SelectAction(at: indexPath)
-        return UISwipeActionsConfiguration(actions: [Select])
+        let select = selectAction(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [select])
     }
     
-    func SelectAction(at indexPath: IndexPath) -> UIContextualAction {
+    func selectAction(at indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(style: .normal, title: "Select") { (action, view, completion) in
             completion(true)
         }
@@ -418,11 +424,10 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         UIImage(named: "Info")?.draw(in: CGRect(x: 0, y: 0, width: 25, height: 25))}
         action.backgroundColor = UIColor(hexString: "6ABBD7")
 
-        
         return action
     }
     
-    func ScheduleAction(at indexPath: IndexPath) -> UIContextualAction {
+    func scheduleAction(at indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(style: .normal, title: "Schedule") { (action, view, completion) in
             completion(true)
         }
@@ -434,10 +439,9 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
     }
     
     @IBAction func swipeHandler(_ gestureRecognizer : UISwipeGestureRecognizer) {
-        if gestureRecognizer.state == .ended
-        {
+        if gestureRecognizer.state == .ended {
             // Perform Action
-            }
+        }
     }
     
 // MARK: - Cell Sizing
