@@ -29,6 +29,7 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
         }
         else {
             isCollapsed = true
+            
         }
         self.tableView.reloadData()
    
@@ -79,6 +80,7 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
             headerView.section = section
             headerView.headerLabel.text = "Projects"
             headerView.image.image = UIImage(named: "ProjectImageLabel")
+//            headerView.arrowImage.image = UIImage(systemName: "arrowtriangle.up.fill")
             headerView.delegate = self
             return headerView
         }

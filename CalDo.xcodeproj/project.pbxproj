@@ -70,6 +70,8 @@
 		01F3A08E24F534EC00368C6A /* ProjectExpandableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01F3A08D24F534EC00368C6A /* ProjectExpandableHeaderView.xib */; };
 		01F3A09524F53F7200368C6A /* TagListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014C23A02313176500A3EA4F /* TagListViewController.swift */; };
 		01F3A0A224F543CF00368C6A /* UpcomingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3A0A124F543CF00368C6A /* UpcomingViewController.swift */; };
+		01F7AA33250BF0E900504799 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F7AA31250BF0E900504799 /* DetailViewController.swift */; };
+		01F7AA34250BF0E900504799 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01F7AA32250BF0E900504799 /* DetailViewController.xib */; };
 		1672103DAFACBE7365B8437F /* Pods_CalDo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4726741C17ABDA6BE135D3FF /* Pods_CalDo.framework */; };
 		830DB5ED24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 830DB5EB24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld */; };
 		830DB5EE24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 830DB5EB24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld */; };
@@ -192,9 +194,10 @@
 		01EAFEE5231CAACA00F3EA9D /* RepetitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepetitionViewController.swift; sourceTree = "<group>"; };
 		01F3A08B24F534D500368C6A /* ProjectExpandableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProjectExpandableHeaderView.swift; path = "CalDo/ViewControllers/Cells/Task Project Cells/ProjectExpandableHeaderView.swift"; sourceTree = SOURCE_ROOT; };
 		01F3A08D24F534EC00368C6A /* ProjectExpandableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectExpandableHeaderView.xib; sourceTree = "<group>"; };
-		01F3A09B24F5411700368C6A /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectTableViewCell.swift; path = ../../../../../../.Trash/ProjectTableViewCell.swift; sourceTree = "<group>"; };
 		01F3A0A124F543CF00368C6A /* UpcomingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingViewController.swift; sourceTree = "<group>"; };
 		01F5F480232727F500FE8D62 /* CalDo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CalDo-Bridging-Header.h"; sourceTree = "<group>"; };
+		01F7AA31250BF0E900504799 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = "CalDo/ViewControllers/Todo Section View Controllers/DetailViewController.swift"; sourceTree = SOURCE_ROOT; };
+		01F7AA32250BF0E900504799 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DetailViewController.xib; path = "CalDo/ViewControllers/Cells/Nib Files/DetailViewController.xib"; sourceTree = SOURCE_ROOT; };
 		1848A7A760F8301A9C4DABF0 /* Pods-CalDoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalDoUITests.debug.xcconfig"; path = "Target Support Files/Pods-CalDoUITests/Pods-CalDoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		1EE98E7D15441A57A60D79CF /* Pods-CalDoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalDoUITests.release.xcconfig"; path = "Target Support Files/Pods-CalDoUITests/Pods-CalDoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4247D29744B391B96999F1B9 /* Pods_CalDoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalDoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -405,6 +408,7 @@
 		01F3A09224F53F1A00368C6A /* Todo Section View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				01F7AA31250BF0E900504799 /* DetailViewController.swift */,
 				83626C7924DCACA200AFD9EE /* TaskTableView.swift */,
 				83626C7824DCABF600AFD9EE /* Task ViewControllers */,
 				0165E19723294AAA002F5DA1 /* TodoSectionViewController.swift */,
@@ -452,7 +456,6 @@
 		01F3A09724F5401400368C6A /* Task Section Cells */ = {
 			isa = PBXGroup;
 			children = (
-				01F3A09B24F5411700368C6A /* ProjectTableViewCell.swift */,
 				01D5346F234F6A1900DE6776 /* TodoSectionCollectionViewCell.swift */,
 				01F3A09924F5405800368C6A /* Adding Tasks Cells */,
 				016CF84824DC8EB1006DEC65 /* SmallTaskTableViewCell.swift */,
@@ -464,6 +467,7 @@
 		01F3A09824F5403000368C6A /* Nib Files */ = {
 			isa = PBXGroup;
 			children = (
+				01F7AA32250BF0E900504799 /* DetailViewController.xib */,
 				83A1975625018BD6001011D2 /* TaskTableViewController.xib */,
 				0165E19E2329A971002F5DA1 /* InboxHomeScreenTableViewCell.xib */,
 				016CF84924DC8EB1006DEC65 /* SmallTaskTableViewCell.xib */,
@@ -657,6 +661,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01F7AA34250BF0E900504799 /* DetailViewController.xib in Resources */,
 				01F3A08E24F534EC00368C6A /* ProjectExpandableHeaderView.xib in Resources */,
 				014595702445EA6400AFB34D /* SF-Pro-Rounded-Medium.otf in Resources */,
 				014595712445EA6400AFB34D /* SF-Pro-Rounded-Regular.otf in Resources */,
@@ -830,6 +835,7 @@
 				834F82C524E2ACF8007DB362 /* ProjectTaskViewController.swift in Sources */,
 				01D53482234F6EFC00DE6776 /* PriorityTableViewCell.swift in Sources */,
 				019280EB1F8A615C00E895D4 /* AppDelegate.swift in Sources */,
+				01F7AA33250BF0E900504799 /* DetailViewController.swift in Sources */,
 				01D53480234F6EFC00DE6776 /* TagCollectionViewCell.swift in Sources */,
 				015DA6A023C94E4900582851 /* ProjectHomeViewController.swift in Sources */,
 				01987817231AA1CE00DE1F7E /* EndRepeatViewController.swift in Sources */,

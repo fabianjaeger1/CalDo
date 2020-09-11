@@ -8,6 +8,17 @@
 
 import UIKit
 
+//extension UIView {
+//   func rotate(_ toValue: CGFloat, duration: CFTimeInterval = 0.2) {
+//    let animation = CABasicAnimation(keyPath: "transform.scale.x”)
+//      animation.toValue = toValue
+//      animation.duration = duration
+//      animation.isRemovedOnCompletion = false
+//        animation.fillMode = CAMediaTimingFillMode.forwards
+//      self.layer.add(animation, forKey: nil)
+//   }
+//}
+
 protocol ExpandableHeaderViewDelegate {
     func toggleSection(header: ProjectExpandableHeaderView, section: Int)
 }
@@ -21,6 +32,12 @@ class ProjectExpandableHeaderView: UITableViewHeaderFooterView {
     @IBOutlet weak var image: UIImageView!
 
     var section: Int!
+    
+    
+    func setCollapsed(collapsed: Bool) {
+        arrowImage.transform = CGAffineTransform(rotationAngle: .pi)
+    }
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,10 +55,7 @@ class ProjectExpandableHeaderView: UITableViewHeaderFooterView {
     @objc private func didTapHeader(){
         delegate?.toggleSection(header: self, section: section)
     }
-    
-    func setCollapsed(collapsed: Bool) {
-        arrowImage?.rotate(collapsed ? 0.0: .pi)
-    }
+
     
 //    override init(reuseIdentifier: String?) {
 //        super.init(reuseIdentifier: reuseIdentifier)

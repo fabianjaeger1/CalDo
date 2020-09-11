@@ -40,7 +40,102 @@ import UIKit
 
 // var InboxTodo = [TodoItem]() // Globally defined variable for Todo items in Inbox
 
-class InboxViewController: TaskTableViewController {
+class InboxViewController: TaskTableViewController, UIAdaptivePresentationControllerDelegate {
+    
+    
+    func ItemSelected(sender: TaskTableView) {
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segue.destination.presentationController?.delegate = self
+        if segue.identifier == "ShowDetail"{
+            let destinationVC = segue.destination as? DetailViewController
+        }
+    }
+    
+//    func tableView(_ myTableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let vc = DetailViewController(nibName: "DetailViewController", bundle: nil)
+//        vc.presentationController?.delegate = self
+//        self.present(vc, animated: true, completion: nil)
+//    }
+//
+//    // MARK: Segue Methods
+//
+//        func projectSelected(sender: ProjectTableView) {
+//            //self.performSegue(withIdentifier: "ProjectDetail", sender: self)
+//            //let project: ProjectEntity
+//            if let indexPath = myTableView.indexPathForSelectedRow {
+//                let project = projectTableView.tableViewData[indexPath.row]
+//                let vc = ProjectTaskViewController(nibName: "TaskTableViewController", bundle: nil, project: project)
+//                vc.presentationController?.delegate = self
+//                self.present(vc, animated: true, completion: nil)
+//            }
+//        }
+//
+//        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//            segue.destination.presentationController?.delegate = self
+//
+//            if segue.identifier == "InboxDetail" {
+//                //            let destinationVC = segue.destination as? InboxViewController
+//            }
+//            else if segue.identifier == "TodayDetail"{
+//                //            let destinationVC = segue.destination as? TodayViewController
+//            }
+//            else if segue.identifier == "UpcomingDetail"{
+//                //            let destinationVC = segue.destination as? UpcomingViewController
+//            }
+//            else if segue.identifier == "HabitDetail"{
+//
+//            }
+//            else if segue.identifier == "ProjectDetail" {
+//                let projectTaskVC = segue.destination as! ProjectTaskViewController
+//
+//                if let indexPath = myTableView.indexPathForSelectedRow {
+//                    let project = projectTableView.tableViewData[indexPath.row]
+//                    projectTaskVC.project = project
+//                }
+//            }
+//        }
+//
+//        func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
+//            collectionView.reloadData()
+//            smoothlyDeselectRows(tableView: myTableView)
+//
+//        }
+//
+//
+//        override func viewDidLoad() {
+//
+//            myTableView.layer.backgroundColor = UIColor.clear.cgColor
+//
+//
+//
+//            self.view.backgroundColor = .BackgroundColor
+//
+//
+//            collectionView.delegate = self
+//            collectionView.dataSource = self
+//
+//            projectTableView = ProjectTableView(myTableView)
+//
+//            super.viewDidLoad()
+//        }
+//
+//
+//        override func viewWillAppear(_ animated: Bool) {
+//            collectionView.reloadData()
+//            myTableView.reloadData()
+//            super.viewWillAppear(animated)
+//
+//            if let selectedRow: IndexPath = myTableView.indexPathForSelectedRow {
+//                myTableView.deselectRow(at: selectedRow, animated: true)
+//            }
+//
+//        }
+//    }
+
+
     
 //    init(bundle nibBundleOrNil: Bundle?) {
 //        let predicate = NSPredicate(format: "(completed == false)")
@@ -57,6 +152,7 @@ class InboxViewController: TaskTableViewController {
 //    }
 
     override func viewDidLoad() {
+        
         predicate = NSPredicate(format: "(completed == false) AND (project == nil)")
 
         titleLabel.text = "Inbox"

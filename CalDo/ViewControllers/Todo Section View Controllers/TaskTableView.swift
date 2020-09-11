@@ -46,6 +46,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
     
 //    weak var delegate1: SmallTaskTableViewCellDelegate?
 //    weak var delegate2: TaskTableViewCellDelegate?
+//    var segueIdentifier: String
     var tableView: UITableView
     var tableViewData: [TaskEntity]
     var taskPredicate: NSPredicate
@@ -59,6 +60,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         
         tableView = tv
         taskPredicate = predicate
+//        segueIdentifier = segueIdentf
         
         let managedContext = CoreDataManager.shared.persistentContainer.viewContext
         let request : NSFetchRequest<TaskEntity> = TaskEntity.fetchRequest()
@@ -222,7 +224,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             // cell.backgroundColor = .clear
             // cell.layer.backgroundColor = UIColor.clear.cgColor
         //            cell.delegate = self
-            cell.selectionStyle = .none
+//            cell.selectionStyle = .none
             return cell
         }
 
@@ -396,7 +398,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
 
             // To return default case of no above cell type
 
-            cell.selectionStyle = .none
+//            cell.selectionStyle = .none
             return cell
         }
     }
@@ -453,6 +455,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
     }
     
 // MARK: - Delegate Methods
+
         
     
     func checkmarkTapped(sender: SmallTaskTableViewCell) {

@@ -516,13 +516,9 @@
                     <tabBarItem key="tabBarItem" title="Todo" image="Todo Button" id="eyF-AR-dG6"/>
                     <navigationItem key="navigationItem" id="s2u-f3-OlJ"/>
                     <connections>
-                        <outlet property="AddButton" destination="j0A-ri-gXw" id="AKK-1T-8yB"/>
-                        <outlet property="AddTaskTextField" destination="pJW-Kg-uyR" id="6DM-ts-buL"/>
-                        <outlet property="InboxLabel" destination="DZ9-VM-dlc" id="M7n-Xt-EOk"/>
-                        <outlet property="MenuButton" destination="Zyf-lD-p4N" id="lWQ-Dl-q4U"/>
                         <outlet property="myTableView" destination="xz1-Ad-PUD" id="Nlc-HU-5Ju"/>
-                        <outlet property="textfield" destination="CAG-hS-mhh" id="6rA-X2-g8J"/>
                         <outlet property="toolbarView" destination="Jds-Rb-FhI" id="gu3-eq-s4c"/>
+                        <segue destination="LBh-kP-tF7" kind="show" identifier="showDetail" id="5JL-fY-SlN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z6X-z1-qOe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2556,20 +2552,28 @@
             </objects>
             <point key="canvasLocation" x="1418" y="1558"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail Task View Controller-->
         <scene sceneID="Qxo-Ie-ZkA">
             <objects>
-                <viewController id="LBh-kP-tF7" sceneMemberID="viewController">
+                <viewController id="LBh-kP-tF7" customClass="DetailTaskViewController" customModule="CalDo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="81T-DJ-AHF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cvs-HU-99e">
+                                <rect key="frame" x="16" y="20" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="1l5-jZ-NAz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Fsw-Is-SH2"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1HN-yW-rvn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4362" y="1719"/>
+            <point key="canvasLocation" x="3470" y="-107"/>
         </scene>
     </scenes>
     <designables>
