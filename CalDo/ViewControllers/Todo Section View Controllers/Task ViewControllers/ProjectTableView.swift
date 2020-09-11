@@ -30,7 +30,9 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
         else {
             isCollapsed = true
         }
-        tableView.reloadSections(IndexSet(integer: section), with: .none)
+        self.tableView.reloadData()
+   
+//        tableView.reloadSections(IndexSet(integer: section), with: .none)
     }
     
 
@@ -109,6 +111,7 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
         cell.projectColor.layer.backgroundColor = UIColor.clear.cgColor
         cell.projectColor.layer.addSublayer(shapeLayer)
         
+        cell.selectionStyle = .none
         return cell
     }
     
