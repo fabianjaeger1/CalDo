@@ -205,7 +205,7 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
     override func viewDidLoad() {
         
         myTableView.layer.backgroundColor = UIColor.clear.cgColor
-        
+            
         
         
         self.view.backgroundColor = .BackgroundColor
@@ -215,7 +215,15 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
         collectionView.dataSource = self
     
         projectTableView = ProjectTableView(myTableView)
+        projectTableView.reloadSections = { [weak self] (section: Int) in
+            self?.myTableView.beginUpdates()            
+//            myTableView.tableView.tableHeaderView?.backgroundColor = UIColor.blue
+            self?.myTableView.reloadSections([section], with: .fade)
+            self?.myTableView.endUpdates()
+        }
         
+
+                
         super.viewDidLoad()
     }
     

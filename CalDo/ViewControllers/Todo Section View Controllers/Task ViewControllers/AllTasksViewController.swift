@@ -8,6 +8,25 @@
 
 import UIKit
 
+protocol GenericDataSourceDelegate: class {
+            // Delegate callbacks methods
+}
+
+class AllTasksViewController: TaskTableViewController {
+        override func viewDidLoad() {
+        predicate = NSPredicate(format: "(completed == false)")
+        
+        titleLabel.text = "All Tasks"
+        
+        let imageView = UIImageView(image: UIImage(named: "All_Tasks"))
+        imageView.frame = titleIcon.bounds
+        imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        titleIcon.addSubview(imageView)
+        
+        super.viewDidLoad()
+    }
+}
+
 
 //class GenericDataSource: NSObject {
 //
@@ -54,23 +73,4 @@ import UIKit
 //
 //        }
 //}
-
-protocol GenericDataSourceDelegate: class {
-            // Delegate callbacks methods
-}
-
-class AllTasksViewController: TaskTableViewController {
-        override func viewDidLoad() {
-        predicate = NSPredicate(format: "(completed == false)")
-        
-        titleLabel.text = "All Tasks"
-        
-        let imageView = UIImageView(image: UIImage(named: "All_Tasks"))
-        imageView.frame = titleIcon.bounds
-        imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        titleIcon.addSubview(imageView)
-        
-        super.viewDidLoad()
-    }
-}
 

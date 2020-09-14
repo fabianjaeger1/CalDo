@@ -24,6 +24,8 @@
 		014595722445EA6400AFB34D /* SF-Pro-Rounded-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 014595672445E9DA00AFB34D /* SF-Pro-Rounded-Semibold.otf */; };
 		014595732445EA6400AFB34D /* SF-Pro-Rounded-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 014595682445E9DB00AFB34D /* SF-Pro-Rounded-Thin.otf */; };
 		014595742445EA6400AFB34D /* SF-Pro-Rounded-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 014595632445E9DA00AFB34D /* SF-Pro-Rounded-Ultralight.otf */; };
+		014B15CF250F861E00D673E7 /* TagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014B15CD250F861E00D673E7 /* TagTableViewCell.swift */; };
+		014B15D0250F861E00D673E7 /* TagTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 014B15CE250F861E00D673E7 /* TagTableViewCell.xib */; };
 		015361C524AA7AB200D19DD2 /* TagStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015361C424AA7AB200D19DD2 /* TagStruct.swift */; };
 		015DA69E23C94B5300582851 /* HabitHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015DA69D23C94B5300582851 /* HabitHomeViewController.swift */; };
 		015DA6A023C94E4900582851 /* ProjectHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015DA69F23C94E4900582851 /* ProjectHomeViewController.swift */; };
@@ -66,8 +68,8 @@
 		01D5348E234F727C00DE6776 /* RepeatViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5348D234F727C00DE6776 /* RepeatViewCell.swift */; };
 		01D53490234F733100DE6776 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01D5348F234F733100DE6776 /* LaunchScreen.storyboard */; };
 		01EAFEE6231CAACA00F3EA9D /* RepetitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EAFEE5231CAACA00F3EA9D /* RepetitionViewController.swift */; };
-		01F3A08C24F534D500368C6A /* ProjectExpandableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3A08B24F534D500368C6A /* ProjectExpandableHeaderView.swift */; };
-		01F3A08E24F534EC00368C6A /* ProjectExpandableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01F3A08D24F534EC00368C6A /* ProjectExpandableHeaderView.xib */; };
+		01F3A08C24F534D500368C6A /* ExpandableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3A08B24F534D500368C6A /* ExpandableHeaderView.swift */; };
+		01F3A08E24F534EC00368C6A /* ExpandableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01F3A08D24F534EC00368C6A /* ExpandableHeaderView.xib */; };
 		01F3A09524F53F7200368C6A /* TagListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014C23A02313176500A3EA4F /* TagListViewController.swift */; };
 		01F3A0A224F543CF00368C6A /* UpcomingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3A0A124F543CF00368C6A /* UpcomingViewController.swift */; };
 		01F7AA33250BF0E900504799 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F7AA31250BF0E900504799 /* DetailViewController.swift */; };
@@ -149,6 +151,8 @@
 		014595692445E9DB00AFB34D /* SF-Pro-Rounded-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Regular.otf"; sourceTree = "<group>"; };
 		0145956A2445E9DB00AFB34D /* SF-Pro-Rounded-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Light.otf"; sourceTree = "<group>"; };
 		0145956B2445E9DB00AFB34D /* SF-Pro-Rounded-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Bold.otf"; sourceTree = "<group>"; };
+		014B15CD250F861E00D673E7 /* TagTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TagTableViewCell.swift; path = "CalDo/ViewControllers/Cells/Task Project Cells/TagTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
+		014B15CE250F861E00D673E7 /* TagTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TagTableViewCell.xib; path = "CalDo/ViewControllers/Cells/Nib Files/TagTableViewCell.xib"; sourceTree = SOURCE_ROOT; };
 		014C23A02313176500A3EA4F /* TagListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TagListViewController.swift; path = "CalDo/ViewControllers/Todo Section View Controllers/Adding Tasks View Controllers/TagListViewController.swift"; sourceTree = SOURCE_ROOT; };
 		015361C424AA7AB200D19DD2 /* TagStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagStruct.swift; sourceTree = "<group>"; };
 		015DA69D23C94B5300582851 /* HabitHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitHomeViewController.swift; sourceTree = "<group>"; };
@@ -198,8 +202,8 @@
 		01D5348D234F727C00DE6776 /* RepeatViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatViewCell.swift; sourceTree = "<group>"; };
 		01D5348F234F733100DE6776 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01EAFEE5231CAACA00F3EA9D /* RepetitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepetitionViewController.swift; sourceTree = "<group>"; };
-		01F3A08B24F534D500368C6A /* ProjectExpandableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProjectExpandableHeaderView.swift; path = "CalDo/ViewControllers/Cells/Task Project Cells/ProjectExpandableHeaderView.swift"; sourceTree = SOURCE_ROOT; };
-		01F3A08D24F534EC00368C6A /* ProjectExpandableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectExpandableHeaderView.xib; sourceTree = "<group>"; };
+		01F3A08B24F534D500368C6A /* ExpandableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExpandableHeaderView.swift; path = "CalDo/ViewControllers/Cells/Task Project Cells/ExpandableHeaderView.swift"; sourceTree = SOURCE_ROOT; };
+		01F3A08D24F534EC00368C6A /* ExpandableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandableHeaderView.xib; sourceTree = "<group>"; };
 		01F3A0A124F543CF00368C6A /* UpcomingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingViewController.swift; sourceTree = "<group>"; };
 		01F5F480232727F500FE8D62 /* CalDo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CalDo-Bridging-Header.h"; sourceTree = "<group>"; };
 		01F7AA31250BF0E900504799 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = "CalDo/ViewControllers/Todo Section View Controllers/DetailViewController.swift"; sourceTree = SOURCE_ROOT; };
@@ -477,12 +481,13 @@
 		01F3A09824F5403000368C6A /* Nib Files */ = {
 			isa = PBXGroup;
 			children = (
+				014B15CE250F861E00D673E7 /* TagTableViewCell.xib */,
 				01F7AA32250BF0E900504799 /* DetailViewController.xib */,
 				83A1975625018BD6001011D2 /* TaskTableViewController.xib */,
 				0165E19E2329A971002F5DA1 /* InboxHomeScreenTableViewCell.xib */,
 				016CF84924DC8EB1006DEC65 /* SmallTaskTableViewCell.xib */,
 				016CF84D24DCB393006DEC65 /* TaskTableViewCell.xib */,
-				01F3A08D24F534EC00368C6A /* ProjectExpandableHeaderView.xib */,
+				01F3A08D24F534EC00368C6A /* ExpandableHeaderView.xib */,
 				834F82D424E2AF49007DB362 /* ProjectTableViewCell.xib */,
 			);
 			path = "Nib Files";
@@ -514,7 +519,8 @@
 		01F3A09D24F5417B00368C6A /* Task Project Cells */ = {
 			isa = PBXGroup;
 			children = (
-				01F3A08B24F534D500368C6A /* ProjectExpandableHeaderView.swift */,
+				014B15CD250F861E00D673E7 /* TagTableViewCell.swift */,
+				01F3A08B24F534D500368C6A /* ExpandableHeaderView.swift */,
 				83AEF023250190F400D31E76 /* ProjectTableViewCell.swift */,
 			);
 			path = "Task Project Cells";
@@ -672,9 +678,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				01F7AA34250BF0E900504799 /* DetailViewController.xib in Resources */,
-				01F3A08E24F534EC00368C6A /* ProjectExpandableHeaderView.xib in Resources */,
+				01F3A08E24F534EC00368C6A /* ExpandableHeaderView.xib in Resources */,
 				014595702445EA6400AFB34D /* SF-Pro-Rounded-Medium.otf in Resources */,
 				014595712445EA6400AFB34D /* SF-Pro-Rounded-Regular.otf in Resources */,
+				014B15D0250F861E00D673E7 /* TagTableViewCell.xib in Resources */,
 				014595722445EA6400AFB34D /* SF-Pro-Rounded-Semibold.otf in Resources */,
 				834F82D524E2AF49007DB362 /* ProjectTableViewCell.xib in Resources */,
 				014595732445EA6400AFB34D /* SF-Pro-Rounded-Thin.otf in Resources */,
@@ -835,6 +842,7 @@
 				834F82D124E2ADDF007DB362 /* ProjectTableView.swift in Sources */,
 				01D53465234F681800DE6776 /* CustomTabBarItem.swift in Sources */,
 				832D3C6824ADE0A000A1E709 /* CoreDataManager.swift in Sources */,
+				014B15CF250F861E00D673E7 /* TagTableViewCell.swift in Sources */,
 				83F9F70D24E3E80C0008FCF9 /* UIViewControllerExtension.swift in Sources */,
 				019281551F8B884E00E895D4 /* InboxViewController.swift in Sources */,
 				016CF84E24DCB393006DEC65 /* TaskTableViewCell.swift in Sources */,
@@ -855,7 +863,7 @@
 				0142AAC1231BF78300324DA1 /* OnDateRepeatViewController.swift in Sources */,
 				0165E19823294AAA002F5DA1 /* TodoSectionViewController.swift in Sources */,
 				0165E19F2329A971002F5DA1 /* InboxHomeScreenTableViewCell.swift in Sources */,
-				01F3A08C24F534D500368C6A /* ProjectExpandableHeaderView.swift in Sources */,
+				01F3A08C24F534D500368C6A /* ExpandableHeaderView.swift in Sources */,
 				01C954722115E2310047175F /* Todo Struct.swift in Sources */,
 				01D5347B234F6E3E00DE6776 /* DateAndTime.swift in Sources */,
 				01F3A0A224F543CF00368C6A /* UpcomingViewController.swift in Sources */,

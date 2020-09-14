@@ -1,20 +1,17 @@
 //
-//  ProjectTableViewCell.swift
+//  TagsTableViewCell.swift
 //  CalDo
 //
-//  Created by Nathan Baudis  on 8/11/20.
+//  Created by Fabian Jaeger on 9/14/20.
 //  Copyright © 2020 CalDo. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-class ProjectTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var projectColor: UIView!
-    @IBOutlet weak var projectLabel: UILabel!
-//    @IBOutlet weak var tagIcon: UIImageView!
-
+class TagTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var tagTitle: UILabel!
+    @IBOutlet weak var tagIcon: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,5 +23,5 @@ class ProjectTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }

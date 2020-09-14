@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17140" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17115"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Rounded-Semibold.otf">
+            <string>SFProRounded-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TagTableViewCell" rowHeight="49" id="vMm-Yl-18E" customClass="TagTableViewCell" customModule="CalDo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="387" height="49"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vMm-Yl-18E" id="Vyy-Yc-9An">
+                <rect key="frame" x="0.0" y="0.0" width="356" height="49"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fEU-g4-zMF">
+                        <rect key="frame" x="52" y="13.5" width="304" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="304" id="iyx-hf-Hua"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qgr-nX-oHY">
+                        <rect key="frame" x="12" y="11" width="27" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="27" id="Egv-NP-GmF"/>
+                            <constraint firstAttribute="width" constant="27" id="Hqa-eb-7a2"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="fEU-g4-zMF" firstAttribute="centerY" secondItem="Vyy-Yc-9An" secondAttribute="centerY" id="Awe-BS-HG2"/>
+                    <constraint firstItem="Qgr-nX-oHY" firstAttribute="leading" secondItem="Vyy-Yc-9An" secondAttribute="leading" constant="12" id="Scu-F3-WKe"/>
+                    <constraint firstItem="Qgr-nX-oHY" firstAttribute="top" secondItem="Vyy-Yc-9An" secondAttribute="top" constant="11" id="ZeQ-md-87k"/>
+                    <constraint firstAttribute="bottom" secondItem="Qgr-nX-oHY" secondAttribute="bottom" constant="11" id="daP-KW-DmH"/>
+                    <constraint firstItem="fEU-g4-zMF" firstAttribute="leading" secondItem="Qgr-nX-oHY" secondAttribute="trailing" constant="13" id="yg2-Gb-Mwt"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="tagIcon" destination="Qgr-nX-oHY" id="WnK-Ow-dQp"/>
+                <outlet property="tagTitle" destination="fEU-g4-zMF" id="3Cy-yq-LPR"/>
+            </connections>
+            <point key="canvasLocation" x="-219.56521739130437" y="126.22767857142857"/>
+        </tableViewCell>
+    </objects>
+</document>
