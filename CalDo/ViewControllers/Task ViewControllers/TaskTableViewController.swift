@@ -218,6 +218,10 @@ class TaskTableViewController: UIViewController {
         taskTableView.myViewController = self
         myTableView.allowsMultipleSelectionDuringEditing = true
         
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = .BackgroundColor
+        myTableView.backgroundView = backgroundView
+        
         // Search Bar
         myTableView.tableHeaderView = taskTableView.searchController.searchBar
         navigationItem.searchController = taskTableView.searchController
