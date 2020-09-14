@@ -41,29 +41,52 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
     var isCollapsedProject: Bool
     var isCollapsedTags: Bool
     
-    var reloadSections: ((_ section: Int) -> Void)?
-    
     weak var delegate: ProjectTableViewDelegate?
     
     
     func toggleSection(header: ExpandableHeaderView, section: Int) {
         
         if section == 0  {
-            isCollapsedProject = !isCollapsedProject
             header.setCollapsed(collapsed: isCollapsedProject)
-            reloadSections?(section)
+            
+            if isCollapsedProject {
+                tableView.beginUpdates()
+                let indexPaths = (0 ..< tableViewData.count)
+                .map { IndexPath(row: $0, section: 0) }
+                tableView.insertRows(at: indexPaths, with: .fade)
+                isCollapsedProject = !isCollapsedProject
+                tableView.endUpdates()
+            }
+            else {
+                tableView.beginUpdates()
+                let indexPaths = (0 ..< tableViewData.count)
+                .map { IndexPath(row: $0, section: 0) }
+                tableView.deleteRows(at: indexPaths, with: .fade)
+                isCollapsedProject = !isCollapsedProject
+                tableView.endUpdates()
+            }
         }
-        if section == 1 {
-            isCollapsedTags = !isCollapsedTags
+        if section == 1  {
             header.setCollapsed(collapsed: isCollapsedTags)
-            reloadSections?(section)
+            
+            if isCollapsedTags {
+                tableView.beginUpdates()
+                let indexPaths = (0 ..< tableViewData.count)
+                .map { IndexPath(row: $0, section: 1) }
+                tableView.insertRows(at: indexPaths, with: .fade)
+                isCollapsedTags = !isCollapsedTags
+                tableView.endUpdates()
+            }
+            else {
+                tableView.beginUpdates()
+                let indexPaths = (0 ..< tagViewData.count)
+                .map { IndexPath(row: $0, section: 1) }
+                tableView.deleteRows(at: indexPaths, with: .fade)
+                isCollapsedTags = !isCollapsedTags
+                tableView.endUpdates()
+            }
         }
-//            tableView.reloadSections([section], with: .fade)
-        }
-//        self.tableView.reloadSections([section], with: .none)
-//        self.tableView.reloadData()
-
-//        self.tableView.reloadSections(section, with: .fade)
+    }
    
 //        tableView.reloadSections(IndexSet(integer: section), with: .none)
     
@@ -127,6 +150,8 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
         return 0
     }
     
+    // MARK: - Header View
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ExpandableHeaderView.identifier) as? ExpandableHeaderView {
             if section == 0 {
@@ -166,6 +191,8 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
         }
         return UIView()
     }
+    
+    // MARK: - Cell
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {

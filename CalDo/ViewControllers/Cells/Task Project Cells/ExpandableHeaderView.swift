@@ -37,7 +37,6 @@ class ExpandableHeaderView: UITableViewHeaderFooterView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//        arrowImage.transform = arrowImage.transform.rotated(by: .pi)
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapHeader)))
         self.contentView.backgroundColor = UIColor.BackgroundColor
         self.view.backgroundColor = UIColor.BackgroundColor
@@ -53,22 +52,20 @@ class ExpandableHeaderView: UITableViewHeaderFooterView {
     
     func setCollapsed(collapsed: Bool) {
         if collapsed == true {
-            UIView.animate(withDuration: 2.0, animations: {
-                self.backgroundColor = UIColor.backgroundColor
+            UIView.animate(withDuration: 0.2, animations: {
+                self.view.backgroundColor = UIColor.backgroundColor
                 self.arrowImage.transform = self.arrowImage.transform.rotated(by: .pi / 2)
-                //self.arrowImage.transform = CGAffineTransform(rotationAngle: CGFloat(-.pi/2.0))
             })
         }
         else {
-            UIView.animate(withDuration: 2.0, animations: {
-                self.backgroundColor = UIColor.BackgroundColor
+            UIView.animate(withDuration: 0.2, animations: {
+                self.view.backgroundColor = UIColor.BackgroundColor
                 self.arrowImage.transform = self.arrowImage.transform.rotated(by: -.pi / 2)
-                //self.arrowImage.transform = CGAffineTransform(rotationAngle: CGFloat(.pi/2.0))
             })
         }
     }
     
-    @objc private func didTapHeader(){
+    @objc private func didTapHeader() {
     
 //        if isCollapsed == true {
 ////            arrowImage.rotate()
