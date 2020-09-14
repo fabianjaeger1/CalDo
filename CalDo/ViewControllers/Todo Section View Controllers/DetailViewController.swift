@@ -9,9 +9,13 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+    
+    @IBOutlet weak var todoTitle: UILabel!
+    @IBOutlet weak var todoButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.view.backgroundColor = UIColor.BackgroundColor
 
         // Do any additional setup after loading the view.
     }
