@@ -42,18 +42,6 @@ import UIKit
 
 class InboxViewController: TaskTableViewController, UIAdaptivePresentationControllerDelegate {
     
-    
-    func ItemSelected(sender: TaskTableView) {
-        
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        segue.destination.presentationController?.delegate = self
-        if segue.identifier == "ShowDetail"{
-            let destinationVC = segue.destination as? DetailViewController
-        }
-    }
-    
 //    func tableView(_ myTableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        let vc = DetailViewController(nibName: "DetailViewController", bundle: nil)
 //        vc.presentationController?.delegate = self
