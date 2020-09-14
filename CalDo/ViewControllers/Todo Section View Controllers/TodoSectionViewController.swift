@@ -135,9 +135,11 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
             print("None")
         }
         cell.layer.cornerRadius = 25
+        
         cell.TodoAmountLabel.textColor = UIColor.textColor
         cell.TodoSectionLabel.text = todoSections[indexPath.row]
         cell.TodoSectionLabel.textColor = UIColor.textColor
+        
         cell.contentView.layer.cornerRadius = 25
         cell.contentView.layer.borderWidth = 1.0
         cell.contentView.layer.borderColor = UIColor.clear.cgColor

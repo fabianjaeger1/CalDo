@@ -142,9 +142,30 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             task = self.tableViewData[indexPath.row]
         }
         
+        var vcIsProject = false
+        var vcIsTag = false
+        
+        if let vc = myViewController {
+            if vc is ProjectTaskViewController {
+                vcIsProject = true
+            }
+//            if vc is TagTaskViewController {
+//                vcIsTag = true
+//            }
+        }
+        let project = task.value(forKey: "project") as? ProjectEntity
+        let projectExists = !(project == nil)
+        
+        let numberOfTags = (task.value(forKey: "tags") as! Set<TagEntity>).count
+        
+        let cellHasProject = projectExists && !vcIsProject
+        let cellHasTags = (numberOfTags != 0) && !vcIsTag
+        
+        
         // MARK: - Small TableView Cell
         // Smaller Table View cell without Projects and Tags
-        if task.value(forKey: "project") == nil && (task.value(forKey: "tags") as! Set<TagEntity>).count == 0 {
+        
+        if !cellHasProject && !cellHasTags {
             
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "SmallTaskTableViewCell", for: indexPath) as! SmallTaskTableViewCell
@@ -190,7 +211,8 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
                 let image = UIImage(named: "Recurring High")
                 cell.TodoStatus.setImage(image, for: .normal)
             case (false, 0):
-                break
+                let image = UIImage(named: "TodoButton")
+                cell.TodoStatus.setImage(image, for: .normal)
             case (false, 1):
                 let image = UIImage(named: "Todo Medium Priority")
                 cell.TodoStatus.setImage(image, for: .normal)
@@ -201,25 +223,6 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
                 print("Recurrence and/or priority outside of range")
             }
 
-            // =========== ANIMATION ==================
-            
-            // TODO: remove, moved to checkmarktapped
-            
-            if (task.value(forKey: "completed") as! Bool) == true {
-                cell.alpha = 1
-                let image = UIImage(named: "DoneButtonPressed")
-            
-                UIView.animate(
-                    withDuration: 0.3,
-                    animations: {
-                        cell.TodoStatus.setImage(image, for: .normal)
-                })
-            }
-            else {
-                let image = UIImage(named: "TodoButton")
-                cell.TodoStatus.setImage(image, for: .normal)
-            }
-            
             cell.backgroundColor = .BackgroundColor
             // cell.backgroundColor = .clear
             // cell.layer.backgroundColor = UIColor.clear.cgColor
@@ -239,7 +242,9 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
 
             // shapeLayer.fillColor = UIColor(hexString: (todo.todoProject?.ProjectColor)!).cgColor
             // shapeLayer.fillColor = UIColor(hexString: (((task.value(forKey: "project") as! ProjectEntity?)?.value(forKey: "color") as! String?))!).cgColor
-             if let project = CoreDataManager.shared.fetchProjectFromTask(task: task) {
+            
+            if cellHasProject {
+            
                 let shapeLayer = CAShapeLayer()
                 shapeLayer.backgroundColor = UIColor.clear.cgColor
 
@@ -251,14 +256,13 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
 
                 shapeLayer.path = circlePath.cgPath
                 shapeLayer.lineWidth = 3.0
-                shapeLayer.fillColor = CoreDataManager.shared.projectColor(project: project)?.cgColor
+                shapeLayer.fillColor = CoreDataManager.shared.projectColor(project: project!)?.cgColor
 
-                cell.ProjectLabel.text = project.value(forKey: "title") as? String
+                cell.ProjectLabel.text = project!.value(forKey: "title") as? String
                 cell.ProjectLabel.textColor = UIColor.textColor
                 cell.ProjectColor.layer.backgroundColor = UIColor.clear.cgColor
                 cell.ProjectColor.layer.addSublayer(shapeLayer)
             }
-
 
             if (task.value(forKey: "completed") as! Bool) == true {
                 cell.alpha = 1
@@ -282,10 +286,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             
             cell.TodoDate.text = (task.value(forKey: "date") as? Date)?.todoString(withTime: task.value(forKey: "dateHasTime") as! Bool)
             cell.TodoDate.textColor = (task.value(forKey: "date") as? Date)?.todoColor(withTime: task.value(forKey: "dateHasTime") as! Bool)
-            
-            cell.ProjectLabel.textColor = UIColor.textColor
-            // cell.TodoDate?.text = DateToString(date: todo.todoDate!)
-            cell.ProjectLabel.text = (task.value(forKey: "project") as? ProjectEntity)?.value(forKey: "title") as? String
+
             // cell.backgroundColor = .clear
             cell.backgroundColor = .BackgroundColor
 
@@ -385,7 +386,8 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
                 let image = UIImage(named: "Recurring High")
                 cell.TodoStatus.setImage(image, for: .normal)
             case (false, 0):
-                break
+                let image = UIImage(named: "TodoButton")
+                cell.TodoStatus.setImage(image, for: .normal)
             case (false, 1):
                 let image = UIImage(named: "Todo Medium Priority")
                 cell.TodoStatus.setImage(image, for: .normal)
@@ -395,6 +397,8 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             default:
                 print("Recurrence and/or priority outside of range")
             }
+            
+            // cell.TodoStatus = TaskButton(task: task)
 
             // To return default case of no above cell type
 
@@ -453,6 +457,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         //return self.cellHeightsDictionary[indexPath] ??  UITableView.automaticDimension
         return 70
     }
+    
     
 // MARK: - Delegate Methods
 
@@ -765,11 +770,15 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         let index = Int(identifier)! as Int
         let indexPath = IndexPath(row: index, section:0)
         tableView.reloadRows(at: [indexPath], with: .none)
-        let cell = tableView.cellForRow(at: indexPath)
+        
+        if let cell = tableView.cellForRow(at: indexPath) {
         // let cellBackground = cell.backgroundView
         // cell.backgroundColor == UIColor.BackgroundColor
-
-        return UITargetedPreview(view: cell!)
+            return UITargetedPreview(view: cell)
+        }
+        else {
+            return nil
+        }
     }
     
 }
@@ -781,5 +790,31 @@ extension TaskTableView: UISearchResultsUpdating {
     }
 }
 
+// MARK: - Detail View
 
+extension TaskTableView: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        let presentationController = DetailPresentationController(presentedViewController: presented, presenting: presenting)
+        presentationController.detailDelegate = self
+        return presentationController
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = DetailViewController()
+        vc.modalPresentationStyle = .custom
+        vc.transitioningDelegate = self
+        self.myViewController?.present(vc, animated: true)
+    }
+}
 
+extension TaskTableView: DetailPresentationControllerDelegate {
+    func drawerMovedTo(position: DetailSnapPoint) {
+        if position == .closed {
+            if let indexPathForSelectedRow = self.tableView.indexPathForSelectedRow {
+                self.tableView.deselectRow(at: indexPathForSelectedRow, animated: true)
+            }
+        }
+    }
+    
+    
+}
