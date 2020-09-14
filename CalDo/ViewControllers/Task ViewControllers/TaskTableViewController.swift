@@ -226,7 +226,8 @@ class TaskTableViewController: UIViewController {
         myTableView.tableHeaderView = taskTableView.searchController.searchBar
         navigationItem.searchController = taskTableView.searchController
         definesPresentationContext = true
-        
+        //myTableView.contentOffset = taskTableView.searchController.searchBar.bounds.height
+
         // Add Button
         let addButtonImage = UIImage(named: "Plus Sign")
         addButton.setImage(addButtonImage, for: .normal)

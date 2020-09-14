@@ -120,6 +120,16 @@ func loadSampleTaskEntities() {
         print("Error batch deleting projects \(error)")
     }
     
+    let fetchRequestTags = NSFetchRequest<NSFetchRequestResult>(entityName: "TagEntity")
+    let batchDeleteRequestTags = NSBatchDeleteRequest(fetchRequest: fetchRequestTags)
+
+    do {
+        try managedContext.execute(batchDeleteRequestTags)
+        // try managedContext.save()
+    } catch {
+        print("Error batch deleting tags \(error)")
+    }
+    
     
     
     let project1 = ProjectEntity(context: managedContext)
