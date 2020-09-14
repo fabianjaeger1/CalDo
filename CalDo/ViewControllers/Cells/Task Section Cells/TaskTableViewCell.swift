@@ -46,7 +46,16 @@ class TaskTableViewCell: UITableViewCell {
         print("Test")
         delegate?.checkmarkTapped1(sender: self)
     }
-
+    
+//    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+//           super.init(style: style, reuseIdentifier: reuseIdentifier)
+//       }
+//    
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -100,12 +109,11 @@ class TaskTableViewCell: UITableViewCell {
                 self.todoStatusLeading.constant = 10
                 self.stackLeading.constant = 52
                 
-                super.setEditing(editing, animated: animated)
-                
                 delegate?.finishEditing1(sender: self)
                 //self.isInEditingMode = false
                 //self.TodoStatus.isEnabled = true
             }
+            super.setEditing(editing, animated: animated)
         }
     }
     

@@ -79,6 +79,12 @@
 		832D3C6824ADE0A000A1E709 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832D3C6724ADE0A000A1E709 /* CoreDataManager.swift */; };
 		832D3C6924ADE0A000A1E709 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832D3C6724ADE0A000A1E709 /* CoreDataManager.swift */; };
 		832D3C6A24ADE0A000A1E709 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832D3C6724ADE0A000A1E709 /* CoreDataManager.swift */; };
+		83372CB8250ED4DD0076DD7C /* DetailPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83372CB7250ED4DD0076DD7C /* DetailPresentationController.swift */; };
+		83372CB9250ED4DD0076DD7C /* DetailPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83372CB7250ED4DD0076DD7C /* DetailPresentationController.swift */; };
+		83372CBA250ED4DD0076DD7C /* DetailPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83372CB7250ED4DD0076DD7C /* DetailPresentationController.swift */; };
+		83372CBC250FAC8B0076DD7C /* TaskButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83372CBB250FAC8B0076DD7C /* TaskButton.swift */; };
+		83372CBD250FAC8B0076DD7C /* TaskButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83372CBB250FAC8B0076DD7C /* TaskButton.swift */; };
+		83372CBE250FAC8B0076DD7C /* TaskButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83372CBB250FAC8B0076DD7C /* TaskButton.swift */; };
 		834F82C524E2ACF8007DB362 /* ProjectTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834F82C424E2ACF8007DB362 /* ProjectTaskViewController.swift */; };
 		834F82C624E2ACF8007DB362 /* ProjectTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834F82C424E2ACF8007DB362 /* ProjectTaskViewController.swift */; };
 		834F82C724E2ACF8007DB362 /* ProjectTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834F82C424E2ACF8007DB362 /* ProjectTaskViewController.swift */; };
@@ -206,6 +212,8 @@
 		72A7FC944A6AFBB00A63585F /* Pods-CalDo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalDo.release.xcconfig"; path = "Target Support Files/Pods-CalDo/Pods-CalDo.release.xcconfig"; sourceTree = "<group>"; };
 		830DB5EC24A8EC35006B16E3 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		832D3C6724ADE0A000A1E709 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		83372CB7250ED4DD0076DD7C /* DetailPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresentationController.swift; sourceTree = "<group>"; };
+		83372CBB250FAC8B0076DD7C /* TaskButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskButton.swift; sourceTree = "<group>"; };
 		834F82C424E2ACF8007DB362 /* ProjectTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTaskViewController.swift; sourceTree = "<group>"; };
 		834F82D024E2ADDF007DB362 /* ProjectTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableView.swift; sourceTree = "<group>"; };
 		834F82D424E2AF49007DB362 /* ProjectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectTableViewCell.xib; sourceTree = "<group>"; };
@@ -409,7 +417,9 @@
 			isa = PBXGroup;
 			children = (
 				01F7AA31250BF0E900504799 /* DetailViewController.swift */,
+				83372CB7250ED4DD0076DD7C /* DetailPresentationController.swift */,
 				83626C7924DCACA200AFD9EE /* TaskTableView.swift */,
+				83372CBB250FAC8B0076DD7C /* TaskButton.swift */,
 				83626C7824DCABF600AFD9EE /* Task ViewControllers */,
 				0165E19723294AAA002F5DA1 /* TodoSectionViewController.swift */,
 				01F3A09424F53F6100368C6A /* Adding Tasks View Controllers */,
@@ -857,9 +867,11 @@
 				012259A523F62854003BAAEE /* CalendarViewController.swift in Sources */,
 				01D53476234F6D3A00DE6776 /* TimePickerViewController.swift in Sources */,
 				01D53473234F6A1900DE6776 /* TodoSectionCollectionViewCell.swift in Sources */,
+				83372CB8250ED4DD0076DD7C /* DetailPresentationController.swift in Sources */,
 				0160336E2469A21E0032DA23 /* FloatingButtonExtension.swift in Sources */,
 				01B3CA0422EB8BEF00E5344D /* HomeViewController.swift in Sources */,
 				0130AD4822EF279300C3EF47 /* ChooseProjectsViewController.swift in Sources */,
+				83372CBC250FAC8B0076DD7C /* TaskButton.swift in Sources */,
 				83C0019924E84E3D0016B68E /* EntityExtension.swift in Sources */,
 				0160336C24694EA00032DA23 /* AllTasksViewController.swift in Sources */,
 				015361C524AA7AB200D19DD2 /* TagStruct.swift in Sources */,
@@ -875,10 +887,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83372CBD250FAC8B0076DD7C /* TaskButton.swift in Sources */,
 				834F82C624E2ACF8007DB362 /* ProjectTaskViewController.swift in Sources */,
 				83AEF025250190F400D31E76 /* ProjectTableViewCell.swift in Sources */,
 				83C0019A24E84E3D0016B68E /* EntityExtension.swift in Sources */,
 				83A1975C25018C1F001011D2 /* TaskTableViewController.swift in Sources */,
+				83372CB9250ED4DD0076DD7C /* DetailPresentationController.swift in Sources */,
 				832D3C6924ADE0A000A1E709 /* CoreDataManager.swift in Sources */,
 				83F9F70E24E3E80C0008FCF9 /* UIViewControllerExtension.swift in Sources */,
 				019281001F8A615C00E895D4 /* CalDoTests.swift in Sources */,
@@ -891,10 +905,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83372CBE250FAC8B0076DD7C /* TaskButton.swift in Sources */,
 				834F82C724E2ACF8007DB362 /* ProjectTaskViewController.swift in Sources */,
 				83AEF026250190F400D31E76 /* ProjectTableViewCell.swift in Sources */,
 				83C0019B24E84E3D0016B68E /* EntityExtension.swift in Sources */,
 				83A1975D25018C1F001011D2 /* TaskTableViewController.swift in Sources */,
+				83372CBA250ED4DD0076DD7C /* DetailPresentationController.swift in Sources */,
 				832D3C6A24ADE0A000A1E709 /* CoreDataManager.swift in Sources */,
 				83F9F70F24E3E80C0008FCF9 /* UIViewControllerExtension.swift in Sources */,
 				0192810B1F8A615C00E895D4 /* CalDoUITests.swift in Sources */,

@@ -85,14 +85,14 @@ class SmallTaskTableViewCell: UITableViewCell {
                 if (self.isInEditingMode) {
                     self.todoStatusWidth.constant = 42
                     self.todoStatusLeading.constant = 10
-
-                    super.setEditing(editing, animated: animated)
                     
                     delegate?.finishEditing(sender: self)
                     //self.isInEditingMode = false
                     //self.TodoStatus.isEnabled = true
                 }
+                super.setEditing(editing, animated: animated)
             }
+            
         }
 
     
