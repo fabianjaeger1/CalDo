@@ -173,6 +173,10 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             cell.delegate = self
             cell.myViewController = self.myViewController
             
+            let backgroundView = UIView()
+            backgroundView.backgroundColor = UIColor.backgroundColor
+            cell.selectedBackgroundView = backgroundView
+            
             // ========= DATE ===========
             
             // TODO: simplify by adding function returning a task's todoString
@@ -239,6 +243,10 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             
             cell.delegate = self
             cell.myViewController = self.myViewController
+            
+            let backgroundView = UIView()
+            backgroundView.backgroundColor = UIColor.backgroundColor
+            cell.selectedBackgroundView = backgroundView
 
             // shapeLayer.fillColor = UIColor(hexString: (todo.todoProject?.ProjectColor)!).cgColor
             // shapeLayer.fillColor = UIColor(hexString: (((task.value(forKey: "project") as! ProjectEntity?)?.value(forKey: "color") as! String?))!).cgColor

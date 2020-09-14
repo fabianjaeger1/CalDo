@@ -126,7 +126,7 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
         }
         return 0
     }
-    
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ExpandableHeaderView.identifier) as? ExpandableHeaderView {
             if section == 0 {
