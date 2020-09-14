@@ -258,7 +258,12 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.projectSelected(sender: self)
+        if indexPath.section == 0 {
+            delegate?.projectSelected(sender: self)
+        }
+        if indexPath.section == 1 {
+            delegate?.tagSelected(sender: self)
+        }
     }
     
     
@@ -266,4 +271,5 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
 
 @objc protocol ProjectTableViewDelegate: class {
     func projectSelected(sender: ProjectTableView)
+    func tagSelected(sender: ProjectTableView)
 }

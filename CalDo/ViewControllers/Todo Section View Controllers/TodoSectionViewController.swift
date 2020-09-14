@@ -170,6 +170,15 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
         }
     }
     
+    func tagSelected(sender: ProjectTableView) {
+        if let indexPath = myTableView.indexPathForSelectedRow {
+            let tag = projectTableView.tagViewData[indexPath.row]
+            let vc = TagTaskViewController(nibName: "TaskTableViewController", bundle: nil, tag: tag)
+            vc.presentationController?.delegate = self
+            self.present(vc, animated: true, completion: nil)
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         segue.destination.presentationController?.delegate = self
         
