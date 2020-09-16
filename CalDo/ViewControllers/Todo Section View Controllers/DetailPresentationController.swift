@@ -201,6 +201,7 @@ public class DetailPresentationController: UIPresentationController {
         guard let presenterView = self.containerView else { return }
         presenterView.addSubview(self.dimView)
         
+        
         self.presentedViewController.transitionCoordinator?.animate(alongsideTransition: { (UIViewControllerTransitionCoordinatorContext) in
             self.dimView.alpha = 1
         }, completion: { (UIViewControllerTransitionCoordinatorContext) in })

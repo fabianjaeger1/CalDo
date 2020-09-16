@@ -819,7 +819,9 @@ extension TaskTableView: DetailPresentationControllerDelegate {
     func drawerMovedTo(position: DetailSnapPoint) {
         if position == .closed {
             if let indexPathForSelectedRow = self.tableView.indexPathForSelectedRow {
-                self.tableView.deselectRow(at: indexPathForSelectedRow, animated: true)
+                
+                self.tableView.reloadRows(at: [indexPathForSelectedRow], with: .fade)
+                //self.tableView.deselectRow(at: indexPathForSelectedRow, animated: true)
             }
         }
     }
