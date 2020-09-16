@@ -71,6 +71,7 @@ import UIKit
 
 public protocol DetailPresentationControllerDelegate: class {
     func drawerMovedTo(position: DetailSnapPoint)
+    func completeTaskInDetail(_ task: TaskEntity, indexPath: IndexPath)
 }
 
 public enum DetailSnapPoint {

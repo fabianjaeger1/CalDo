@@ -13,7 +13,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var todoTitle: UILabel!
     @IBOutlet weak var todoButton: UIButton!
     
-    // var task: TaskEntity
+    var task: TaskEntity!
+    var indexPath: IndexPath!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,13 +22,28 @@ class DetailViewController: UIViewController {
         todoButton.addTarget(self, action: #selector(completeButtonTapped), for: .touchUpInside)
         
         self.view.backgroundColor = .BackgroundColor
-
     }
 
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, task: TaskEntity, indexPath: IndexPath) {
+        self.task = task
+        self.indexPath = indexPath
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     @objc func completeButtonTapped(sender: UIButton!) {
         
+        task.setValue(true, forKey: "completed")
+        CoreDataManager.shared.saveContext()
+        
         if presentationController is DetailPresentationController {
-            (presentationController as! DetailPresentationController).detailDelegate?.drawerMovedTo(position: .closed)
+            (presentationController as!
+                DetailPresentationController).detailDelegate?.drawerMovedTo(position: .closed)
+            (presentationController as!
+                DetailPresentationController).detailDelegate?.completeTaskInDetail(task, indexPath: self.indexPath)
         }
         
         self.dismiss(animated: true)

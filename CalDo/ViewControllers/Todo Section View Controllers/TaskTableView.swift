@@ -467,28 +467,48 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
     }
     
     
+
+    
 // MARK: - Delegate Methods
 
+    func completeTask(indexPath: IndexPath) {
+        let task = isFiltering ? filteredTableViewData[indexPath.row] : tableViewData[indexPath.row]
         
+        task.setValue(true, forKey: "completed")
+        CoreDataManager.shared.saveContext()
+        
+        if isFiltering {
+            filteredTableViewData.remove(at: indexPath.row)
+            tableViewData.removeAll(where: {taskInList -> Bool in
+                return taskInList == task
+            })
+        }
+        else {
+            tableViewData.remove(at: indexPath.row)
+        }
+    }
+    
+    func completeTask(_ task: TaskEntity) {
+        task.setValue(true, forKey: "completed")
+        CoreDataManager.shared.saveContext()
+        
+        if isFiltering {
+            filteredTableViewData.removeAll(where: {taskInList -> Bool in
+                return taskInList == task
+            })
+        }
+        
+        tableViewData.removeAll(where: {taskInList -> Bool in
+            return taskInList == task
+        })
+    }
     
     func checkmarkTapped(sender: SmallTaskTableViewCell) {
         if let indexPath = self.tableView.indexPath(for: sender) {
             
-            // ALLTASKS
-            
-            
-//            CoreDataManager.shared.allTasks[indexPath.row].setValue(true, forKey: "completed")
-//            CoreDataManager.shared.saveContext()
-//            CoreDataManager.shared.allTasks.remove(at: indexPath.row)
-            let task: TaskEntity
-            if isFiltering {
-                task = filteredTableViewData[indexPath.row]
-            }
-            else {
-                task = tableViewData[indexPath.row]
-            }
-            task.setValue(true, forKey: "completed")
-            CoreDataManager.shared.saveContext()
+            let task = isFiltering ? filteredTableViewData[indexPath.row] : tableViewData[indexPath.row]
+
+            completeTask(task)
         
             // TODO: implement haptic feedback
             let impact = UIImpactFeedbackGenerator()
@@ -520,24 +540,13 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
                     sender.TodoTitle.textColor = .gray
             })
             
-            if isFiltering {
-                filteredTableViewData.remove(at: indexPath.row)
-                tableViewData.removeAll(where: {taskInList -> Bool in
-                    return taskInList == task
-                })
-            }
-            else {
-                tableViewData.remove(at: indexPath.row)
-            }
-            
             UIView.animate(withDuration: 0.5) {
 //                self.myTableView.deleteSections(at: [indexPath], with: .fade)
                 self.tableView.deleteRows(at: [indexPath], with: .fade)
             }
             
             // self.tableView.reloadRows(at: [indexPath], with: .automatic)
-            
-            
+
             }
     }
     
@@ -545,22 +554,9 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
     func checkmarkTapped1(sender: TaskTableViewCell) {
         if let indexPath = self.tableView.indexPath(for: sender) {
             
-            // ALLTASKS
-            
-//            CoreDataManager.shared.allTasks[indexPath.row].setValue(true, forKey: "completed")
-//            CoreDataManager.shared.saveContext()
-//            CoreDataManager.shared.allTasks.remove(at: indexPath.row)
-            
-            let task: TaskEntity
-            if isFiltering {
-                task = filteredTableViewData[indexPath.row]
-            }
-            else {
-                task = tableViewData[indexPath.row]
-            }
-            task.setValue(true, forKey: "completed")
-            CoreDataManager.shared.saveContext()
-            
+            let task = isFiltering ? filteredTableViewData[indexPath.row] : tableViewData[indexPath.row]
+
+            completeTask(task)
             
             // TODO: implement haptic
             let impact = UIImpactFeedbackGenerator()
@@ -592,23 +588,9 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
                     sender.TodoStatus.setImage(image, for: .normal)
             })
 
-            
-            if isFiltering {
-                filteredTableViewData.remove(at: indexPath.row)
-                tableViewData.removeAll(where: {taskInList -> Bool in
-                    return taskInList == task
-                })
-            }
-            else {
-                tableViewData.remove(at: indexPath.row)
-            }
             UIView.animate(withDuration: 0.5) {
-    //          self.myTableView.deleteSections(at: [indexPath], with: .fade)
                 self.tableView.deleteRows(at: [indexPath], with: .fade)
             }
-            //self.tableView.reloadData()
-            // self.tableView.reloadRows(at: [indexPath], with: .automatic)
-
             
         }
     }
@@ -665,7 +647,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
     
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
 
-        let task = tableViewData[indexPath.row]
+        let task = isFiltering ? filteredTableViewData[indexPath.row] : tableViewData[indexPath.row]
         let identifier = "\(indexPath.row)" as NSString
         
         let scheduleAction = UIAction(title: "Schedule", image: UIImage(systemName: "calendar")) { action in
@@ -736,6 +718,10 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             newTask.recurrence = task.recurrence
             newTask.sortOrder = task.sortOrder
             
+            if self.isFiltering {
+                self.filteredTableViewData.insert(newTask, at: indexPath.row)
+            }
+            
             self.tableViewData.insert(newTask, at: indexPath.row)
             CoreDataManager.shared.saveContext()
             self.tableView.insertRows(at: [indexPath], with: .fade)
@@ -778,6 +764,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         let index = Int(identifier)! as Int
         let indexPath = IndexPath(row: index, section:0)
         tableView.reloadRows(at: [indexPath], with: .none)
+    
         
         if let cell = tableView.cellForRow(at: indexPath) {
         // let cellBackground = cell.backgroundView
@@ -808,10 +795,18 @@ extension TaskTableView: UIViewControllerTransitioningDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = DetailViewController()
+        let task = isFiltering ? filteredTableViewData[indexPath.row] : tableViewData[indexPath.row]
+        let vc = DetailViewController(nibName: "DetailViewController", bundle: nil, task: task, indexPath: indexPath)
         vc.modalPresentationStyle = .custom
         vc.transitioningDelegate = self
-        self.myViewController?.present(vc, animated: true)
+        
+        if isFiltering {
+            searchController.present(vc, animated: true)
+        }
+        else {
+            self.myViewController?.present(vc, animated: true)
+        }
+        print("PRESENT DETAIL")
     }
 }
 
@@ -826,5 +821,11 @@ extension TaskTableView: DetailPresentationControllerDelegate {
         }
     }
     
+    func completeTaskInDetail(_ task: TaskEntity, indexPath: IndexPath) {
+        completeTask(task)
+        UIView.animate(withDuration: 0.5) {
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
     
 }
