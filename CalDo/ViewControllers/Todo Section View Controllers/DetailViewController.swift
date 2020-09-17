@@ -13,6 +13,11 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var todoTitle: UILabel!
     @IBOutlet weak var todoButton: UIButton!
     
+    @IBOutlet weak var projectTitle: UILabel!
+    @IBOutlet weak var projectColor: UIView!
+    
+    @IBOutlet weak var todoDate: UILabel!
+    
     var task: TaskEntity!
     var indexPath: IndexPath!
 
@@ -20,6 +25,21 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         todoButton.addTarget(self, action: #selector(completeButtonTapped), for: .touchUpInside)
+        
+        todoTitle.text = task.value(forKey: "title") as? String
+        
+        let project = task.value(forKey: "project")
+        let projectColor = (project as? ProjectEntity)?.value(forKey: "color")
+        
+        projectTitle.text = (project as? ProjectEntity)?.title ?? "Inbox"
+        if projectColor != nil {
+             projectTitle.textColor = UIColor(hexString: (projectColor as! String))
+        }
+       
+        let taskHasTime = task.value(forKey: "dateHasTime") as! Bool
+        let date = task.value(forKey: "date") as? Date
+        todoDate.text = date?.todoString(withTime: taskHasTime) ?? "No Date"
+        todoDate.textColor = date?.todoColor(withTime: taskHasTime) ?? .systemGray
         
         self.view.backgroundColor = .BackgroundColor
     }
