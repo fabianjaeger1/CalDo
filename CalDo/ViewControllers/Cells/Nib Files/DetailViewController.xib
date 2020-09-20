@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="CalDo" customModuleProvider="target">
             <connections>
                 <outlet property="todoButton" destination="VPw-f8-sst" id="2NT-wC-RiQ"/>
+                <outlet property="todoHandle" destination="AxO-zk-0hp" id="hV3-nb-bBT"/>
                 <outlet property="todoTitle" destination="MOT-qX-Rj5" id="bhm-To-a8d"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,13 +22,6 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AxO-zk-0hp">
-                    <rect key="frame" x="175" y="54" width="64" height="4"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="4" id="RwB-pq-zSt"/>
-                        <constraint firstAttribute="width" constant="64" id="SvO-b9-C4e"/>
-                    </constraints>
-                </progressView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VPw-f8-sst">
                     <rect key="frame" x="20" y="110" width="29" height="29"/>
                     <constraints>
@@ -42,16 +36,23 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AxO-zk-0hp">
+                    <rect key="frame" x="181" y="55" width="56" height="4"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="4" id="RwB-pq-zSt"/>
+                        <constraint firstAttribute="width" constant="53" id="SvO-b9-C4e"/>
+                    </constraints>
+                </progressView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="VPw-f8-sst" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="66" id="4lk-Zd-PPt"/>
-                <constraint firstItem="MOT-qX-Rj5" firstAttribute="top" secondItem="AxO-zk-0hp" secondAttribute="bottom" constant="50" id="6fN-UB-tzE"/>
+                <constraint firstItem="MOT-qX-Rj5" firstAttribute="top" secondItem="AxO-zk-0hp" secondAttribute="bottom" constant="49" id="6fN-UB-tzE"/>
                 <constraint firstItem="VPw-f8-sst" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="DNm-oW-JnY"/>
                 <constraint firstItem="AxO-zk-0hp" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="J5L-iB-Q42"/>
                 <constraint firstItem="MOT-qX-Rj5" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="-73.5" id="Qu3-Ma-hZT"/>
-                <constraint firstItem="AxO-zk-0hp" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="UBX-e2-QRa"/>
+                <constraint firstItem="AxO-zk-0hp" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="11" id="UBX-e2-QRa"/>
             </constraints>
             <point key="canvasLocation" x="-86.956521739130437" y="109.82142857142857"/>
         </view>

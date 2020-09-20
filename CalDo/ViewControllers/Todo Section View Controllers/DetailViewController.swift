@@ -10,10 +10,14 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    
+    @IBOutlet weak var todoHandle: UIProgressView!
     @IBOutlet weak var todoTitle: UILabel!
     @IBOutlet weak var todoButton: UIButton!
 
     override func viewDidLoad() {
+        todoHandle.layer.cornerRadius = 20
+        self.view.backgroundColor = .BackgroundColor
         super.viewDidLoad()
 //        self.view.backgroundColor = UIColor.BackgroundColor
 
