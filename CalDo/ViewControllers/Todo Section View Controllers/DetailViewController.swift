@@ -18,6 +18,8 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var todoDate: UILabel!
     
+    @IBOutlet weak var priorityButton: UIButton!
+    
     var task: TaskEntity!
     var indexPath: IndexPath!
 
@@ -40,6 +42,26 @@ class DetailViewController: UIViewController {
         let date = task.value(forKey: "date") as? Date
         todoDate.text = date?.todoString(withTime: taskHasTime) ?? "No Date"
         todoDate.textColor = date?.todoColor(withTime: taskHasTime) ?? .systemGray
+        
+        var priorityImage: UIImage?
+        
+        if let priority = task.value(forKey: "priority") {
+            switch (priority as! Int) {
+            case 0:
+                priorityImage = UIImage(systemName: "flag.fill")!.withTintColor(.systemGray, renderingMode: .alwaysOriginal)
+            case 1:
+                priorityImage = UIImage(systemName: "flag.fill")!.withTintColor(.systemOrange, renderingMode: .alwaysOriginal)
+            case 2:
+                priorityImage = UIImage(systemName: "flag.fill")!.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
+            default:
+                break
+            }
+        }
+        else {
+            priorityImage = UIImage(systemName: "flag")!.withTintColor(.systemGray, renderingMode: .alwaysOriginal)
+        }
+
+        priorityButton.setImage(priorityImage, for: .normal)
         
         self.view.backgroundColor = .BackgroundColor
     }

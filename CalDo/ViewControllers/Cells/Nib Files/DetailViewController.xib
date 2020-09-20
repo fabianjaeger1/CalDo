@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="CalDo" customModuleProvider="target">
             <connections>
+                <outlet property="priorityButton" destination="7rc-sK-pmb" id="Gfl-e7-gpb"/>
                 <outlet property="projectTitle" destination="cEB-q2-zom" id="bM4-tZ-1zH"/>
                 <outlet property="todoButton" destination="VPw-f8-sst" id="2NT-wC-RiQ"/>
                 <outlet property="todoDate" destination="i2N-h5-Ixt" id="sEo-gF-Gqq"/>
@@ -56,6 +57,12 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7rc-sK-pmb">
+                    <rect key="frame" x="72" y="200" width="30" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="tintColor" systemColor="systemGrayColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" image="flag" catalog="system"/>
+                </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
@@ -72,5 +79,6 @@
     </objects>
     <resources>
         <image name="TodoButton" width="21" height="21"/>
+        <image name="flag" catalog="system" width="64" height="64"/>
     </resources>
 </document>
