@@ -12,6 +12,7 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var todoTitle: UILabel!
     @IBOutlet weak var todoButton: UIButton!
+    @IBOutlet weak var textLine: UIView!
     
     @IBOutlet weak var projectTitle: UILabel!
     @IBOutlet weak var projectColor: UIView!
@@ -23,6 +24,9 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        textLine.layer.cornerRadius = 5
+        
         
         todoButton.addTarget(self, action: #selector(completeButtonTapped), for: .touchUpInside)
         
@@ -38,10 +42,36 @@ class DetailViewController: UIViewController {
        
         let taskHasTime = task.value(forKey: "dateHasTime") as! Bool
         let date = task.value(forKey: "date") as? Date
+        let priority = task.value(forKey: "priority") as! Int
+        let recurrence = task.value(forKey: "recurrence") as! Bool
         todoDate.text = date?.todoString(withTime: taskHasTime) ?? "No Date"
         todoDate.textColor = date?.todoColor(withTime: taskHasTime) ?? .systemGray
         
-        self.view.backgroundColor = .BackgroundColor
+        switch recurrence{
+        case true:
+            switch priority {
+            case 0:
+                todoButton.setImage(UIImage(named: "Recurring"), for: .normal)
+            case 1:
+                todoButton.setImage(UIImage(named: "Recurring Normal"), for: .normal)
+            case 2:
+                todoButton.setImage(UIImage(named: "Recurring High" ), for: .normal)
+            default:
+                todoButton.setImage(UIImage(named: "Recurring" ), for: .normal)
+            }
+        default:
+            switch priority {
+            case 0:
+                todoButton.setImage(UIImage(named: "TodoButton"), for: .normal)
+            case 1:
+                todoButton.setImage(UIImage(named: "Todo Medium Priority"), for: .normal)
+            case 2:
+                todoButton.setImage(UIImage(named: "Todo High Priority"), for: .normal)
+            default:
+                todoButton.setImage(UIImage(named: "TodoButton"), for: .normal)
+            }
+        }
+        self.view.backgroundColor = .black
     }
 
     init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, task: TaskEntity, indexPath: IndexPath) {

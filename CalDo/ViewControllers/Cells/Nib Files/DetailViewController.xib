@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17124"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Rounded-Bold.otf">
+            <string>SFProRounded-Bold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="CalDo" customModuleProvider="target">
             <connections>
                 <outlet property="projectTitle" destination="cEB-q2-zom" id="bM4-tZ-1zH"/>
+                <outlet property="textLine" destination="5sI-ZE-cjc" id="Ub5-Za-vGW"/>
                 <outlet property="todoButton" destination="VPw-f8-sst" id="2NT-wC-RiQ"/>
                 <outlet property="todoDate" destination="i2N-h5-Ixt" id="sEo-gF-Gqq"/>
                 <outlet property="todoTitle" destination="MOT-qX-Rj5" id="bhm-To-a8d"/>
@@ -29,48 +37,64 @@
                     </constraints>
                 </progressView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VPw-f8-sst">
-                    <rect key="frame" x="20" y="110" width="29" height="29"/>
+                    <rect key="frame" x="27" y="110" width="29" height="29"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="29" id="3VL-jB-NHV"/>
                         <constraint firstAttribute="height" constant="29" id="aSO-kI-Vec"/>
                     </constraints>
                     <state key="normal" image="TodoButton"/>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Todo Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOT-qX-Rj5">
-                    <rect key="frame" x="72" y="108" width="322" height="33"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Todo Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOT-qX-Rj5">
+                    <rect key="frame" x="66" y="108" width="119" height="33"/>
+                    <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="27"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Project" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEB-q2-zom">
-                    <rect key="frame" x="72" y="162" width="115" height="20"/>
+                    <rect key="frame" x="72" y="192" width="115" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i2N-h5-Ixt">
-                    <rect key="frame" x="187" y="162" width="146" height="20"/>
+                    <rect key="frame" x="187" y="192" width="146" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5sI-ZE-cjc">
+                    <rect key="frame" x="26" y="153" width="367" height="2"/>
+                    <color key="backgroundColor" systemColor="systemGray6Color"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="2" id="O6f-UA-Hv9"/>
+                    </constraints>
+                </view>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="VPw-f8-sst" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="66" id="4lk-Zd-PPt"/>
                 <constraint firstItem="MOT-qX-Rj5" firstAttribute="top" secondItem="AxO-zk-0hp" secondAttribute="bottom" constant="50" id="6fN-UB-tzE"/>
-                <constraint firstItem="VPw-f8-sst" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="DNm-oW-JnY"/>
+                <constraint firstItem="VPw-f8-sst" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="27" id="DNm-oW-JnY"/>
                 <constraint firstItem="AxO-zk-0hp" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="J5L-iB-Q42"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5sI-ZE-cjc" secondAttribute="trailing" constant="21" id="LC7-kx-p2R"/>
                 <constraint firstItem="AxO-zk-0hp" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="UBX-e2-QRa"/>
-                <constraint firstItem="MOT-qX-Rj5" firstAttribute="leading" secondItem="VPw-f8-sst" secondAttribute="trailing" constant="23" id="sdM-2c-7gt"/>
+                <constraint firstItem="5sI-ZE-cjc" firstAttribute="top" secondItem="MOT-qX-Rj5" secondAttribute="bottom" constant="12" id="eTL-ro-IZk"/>
+                <constraint firstItem="5sI-ZE-cjc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="26" id="gJP-Ot-R8w"/>
+                <constraint firstItem="MOT-qX-Rj5" firstAttribute="leading" secondItem="VPw-f8-sst" secondAttribute="trailing" constant="10" id="sdM-2c-7gt"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="-86.956521739130437" y="109.82142857142857"/>
         </view>
     </objects>
     <resources>
         <image name="TodoButton" width="21" height="21"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

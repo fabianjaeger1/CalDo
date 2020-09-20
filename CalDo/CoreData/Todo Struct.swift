@@ -74,7 +74,7 @@ struct TodoItem {
     
 
     static func loadSampleToDos() -> [TodoItem] {
-        let TagColors = ["98D468","ED5465","82DAE0","4FC2E8","B0E5CA", "F5BA41"]
+//        let TagColors = ["98D468","ED5465","82DAE0","4FC2E8","B0E5CA", "F5BA41"]
         let Project1 = Project(ProjectTitle: "Personal", ProjectColor: "98D468")
         let Project2 = Project(ProjectTitle: "Work", ProjectColor: "4FC2E8")
         let tag1 = tag(tagLabel: "Call", tagColor: UIColor(hexString: "98D468") )
@@ -180,7 +180,7 @@ func loadSampleTaskEntities() {
 
     let task4 = TaskEntity(context: managedContext)
     task4.title = "Plan Holidays"
-    task4.priority = 1
+    task4.priority = 2
     task4.project = project2
     task4.date = Date.init(timeIntervalSinceNow: 604800)
     
