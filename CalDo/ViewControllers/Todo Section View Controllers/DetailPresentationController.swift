@@ -225,7 +225,11 @@ public class DetailPresentationController: UIPresentationController {
         // Set the frame and position of the modal
         presentedView.frame = self.frameOfPresentedViewInContainerView
         presentedView.frame.origin.x = (presenterView.frame.width - presentedView.frame.width) / 2
-        presentedView.center = CGPoint(x: presentedView.center.x, y: presenterView.center.y * 2)
+        
+        // TODO: too high, go with commented option?
+        //presentedView.center = CGPoint(x: presentedView.center.x, y: presenterView.center.y * 2)
+        let y = self.presentingViewController.view.center.y * 2
+        presentedView.center = CGPoint(x: presentedView.center.x, y: y)
         
         // Set the dim effect frame behind the modal
         self.dimView.frame = presenterView.bounds

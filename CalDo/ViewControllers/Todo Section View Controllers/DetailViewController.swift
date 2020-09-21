@@ -29,7 +29,6 @@ class DetailViewController: UIViewController {
         
         textLine.layer.cornerRadius = 5
         
-        
         todoButton.addTarget(self, action: #selector(completeButtonTapped), for: .touchUpInside)
         
         todoTitle.text = task.value(forKey: "title") as? String
