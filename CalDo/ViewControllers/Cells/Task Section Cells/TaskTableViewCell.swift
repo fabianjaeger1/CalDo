@@ -40,10 +40,12 @@ class TaskTableViewCell: UITableViewCell {
     @IBOutlet weak var todoStatusLeading: NSLayoutConstraint!
     @IBOutlet weak var stackLeading: NSLayoutConstraint!
     
+    @IBOutlet weak var taskTitle: UITextField!
+    
     var isInEditingMode: Bool = false
+    var titleIsInEditingMode: Bool = false
     
     @IBAction func completeButtonTapped(_ sender: Any) {
-        print("Test")
         delegate?.checkmarkTapped1(sender: self)
     }
     
@@ -59,6 +61,8 @@ class TaskTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        taskTitle.returnKeyType = .done
+        taskTitle.clearButtonMode = .whileEditing
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

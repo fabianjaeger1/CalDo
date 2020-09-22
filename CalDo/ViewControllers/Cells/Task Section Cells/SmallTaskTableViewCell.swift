@@ -31,7 +31,6 @@ class SmallTaskTableViewCell: UITableViewCell {
     var isInEditingMode: Bool = false
     
     @IBAction func completeButtonTapped(_ sender: Any) {
-        print("Test")
         delegate?.checkmarkTapped(sender: self)
     }
 

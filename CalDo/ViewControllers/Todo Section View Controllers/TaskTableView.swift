@@ -103,6 +103,12 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         searchController.searchBar.placeholder = "Search Tasks"
         searchController.searchBar.backgroundColor = .BackgroundColor
         searchController.hidesNavigationBarDuringPresentation = false
+        
+        // Observer for keyboard when editing task titles
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        tableView.keyboardDismissMode = .interactive
     }
     
     func refreshTableViewData() {
@@ -244,6 +250,8 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             cell.delegate = self
             cell.myViewController = self.myViewController
             
+            cell.taskTitle.delegate = self
+            
             let backgroundView = UIView()
             backgroundView.backgroundColor = UIColor.backgroundColor
             cell.selectedBackgroundView = backgroundView
@@ -289,8 +297,9 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             }
 
             // cell.delegate = self
-            cell.TodoTitle.text = (task.value(forKey: "title") as! String)
-            cell.TodoTitle.textColor = UIColor.textColor
+            cell.taskTitle.text = (task.value(forKey: "title") as! String)
+            cell.taskTitle.textColor = .textColor
+            
             
             cell.TodoDate.text = (task.value(forKey: "date") as? Date)?.todoString(withTime: task.value(forKey: "dateHasTime") as! Bool)
             cell.TodoDate.textColor = (task.value(forKey: "date") as? Date)?.todoColor(withTime: task.value(forKey: "dateHasTime") as! Bool)
@@ -584,7 +593,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             UIView.animate(
                 withDuration: 1.5,
                 animations: {
-                    sender.TodoTitle.textColor = .gray
+                    sender.taskTitle.textColor = .gray
                     sender.TodoStatus.setImage(image, for: .normal)
             })
 
@@ -672,7 +681,11 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         let priorityMenu = UIMenu(title: "Priority", image: UIImage(systemName: "flag"), children: [priority2Action, priority1Action, priority0Action])
         
         let renameAction = UIAction(title: "Rename", image: UIImage(systemName: "square.and.pencil")) { action in
-            
+            if let cell = self.tableView.cellForRow(at: indexPath) as? TaskTableViewCell {
+                // self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
+                cell.titleIsInEditingMode = true
+            }
+           
         }
         
         let deleteAction = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) { action in
@@ -754,7 +767,6 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
 //
 
     func tableView(_ tableView: UITableView, previewForDismissingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
-
         guard
             let identifier = configuration.identifier as? String
         else {
@@ -763,9 +775,28 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
 
         let index = Int(identifier)! as Int
         let indexPath = IndexPath(row: index, section:0)
-        tableView.reloadRows(at: [indexPath], with: .none)
-    
         
+        /// Renaming task title
+        if let cell = tableView.cellForRow(at: indexPath) as? TaskTableViewCell {
+            if cell.titleIsInEditingMode {
+                self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+                cell.taskTitle.isUserInteractionEnabled = true
+                cell.taskTitle.becomeFirstResponder()
+                cell.taskTitle.invalidateIntrinsicContentSize()
+                cell.titleIsInEditingMode = false
+                let indexPath = tableView.indexPath(for: cell)
+                
+                //tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+                if indexPath != nil {
+                    tableView.scrollToRow(at: indexPath!, at: .middle, animated: true)
+                }
+            }
+            else {
+                 tableView.reloadRows(at: [indexPath], with: .none)
+            }
+        }
+        
+
         if let cell = tableView.cellForRow(at: indexPath) {
         // let cellBackground = cell.backgroundView
         // cell.backgroundColor == UIColor.BackgroundColor
@@ -776,7 +807,79 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         }
     }
     
+    @objc func keyboardWillShow(notification: Notification) {
+        let userInfo = notification.userInfo
+        let keyboardFrame = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
+        let contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardFrame.height, right: 0.0)
+
+        if let indexPathForSelectedRow = self.tableView.indexPathForSelectedRow {
+            if let cell = tableView.cellForRow(at: indexPathForSelectedRow) as? TaskTableViewCell {
+                //let textField = cell.taskTitle
+                let cellRect = cell.frame
+                let tableViewRect = tableView.frame
+                // let window = UIApplication.shared.keyWindow?.frame
+                print(tableViewRect.height)
+                print(cellRect.maxY)
+                print(keyboardFrame.height)
+                // TODO: Fix for tableview in home screen
+                if (tableViewRect.height - cellRect.maxY) <= keyboardFrame.height {
+                    print("Scroll table")
+                    tableView.contentInset = contentInset
+                    tableView.scrollIndicatorInsets = contentInset
+                    tableView.scrollRectToVisible(cellRect, animated: true)
+                }
+            }
+        }
+    }
+    
+//    @objc func keyboardWillShow(notification: Notification) {
+//        let userInfo = notification.userInfo
+//        let keyboardFrame = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
+//        let contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardFrame.height, right: 0.0)
+//        tableView.contentInset = contentInset
+//        tableView.scrollIndicatorInsets = contentInset
+//
+//        if let indexPathForSelectedRow = self.tableView.indexPathForSelectedRow {
+//            if let cell = tableView.cellForRow(at: indexPathForSelectedRow) as? TaskTableViewCell {
+//                print("tableviewscroll")
+//                tableView.scrollRectToVisible(cell.frame, animated: true)
+//            }
+//        }
+//
+//    }
+    
+    @objc func keyboardWillHide(notification: Notification) {
+        let contentInset = UIEdgeInsets.zero
+        tableView.contentInset = contentInset
+        tableView.scrollIndicatorInsets = contentInset
+    }
 }
+
+extension TaskTableView: UITextFieldDelegate {
+    /// TODO: necessary?
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        textField.isUserInteractionEnabled = false
+        
+        if let newTitle = textField.text {
+            if let indexPathForSelectedRow = self.tableView.indexPathForSelectedRow {
+                tableViewData[indexPathForSelectedRow.row].setValue(newTitle, forKey: "title")
+                CoreDataManager.shared.saveContext()
+                self.tableView.deselectRow(at: indexPathForSelectedRow, animated: true)
+            }
+        }
+        return true
+    }
+    
+}
+
+
 
 extension TaskTableView: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
@@ -806,7 +909,6 @@ extension TaskTableView: UIViewControllerTransitioningDelegate {
         else {
             self.myViewController?.present(vc, animated: true)
         }
-        print("PRESENT DETAIL")
     }
 }
 

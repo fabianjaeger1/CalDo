@@ -29,7 +29,6 @@ class InboxHomeScreenTableViewCell: UITableViewCell {
     }
     
     @IBAction func completeButtonTapped(_ sender: Any) {
-        print("Test")
         delegate?.checkmarkTapped(sender: self)
     }
     
