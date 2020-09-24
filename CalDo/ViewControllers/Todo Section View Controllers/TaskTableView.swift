@@ -109,6 +109,8 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         tableView.keyboardDismissMode = .interactive
+        
+        tableView.estimatedRowHeight = 70
     }
     
     func refreshTableViewData() {
@@ -808,45 +810,35 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
     }
     
     @objc func keyboardWillShow(notification: Notification) {
-        let userInfo = notification.userInfo
-        let keyboardFrame = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
-        let contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardFrame.height, right: 0.0)
 
         if let indexPathForSelectedRow = self.tableView.indexPathForSelectedRow {
             if let cell = tableView.cellForRow(at: indexPathForSelectedRow) as? TaskTableViewCell {
-                //let textField = cell.taskTitle
+                
+                // Insert extra height for iPhone 8 style phones (not great, but don't know how else..)
+                var extraHeight = CGFloat(0.0)
+                if ["iPhone 6s", "iPhone 6s Plus", "iPhone 7", "iPhone 7 Plus", "iPhone 8", "iPhone 8 Plus", "iPhone SE (2nd generation)"].contains(UIDevice.current.modelName) {
+                    extraHeight += 30.0
+                }
+                
+                let userInfo = notification.userInfo
+                let keyboardFrame = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
+                let contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardFrame.height + extraHeight, right: 0.0)
+
                 let cellRect = cell.frame
                 let tableViewRect = tableView.frame
                 // let window = UIApplication.shared.keyWindow?.frame
-                print(tableViewRect.height)
-                print(cellRect.maxY)
-                print(keyboardFrame.height)
+
                 // TODO: Fix for tableview in home screen
                 if (tableViewRect.height - cellRect.maxY) <= keyboardFrame.height {
                     print("Scroll table")
                     tableView.contentInset = contentInset
                     tableView.scrollIndicatorInsets = contentInset
-                    tableView.scrollRectToVisible(cellRect, animated: true)
+                    tableView.scrollToRow(at: indexPathForSelectedRow, at: .middle, animated: true)
+                    //tableView.scrollRectToVisible(cellRect, animated: true)
                 }
             }
         }
     }
-    
-//    @objc func keyboardWillShow(notification: Notification) {
-//        let userInfo = notification.userInfo
-//        let keyboardFrame = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
-//        let contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardFrame.height, right: 0.0)
-//        tableView.contentInset = contentInset
-//        tableView.scrollIndicatorInsets = contentInset
-//
-//        if let indexPathForSelectedRow = self.tableView.indexPathForSelectedRow {
-//            if let cell = tableView.cellForRow(at: indexPathForSelectedRow) as? TaskTableViewCell {
-//                print("tableviewscroll")
-//                tableView.scrollRectToVisible(cell.frame, animated: true)
-//            }
-//        }
-//
-//    }
     
     @objc func keyboardWillHide(notification: Notification) {
         let contentInset = UIEdgeInsets.zero

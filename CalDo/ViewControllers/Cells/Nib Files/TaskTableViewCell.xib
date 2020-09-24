@@ -96,7 +96,7 @@
                             <action selector="completeButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="L6K-0F-ndl"/>
                         </connections>
                     </button>
-                    <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Label" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hzi-mo-9e8">
+                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Label" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hzi-mo-9e8">
                         <rect key="frame" x="52" y="10" width="42" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="aQ5-86-dKn"/>
