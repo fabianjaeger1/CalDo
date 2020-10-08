@@ -33,41 +33,53 @@
                             <action selector="completeButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="GFq-dj-teE"/>
                         </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cW-uZ-3sq">
-                        <rect key="frame" x="320.5" y="14" width="40.5" height="22"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cW-uZ-3sq">
+                        <rect key="frame" x="323.5" y="15" width="40.5" height="20"/>
                         <fontDescription key="fontDescription" name="SFProRounded-Medium" family="SF Pro Rounded" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookmark.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="JXX-QD-ULU">
-                        <rect key="frame" x="113.5" y="15" width="17.5" height="20.5"/>
+                        <rect key="frame" x="112.5" y="14.5" width="17.5" height="20.5"/>
                         <color key="tintColor" name="TextColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="Cx6-nR-BaV"/>
+                        </constraints>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Hxm-Fc-M4M">
-                        <rect key="frame" x="144.5" y="15.5" width="20" height="19.5"/>
+                        <rect key="frame" x="143.5" y="15" width="20" height="19.5"/>
                         <color key="tintColor" name="TextColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="LXo-ZC-kGe"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWz-Wz-e5S">
-                        <rect key="frame" x="52" y="15" width="42" height="20"/>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Label" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="X4U-YV-8FU">
+                        <rect key="frame" x="52" y="14" width="41" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="OXj-Dc-jsf"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="SFProRounded-Medium" family="SF Pro Rounded" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="JXX-QD-ULU" firstAttribute="baseline" secondItem="oWz-Wz-e5S" secondAttribute="firstBaseline" id="2sg-MA-DzJ"/>
                     <constraint firstItem="FSF-rS-UlL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="4jY-fg-ka4"/>
+                    <constraint firstItem="JXX-QD-ULU" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="trailing" id="6VH-dc-cAM"/>
+                    <constraint firstItem="X4U-YV-8FU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6rg-3o-0LF"/>
                     <constraint firstItem="Hxm-Fc-M4M" firstAttribute="leading" secondItem="JXX-QD-ULU" secondAttribute="trailing" constant="13.5" id="70s-pW-Ot4"/>
-                    <constraint firstItem="oWz-Wz-e5S" firstAttribute="bottom" secondItem="JXX-QD-ULU" secondAttribute="bottom" id="ATl-M6-qJF"/>
+                    <constraint firstItem="X4U-YV-8FU" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="trailing" id="72r-rD-CVO"/>
+                    <constraint firstItem="JXX-QD-ULU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="CFy-jf-Pus"/>
+                    <constraint firstItem="Hxm-Fc-M4M" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Fvp-yf-QWM"/>
+                    <constraint firstItem="X4U-YV-8FU" firstAttribute="leading" secondItem="FSF-rS-UlL" secondAttribute="trailing" id="IAz-O1-wy8"/>
                     <constraint firstItem="FSF-rS-UlL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="L1n-2x-QEd"/>
-                    <constraint firstItem="JXX-QD-ULU" firstAttribute="leading" secondItem="oWz-Wz-e5S" secondAttribute="trailing" constant="19.5" id="QpC-4e-U4r"/>
+                    <constraint firstItem="X4U-YV-8FU" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="0cW-uZ-3sq" secondAttribute="leading" priority="900" constant="-4" id="LkS-nQ-TUb"/>
+                    <constraint firstAttribute="trailing" secondItem="0cW-uZ-3sq" secondAttribute="trailing" constant="20" id="LlT-rW-6z6"/>
                     <constraint firstItem="FSF-rS-UlL" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="WEs-NT-b8A"/>
-                    <constraint firstItem="oWz-Wz-e5S" firstAttribute="baseline" secondItem="0cW-uZ-3sq" secondAttribute="baseline" id="cSw-XS-qBr"/>
                     <constraint firstItem="JXX-QD-ULU" firstAttribute="baseline" secondItem="Hxm-Fc-M4M" secondAttribute="baseline" id="cxY-Ar-z0K"/>
-                    <constraint firstItem="oWz-Wz-e5S" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="p5Y-3l-WVF"/>
+                    <constraint firstItem="Hxm-Fc-M4M" firstAttribute="baseline" secondItem="0cW-uZ-3sq" secondAttribute="baseline" id="etD-lE-4Mz"/>
+                    <constraint firstItem="JXX-QD-ULU" firstAttribute="leading" secondItem="X4U-YV-8FU" secondAttribute="trailing" constant="19.5" id="gDX-iU-yz3"/>
+                    <constraint firstItem="JXX-QD-ULU" firstAttribute="baseline" secondItem="X4U-YV-8FU" secondAttribute="firstBaseline" id="kEE-DR-maL"/>
                     <constraint firstItem="0cW-uZ-3sq" firstAttribute="centerY" secondItem="FSF-rS-UlL" secondAttribute="centerY" id="tx1-f6-VYF"/>
-                    <constraint firstItem="oWz-Wz-e5S" firstAttribute="leading" secondItem="FSF-rS-UlL" secondAttribute="trailing" id="vqj-HB-lTQ"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="0cW-uZ-3sq" secondAttribute="trailing" constant="3" id="ztX-xZ-htr"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -76,7 +88,7 @@
                 <outlet property="TodoLocationIcon" destination="Hxm-Fc-M4M" id="lK8-Ps-ic9"/>
                 <outlet property="TodoNotesIcon" destination="JXX-QD-ULU" id="qBN-74-2tr"/>
                 <outlet property="TodoStatus" destination="FSF-rS-UlL" id="EBL-0L-7EX"/>
-                <outlet property="TodoTitle" destination="oWz-Wz-e5S" id="KkG-Eu-rcC"/>
+                <outlet property="taskTitle" destination="X4U-YV-8FU" id="O2L-Ti-OMO"/>
                 <outlet property="todoStatusLeading" destination="4jY-fg-ka4" id="adx-Zz-VYR"/>
                 <outlet property="todoStatusWidth" destination="Umo-0R-d4a" id="gqS-sU-jJK"/>
             </connections>

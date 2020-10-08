@@ -20,7 +20,7 @@ class SmallTaskTableViewCell: UITableViewCell {
     var myViewController: TaskTableViewController?
 
     @IBOutlet weak var TodoStatus: UIButton!
-    @IBOutlet weak var TodoTitle: UILabel!
+    @IBOutlet weak var taskTitle: TaskTitleTextField!
     @IBOutlet weak var TodoDate: UILabel!
     @IBOutlet weak var TodoNotesIcon: UIImageView!
     @IBOutlet weak var TodoLocationIcon: UIImageView!
@@ -29,6 +29,7 @@ class SmallTaskTableViewCell: UITableViewCell {
     @IBOutlet weak var todoStatusLeading: NSLayoutConstraint!
     
     var isInEditingMode: Bool = false
+    var titleIsInEditingMode: Bool = false
     
     @IBAction func completeButtonTapped(_ sender: Any) {
         delegate?.checkmarkTapped(sender: self)
@@ -37,6 +38,11 @@ class SmallTaskTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        taskTitle.returnKeyType = .done
+        taskTitle.clearButtonMode = .whileEditing
+        taskTitle.borderStyle = .none
+        taskTitle.keyboardType = .alphabet
+        taskTitle.autocapitalizationType = .sentences
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

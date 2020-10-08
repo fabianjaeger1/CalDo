@@ -181,6 +181,8 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             cell.delegate = self
             cell.myViewController = self.myViewController
             
+            cell.taskTitle.delegate = self
+            
             let backgroundView = UIView()
             backgroundView.backgroundColor = UIColor.backgroundColor
             cell.selectedBackgroundView = backgroundView
@@ -193,9 +195,8 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             cell.TodoDate.textColor = (task.value(forKey: "date") as? Date)?.todoColor(withTime: task.value(forKey: "dateHasTime") as! Bool)
             
             // ========= TITLE ===========
-            cell.TodoTitle?.text = (task.value(forKey: "title") as! String)
-            cell.TodoTitle.textColor = UIColor.textColor
-
+            cell.taskTitle.text = (task.value(forKey: "title") as! String)
+            cell.taskTitle.textColor = .textColor
             
             if task.value(forKey: "notes") != nil {
                 cell.TodoNotesIcon.alpha = 1
@@ -548,7 +549,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
                 withDuration: 0.3,
                 animations: {
                     sender.TodoStatus.setImage(image, for: .normal)
-                    sender.TodoTitle.textColor = .gray
+                    sender.taskTitle.textColor = .gray
             })
             
             UIView.animate(withDuration: 0.5) {
@@ -687,6 +688,9 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
                 // self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
                 cell.titleIsInEditingMode = true
             }
+            else if let cell = self.tableView.cellForRow(at: indexPath) as? SmallTaskTableViewCell {
+                cell.titleIsInEditingMode = true
+            }
            
         }
         
@@ -797,6 +801,24 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
                  tableView.reloadRows(at: [indexPath], with: .none)
             }
         }
+        else if let cell = tableView.cellForRow(at: indexPath) as? SmallTaskTableViewCell {
+            if cell.titleIsInEditingMode {
+                self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+                cell.taskTitle.isUserInteractionEnabled = true
+                cell.taskTitle.becomeFirstResponder()
+                cell.taskTitle.invalidateIntrinsicContentSize()
+                cell.titleIsInEditingMode = false
+                let indexPath = tableView.indexPath(for: cell)
+                
+                //tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+                if indexPath != nil {
+                    tableView.scrollToRow(at: indexPath!, at: .middle, animated: true)
+                }
+            }
+            else {
+                 tableView.reloadRows(at: [indexPath], with: .none)
+            }
+        }
         
 
         if let cell = tableView.cellForRow(at: indexPath) {
@@ -811,18 +833,17 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
     
     @objc func keyboardWillShow(notification: Notification) {
 
+        // Insert extra height for iPhone 8 style phones (not great, but don't know how else..)
+        var extraHeight = CGFloat(0.0)
+        if ["iPhone 6s", "iPhone 6s Plus", "iPhone 7", "iPhone 7 Plus", "iPhone 8", "iPhone 8 Plus", "iPhone SE (2nd generation)"].contains(UIDevice.current.modelName) {
+            extraHeight += 30.0
+        }
+        let userInfo = notification.userInfo
+        let keyboardFrame = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
+        let contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardFrame.height + extraHeight, right: 0.0)
+        
         if let indexPathForSelectedRow = self.tableView.indexPathForSelectedRow {
             if let cell = tableView.cellForRow(at: indexPathForSelectedRow) as? TaskTableViewCell {
-                
-                // Insert extra height for iPhone 8 style phones (not great, but don't know how else..)
-                var extraHeight = CGFloat(0.0)
-                if ["iPhone 6s", "iPhone 6s Plus", "iPhone 7", "iPhone 7 Plus", "iPhone 8", "iPhone 8 Plus", "iPhone SE (2nd generation)"].contains(UIDevice.current.modelName) {
-                    extraHeight += 30.0
-                }
-                
-                let userInfo = notification.userInfo
-                let keyboardFrame = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
-                let contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardFrame.height + extraHeight, right: 0.0)
 
                 let cellRect = cell.frame
                 let tableViewRect = tableView.frame
@@ -830,11 +851,21 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
 
                 // TODO: Fix for tableview in home screen
                 if (tableViewRect.height - cellRect.maxY) <= keyboardFrame.height {
-                    print("Scroll table")
                     tableView.contentInset = contentInset
                     tableView.scrollIndicatorInsets = contentInset
                     tableView.scrollToRow(at: indexPathForSelectedRow, at: .middle, animated: true)
                     //tableView.scrollRectToVisible(cellRect, animated: true)
+                }
+            }
+            else if let cell = tableView.cellForRow(at: indexPathForSelectedRow) as? SmallTaskTableViewCell {
+                let cellRect = cell.frame
+                let tableViewRect = tableView.frame
+
+                // TODO: Fix for tableview in home screen
+                if (tableViewRect.height - cellRect.maxY) <= keyboardFrame.height {
+                    tableView.contentInset = contentInset
+                    tableView.scrollIndicatorInsets = contentInset
+                    tableView.scrollToRow(at: indexPathForSelectedRow, at: .middle, animated: true)
                 }
             }
         }
@@ -895,11 +926,13 @@ extension TaskTableView: UIViewControllerTransitioningDelegate {
         vc.modalPresentationStyle = .custom
         vc.transitioningDelegate = self
         
-        if isFiltering {
-            searchController.present(vc, animated: true)
-        }
-        else {
-            self.myViewController?.present(vc, animated: true)
+        if !(self.myViewController?.realIsEditing ?? false) {
+            if isFiltering {
+                searchController.present(vc, animated: true)
+            }
+            else {
+                self.myViewController?.present(vc, animated: true)
+            }
         }
     }
 }

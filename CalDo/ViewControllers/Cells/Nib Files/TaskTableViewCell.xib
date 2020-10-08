@@ -23,17 +23,17 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookmark.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rKz-hx-xOe">
-                        <rect key="frame" x="108" y="11" width="17.5" height="20.5"/>
+                        <rect key="frame" x="107" y="11" width="17.5" height="20.5"/>
                         <color key="tintColor" name="TextColor"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mmg-3f-k4q">
-                        <rect key="frame" x="313" y="11.5" width="42" height="20"/>
+                        <rect key="frame" x="314.5" y="11.5" width="40.5" height="20.5"/>
                         <fontDescription key="fontDescription" name="SFProRounded-Medium" family="SF Pro Rounded" pointSize="17"/>
                         <color key="textColor" name="TextColorDim"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Qvp-9f-i5f">
-                        <rect key="frame" x="131.5" y="11.5" width="20.5" height="19.5"/>
+                        <rect key="frame" x="130.5" y="11.5" width="20.5" height="19.5"/>
                         <color key="tintColor" name="TextColor"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUa-l4-IdG">
@@ -97,7 +97,7 @@
                         </connections>
                     </button>
                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Label" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hzi-mo-9e8">
-                        <rect key="frame" x="52" y="10" width="42" height="21"/>
+                        <rect key="frame" x="52" y="10" width="41" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="aQ5-86-dKn"/>
                         </constraints>
@@ -123,7 +123,7 @@
                     <constraint firstItem="hzi-mo-9e8" firstAttribute="leading" secondItem="2zy-zK-qcg" secondAttribute="trailing" id="osY-7B-yTc"/>
                     <constraint firstItem="2zy-zK-qcg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="pDe-6J-Scq"/>
                     <constraint firstAttribute="trailing" secondItem="NUa-l4-IdG" secondAttribute="trailing" constant="20" id="wDJ-ON-erx"/>
-                    <constraint firstItem="hzi-mo-9e8" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Mmg-3f-k4q" secondAttribute="leading" constant="-4" id="x1i-hf-NFf"/>
+                    <constraint firstItem="hzi-mo-9e8" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Mmg-3f-k4q" secondAttribute="leading" priority="850" constant="-4" id="x1i-hf-NFf"/>
                     <constraint firstAttribute="bottom" secondItem="DkW-MW-5Ke" secondAttribute="bottom" constant="11.5" id="x3G-fv-8eK"/>
                 </constraints>
             </tableViewCellContentView>
