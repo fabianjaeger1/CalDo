@@ -8,11 +8,31 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+
+let todoTaskCategories = ["Due", "Project", "Priority", "Tags"]
+
+class DetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailCollectionViewCell", for: indexPath) as! DetailCollectionViewCell
+        cell.label.text = todoTaskCategories[indexPath.row]
+        cell.image.image = UIImage(systemName: "pencil.tip")
+        cell.backgroundColor = UIColor.clear
+        cell.contentView.layer.cornerRadius = 20
+        cell.contentView.backgroundColor = .backgroundColor
+        return cell
+    }
+    
     
     @IBOutlet weak var todoTitle: UILabel!
     @IBOutlet weak var todoButton: UIButton!
     @IBOutlet weak var textLine: UIView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var projectTitle: UILabel!
     @IBOutlet weak var projectColor: UIView!
@@ -26,8 +46,14 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.register(UINib(nibName: "DetailCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DetailCollectionViewCell")
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.backgroundColor = UIColor.clear
         
         textLine.layer.cornerRadius = 5
+        textLine.backgroundColor = .backgroundColor
         
         todoButton.addTarget(self, action: #selector(completeButtonTapped), for: .touchUpInside)
         
