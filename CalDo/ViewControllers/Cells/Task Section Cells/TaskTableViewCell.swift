@@ -17,6 +17,24 @@ import UIKit
 //    func checkmarkTapped(sender: )
 //}
 
+class TaskTitleTextField: UITextField {
+    let padding = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+    
+    override open func textRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
+    }
+
+    override open func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
+    }
+
+    override open func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
+    }
+
+}
+
+
 class TaskTableViewCell: UITableViewCell {
     
     weak var delegate: TaskTableViewCellDelegate?
@@ -31,7 +49,6 @@ class TaskTableViewCell: UITableViewCell {
     @IBOutlet weak var ProjectLabel: UILabel!
     @IBOutlet weak var ProjectColor: UIView!
     @IBOutlet weak var TodoStatus: UIButton!
-    @IBOutlet weak var TodoTitle: UILabel!
     @IBOutlet weak var TodoDate: UILabel!
     @IBOutlet weak var TodoNotesIcon: UIImageView!
     @IBOutlet weak var TodoLocationIcon: UIImageView!
@@ -40,7 +57,7 @@ class TaskTableViewCell: UITableViewCell {
     @IBOutlet weak var todoStatusLeading: NSLayoutConstraint!
     @IBOutlet weak var stackLeading: NSLayoutConstraint!
     
-    @IBOutlet weak var taskTitle: UITextField!
+    @IBOutlet weak var taskTitle: TaskTitleTextField!
     
     var isInEditingMode: Bool = false
     var titleIsInEditingMode: Bool = false
@@ -63,6 +80,9 @@ class TaskTableViewCell: UITableViewCell {
         // Initialization code
         taskTitle.returnKeyType = .done
         taskTitle.clearButtonMode = .whileEditing
+        taskTitle.borderStyle = .none
+        taskTitle.keyboardType = .alphabet
+        taskTitle.autocapitalizationType = .sentences
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

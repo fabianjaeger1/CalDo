@@ -241,7 +241,6 @@ class TaskTableViewController: UIViewController {
         super.viewDidLoad()
         
         
-        //toolbarView.layer.cornerRadius = 20
     }
     
 }

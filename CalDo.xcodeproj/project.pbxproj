@@ -114,6 +114,9 @@
 		83C0019924E84E3D0016B68E /* EntityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C0019824E84E3D0016B68E /* EntityExtension.swift */; };
 		83C0019A24E84E3D0016B68E /* EntityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C0019824E84E3D0016B68E /* EntityExtension.swift */; };
 		83C0019B24E84E3D0016B68E /* EntityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C0019824E84E3D0016B68E /* EntityExtension.swift */; };
+		83F9388D251D3FB8007224FB /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9388C251D3FB8007224FB /* UIDeviceExtension.swift */; };
+		83F9388E251D3FB8007224FB /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9388C251D3FB8007224FB /* UIDeviceExtension.swift */; };
+		83F9388F251D3FB8007224FB /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9388C251D3FB8007224FB /* UIDeviceExtension.swift */; };
 		83F9F70D24E3E80C0008FCF9 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9F70C24E3E80C0008FCF9 /* UIViewControllerExtension.swift */; };
 		83F9F70E24E3E80C0008FCF9 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9F70C24E3E80C0008FCF9 /* UIViewControllerExtension.swift */; };
 		83F9F70F24E3E80C0008FCF9 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9F70C24E3E80C0008FCF9 /* UIViewControllerExtension.swift */; };
@@ -234,6 +237,7 @@
 		83A1975A25018C1F001011D2 /* TaskTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskTableViewController.swift; path = "CalDo/ViewControllers/Task ViewControllers/TaskTableViewController.swift"; sourceTree = SOURCE_ROOT; };
 		83AEF023250190F400D31E76 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
 		83C0019824E84E3D0016B68E /* EntityExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityExtension.swift; sourceTree = "<group>"; };
+		83F9388C251D3FB8007224FB /* UIDeviceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 		83F9F70C24E3E80C0008FCF9 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		929E004114D27D044565F86A /* Pods-CalDoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalDoTests.debug.xcconfig"; path = "Target Support Files/Pods-CalDoTests/Pods-CalDoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AADC4FA7D5CB265C6C07244D /* Pods-CalDo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalDo.debug.xcconfig"; path = "Target Support Files/Pods-CalDo/Pods-CalDo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -324,6 +328,7 @@
 				0160336D2469A21E0032DA23 /* FloatingButtonExtension.swift */,
 				0179EDDB22EC820200F2A48B /* DateExtension.swift */,
 				83F9F70C24E3E80C0008FCF9 /* UIViewControllerExtension.swift */,
+				83F9388C251D3FB8007224FB /* UIDeviceExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -868,6 +873,7 @@
 				01904998252FC37500FA9C6A /* DetailCollectionViewCell.swift in Sources */,
 				019280EB1F8A615C00E895D4 /* AppDelegate.swift in Sources */,
 				01F7AA33250BF0E900504799 /* DetailViewController.swift in Sources */,
+				83F9388D251D3FB8007224FB /* UIDeviceExtension.swift in Sources */,
 				01D53480234F6EFC00DE6776 /* TagCollectionViewCell.swift in Sources */,
 				015DA6A023C94E4900582851 /* ProjectHomeViewController.swift in Sources */,
 				01987817231AA1CE00DE1F7E /* EndRepeatViewController.swift in Sources */,
@@ -919,6 +925,7 @@
 				832D3C6924ADE0A000A1E709 /* CoreDataManager.swift in Sources */,
 				83F9F70E24E3E80C0008FCF9 /* UIViewControllerExtension.swift in Sources */,
 				019281001F8A615C00E895D4 /* CalDoTests.swift in Sources */,
+				83F9388E251D3FB8007224FB /* UIDeviceExtension.swift in Sources */,
 				830DB5EE24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld in Sources */,
 				834F82D224E2ADDF007DB362 /* ProjectTableView.swift in Sources */,
 			);
@@ -938,6 +945,7 @@
 				832D3C6A24ADE0A000A1E709 /* CoreDataManager.swift in Sources */,
 				83F9F70F24E3E80C0008FCF9 /* UIViewControllerExtension.swift in Sources */,
 				0192810B1F8A615C00E895D4 /* CalDoUITests.swift in Sources */,
+				83F9388F251D3FB8007224FB /* UIDeviceExtension.swift in Sources */,
 				830DB5EF24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld in Sources */,
 				834F82D324E2ADDF007DB362 /* ProjectTableView.swift in Sources */,
 			);
