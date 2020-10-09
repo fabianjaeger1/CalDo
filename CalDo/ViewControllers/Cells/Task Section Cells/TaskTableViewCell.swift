@@ -85,9 +85,22 @@ class TaskTableViewCell: UITableViewCell {
         taskTitle.autocapitalizationType = .sentences
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.Tag1.text = .none
+        self.Tag2.text = .none
+        self.Tag3.text = .none
+        self.Tag4.text = .none
+        self.Tag5.text = .none
+        
+        self.ProjectLabel.text = .none
+        
+        self.ProjectColor.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     
