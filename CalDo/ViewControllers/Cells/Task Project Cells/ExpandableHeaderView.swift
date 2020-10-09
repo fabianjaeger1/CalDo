@@ -38,8 +38,15 @@ class ExpandableHeaderView: UITableViewHeaderFooterView {
     override func awakeFromNib() {
         super.awakeFromNib()
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapHeader)))
+        
+        // TODO: deprecated, set custom background view
         self.contentView.backgroundColor = UIColor.BackgroundColor
         self.view.backgroundColor = UIColor.BackgroundColor
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.arrowImage.transform = CGAffineTransform(rotationAngle: 0.0)
     }
     
     static var nib: UINib {
