@@ -607,18 +607,17 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         }
     }
     
+    // TODO: update relevant data after editing
     func finishEditing(sender: SmallTaskTableViewCell) {
-        if let cellIndexPath = self.tableView.indexPath(for: sender) {
-            // TODO: only update todostatus to stop flickering
-            self.tableView.reloadRows(at: [cellIndexPath], with: .automatic)
-        }
+        // if let cellIndexPath = self.tableView.indexPath(for: sender) {
+            //self.tableView.reloadRows(at: [cellIndexPath], with: .automatic)
+        // }
     }
     
     func finishEditing1(sender: TaskTableViewCell) {
-        if let cellIndexPath = self.tableView.indexPath(for: sender) {
-            // TODO: only update todostatus to stop flickering
-            self.tableView.reloadRows(at: [cellIndexPath], with: .automatic)
-        }
+        // if let cellIndexPath = self.tableView.indexPath(for: sender) {
+            //self.tableView.reloadRows(at: [cellIndexPath], with: .automatic)
+        // }
     }
     
     // MARK: - Dragging to reorder

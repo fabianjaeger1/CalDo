@@ -48,20 +48,36 @@ class TaskTableViewController: UIViewController {
     
     // MARK: - Action Sheet
     
-    
+    // Edit toolbar button actions
     @objc func tapCancelButton() {
         self.myTableView.setEditing(false, animated: true)
         self.realIsEditing = false
         
         UIView.transition(with: self.addButton, duration: 0.3, options: .transitionCrossDissolve, animations: {
             self.addButton.isHidden = false
-        })
-        
-        UIView.transition(with: self.editToolbar, duration: 0.3, options: .transitionCrossDissolve, animations: {
             self.editToolbar.isHidden = true
         })
     }
+        
+    @objc func tapPriorityButton() {
+        
+    }
+    
+    @objc func tapDeleteButton () {
+        
+    }
+    
+    @objc func tapScheduleButton () {
+        
+    }
 
+    @objc func tapMoveButton () {
+        
+    }
+    
+    @objc func tapCompleteButton () {
+        
+    }
     
     @IBAction func showActionSheet(_ sender : AnyObject) {
         // Print out what button was tapped
@@ -137,7 +153,30 @@ class TaskTableViewController: UIViewController {
             
             let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.tapCancelButton))
 
-            self.editToolbar.setItems([cancelButton], animated: false)
+            cancelButton.setTitleTextAttributes([NSAttributedString.Key.font : UIFont(name: "SF Pro Rounded", size: 18)!
+            ], for: .normal)
+            cancelButton.setTitleTextAttributes([NSAttributedString.Key.font : UIFont(name: "SF Pro Rounded", size: 18)!
+            ], for: .highlighted)
+                        
+            let priorityButton = UIBarButtonItem(image: UIImage(systemName: "flag"), style: .plain, target: self, action: #selector(self.tapPriorityButton))
+            
+            let scheduleButton = UIBarButtonItem(image: UIImage(systemName: "calendar"), style: .plain, target: self, action: #selector(self.tapScheduleButton))
+            
+            let moveButton = UIBarButtonItem(image: UIImage(systemName: "arrow.right.circle"), style: .plain, target: self, action: #selector(self.tapMoveButton))
+            
+            let completeButton = UIBarButtonItem(image: UIImage(systemName: "checkmark.square"), style: .plain, target: self, action: #selector(self.tapCompleteButton))
+            
+            let deleteButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(self.tapDeleteButton))
+            
+            let flexibleSpace1 = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            let flexibleSpace2 = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            let flexibleSpace3 = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            let flexibleSpace4 = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            let flexibleSpace5 = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            
+
+            self.editToolbar.setItems([cancelButton, flexibleSpace1, priorityButton, flexibleSpace2, scheduleButton, flexibleSpace3, moveButton, flexibleSpace4, completeButton, flexibleSpace5, deleteButton], animated: false)
+            
             
 //            UIView.animate(withDuration: 0.5) {
 ////                self.editToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 35))
@@ -237,6 +276,9 @@ class TaskTableViewController: UIViewController {
         self.view.backgroundColor = .BackgroundColor
         
         titleLabel.textColor = UIColor.textColor
+        
+        // Edit Toolbar
+        self.editToolbar.tintColor = .label
         
         super.viewDidLoad()
         

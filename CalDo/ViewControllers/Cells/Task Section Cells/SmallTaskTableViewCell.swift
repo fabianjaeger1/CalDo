@@ -66,10 +66,10 @@ class SmallTaskTableViewCell: UITableViewCell {
                 UIView.animate(
                     withDuration: 0.3,
                     animations: {
-                        self.TodoStatus.setImage(nil, for: .normal)
+                        // self.TodoStatus.setImage(nil, for: .normal)
                 }, completion: { _ in
                     self.todoStatusWidth.constant = 0
-                    self.todoStatusLeading.constant = 8
+                    self.todoStatusLeading.constant = 13
                     // self.TodoStatus.isEnabled = false
                     super.setEditing(editing, animated: animated)
                     self.isInEditingMode = true
