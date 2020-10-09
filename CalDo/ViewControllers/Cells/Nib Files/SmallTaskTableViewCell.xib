@@ -34,27 +34,27 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cW-uZ-3sq">
-                        <rect key="frame" x="323.5" y="15" width="40.5" height="20"/>
+                        <rect key="frame" x="322" y="15" width="42" height="20"/>
                         <fontDescription key="fontDescription" name="SFProRounded-Medium" family="SF Pro Rounded" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookmark.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="JXX-QD-ULU">
-                        <rect key="frame" x="112.5" y="14.5" width="17.5" height="20.5"/>
+                        <rect key="frame" x="113.5" y="15" width="17.5" height="20.5"/>
                         <color key="tintColor" name="TextColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="Cx6-nR-BaV"/>
                         </constraints>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Hxm-Fc-M4M">
-                        <rect key="frame" x="143.5" y="15" width="20" height="19.5"/>
+                        <rect key="frame" x="144.5" y="15.5" width="20" height="19.5"/>
                         <color key="tintColor" name="TextColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="LXo-ZC-kGe"/>
                         </constraints>
                     </imageView>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Label" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="X4U-YV-8FU">
-                        <rect key="frame" x="52" y="14" width="41" height="21"/>
+                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Label" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="X4U-YV-8FU">
+                        <rect key="frame" x="52" y="14.5" width="42" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="OXj-Dc-jsf"/>
                         </constraints>
