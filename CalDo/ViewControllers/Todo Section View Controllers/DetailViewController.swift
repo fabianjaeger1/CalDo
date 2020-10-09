@@ -10,18 +10,20 @@ import UIKit
 
 
 let todoTaskCategories = ["Due", "Project", "Priority", "Tags"]
+let todoTaskCategoriesImages = ["clock.fill","folder.fill"]
 
 class DetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        3
+        2
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailCollectionViewCell", for: indexPath) as! DetailCollectionViewCell
         cell.label.text = todoTaskCategories[indexPath.row]
-        cell.image.image = UIImage(systemName: "pencil.tip")
+        cell.image.image = UIImage(systemName: todoTaskCategoriesImages[indexPath.row])
+        cell.image.tintColor = UIColor.textColor
         cell.backgroundColor = UIColor.clear
         cell.contentView.layer.cornerRadius = 20
         cell.contentView.backgroundColor = .backgroundColor
@@ -29,7 +31,7 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     
-    @IBOutlet weak var todoTitle: UILabel!
+    @IBOutlet weak var todoTitle: UITextField!
     @IBOutlet weak var todoButton: UIButton!
     @IBOutlet weak var textLine: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
