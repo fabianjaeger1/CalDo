@@ -515,6 +515,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         })
     }
     
+    
     func checkmarkTapped(sender: SmallTaskTableViewCell) {
         if let indexPath = self.tableView.indexPath(for: sender) {
             
@@ -701,7 +702,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
 
             let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
                 self.tableViewData.remove(at: indexPath.row)
-                CoreDataManager.shared.deleteTask(task: task)
+                CoreDataManager.shared.deleteTask(task)
                 UIView.animate(withDuration: 0.35) {
                 self.tableView.deleteRows(at: [indexPath], with: .fade)
                 }

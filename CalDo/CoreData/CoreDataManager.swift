@@ -185,7 +185,7 @@ class CoreDataManager {
         
     }
     
-    func deleteTask(task: TaskEntity) {
+    func deleteTask(_ task: TaskEntity) {
         let managedContext = persistentContainer.viewContext
         
         managedContext.delete(task)

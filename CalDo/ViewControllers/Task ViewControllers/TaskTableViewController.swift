@@ -58,13 +58,62 @@ class TaskTableViewController: UIViewController {
             self.editToolbar.isHidden = true
         })
     }
+    
+    func getHighlightedTasks() -> [TaskEntity] {
+        let indexPaths = myTableView.indexPathsForSelectedRows
+        let tasks = taskTableView.tableViewData
         
+        var highlightedTasks : [TaskEntity] = []
+        
+        indexPaths?.forEach { highlightedTasks.append(tasks[$0.row]) }
+        
+        return highlightedTasks
+    }
+    
     @objc func tapPriorityButton() {
         
     }
     
     @objc func tapDeleteButton () {
+        let highlightedTasks = getHighlightedTasks()
+        let indexPaths = myTableView.indexPathsForSelectedRows
         
+        var alert = UIAlertController(title: "Delete highlighted tasks?", message: "This action cannot be undone.", preferredStyle: .actionSheet)
+        
+        if highlightedTasks.count == 1 {
+            alert = UIAlertController(title: "Delete highlighted task?", message: "This action cannot be undone.", preferredStyle: .actionSheet)
+        }
+        
+        if highlightedTasks.count >= 1 {
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+                self.myTableView.performBatchUpdates({
+                    highlightedTasks.forEach{
+                        CoreDataManager.shared.deleteTask($0)
+                    }
+                    indexPaths?.forEach { self.taskTableView.tableViewData.remove(at: $0.row) }
+                    self.myTableView.deleteRows(at: indexPaths ?? [], with: .fade)
+                })
+                
+            }
+            
+            // Add the actions to the alert controller
+            alert.addAction(cancelAction)
+            alert.addAction(deleteAction)
+            
+            // Present the alert controller
+            if var rootViewController = UIApplication.shared.keyWindow?.rootViewController {
+                while let presentedViewController = rootViewController.presentedViewController {
+                    rootViewController = presentedViewController
+                }
+                rootViewController.present(alert, animated: true, completion: nil)
+            }
+        }
+        
+
+
+
     }
     
     @objc func tapScheduleButton () {
@@ -76,7 +125,19 @@ class TaskTableViewController: UIViewController {
     }
     
     @objc func tapCompleteButton () {
+        let indexPaths = myTableView.indexPathsForSelectedRows
         
+        if indexPaths?.count ?? 0 >= 1 {
+            // TODO: implement haptic feedback
+            let impact = UIImpactFeedbackGenerator()
+            impact.impactOccurred()
+        }
+        myTableView.performBatchUpdates({
+            indexPaths?.forEach{
+                taskTableView.completeTask(indexPath: $0)
+            }
+            myTableView.deleteRows(at: indexPaths ?? [], with: .fade)
+        })
     }
     
     @IBAction func showActionSheet(_ sender : AnyObject) {
