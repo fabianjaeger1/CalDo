@@ -213,6 +213,9 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
     
     override func viewDidLoad() {
         myTableView.layer.backgroundColor = UIColor.clear.cgColor
+        let width = (view.frame.size.width - 55) / 2
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.itemSize = CGSize(width: width, height: 105)
   
         self.view.backgroundColor = .BackgroundColor
     

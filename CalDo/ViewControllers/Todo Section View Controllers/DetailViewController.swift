@@ -10,7 +10,7 @@ import UIKit
 
 
 let todoTaskCategories = ["Due", "Project", "Priority", "Tags"]
-let todoTaskCategoriesImages = ["clock.fill","folder.fill"]
+let todoTaskCategoriesImages = ["clock.fill","folder.fill", "flag.fill"]
 
 class DetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIAdaptivePresentationControllerDelegate{
     
@@ -65,8 +65,10 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let width = (view.frame.size.width - 60) / 2
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.itemSize = CGSize(width: width, height: 70)
         collectionView.register(UINib(nibName: "DetailCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DetailCollectionViewCell")
-        
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = UIColor.clear
