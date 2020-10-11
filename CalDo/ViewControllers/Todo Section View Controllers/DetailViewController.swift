@@ -12,12 +12,13 @@ import UIKit
 let todoTaskCategories = ["Due", "Project", "Priority", "Tags"]
 let todoTaskCategoriesImages = ["clock.fill","folder.fill"]
 
-class DetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
+class DetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIAdaptivePresentationControllerDelegate{
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         2
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailCollectionViewCell", for: indexPath) as! DetailCollectionViewCell
@@ -28,6 +29,22 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
         cell.contentView.layer.cornerRadius = 20
         cell.contentView.backgroundColor = .backgroundColor
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath == NSIndexPath(row: 0, section: 0) as IndexPath{
+            let vc = ScheduleViewController(nibName: "ScheduleViewController", bundle: nil)
+            vc.presentationController?.delegate = self
+            self.present(vc, animated: true, completion: nil)
+        }
+        if indexPath == NSIndexPath(row: 1, section: 0) as IndexPath{
+            let vc = ProjectTaskDetailViewController(nibName: "ProjectTaskDetailViewController", bundle: nil)
+            vc.presentationController?.delegate = self
+            self.present(vc, animated: true, completion: nil)
+//            let vc = TodayViewController(nibName: "TaskTableViewController", bundle: nil)
+//            vc.presentationController?.delegate = self
+//            self.present(vc, animated: true, completion: nil)
+        }
     }
     
     

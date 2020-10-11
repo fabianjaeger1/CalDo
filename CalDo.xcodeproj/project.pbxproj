@@ -9,11 +9,14 @@
 /* Begin PBXBuildFile section */
 		01036E5122ECF0E1008D6B16 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01036E5022ECF0E1008D6B16 /* NewTaskViewController.swift */; };
 		010B3A12232E5D24008B3684 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010B3A11232E5D24008B3684 /* TodayViewController.swift */; };
-		0119354425309FC7009E05C7 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0119354325309FC7009E05C7 /* ScheduleView.swift */; };
 		012259A523F62854003BAAEE /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012259A423F62854003BAAEE /* CalendarViewController.swift */; };
 		0130AD4622EF25AB00C3EF47 /* Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0130AD4522EF25AB00C3EF47 /* Projects.swift */; };
 		0130AD4822EF279300C3EF47 /* ChooseProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0130AD4722EF279300C3EF47 /* ChooseProjectsViewController.swift */; };
 		0135B2A8231DC66800E43638 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0135B2A7231DC66800E43638 /* WeatherModel.swift */; };
+		013A433C2533A305008FC23E /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A433A2533A305008FC23E /* ScheduleViewController.swift */; };
+		013A433D2533A305008FC23E /* ScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013A433B2533A305008FC23E /* ScheduleViewController.xib */; };
+		013A43492533A6C9008FC23E /* ProjectTaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A43472533A6C9008FC23E /* ProjectTaskDetailViewController.swift */; };
+		013A434A2533A6C9008FC23E /* ProjectTaskDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013A43482533A6C9008FC23E /* ProjectTaskDetailViewController.xib */; };
 		013E66BF22F0BFD80048AF18 /* DatePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013E66BE22F0BFD80048AF18 /* DatePopUpViewController.swift */; };
 		0142AAC1231BF78300324DA1 /* OnDateRepeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0142AAC0231BF78300324DA1 /* OnDateRepeatViewController.swift */; };
 		0145956C2445EA6400AFB34D /* SF-Pro-Rounded-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 014595652445E9DA00AFB34D /* SF-Pro-Rounded-Black.otf */; };
@@ -53,9 +56,6 @@
 		019878132319C87300DE1F7E /* RepeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019878122319C87300DE1F7E /* RepeatViewController.swift */; };
 		01987817231AA1CE00DE1F7E /* EndRepeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01987816231AA1CE00DE1F7E /* EndRepeatViewController.swift */; };
 		019A09FB242E82D5002434F0 /* DateHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019A09FA242E82D5002434F0 /* DateHeaderCell.swift */; };
-		01A7A1262530899E008808CF /* ScheduleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01A7A1252530899E008808CF /* ScheduleView.xib */; };
-		01A7A1272530899E008808CF /* ScheduleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01A7A1252530899E008808CF /* ScheduleView.xib */; };
-		01A7A1282530899E008808CF /* ScheduleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01A7A1252530899E008808CF /* ScheduleView.xib */; };
 		01B3CA0422EB8BEF00E5344D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B3CA0322EB8BEF00E5344D /* HomeViewController.swift */; };
 		01C954722115E2310047175F /* Todo Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C954712115E2310047175F /* Todo Struct.swift */; };
 		01D53465234F681800DE6776 /* CustomTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D53462234F681800DE6776 /* CustomTabBarItem.swift */; };
@@ -148,11 +148,14 @@
 /* Begin PBXFileReference section */
 		01036E5022ECF0E1008D6B16 /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewTaskViewController.swift; path = "CalDo/ViewControllers/Todo Section View Controllers/Adding Tasks View Controllers/NewTaskViewController.swift"; sourceTree = SOURCE_ROOT; };
 		010B3A11232E5D24008B3684 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
-		0119354325309FC7009E05C7 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		012259A423F62854003BAAEE /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		0130AD4522EF25AB00C3EF47 /* Projects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projects.swift; sourceTree = "<group>"; };
 		0130AD4722EF279300C3EF47 /* ChooseProjectsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChooseProjectsViewController.swift; path = "CalDo/ViewControllers/Todo Section View Controllers/Adding Tasks View Controllers/ChooseProjectsViewController.swift"; sourceTree = SOURCE_ROOT; };
 		0135B2A7231DC66800E43638 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		013A433A2533A305008FC23E /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		013A433B2533A305008FC23E /* ScheduleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleViewController.xib; sourceTree = "<group>"; };
+		013A43472533A6C9008FC23E /* ProjectTaskDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTaskDetailViewController.swift; sourceTree = "<group>"; };
+		013A43482533A6C9008FC23E /* ProjectTaskDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectTaskDetailViewController.xib; sourceTree = "<group>"; };
 		013E66BE22F0BFD80048AF18 /* DatePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DatePopUpViewController.swift; path = "CalDo/ViewControllers/Todo Section View Controllers/Adding Tasks View Controllers/DatePopUpViewController.swift"; sourceTree = SOURCE_ROOT; };
 		0142AAC0231BF78300324DA1 /* OnDateRepeatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnDateRepeatViewController.swift; sourceTree = "<group>"; };
 		014595632445E9DA00AFB34D /* SF-Pro-Rounded-Ultralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Ultralight.otf"; sourceTree = "<group>"; };
@@ -199,7 +202,6 @@
 		019878122319C87300DE1F7E /* RepeatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatViewController.swift; sourceTree = "<group>"; };
 		01987816231AA1CE00DE1F7E /* EndRepeatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndRepeatViewController.swift; sourceTree = "<group>"; };
 		019A09FA242E82D5002434F0 /* DateHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHeaderCell.swift; sourceTree = "<group>"; };
-		01A7A1252530899E008808CF /* ScheduleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleView.xib; sourceTree = "<group>"; };
 		01B3CA0322EB8BEF00E5344D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		01C954712115E2310047175F /* Todo Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo Struct.swift"; sourceTree = "<group>"; };
 		01D53462234F681800DE6776 /* CustomTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarItem.swift; sourceTree = "<group>"; };
@@ -440,12 +442,13 @@
 			isa = PBXGroup;
 			children = (
 				01F7AA31250BF0E900504799 /* DetailViewController.swift */,
+				013A43472533A6C9008FC23E /* ProjectTaskDetailViewController.swift */,
+				013A433A2533A305008FC23E /* ScheduleViewController.swift */,
 				83372CB7250ED4DD0076DD7C /* DetailPresentationController.swift */,
 				83626C7924DCACA200AFD9EE /* TaskTableView.swift */,
 				83372CBB250FAC8B0076DD7C /* TaskButton.swift */,
 				83626C7824DCABF600AFD9EE /* Task ViewControllers */,
 				0165E19723294AAA002F5DA1 /* TodoSectionViewController.swift */,
-				0119354325309FC7009E05C7 /* ScheduleView.swift */,
 				01F3A09424F53F6100368C6A /* Adding Tasks View Controllers */,
 			);
 			path = "Todo Section View Controllers";
@@ -490,7 +493,6 @@
 		01F3A09724F5401400368C6A /* Task Section Cells */ = {
 			isa = PBXGroup;
 			children = (
-				01D5346F234F6A1900DE6776 /* TodoSectionCollectionViewCell.swift */,
 				01F3A09924F5405800368C6A /* Adding Tasks Cells */,
 				016CF84824DC8EB1006DEC65 /* SmallTaskTableViewCell.swift */,
 				016CF84C24DCB393006DEC65 /* TaskTableViewCell.swift */,
@@ -502,7 +504,8 @@
 		01F3A09824F5403000368C6A /* Nib Files */ = {
 			isa = PBXGroup;
 			children = (
-				01A7A1252530899E008808CF /* ScheduleView.xib */,
+				013A43482533A6C9008FC23E /* ProjectTaskDetailViewController.xib */,
+				013A433B2533A305008FC23E /* ScheduleViewController.xib */,
 				014B15CE250F861E00D673E7 /* TagTableViewCell.xib */,
 				01F7AA32250BF0E900504799 /* DetailViewController.xib */,
 				83A1975625018BD6001011D2 /* TaskTableViewController.xib */,
@@ -512,6 +515,7 @@
 				01F3A08D24F534EC00368C6A /* ExpandableHeaderView.xib */,
 				834F82D424E2AF49007DB362 /* ProjectTableViewCell.xib */,
 				01904997252FC37500FA9C6A /* DetailCollectionViewCell.xib */,
+				01D5346F234F6A1900DE6776 /* TodoSectionCollectionViewCell.swift */,
 			);
 			path = "Nib Files";
 			sourceTree = "<group>";
@@ -707,10 +711,11 @@
 				014595712445EA6400AFB34D /* SF-Pro-Rounded-Regular.otf in Resources */,
 				014B15D0250F861E00D673E7 /* TagTableViewCell.xib in Resources */,
 				014595722445EA6400AFB34D /* SF-Pro-Rounded-Semibold.otf in Resources */,
+				013A434A2533A6C9008FC23E /* ProjectTaskDetailViewController.xib in Resources */,
 				834F82D524E2AF49007DB362 /* ProjectTableViewCell.xib in Resources */,
 				014595732445EA6400AFB34D /* SF-Pro-Rounded-Thin.otf in Resources */,
 				01D53469234F684100DE6776 /* Images.xcassets in Resources */,
-				01A7A1262530899E008808CF /* ScheduleView.xib in Resources */,
+				013A433D2533A305008FC23E /* ScheduleViewController.xib in Resources */,
 				014595742445EA6400AFB34D /* SF-Pro-Rounded-Ultralight.otf in Resources */,
 				83A1975725018BE3001011D2 /* TaskTableViewController.xib in Resources */,
 				0145956F2445EA6400AFB34D /* SF-Pro-Rounded-Light.otf in Resources */,
@@ -730,7 +735,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01A7A1272530899E008808CF /* ScheduleView.xib in Resources */,
 				83A1975825018BE3001011D2 /* TaskTableViewController.xib in Resources */,
 				834F82D624E2AF49007DB362 /* ProjectTableViewCell.xib in Resources */,
 			);
@@ -740,7 +744,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01A7A1282530899E008808CF /* ScheduleView.xib in Resources */,
 				83A1975925018BE3001011D2 /* TaskTableViewController.xib in Resources */,
 				834F82D724E2AF49007DB362 /* ProjectTableViewCell.xib in Resources */,
 			);
@@ -865,6 +868,7 @@
 				83626C7A24DCACA200AFD9EE /* TaskTableView.swift in Sources */,
 				013E66BF22F0BFD80048AF18 /* DatePopUpViewController.swift in Sources */,
 				015DA6A223C952EF00582851 /* ChooseProjectTableViewCell.swift in Sources */,
+				013A43492533A6C9008FC23E /* ProjectTaskDetailViewController.swift in Sources */,
 				83A1975B25018C1F001011D2 /* TaskTableViewController.swift in Sources */,
 				0135B2A8231DC66800E43638 /* WeatherModel.swift in Sources */,
 				01D53484234F705000DE6776 /* SelectionScreenViewController.swift in Sources */,
@@ -889,13 +893,13 @@
 				015DA6A023C94E4900582851 /* ProjectHomeViewController.swift in Sources */,
 				01987817231AA1CE00DE1F7E /* EndRepeatViewController.swift in Sources */,
 				01D53472234F6A1900DE6776 /* HomeSectionCollectionViewCell.swift in Sources */,
-				0119354425309FC7009E05C7 /* ScheduleView.swift in Sources */,
 				01036E5122ECF0E1008D6B16 /* NewTaskViewController.swift in Sources */,
 				0130AD4622EF25AB00C3EF47 /* Projects.swift in Sources */,
 				0142AAC1231BF78300324DA1 /* OnDateRepeatViewController.swift in Sources */,
 				0165E19823294AAA002F5DA1 /* TodoSectionViewController.swift in Sources */,
 				0165E19F2329A971002F5DA1 /* InboxHomeScreenTableViewCell.swift in Sources */,
 				01F3A08C24F534D500368C6A /* ExpandableHeaderView.swift in Sources */,
+				013A433C2533A305008FC23E /* ScheduleViewController.swift in Sources */,
 				01C954722115E2310047175F /* Todo Struct.swift in Sources */,
 				01D5347B234F6E3E00DE6776 /* DateAndTime.swift in Sources */,
 				01F3A0A224F543CF00368C6A /* UpcomingViewController.swift in Sources */,
@@ -1041,7 +1045,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1095,7 +1099,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -1113,7 +1117,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 28V6TURVS4;
 				INFOPLIST_FILE = CalDo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Fabian.CalDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1135,7 +1139,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 28V6TURVS4;
 				INFOPLIST_FILE = CalDo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Fabian.CalDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

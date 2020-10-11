@@ -87,20 +87,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="JGZ-9y-RXH">
-                                <rect key="frame" x="0.0" y="189" width="320" height="356"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="356" id="Vlz-RU-oyd"/>
-                                </constraints>
-                            </datePicker>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="r6F-WF-8jd"/>
                         <color key="backgroundColor" name="BackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="r6F-WF-8jd" firstAttribute="trailing" secondItem="JGZ-9y-RXH" secondAttribute="trailing" constant="55" id="Qzn-I1-556"/>
-                            <constraint firstItem="r6F-WF-8jd" firstAttribute="bottom" secondItem="JGZ-9y-RXH" secondAttribute="bottom" constant="73" id="Xzb-Wf-zfl"/>
-                            <constraint firstItem="JGZ-9y-RXH" firstAttribute="leading" secondItem="r6F-WF-8jd" secondAttribute="leading" id="q7q-K2-bE5"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Habits" image="Habit" selectedImage="Habit" id="c5k-go-jcx"/>
                 </viewController>
