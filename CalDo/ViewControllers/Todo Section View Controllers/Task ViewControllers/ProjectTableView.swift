@@ -221,7 +221,14 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
             cell.projectColor.layer.backgroundColor = UIColor.clear.cgColor
             cell.projectColor.layer.addSublayer(shapeLayer)
             
-            cell.selectionStyle = .none
+            // cell.selectionStyle = .none
+            
+            // Set selection color & corner radius
+            let selectionView = UIView()
+            selectionView.backgroundColor = UIColor.backgroundColor
+            selectionView.layer.cornerRadius = 10
+            cell.selectedBackgroundView = selectionView
+            
             return cell
         }
         if indexPath.section == 1 {
@@ -251,7 +258,14 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
             cell.tagTitle.textColor = UIColor.textColor
 //            cell.projectLabel.text = tagTitle
 //            cell.projectLabel.textColor = UIColor.textColor
-            cell.selectionStyle = .none
+            // cell.selectionStyle = .none
+            
+            // Set selection color & corner radius
+            let selectionView = UIView()
+            selectionView.backgroundColor = UIColor.backgroundColor
+            selectionView.layer.cornerRadius = 10
+            cell.selectedBackgroundView = selectionView
+            
             return cell
         }
         return UITableViewCell()
