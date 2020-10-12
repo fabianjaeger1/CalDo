@@ -8,26 +8,6 @@
 
 import UIKit
 
-extension UIColor {
-class var textColor: UIColor {
-    if let color = UIColor(named: "TextColor") {
-        return color
-    }
-    fatalError("Could not find appBG color")
-  }
-    class var backgroundColor: UIColor {
-        if let color = UIColor(named: "CustomBackgroundColor") {
-            return color
-        }
-        fatalError("Could not find color")
-    }
-    class var BackgroundColor: UIColor {
-        if let color = UIColor(named: "BackgroundColor") {
-            return color
-        }
-        fatalError("Could not find")
-    }
-}
 
 let todoSections = ["Inbox", "Today", "Upcoming", "All Tasks"]
 

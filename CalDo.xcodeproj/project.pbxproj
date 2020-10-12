@@ -118,6 +118,9 @@
 		83C0019924E84E3D0016B68E /* EntityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C0019824E84E3D0016B68E /* EntityExtension.swift */; };
 		83C0019A24E84E3D0016B68E /* EntityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C0019824E84E3D0016B68E /* EntityExtension.swift */; };
 		83C0019B24E84E3D0016B68E /* EntityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C0019824E84E3D0016B68E /* EntityExtension.swift */; };
+		83D8467F25344F33005050E8 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D8467E25344F33005050E8 /* UIColorExtension.swift */; };
+		83D8468025344F33005050E8 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D8467E25344F33005050E8 /* UIColorExtension.swift */; };
+		83D8468125344F33005050E8 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D8467E25344F33005050E8 /* UIColorExtension.swift */; };
 		83F9388D251D3FB8007224FB /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9388C251D3FB8007224FB /* UIDeviceExtension.swift */; };
 		83F9388E251D3FB8007224FB /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9388C251D3FB8007224FB /* UIDeviceExtension.swift */; };
 		83F9388F251D3FB8007224FB /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9388C251D3FB8007224FB /* UIDeviceExtension.swift */; };
@@ -245,6 +248,7 @@
 		83A1975A25018C1F001011D2 /* TaskTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskTableViewController.swift; path = "CalDo/ViewControllers/Task ViewControllers/TaskTableViewController.swift"; sourceTree = SOURCE_ROOT; };
 		83AEF023250190F400D31E76 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
 		83C0019824E84E3D0016B68E /* EntityExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityExtension.swift; sourceTree = "<group>"; };
+		83D8467E25344F33005050E8 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		83F9388C251D3FB8007224FB /* UIDeviceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 		83F9F70C24E3E80C0008FCF9 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		929E004114D27D044565F86A /* Pods-CalDoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalDoTests.debug.xcconfig"; path = "Target Support Files/Pods-CalDoTests/Pods-CalDoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -337,6 +341,7 @@
 				0179EDDB22EC820200F2A48B /* DateExtension.swift */,
 				83F9F70C24E3E80C0008FCF9 /* UIViewControllerExtension.swift */,
 				83F9388C251D3FB8007224FB /* UIDeviceExtension.swift */,
+				83D8467E25344F33005050E8 /* UIColorExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -872,6 +877,7 @@
 				83A1975B25018C1F001011D2 /* TaskTableViewController.swift in Sources */,
 				0135B2A8231DC66800E43638 /* WeatherModel.swift in Sources */,
 				01D53484234F705000DE6776 /* SelectionScreenViewController.swift in Sources */,
+				83D8467F25344F33005050E8 /* UIColorExtension.swift in Sources */,
 				834F82D124E2ADDF007DB362 /* ProjectTableView.swift in Sources */,
 				01D53465234F681800DE6776 /* CustomTabBarItem.swift in Sources */,
 				832D3C6824ADE0A000A1E709 /* CoreDataManager.swift in Sources */,
@@ -932,6 +938,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83372CBD250FAC8B0076DD7C /* TaskButton.swift in Sources */,
+				83D8468025344F33005050E8 /* UIColorExtension.swift in Sources */,
 				834F82C624E2ACF8007DB362 /* ProjectTaskViewController.swift in Sources */,
 				83AEF025250190F400D31E76 /* ProjectTableViewCell.swift in Sources */,
 				83C0019A24E84E3D0016B68E /* EntityExtension.swift in Sources */,
@@ -952,6 +959,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83372CBE250FAC8B0076DD7C /* TaskButton.swift in Sources */,
+				83D8468125344F33005050E8 /* UIColorExtension.swift in Sources */,
 				834F82C724E2ACF8007DB362 /* ProjectTaskViewController.swift in Sources */,
 				83AEF026250190F400D31E76 /* ProjectTableViewCell.swift in Sources */,
 				83C0019B24E84E3D0016B68E /* EntityExtension.swift in Sources */,
