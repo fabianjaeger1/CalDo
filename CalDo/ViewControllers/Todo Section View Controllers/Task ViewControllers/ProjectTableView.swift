@@ -167,7 +167,7 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
                 headerView.headerLabel.text = "Projects"
                 headerView.image.image = UIImage(named: "ProjectImageLabel")
                 headerView.arrowImage.image = UIImage(systemName: "chevron.down.circle")
-                headerView.arrowImage.tintColor = UIColor.white
+                headerView.arrowImage.tintColor = .label
                 headerView.delegate = self
                 return headerView
             }
@@ -184,7 +184,7 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
                 headerView.headerLabel.text = "Tags"
                 headerView.image.image = UIImage(named: "TagImageIcon")
                 headerView.arrowImage.image = UIImage(systemName: "chevron.down.circle")
-                headerView.arrowImage.tintColor = UIColor.white
+                headerView.arrowImage.tintColor = .label
                 headerView.delegate = self
                 return headerView
             }
