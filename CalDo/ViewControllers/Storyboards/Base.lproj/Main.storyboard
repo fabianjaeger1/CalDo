@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="slE-JG-14w">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="slE-JG-14w">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17502"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17504.1"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -75,23 +76,74 @@
         <!--Habits-->
         <scene sceneID="MB0-L9-fA4">
             <objects>
-                <viewController id="iK3-C5-tja" sceneMemberID="viewController">
+                <viewController id="iK3-C5-tja" customClass="HabitViewController" customModule="CalDo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2u9-4n-hAK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Habit Section" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gN8-41-vtf">
-                                <rect key="frame" x="25" y="34" width="103" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MCR-TO-g72" customClass="PlainCircularProgressBar" customModule="CalDo" customModuleProvider="target">
+                                <rect key="frame" x="16" y="69" width="60" height="60"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="eed-SX-rPP"/>
+                                    <constraint firstAttribute="height" constant="60" id="jzu-1V-dMA"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" systemColor="systemTealColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Habits" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8N-Y7-wDy">
+                                <rect key="frame" x="20" y="20" width="87" height="35"/>
+                                <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goals Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X6e-IB-Tkb">
+                                <rect key="frame" x="97" y="71" width="122" height="26"/>
+                                <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ej-o6-BG6">
+                                <rect key="frame" x="97" y="105" width="42" height="20"/>
+                                <fontDescription key="fontDescription" name="SFProRounded-Medium" family="SF Pro Rounded" pointSize="17"/>
+                                <color key="textColor" name="TextColorDim"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="nyG-HT-GBZ">
+                                <rect key="frame" x="14" y="210" width="118" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="77t-Z1-3Y3"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="ProgressChanged:" destination="iK3-C5-tja" eventType="valueChanged" id="szg-vh-PfE"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="r6F-WF-8jd"/>
                         <color key="backgroundColor" name="BackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="e8N-Y7-wDy" firstAttribute="leading" secondItem="r6F-WF-8jd" secondAttribute="leading" constant="20" id="1Z2-b5-Vfp"/>
+                            <constraint firstItem="MCR-TO-g72" firstAttribute="leading" secondItem="r6F-WF-8jd" secondAttribute="leading" constant="16" id="MeM-Uq-XxW"/>
+                            <constraint firstItem="r6F-WF-8jd" firstAttribute="trailing" secondItem="nyG-HT-GBZ" secondAttribute="trailing" constant="245" id="Tyk-GX-QUA"/>
+                            <constraint firstItem="X6e-IB-Tkb" firstAttribute="leading" secondItem="MCR-TO-g72" secondAttribute="trailing" constant="21" id="cL4-Xf-jRx"/>
+                            <constraint firstItem="nyG-HT-GBZ" firstAttribute="leading" secondItem="MCR-TO-g72" secondAttribute="leading" id="dog-Or-DYB"/>
+                            <constraint firstItem="MCR-TO-g72" firstAttribute="top" secondItem="e8N-Y7-wDy" secondAttribute="bottom" constant="14" id="fPl-pI-Qah"/>
+                            <constraint firstItem="9Ej-o6-BG6" firstAttribute="top" secondItem="X6e-IB-Tkb" secondAttribute="bottom" constant="8" symbolic="YES" id="jJz-9t-A3t"/>
+                            <constraint firstItem="X6e-IB-Tkb" firstAttribute="top" secondItem="e8N-Y7-wDy" secondAttribute="bottom" constant="16" id="mvf-Ad-WdH"/>
+                            <constraint firstItem="nyG-HT-GBZ" firstAttribute="top" secondItem="MCR-TO-g72" secondAttribute="bottom" constant="81" id="o9x-IY-zH4"/>
+                            <constraint firstItem="9Ej-o6-BG6" firstAttribute="leading" secondItem="MCR-TO-g72" secondAttribute="trailing" constant="21" id="rDn-NO-v2O"/>
+                            <constraint firstItem="e8N-Y7-wDy" firstAttribute="top" secondItem="r6F-WF-8jd" secondAttribute="top" constant="20" id="wIy-p2-jB9"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Habits" image="Habit" selectedImage="Habit" id="c5k-go-jcx"/>
+                    <connections>
+                        <outlet property="ProgressBar" destination="MCR-TO-g72" id="X2b-Yf-URQ"/>
+                        <outlet property="ProgressLabel" destination="9Ej-o6-BG6" id="7N3-4p-iu2"/>
+                        <outlet property="progressSlider" destination="nyG-HT-GBZ" id="fI7-Lo-LBZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h8k-f0-sqj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -625,7 +677,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mle-YZ-aFU">
-                                        <rect key="frame" x="58" y="30" width="97" height="36"/>
+                                        <rect key="frame" x="58" y="30" width="94.5" height="35"/>
                                         <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -791,61 +843,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HRl-Oy-7wX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-569" y="967"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Y2P-R3-cSa">
-            <objects>
-                <viewController id="GMV-hR-5J4" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="zaz-tS-lFJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NZK-Zu-idd">
-                                <rect key="frame" x="0.0" y="109" width="370" height="558"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="drp-SH-nxO">
-                                    <size key="itemSize" width="370" height="57"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="uKn-7p-LWG">
-                                        <rect key="frame" x="0.0" y="0.0" width="370" height="57"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Xr7-PS-upS">
-                                            <rect key="frame" x="0.0" y="0.0" width="370" height="57"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="370" height="57"/>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="niM-hB-afd">
-                                <rect key="frame" x="16" y="14" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="04s-uz-w5h">
-                                <rect key="frame" x="313" y="14" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Test" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9EY-DS-SO7">
-                                <rect key="frame" x="16" y="58" width="343" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="92i-A2-dED"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Pkz-Pl-Mdc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-31.199999999999999" y="67.916041979010501"/>
         </scene>
         <!--Selection Screen View Controller-->
         <scene sceneID="yLY-0S-5ZC">
@@ -2595,11 +2592,20 @@
         <namedColor name="BackgroundColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="TextColorDim">
+            <color red="0.3880000114440918" green="0.3880000114440918" blue="0.40000003576278687" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="viewFlipsideBackgroundColor">
             <color red="0.1215686274509804" green="0.12941176470588239" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

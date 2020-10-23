@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		01036E5122ECF0E1008D6B16 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01036E5022ECF0E1008D6B16 /* NewTaskViewController.swift */; };
+		010736592542E19000239F4E /* CircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010736582542E19000239F4E /* CircularProgressBar.swift */; };
+		010736642542E23300239F4E /* HabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010736632542E23300239F4E /* HabitViewController.swift */; };
 		010B3A12232E5D24008B3684 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010B3A11232E5D24008B3684 /* TodayViewController.swift */; };
 		012259A523F62854003BAAEE /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012259A423F62854003BAAEE /* CalendarViewController.swift */; };
 		0130AD4622EF25AB00C3EF47 /* Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0130AD4522EF25AB00C3EF47 /* Projects.swift */; };
@@ -150,6 +152,8 @@
 
 /* Begin PBXFileReference section */
 		01036E5022ECF0E1008D6B16 /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewTaskViewController.swift; path = "CalDo/ViewControllers/Todo Section View Controllers/Adding Tasks View Controllers/NewTaskViewController.swift"; sourceTree = SOURCE_ROOT; };
+		010736582542E19000239F4E /* CircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBar.swift; sourceTree = "<group>"; };
+		010736632542E23300239F4E /* HabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewController.swift; sourceTree = "<group>"; };
 		010B3A11232E5D24008B3684 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		012259A423F62854003BAAEE /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		0130AD4522EF25AB00C3EF47 /* Projects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projects.swift; sourceTree = "<group>"; };
@@ -329,6 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				019280EE1F8A615C00E895D4 /* Main.storyboard */,
+				010736632542E23300239F4E /* HabitViewController.swift */,
 				01D5348F234F733100DE6776 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -360,6 +365,7 @@
 		017B4E81234F60E600142AD1 /* Custom Tab Bar */ = {
 			isa = PBXGroup;
 			children = (
+				010736582542E19000239F4E /* CircularProgressBar.swift */,
 				01D53464234F681800DE6776 /* CustomTabBar.swift */,
 				01D53463234F681800DE6776 /* CustomTabBarController.swift */,
 				01D53462234F681800DE6776 /* CustomTabBarItem.swift */,
@@ -873,6 +879,7 @@
 				83626C7A24DCACA200AFD9EE /* TaskTableView.swift in Sources */,
 				013E66BF22F0BFD80048AF18 /* DatePopUpViewController.swift in Sources */,
 				015DA6A223C952EF00582851 /* ChooseProjectTableViewCell.swift in Sources */,
+				010736642542E23300239F4E /* HabitViewController.swift in Sources */,
 				013A43492533A6C9008FC23E /* ProjectTaskDetailViewController.swift in Sources */,
 				83A1975B25018C1F001011D2 /* TaskTableViewController.swift in Sources */,
 				0135B2A8231DC66800E43638 /* WeatherModel.swift in Sources */,
@@ -930,6 +937,7 @@
 				019A09FB242E82D5002434F0 /* DateHeaderCell.swift in Sources */,
 				01D5348E234F727C00DE6776 /* RepeatViewCell.swift in Sources */,
 				016CF84A24DC8EB1006DEC65 /* SmallTaskTableViewCell.swift in Sources */,
+				010736592542E19000239F4E /* CircularProgressBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
