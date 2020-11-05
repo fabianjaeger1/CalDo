@@ -164,6 +164,8 @@ class TaskTableViewController: UIViewController {
                     self.taskTableView.tableView.moveRow(at: IndexPath(row: i, section: 0), to: IndexPath(row: newRow!, section: 0))
                 }
             })
+            
+            self.taskTableView.saveTaskOrder()
         }
         sortByDateAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
         
@@ -179,6 +181,7 @@ class TaskTableViewController: UIViewController {
                     self.taskTableView.tableView.moveRow(at: IndexPath(row: i, section: 0), to: IndexPath(row: newRow!, section: 0))
                 }
             })
+            self.taskTableView.saveTaskOrder()
             
         }
         sortByTitleAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
@@ -195,6 +198,7 @@ class TaskTableViewController: UIViewController {
                     self.taskTableView.tableView.moveRow(at: IndexPath(row: i, section: 0), to: IndexPath(row: newRow!, section: 0))
                 }
             })
+            self.taskTableView.saveTaskOrder()
             
         }
         sortByPriorityAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
