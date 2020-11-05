@@ -176,8 +176,9 @@ class InboxHomeViewController: UIViewController {
         
         // tableView.register(UINib(nibName: "InboxHomeScreenTableViewCell", bundle: nil), forCellReuseIdentifier: "InboxHomeScreenTableViewCell")
     
-        let predicate = NSPredicate(format: "(completed == false)")
-        inboxHomeTableView = TaskTableView(tableView, predicate)
+        let predicate = NSPredicate(format: "(completed == false) AND (project == nil)")
+        let sortVariable = "inboxOrder"
+        inboxHomeTableView = TaskTableView(tableView, predicate, sortVariable)
         
         tableView.backgroundColor = .BackgroundColor
         

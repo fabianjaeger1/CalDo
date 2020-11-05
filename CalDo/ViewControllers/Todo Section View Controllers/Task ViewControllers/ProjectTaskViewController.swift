@@ -23,7 +23,7 @@ class ProjectTaskViewController: TaskTableViewController {
     
     override func viewDidLoad() {
         predicate = NSPredicate(format: "(completed == false) AND (project == %@)", project)
-        
+        sortVariable = "projectOrder"
         titleLabel.text = project.value(forKey: "title") as? String
 
         let shapeLayer = CAShapeLayer()

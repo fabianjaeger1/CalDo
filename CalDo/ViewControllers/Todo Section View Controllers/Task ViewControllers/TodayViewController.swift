@@ -18,7 +18,7 @@ class TodayViewController: TaskTableViewController {
         dateTo = calendar.date(byAdding: .day, value: 1, to: dateTo)!
         
         predicate = NSPredicate(format: "(completed == false) AND (date <= %@)", dateTo as NSDate)
-        
+        sortVariable = "todayOrder"
         titleLabel.text = "Today"
         
         let imageView = UIImageView(image: UIImage(named: "Today_Todo"))

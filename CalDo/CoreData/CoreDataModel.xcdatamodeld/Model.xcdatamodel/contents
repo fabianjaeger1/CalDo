@@ -17,14 +17,18 @@
         <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TaskEntity" inverseName="tags" inverseEntity="TaskEntity"/>
     </entity>
     <entity name="TaskEntity" representedClassName=".TaskEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="allOrder" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="completed" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="dateHasTime" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="inboxOrder" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="priority" attributeType="Integer 16" minValueString="0" maxValueString="2" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="projectOrder" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="recurrence" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
-        <attribute name="sortOrder" optional="YES" attributeType="Integer 16" minValueString="0" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="title" attributeType="String"/>
+        <attribute name="todayOrder" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="upcomingOrder" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LocationEntity" inverseName="tasks" inverseEntity="LocationEntity"/>
         <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProjectEntity" inverseName="tasks" inverseEntity="ProjectEntity"/>
         <relationship name="tags" toMany="YES" deletionRule="Nullify" destinationEntity="TagEntity" inverseName="tasks" inverseEntity="TagEntity"/>
@@ -33,6 +37,6 @@
         <element name="LocationEntity" positionX="-235.01171875" positionY="-113.875" width="128" height="88"/>
         <element name="ProjectEntity" positionX="314.96875" positionY="-413.34375" width="128" height="103"/>
         <element name="TagEntity" positionX="-204.578125" positionY="2.484375" width="128" height="88"/>
-        <element name="TaskEntity" positionX="51.87890625" positionY="-291.0625" width="137.0078125" height="208"/>
+        <element name="TaskEntity" positionX="51.87890625" positionY="-291.0625" width="137.0078125" height="268"/>
     </elements>
 </model>

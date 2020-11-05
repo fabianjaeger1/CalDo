@@ -142,8 +142,8 @@ class InboxViewController: TaskTableViewController, UIAdaptivePresentationContro
     override func viewDidLoad() {
         
         predicate = NSPredicate(format: "(completed == false) AND (project == nil)")
-
         titleLabel.text = "Inbox"
+        sortVariable = "inboxOrder"
         
         let imageView = UIImageView(image: UIImage(named: "Inbox_Home"))
         imageView.frame = titleIcon.bounds

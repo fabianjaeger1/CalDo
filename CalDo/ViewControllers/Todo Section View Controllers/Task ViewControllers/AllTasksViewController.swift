@@ -13,9 +13,10 @@ protocol GenericDataSourceDelegate: class {
 }
 
 class AllTasksViewController: TaskTableViewController {
-        override func viewDidLoad() {
+    override func viewDidLoad() {
+            
         predicate = NSPredicate(format: "(completed == false)")
-        
+        sortVariable = "allOrder"
         titleLabel.text = "All Tasks"
         
         let imageView = UIImageView(image: UIImage(named: "All_Tasks"))

@@ -12,7 +12,7 @@ class UpcomingViewController: TaskTableViewController {
         
     override func viewDidLoad() {
         predicate = NSPredicate(format: "(completed == false) AND (date != nil)")
-        
+        sortVariable = "upcomingOrder"
         titleLabel.text = "Upcoming"
         
         let imageView = UIImageView(image: UIImage(named: "Scheduled"))

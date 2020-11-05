@@ -31,6 +31,8 @@ class TaskTableViewController: UIViewController {
     
     var realIsEditing: Bool = false
     
+    var sortVariable: String!
+    
 //    @IBAction func plusButtonPressed(_ sender: Any) {
 //        addTaskTextField.becomeFirstResponder()
 //    }
@@ -304,7 +306,7 @@ class TaskTableViewController: UIViewController {
        //     self.menuButton.setImage(UIImage(named: "Down_bright"), for: .normal)
         }
 
-        // Menu Buttonn
+        // Menu Button
         let configuration = UIImage.SymbolConfiguration(pointSize: 50)
         let menuButtonImage = UIImage(systemName: "ellipsis.circle", withConfiguration: configuration)
         menuButton.setImage(menuButtonImage, for: .normal)
@@ -314,7 +316,7 @@ class TaskTableViewController: UIViewController {
         menuButton.addTarget(self, action: #selector(self.showActionSheet(_:)), for: .touchUpInside)
 
         // Table View
-        taskTableView = TaskTableView(myTableView, predicate)
+        taskTableView = TaskTableView(myTableView, predicate, sortVariable)
         taskTableView.myViewController = self
         myTableView.allowsMultipleSelectionDuringEditing = true
         

@@ -55,13 +55,18 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
     var filteredTableViewData: [TaskEntity] = []
     
     var myViewController: TaskTableViewController?
-
-    init?(_ tv: UITableView, _ predicate: NSPredicate) {
+    
+    var sortVariable: String = "sortOrder"
+    
+    init?(_ tv: UITableView, _ predicate: NSPredicate, _ sortVariable: String) {
         
-        tableView = tv
-        taskPredicate = predicate
+        self.tableView = tv
+        self.taskPredicate = predicate
+        self.sortVariable = sortVariable
 //        segueIdentifier = segueIdentf
         
+        
+        // Fetch tasks
         let managedContext = CoreDataManager.shared.persistentContainer.viewContext
         let request : NSFetchRequest<TaskEntity> = TaskEntity.fetchRequest()
         let predicate = self.taskPredicate
@@ -84,6 +89,10 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         }
         
         super.init()
+        
+        // Sort tasks
+        self.sortTasks()
+        
         
         // Enable dragging tasks
         tableView.dragDelegate = self
@@ -111,6 +120,24 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         tableView.keyboardDismissMode = .interactive
         
         tableView.estimatedRowHeight = 70
+    }
+    
+    func sortTasks() {
+        if !self.tableViewData.isEmpty {
+            self.tableViewData.sort {
+                ($0.value(forKey: self.sortVariable) as! Int) < ($1.value(forKey: self.sortVariable) as! Int)
+            }
+            self.saveTaskOrder()
+        }
+    }
+    
+    func saveTaskOrder() {
+        var i = 0
+        for task in self.tableViewData {
+            task.setValue(i, forKey: self.sortVariable)
+            i += 1
+        }
+        CoreDataManager.shared.saveContext()
     }
     
     func refreshTableViewData() {
@@ -634,6 +661,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let mover = tableViewData.remove(at: sourceIndexPath.row)
         tableViewData.insert(mover, at: destinationIndexPath.row)
+        self.saveTaskOrder()
     }
     
     
@@ -735,7 +763,11 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             newTask.notes = task.notes
             newTask.priority = task.priority
             newTask.recurrence = task.recurrence
-            newTask.sortOrder = task.sortOrder
+            newTask.inboxOrder = task.inboxOrder
+            newTask.upcomingOrder = task.upcomingOrder
+            newTask.todayOrder = task.todayOrder
+            newTask.projectOrder = task.projectOrder
+            newTask.allOrder = task.allOrder
             
             if self.isFiltering {
                 self.filteredTableViewData.insert(newTask, at: indexPath.row)
