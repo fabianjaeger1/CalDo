@@ -53,7 +53,7 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
                 tableView.beginUpdates()
                 let indexPaths = (0 ..< tableViewData.count)
                 .map { IndexPath(row: $0, section: 0) }
-                tableView.insertRows(at: indexPaths, with: .fade)
+                tableView.insertRows(at: indexPaths, with: .top)
                 isCollapsedProject = !isCollapsedProject
                 tableView.endUpdates()
             }
@@ -61,7 +61,7 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
                 tableView.beginUpdates()
                 let indexPaths = (0 ..< tableViewData.count)
                 .map { IndexPath(row: $0, section: 0) }
-                tableView.deleteRows(at: indexPaths, with: .fade)
+                tableView.deleteRows(at: indexPaths, with: .top)
                 isCollapsedProject = !isCollapsedProject
                 tableView.endUpdates()
             }
@@ -73,7 +73,7 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
                 tableView.beginUpdates()
                 let indexPaths = (0 ..< tableViewData.count)
                 .map { IndexPath(row: $0, section: 1) }
-                tableView.insertRows(at: indexPaths, with: .fade)
+                tableView.insertRows(at: indexPaths, with: .top)
                 isCollapsedTags = !isCollapsedTags
                 tableView.endUpdates()
             }
@@ -81,14 +81,13 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
                 tableView.beginUpdates()
                 let indexPaths = (0 ..< tagViewData.count)
                 .map { IndexPath(row: $0, section: 1) }
-                tableView.deleteRows(at: indexPaths, with: .fade)
+                tableView.deleteRows(at: indexPaths, with: .top)
                 isCollapsedTags = !isCollapsedTags
                 tableView.endUpdates()
             }
         }
     }
    
-//        tableView.reloadSections(IndexSet(integer: section), with: .none)
     
 
     init?(_ tv: UITableView) {
