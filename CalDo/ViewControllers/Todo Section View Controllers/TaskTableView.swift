@@ -768,6 +768,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             newTask.todayOrder = task.todayOrder
             newTask.projectOrder = task.projectOrder
             newTask.allOrder = task.allOrder
+            newTask.tagOrder = task.tagOrder
             
             if self.isFiltering {
                 self.filteredTableViewData.insert(newTask, at: indexPath.row)

@@ -23,8 +23,8 @@ class TagTaskViewController: TaskTableViewController {
     
     override func viewDidLoad() {
         predicate = NSPredicate(format: "(completed == false) AND (%@ IN tags)", tag)
-        // TODO: introduce custom sorting order for task?
-        sortVariable = "allOrder"
+        // TODO: introduce custom sorting order for task? -> task can have multiple tags
+        sortVariable = "tagOrder"
         titleLabel.text = tag.value(forKey: "title") as? String
 
         let tagColor = UIColor(hexFromString: tag.value(forKey: "color") as! String)
