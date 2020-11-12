@@ -30,6 +30,12 @@ extension UIView {
     }
 }
 
+@objc protocol ProjectTableViewDelegate: class {
+    func projectSelected(sender: ProjectTableView)
+    func tagSelected(sender: ProjectTableView)
+    func reloadCollection(sender: ProjectTableView)
+}
+
 
 
 class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, ExpandableHeaderViewDelegate, UITableViewDragDelegate, UITableViewDropDelegate {
@@ -376,48 +382,113 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
 
     }
     
-//    // MARK: - Context menu
-//
-//    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-//
-//        let project = tableViewData[indexPath.row]
-//        let identifier = "\(indexPath.row)" as NSString
-//
-//        let scheduleAction = UIAction(title: "Schedule", image: UIImage(systemName: "calendar")) { action in
-//
-//               }
-//
-//
-//        return UIContextMenuConfiguration(identifier: identifier, previewProvider: nil, actionProvider: { _ in
-//            UIMenu(title: "", identifier: nil, children: [scheduleAction])
-//        })
-//    }
-//
-//
+    // MARK: - Context menu
+
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        let identifier = "\(indexPath.section),\(indexPath.row)" as NSString
+
+        if indexPath.section == 0 {
+            let project = tableViewData[indexPath.row]
+            
+            let deleteAction = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) { action in
+                
+                let alert = UIAlertController(title: "Delete project?", message: "All associated tasks will be deleted as well. This action cannot be undone.", preferredStyle: .actionSheet)
+                
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+                let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+                    self.tableViewData.remove(at: indexPath.row)
+                    CoreDataManager.shared.deleteProject(project)
+                    UIView.animate(withDuration: 0.35) {
+                    self.tableView.deleteRows(at: [indexPath], with: .fade)
+                    }
+                    self.delegate?.reloadCollection(sender: self)
+                }
+
+                // Add the actions to the alert controller
+                alert.addAction(cancelAction)
+                alert.addAction(deleteAction)
+
+                // Present the alert controller
+                if var rootViewController = UIApplication.shared.keyWindow?.rootViewController {
+                    while let presentedViewController = rootViewController.presentedViewController {
+                        rootViewController = presentedViewController
+                    }
+                    rootViewController.present(alert, animated: true, completion: nil)
+                }
+            }
+            
+            return UIContextMenuConfiguration(identifier: identifier, previewProvider: nil, actionProvider: { _ in
+                UIMenu(title: "", identifier: nil, children: [deleteAction])
+            })
+        }
+        
+        else {
+            let tag = tagViewData[indexPath.row]
+            
+            let deleteAction = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) { action in
+                
+                let alert = UIAlertController(title: "Delete tag?", message: "The associated tasks will not be deleted. This action cannot be undone.", preferredStyle: .actionSheet)
+                
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+                let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+                    self.tagViewData.remove(at: indexPath.row)
+                    CoreDataManager.shared.deleteTag(tag)
+                    UIView.animate(withDuration: 0.35) {
+                    self.tableView.deleteRows(at: [indexPath], with: .fade)
+                    }
+                }
+
+                // Add the actions to the alert controller
+                alert.addAction(cancelAction)
+                alert.addAction(deleteAction)
+
+                // Present the alert controller
+                if var rootViewController = UIApplication.shared.keyWindow?.rootViewController {
+                    while let presentedViewController = rootViewController.presentedViewController {
+                        rootViewController = presentedViewController
+                    }
+                    rootViewController.present(alert, animated: true, completion: nil)
+                }
+            }
+            
+            return UIContextMenuConfiguration(identifier: identifier, previewProvider: nil, actionProvider: { _ in
+                UIMenu(title: "", identifier: nil, children: [deleteAction])
+            })
+        }
+        
+
+
+
+
+    }
+
+
 //    func tableView(_ tableView: UITableView, previewForDismissingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
-//         guard
-//             let identifier = configuration.identifier as? String
-//         else {
-//             return nil
-//         }
+//        guard
+//            let identifier = configuration.identifier as? String
+//        else {
+//            return nil
+//        }
 //
-//         let index = Int(identifier)! as Int
-//         let indexPath = IndexPath(row: index, section:0)
+//        let array = identifier.components(separatedBy: ",")
+//
+//        let section = Int(array[0])! as Int
+//        let row = Int(array[1])! as Int
+//
+//        let indexPath = IndexPath(row: row, section: section)
 //
 //
-//         if let cell = tableView.cellForRow(at: indexPath) {
+//        if let cell = tableView.cellForRow(at: indexPath) {
 //         // let cellBackground = cell.backgroundView
 //         // cell.backgroundColor == UIColor.BackgroundColor
-//             return UITargetedPreview(view: cell)
-//         }
-//         else {
-//             return nil
-//         }
-//     }
-    
+//            return UITargetedPreview(view: cell)
+//        }
+//        else {
+//            return nil
+//        }
+//    }
 }
 
-@objc protocol ProjectTableViewDelegate: class {
-    func projectSelected(sender: ProjectTableView)
-    func tagSelected(sender: ProjectTableView)
-}
+

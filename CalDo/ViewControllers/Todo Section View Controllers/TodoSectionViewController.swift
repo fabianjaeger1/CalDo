@@ -159,6 +159,10 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
         }
     }
     
+    func reloadCollection(sender: ProjectTableView) {
+        collectionView.reloadData()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         segue.destination.presentationController?.delegate = self
         

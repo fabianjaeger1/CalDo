@@ -20,6 +20,7 @@ class CoreDataManager {
                  fatalError("Unresolved error \(error), \(error.userInfo)")
              }
          })
+        container.viewContext.mergePolicy = NSMergePolicy(merge: NSMergePolicyType.mergeByPropertyObjectTrumpMergePolicyType)
          return container
      }()
     
@@ -254,6 +255,33 @@ class CoreDataManager {
         }
     }
     
+    func deleteProject(_ project: ProjectEntity) {
+        let managedContext = persistentContainer.viewContext
+        
+        // Delete all associated tasks as well
+        let fetchRequest : NSFetchRequest<NSFetchRequestResult> = TaskEntity.fetchRequest()
+        let predicate = NSPredicate(format: "(completed == false) AND (project == %@)", project)
+        fetchRequest.predicate = predicate
+        
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try managedContext.execute(deleteRequest)
+            try managedContext.save()
+        } catch {
+            print("Failed to delete tasks from context \(error)")
+            return
+        }
+        
+        do {
+            managedContext.delete(project)
+            try managedContext.save()
+        } catch let saveError {
+            print("Failed to delete project: \(saveError)")
+        }
+        
+    }
+    
     
     // MARK: - Tags
     
@@ -285,6 +313,19 @@ class CoreDataManager {
             }
         }
         return taskTags
+    }
+    
+    func deleteTag(_ tag: TagEntity) {
+        let managedContext = persistentContainer.viewContext
+        
+        managedContext.delete(tag)
+        
+        do {
+            try managedContext.save()
+        } catch let saveError {
+            print("Failed to delete tag: \(saveError)")
+        }
+        
     }
     
     
