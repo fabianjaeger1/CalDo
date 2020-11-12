@@ -32,7 +32,7 @@ extension UIView {
 
 
 
-class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, ExpandableHeaderViewDelegate {
+class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, ExpandableHeaderViewDelegate, UITableViewDragDelegate, UITableViewDropDelegate {
     
     var tableView: UITableView
     var tableViewData: [ProjectEntity]
@@ -71,8 +71,9 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
             
             if isCollapsedTags {
                 tableView.beginUpdates()
-                let indexPaths = (0 ..< tableViewData.count)
+                let indexPaths = (0 ..< tagViewData.count)
                 .map { IndexPath(row: $0, section: 1) }
+                print(indexPaths)
                 tableView.insertRows(at: indexPaths, with: .top)
                 isCollapsedTags = !isCollapsedTags
                 tableView.endUpdates()
@@ -110,13 +111,22 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
             print("Error fetching tags from context \(error)")
             return nil
         }
+        
         self.isCollapsedProject = false
         self.isCollapsedTags = false
         super.init()
-
+        
+        print("Should sort")
+        self.sortSections()
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .BackgroundColor
+        
+        // Enable dragging
+        tableView.dragDelegate = self
+        tableView.dropDelegate = self
+        tableView.dragInteractionEnabled = true
 
         // Register all of your cells
         tableView.register(UINib(nibName: "ProjectTableViewCell", bundle: nil), forCellReuseIdentifier: "ProjectTableViewCell")
@@ -279,6 +289,131 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
         }
     }
     
+    // MARK: - Re-/Ordering
+    
+    func sortSections() {
+        if !self.tableViewData.isEmpty {
+            self.tableViewData.sort {
+                ($0.value(forKey: "sortOrder") as! Int) < ($1.value(forKey: "sortOrder") as! Int)
+            }
+        }
+        if !self.tagViewData.isEmpty {
+            self.tagViewData.sort {
+                ($0.value(forKey: "sortOrder") as! Int) < ($1.value(forKey: "sortOrder") as! Int)
+            }
+        }
+        self.saveOrder()
+    }
+    
+    func saveOrder() {
+        var i = 0
+        for project in self.tableViewData {
+            project.setValue(i, forKey: "sortOrder")
+            i += 1
+        }
+        
+        i = 0
+        for tag in self.tagViewData {
+            tag.setValue(i, forKey: "sortOrder")
+            i += 1
+        }
+        CoreDataManager.shared.saveContext()
+    }
+    
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        // Not necessary, but apparently there can be a bug with empty init
+        let itemProvider = NSItemProvider(object: "Move" as NSItemProviderWriting)
+            
+        let dragItem = UIDragItem(itemProvider: itemProvider)
+        
+        if indexPath.section == 0 {
+            dragItem.localObject = [0, tableViewData[indexPath.row]]
+        }
+        else if indexPath.section == 1 {
+            dragItem.localObject = [1, tagViewData[indexPath.row]]
+        }
+        
+        return [dragItem]
+    }
+
+    func tableView(_ _tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
+        if tableView.hasActiveDrag {
+            if session.items.count > 1 {
+                return UITableViewDropProposal(operation: .cancel)
+            } else if session.items.count == 1 {
+                // One item, check if the section matches
+                if let sourceSection = (session.items[0].localObject as? [Any])?[0] as? Int, let destinationSection = destinationIndexPath?.section {
+                    if sourceSection == destinationSection {
+                        return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
+                    }
+                }
+            }
+            return UITableViewDropProposal(operation: .cancel)
+        } else {
+            return UITableViewDropProposal(operation: .copy, intent: .insertAtDestinationIndexPath)
+        }
+    }
+
+    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
+        // Needed for drop delegate, but not called when dragging & dropping in table
+        print("perform Drop")
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+
+        switch (sourceIndexPath.section, destinationIndexPath.section) {
+        case (0, 0):
+            let mover = tableViewData.remove(at: sourceIndexPath.row)
+            tableViewData.insert(mover, at: destinationIndexPath.row)
+            self.saveOrder()
+        case (1, 1):
+            let mover = tagViewData.remove(at: sourceIndexPath.row)
+            tagViewData.insert(mover, at: destinationIndexPath.row)
+            self.saveOrder()
+        default:
+            break
+        }
+
+    }
+    
+//    // MARK: - Context menu
+//
+//    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+//
+//        let project = tableViewData[indexPath.row]
+//        let identifier = "\(indexPath.row)" as NSString
+//
+//        let scheduleAction = UIAction(title: "Schedule", image: UIImage(systemName: "calendar")) { action in
+//
+//               }
+//
+//
+//        return UIContextMenuConfiguration(identifier: identifier, previewProvider: nil, actionProvider: { _ in
+//            UIMenu(title: "", identifier: nil, children: [scheduleAction])
+//        })
+//    }
+//
+//
+//    func tableView(_ tableView: UITableView, previewForDismissingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+//         guard
+//             let identifier = configuration.identifier as? String
+//         else {
+//             return nil
+//         }
+//
+//         let index = Int(identifier)! as Int
+//         let indexPath = IndexPath(row: index, section:0)
+//
+//
+//         if let cell = tableView.cellForRow(at: indexPath) {
+//         // let cellBackground = cell.backgroundView
+//         // cell.backgroundColor == UIColor.BackgroundColor
+//             return UITargetedPreview(view: cell)
+//         }
+//         else {
+//             return nil
+//         }
+//     }
     
 }
 
