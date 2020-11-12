@@ -170,13 +170,17 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ExpandableHeaderView.identifier) as? ExpandableHeaderView {
             if section == 0 {
+                let backgroundView = UIView()
                 if isCollapsedProject == false {
-                    headerView.view.backgroundColor = UIColor.backgroundColor
+                    backgroundView.backgroundColor = .backgroundColor
                 }
                 else {
-                    headerView.view.backgroundColor = UIColor.BackgroundColor
+                    backgroundView.backgroundColor = .BackgroundColor
                     headerView.arrowImage.transform = headerView.arrowImage.transform.rotated(by: -.pi/2)
                 }
+                backgroundView.layer.cornerRadius = 15
+                headerView.backgroundView = backgroundView
+                
                 headerView.view.layer.cornerRadius = 15
                 headerView.section = section
                 headerView.headerLabel.text = "Projects"
@@ -187,13 +191,17 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
                 return headerView
             }
             if section == 1 {
+                let backgroundView = UIView()
                 if isCollapsedTags == false {
-                    headerView.view.backgroundColor = UIColor.backgroundColor
+                    backgroundView.backgroundColor = .backgroundColor
                 }
                 else{
-                    headerView.view.backgroundColor = UIColor.BackgroundColor
+                    backgroundView.backgroundColor = .BackgroundColor
                     headerView.arrowImage.transform = headerView.arrowImage.transform.rotated(by: -.pi/2)
                 }
+                backgroundView.layer.cornerRadius = 15
+                headerView.backgroundView = backgroundView
+                
                 headerView.view.layer.cornerRadius = 15
                 headerView.section = section
                 headerView.headerLabel.text = "Tags"
@@ -240,9 +248,11 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
             
             // Set selection color & corner radius
             let selectionView = UIView()
-            selectionView.backgroundColor = UIColor.backgroundColor
+            selectionView.backgroundColor = .backgroundColor
             selectionView.layer.cornerRadius = 10
             cell.selectedBackgroundView = selectionView
+            
+            cell.backgroundColor = .BackgroundColor
             
             return cell
         }
@@ -270,16 +280,18 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
 //            cell.projectColor.bringSubviewToFront(tagView)
             
             cell.tagTitle.text = tagTitle
-            cell.tagTitle.textColor = UIColor.textColor
+            cell.tagTitle.textColor = .textColor
 //            cell.projectLabel.text = tagTitle
 //            cell.projectLabel.textColor = UIColor.textColor
             // cell.selectionStyle = .none
             
             // Set selection color & corner radius
             let selectionView = UIView()
-            selectionView.backgroundColor = UIColor.backgroundColor
+            selectionView.backgroundColor = .backgroundColor
             selectionView.layer.cornerRadius = 10
             cell.selectedBackgroundView = selectionView
+            
+            cell.backgroundColor = .BackgroundColor
             
             return cell
         }
