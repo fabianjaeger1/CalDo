@@ -404,7 +404,7 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
             
             let deleteAction = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) { action in
                 
-                let alert = UIAlertController(title: "Delete project?", message: "All associated tasks will be deleted as well. This action cannot be undone.", preferredStyle: .actionSheet)
+                let alert = UIAlertController(title: "Delete project, and associated tasks?", message: "All tasks belonging to the project will be deleted as well. This action cannot be undone.", preferredStyle: .actionSheet)
                 
                 let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
 
