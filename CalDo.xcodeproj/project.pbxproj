@@ -20,6 +20,7 @@
 		013A43492533A6C9008FC23E /* ProjectTaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A43472533A6C9008FC23E /* ProjectTaskDetailViewController.swift */; };
 		013A434A2533A6C9008FC23E /* ProjectTaskDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013A43482533A6C9008FC23E /* ProjectTaskDetailViewController.xib */; };
 		013E66BF22F0BFD80048AF18 /* DatePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013E66BE22F0BFD80048AF18 /* DatePopUpViewController.swift */; };
+		014216A1255DF8060071BD1C /* HabitCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014216A0255DF8060071BD1C /* HabitCollectionViewHeader.swift */; };
 		0142AAC1231BF78300324DA1 /* OnDateRepeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0142AAC0231BF78300324DA1 /* OnDateRepeatViewController.swift */; };
 		0145956C2445EA6400AFB34D /* SF-Pro-Rounded-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 014595652445E9DA00AFB34D /* SF-Pro-Rounded-Black.otf */; };
 		0145956D2445EA6400AFB34D /* SF-Pro-Rounded-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0145956B2445E9DB00AFB34D /* SF-Pro-Rounded-Bold.otf */; };
@@ -60,6 +61,9 @@
 		019A09FB242E82D5002434F0 /* DateHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019A09FA242E82D5002434F0 /* DateHeaderCell.swift */; };
 		01B3CA0422EB8BEF00E5344D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B3CA0322EB8BEF00E5344D /* HomeViewController.swift */; };
 		01C954722115E2310047175F /* Todo Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C954712115E2310047175F /* Todo Struct.swift */; };
+		01CC543F25460B2600922BDF /* Habit Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CC543E25460B2600922BDF /* Habit Struct.swift */; };
+		01CC54552546135500922BDF /* HabitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CC54532546135500922BDF /* HabitTableViewCell.swift */; };
+		01CC54562546135500922BDF /* HabitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01CC54542546135500922BDF /* HabitTableViewCell.xib */; };
 		01D53465234F681800DE6776 /* CustomTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D53462234F681800DE6776 /* CustomTabBarItem.swift */; };
 		01D53466234F681800DE6776 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D53463234F681800DE6776 /* CustomTabBarController.swift */; };
 		01D53467234F681800DE6776 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D53464234F681800DE6776 /* CustomTabBar.swift */; };
@@ -75,6 +79,7 @@
 		01D53484234F705000DE6776 /* SelectionScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D53483234F705000DE6776 /* SelectionScreenViewController.swift */; };
 		01D5348E234F727C00DE6776 /* RepeatViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5348D234F727C00DE6776 /* RepeatViewCell.swift */; };
 		01D53490234F733100DE6776 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01D5348F234F733100DE6776 /* LaunchScreen.storyboard */; };
+		01D8F45B255DFF6400CEB9E9 /* HabitCollectionViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0142169B255DF7BE0071BD1C /* HabitCollectionViewHeader.xib */; };
 		01EAFEE6231CAACA00F3EA9D /* RepetitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EAFEE5231CAACA00F3EA9D /* RepetitionViewController.swift */; };
 		01F3A08C24F534D500368C6A /* ExpandableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3A08B24F534D500368C6A /* ExpandableHeaderView.swift */; };
 		01F3A08E24F534EC00368C6A /* ExpandableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01F3A08D24F534EC00368C6A /* ExpandableHeaderView.xib */; };
@@ -164,6 +169,8 @@
 		013A43472533A6C9008FC23E /* ProjectTaskDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTaskDetailViewController.swift; sourceTree = "<group>"; };
 		013A43482533A6C9008FC23E /* ProjectTaskDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectTaskDetailViewController.xib; sourceTree = "<group>"; };
 		013E66BE22F0BFD80048AF18 /* DatePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DatePopUpViewController.swift; path = "CalDo/ViewControllers/Todo Section View Controllers/Adding Tasks View Controllers/DatePopUpViewController.swift"; sourceTree = SOURCE_ROOT; };
+		0142169B255DF7BE0071BD1C /* HabitCollectionViewHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HabitCollectionViewHeader.xib; sourceTree = "<group>"; };
+		014216A0255DF8060071BD1C /* HabitCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCollectionViewHeader.swift; sourceTree = "<group>"; };
 		0142AAC0231BF78300324DA1 /* OnDateRepeatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnDateRepeatViewController.swift; sourceTree = "<group>"; };
 		014595632445E9DA00AFB34D /* SF-Pro-Rounded-Ultralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Ultralight.otf"; sourceTree = "<group>"; };
 		014595642445E9DA00AFB34D /* SF-Pro-Rounded-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Heavy.otf"; sourceTree = "<group>"; };
@@ -211,6 +218,9 @@
 		019A09FA242E82D5002434F0 /* DateHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHeaderCell.swift; sourceTree = "<group>"; };
 		01B3CA0322EB8BEF00E5344D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		01C954712115E2310047175F /* Todo Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo Struct.swift"; sourceTree = "<group>"; };
+		01CC543E25460B2600922BDF /* Habit Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit Struct.swift"; sourceTree = "<group>"; };
+		01CC54532546135500922BDF /* HabitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTableViewCell.swift; sourceTree = "<group>"; };
+		01CC54542546135500922BDF /* HabitTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HabitTableViewCell.xib; sourceTree = "<group>"; };
 		01D53462234F681800DE6776 /* CustomTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarItem.swift; sourceTree = "<group>"; };
 		01D53463234F681800DE6776 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		01D53464234F681800DE6776 /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
@@ -312,6 +322,7 @@
 				0135B2A7231DC66800E43638 /* WeatherModel.swift */,
 				0130AD4522EF25AB00C3EF47 /* Projects.swift */,
 				01C954712115E2310047175F /* Todo Struct.swift */,
+				01CC543E25460B2600922BDF /* Habit Struct.swift */,
 				830DB5EB24A8EC35006B16E3 /* CoreDataModel.xcdatamodeld */,
 				832D3C6724ADE0A000A1E709 /* CoreDataManager.swift */,
 				015361C424AA7AB200D19DD2 /* TagStruct.swift */,
@@ -354,6 +365,7 @@
 		0179EDD922EC672B00F2A48B /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				01CC545A2546136900922BDF /* Habit Section Cells */,
 				01F3A09D24F5417B00368C6A /* Task Project Cells */,
 				01F3A09824F5403000368C6A /* Nib Files */,
 				01F3A09724F5401400368C6A /* Task Section Cells */,
@@ -438,6 +450,17 @@
 				0179EDD922EC672B00F2A48B /* Cells */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		01CC545A2546136900922BDF /* Habit Section Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0142169B255DF7BE0071BD1C /* HabitCollectionViewHeader.xib */,
+				014216A0255DF8060071BD1C /* HabitCollectionViewHeader.swift */,
+				01CC54532546135500922BDF /* HabitTableViewCell.swift */,
+				01CC54542546135500922BDF /* HabitTableViewCell.xib */,
+			);
+			path = "Habit Section Cells";
 			sourceTree = "<group>";
 		};
 		01F3A09124F53EF600368C6A /* Home Section View Controllers */ = {
@@ -724,6 +747,7 @@
 				014595722445EA6400AFB34D /* SF-Pro-Rounded-Semibold.otf in Resources */,
 				013A434A2533A6C9008FC23E /* ProjectTaskDetailViewController.xib in Resources */,
 				834F82D524E2AF49007DB362 /* ProjectTableViewCell.xib in Resources */,
+				01CC54562546135500922BDF /* HabitTableViewCell.xib in Resources */,
 				014595732445EA6400AFB34D /* SF-Pro-Rounded-Thin.otf in Resources */,
 				01D53469234F684100DE6776 /* Images.xcassets in Resources */,
 				013A433D2533A305008FC23E /* ScheduleViewController.xib in Resources */,
@@ -736,6 +760,7 @@
 				01904999252FC37500FA9C6A /* DetailCollectionViewCell.xib in Resources */,
 				0145956C2445EA6400AFB34D /* SF-Pro-Rounded-Black.otf in Resources */,
 				0145956D2445EA6400AFB34D /* SF-Pro-Rounded-Bold.otf in Resources */,
+				01D8F45B255DFF6400CEB9E9 /* HabitCollectionViewHeader.xib in Resources */,
 				0165E1A02329A971002F5DA1 /* InboxHomeScreenTableViewCell.xib in Resources */,
 				0145956E2445EA6400AFB34D /* SF-Pro-Rounded-Heavy.otf in Resources */,
 				019280F01F8A615C00E895D4 /* Main.storyboard in Resources */,
@@ -882,6 +907,7 @@
 				010736642542E23300239F4E /* HabitViewController.swift in Sources */,
 				013A43492533A6C9008FC23E /* ProjectTaskDetailViewController.swift in Sources */,
 				83A1975B25018C1F001011D2 /* TaskTableViewController.swift in Sources */,
+				01CC543F25460B2600922BDF /* Habit Struct.swift in Sources */,
 				0135B2A8231DC66800E43638 /* WeatherModel.swift in Sources */,
 				01D53484234F705000DE6776 /* SelectionScreenViewController.swift in Sources */,
 				83D8467F25344F33005050E8 /* UIColorExtension.swift in Sources */,
@@ -902,6 +928,7 @@
 				019280EB1F8A615C00E895D4 /* AppDelegate.swift in Sources */,
 				01F7AA33250BF0E900504799 /* DetailViewController.swift in Sources */,
 				83F9388D251D3FB8007224FB /* UIDeviceExtension.swift in Sources */,
+				01CC54552546135500922BDF /* HabitTableViewCell.swift in Sources */,
 				01D53480234F6EFC00DE6776 /* TagCollectionViewCell.swift in Sources */,
 				015DA6A023C94E4900582851 /* ProjectHomeViewController.swift in Sources */,
 				01987817231AA1CE00DE1F7E /* EndRepeatViewController.swift in Sources */,
@@ -931,6 +958,7 @@
 				83372CBC250FAC8B0076DD7C /* TaskButton.swift in Sources */,
 				83C0019924E84E3D0016B68E /* EntityExtension.swift in Sources */,
 				0160336C24694EA00032DA23 /* AllTasksViewController.swift in Sources */,
+				014216A1255DF8060071BD1C /* HabitCollectionViewHeader.swift in Sources */,
 				015361C524AA7AB200D19DD2 /* TagStruct.swift in Sources */,
 				015DA69E23C94B5300582851 /* HabitHomeViewController.swift in Sources */,
 				019878132319C87300DE1F7E /* RepeatViewController.swift in Sources */,

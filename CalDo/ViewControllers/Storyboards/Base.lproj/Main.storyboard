@@ -113,7 +113,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="nyG-HT-GBZ">
-                                <rect key="frame" x="14" y="210" width="118" height="30"/>
+                                <rect key="frame" x="248" y="85" width="90" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="77t-Z1-3Y3"/>
                                 </constraints>
@@ -121,20 +121,35 @@
                                     <action selector="ProgressChanged:" destination="iK3-C5-tja" eventType="valueChanged" id="szg-vh-PfE"/>
                                 </connections>
                             </slider>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cF2-ea-3bO">
+                                <rect key="frame" x="7" y="164" width="362" height="454"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="safeArea" id="teE-Tj-cXV">
+                                    <size key="itemSize" width="373" height="75"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="r6F-WF-8jd"/>
                         <color key="backgroundColor" name="BackgroundColor"/>
                         <constraints>
                             <constraint firstItem="e8N-Y7-wDy" firstAttribute="leading" secondItem="r6F-WF-8jd" secondAttribute="leading" constant="20" id="1Z2-b5-Vfp"/>
                             <constraint firstItem="MCR-TO-g72" firstAttribute="leading" secondItem="r6F-WF-8jd" secondAttribute="leading" constant="16" id="MeM-Uq-XxW"/>
-                            <constraint firstItem="r6F-WF-8jd" firstAttribute="trailing" secondItem="nyG-HT-GBZ" secondAttribute="trailing" constant="245" id="Tyk-GX-QUA"/>
+                            <constraint firstItem="r6F-WF-8jd" firstAttribute="trailing" secondItem="nyG-HT-GBZ" secondAttribute="trailing" constant="39" id="Tyk-GX-QUA"/>
+                            <constraint firstItem="cF2-ea-3bO" firstAttribute="bottom" secondItem="r6F-WF-8jd" secondAttribute="bottom" id="VeE-cg-QU6"/>
+                            <constraint firstItem="cF2-ea-3bO" firstAttribute="leading" secondItem="r6F-WF-8jd" secondAttribute="leading" constant="7" id="X4i-jF-Rso"/>
                             <constraint firstItem="X6e-IB-Tkb" firstAttribute="leading" secondItem="MCR-TO-g72" secondAttribute="trailing" constant="21" id="cL4-Xf-jRx"/>
-                            <constraint firstItem="nyG-HT-GBZ" firstAttribute="leading" secondItem="MCR-TO-g72" secondAttribute="leading" id="dog-Or-DYB"/>
+                            <constraint firstItem="nyG-HT-GBZ" firstAttribute="leading" secondItem="MCR-TO-g72" secondAttribute="leading" constant="234" id="dog-Or-DYB"/>
                             <constraint firstItem="MCR-TO-g72" firstAttribute="top" secondItem="e8N-Y7-wDy" secondAttribute="bottom" constant="14" id="fPl-pI-Qah"/>
                             <constraint firstItem="9Ej-o6-BG6" firstAttribute="top" secondItem="X6e-IB-Tkb" secondAttribute="bottom" constant="8" symbolic="YES" id="jJz-9t-A3t"/>
                             <constraint firstItem="X6e-IB-Tkb" firstAttribute="top" secondItem="e8N-Y7-wDy" secondAttribute="bottom" constant="16" id="mvf-Ad-WdH"/>
-                            <constraint firstItem="nyG-HT-GBZ" firstAttribute="top" secondItem="MCR-TO-g72" secondAttribute="bottom" constant="81" id="o9x-IY-zH4"/>
+                            <constraint firstItem="nyG-HT-GBZ" firstAttribute="top" secondItem="MCR-TO-g72" secondAttribute="bottom" constant="-44" id="o9x-IY-zH4"/>
+                            <constraint firstItem="cF2-ea-3bO" firstAttribute="top" secondItem="MCR-TO-g72" secondAttribute="bottom" constant="35" id="qj3-rL-yPn"/>
                             <constraint firstItem="9Ej-o6-BG6" firstAttribute="leading" secondItem="MCR-TO-g72" secondAttribute="trailing" constant="21" id="rDn-NO-v2O"/>
+                            <constraint firstItem="cF2-ea-3bO" firstAttribute="trailing" secondItem="r6F-WF-8jd" secondAttribute="trailing" constant="-6" id="wGe-c7-vjp"/>
                             <constraint firstItem="e8N-Y7-wDy" firstAttribute="top" secondItem="r6F-WF-8jd" secondAttribute="top" constant="20" id="wIy-p2-jB9"/>
                         </constraints>
                     </view>
@@ -142,6 +157,7 @@
                     <connections>
                         <outlet property="ProgressBar" destination="MCR-TO-g72" id="X2b-Yf-URQ"/>
                         <outlet property="ProgressLabel" destination="9Ej-o6-BG6" id="7N3-4p-iu2"/>
+                        <outlet property="habitTableView" destination="cF2-ea-3bO" id="fu7-nG-dSg"/>
                         <outlet property="progressSlider" destination="nyG-HT-GBZ" id="fI7-Lo-LBZ"/>
                     </connections>
                 </viewController>
@@ -677,7 +693,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mle-YZ-aFU">
-                                        <rect key="frame" x="58" y="30" width="94.5" height="35"/>
+                                        <rect key="frame" x="58" y="30" width="97" height="36"/>
                                         <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
