@@ -7,4 +7,9 @@
 //
 
 import Foundation
+import UIKit
+
+extension UIColor {
+    static let BlueSelectorColor = UIColor.init(named: "BlueDateSelectorColor")
+}
 
