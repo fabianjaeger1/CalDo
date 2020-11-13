@@ -12,9 +12,28 @@ import UIKit
 let todoTaskCategories = ["Due", "Project", "Priority", "Tags"]
 let todoTaskCategoriesImages = ["clock.fill","folder.fill", "flag.fill"]
 
-class DetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIAdaptivePresentationControllerDelegate{
+class DetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIAdaptivePresentationControllerDelegate { 
     
     
+    @IBOutlet weak var todoTitle: UITextField!
+    @IBOutlet weak var todoButton: UIButton!
+    @IBOutlet weak var textLine: UIView!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBOutlet weak var projectTitle: UILabel!
+    @IBOutlet weak var projectColor: UIView!
+    
+    @IBOutlet weak var todoDate: UILabel!
+    
+    @IBOutlet weak var priorityButton: UIButton!
+    
+    var task: TaskEntity!
+    var indexPath: IndexPath!
+    
+    // Spacing between items in collection view
+    let spacing: CGFloat = 12
+
+        
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         2
     }
@@ -26,7 +45,7 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
         cell.image.image = UIImage(systemName: todoTaskCategoriesImages[indexPath.row])
         cell.image.tintColor = UIColor.textColor
         cell.backgroundColor = UIColor.clear
-        cell.contentView.layer.cornerRadius = 20
+        cell.contentView.layer.cornerRadius = 15
         cell.contentView.backgroundColor = .backgroundColor
         return cell
     }
@@ -46,32 +65,30 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
 //            self.present(vc, animated: true, completion: nil)
         }
     }
+//
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if [0, 1].contains(indexPath.row) {
+            let width = (self.view.frame.size.width - 3 * spacing) / 2
+            return CGSize(width: width, height: 50)
+        }
+        else {
+            return CGSize(width: 0, height: 0)
+        }
+    }
     
-    
-    @IBOutlet weak var todoTitle: UITextField!
-    @IBOutlet weak var todoButton: UIButton!
-    @IBOutlet weak var textLine: UIView!
-    @IBOutlet weak var collectionView: UICollectionView!
-    
-    @IBOutlet weak var projectTitle: UILabel!
-    @IBOutlet weak var projectColor: UIView!
-    
-    @IBOutlet weak var todoDate: UILabel!
-    
-    @IBOutlet weak var priorityButton: UIButton!
-    
-    var task: TaskEntity!
-    var indexPath: IndexPath!
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        let width = (view.frame.size.width - 60) / 2
+
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSize(width: width, height: 70)
+        
+        layout.sectionInset = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
+        layout.minimumLineSpacing = spacing
+        layout.minimumInteritemSpacing = spacing
+       
         collectionView.register(UINib(nibName: "DetailCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DetailCollectionViewCell")
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = UIColor.clear
+        collectionView.backgroundColor = .clear
         
         textLine.layer.cornerRadius = 5
         textLine.backgroundColor = .backgroundColor

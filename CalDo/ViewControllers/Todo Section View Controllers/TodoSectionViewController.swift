@@ -210,7 +210,8 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
         
-        let width = (collectionView.bounds.width - 3 * spacing) / 2
+        //let width = (collectionView.bounds.width - 3 * spacing) / 2
+        let width = (self.view.frame.size.width - 3 * spacing) / 2
         layout.itemSize = CGSize(width: width, height: 105)
         self.view.backgroundColor = .BackgroundColor
     

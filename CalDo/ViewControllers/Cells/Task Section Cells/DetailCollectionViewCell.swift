@@ -21,7 +21,6 @@ class DetailCollectionViewCell: UICollectionViewCell {
             }
             else {
                 self.transform = .identity
-                self.layer.cornerRadius = 20
             }
         }
     }
