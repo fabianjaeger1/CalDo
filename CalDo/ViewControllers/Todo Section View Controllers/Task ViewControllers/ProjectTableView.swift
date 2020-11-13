@@ -402,6 +402,10 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
         if indexPath.section == 0 {
             let project = tableViewData[indexPath.row]
             
+            let editAction = UIAction(title: "Edit", image: UIImage(systemName: "square.and.pencil")) { action in
+                
+            }
+            
             let deleteAction = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) { action in
                 
                 let alert = UIAlertController(title: "Delete project, and associated tasks?", message: "All tasks belonging to the project will be deleted as well. This action cannot be undone.", preferredStyle: .actionSheet)
@@ -430,13 +434,20 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
                 }
             }
             
+            // Inline submenu (to get a separator)
+            let editMenu = UIMenu(title: "Edit...", options: .displayInline, children: [editAction])
+            
             return UIContextMenuConfiguration(identifier: identifier, previewProvider: nil, actionProvider: { _ in
-                UIMenu(title: "", identifier: nil, children: [deleteAction])
+                UIMenu(title: "", identifier: nil, children: [editMenu, deleteAction])
             })
         }
         
         else {
             let tag = tagViewData[indexPath.row]
+            
+            let editAction = UIAction(title: "Edit", image: UIImage(systemName: "square.and.pencil")) { action in
+                
+            }
             
             let deleteAction = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) { action in
                 
@@ -465,8 +476,11 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
                 }
             }
             
+            // Inline submenu (to get a separator)
+            let editMenu = UIMenu(title: "Edit...", options: .displayInline, children: [editAction])
+            
             return UIContextMenuConfiguration(identifier: identifier, previewProvider: nil, actionProvider: { _ in
-                UIMenu(title: "", identifier: nil, children: [deleteAction])
+                UIMenu(title: "", identifier: nil, children: [editMenu, deleteAction])
             })
         }
         

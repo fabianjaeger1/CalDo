@@ -36,22 +36,22 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if indexPath == NSIndexPath(row: 0, section: 0) as IndexPath{
+        if indexPath == NSIndexPath(row: 0, section: 0) as IndexPath {
             let vc = InboxViewController(nibName: "TaskTableViewController", bundle: nil)
             vc.presentationController?.delegate = self
             self.present(vc, animated: true, completion: nil)
         }
-        if indexPath == NSIndexPath(row: 1, section: 0) as IndexPath{
+        if indexPath == NSIndexPath(row: 1, section: 0) as IndexPath {
             let vc = TodayViewController(nibName: "TaskTableViewController", bundle: nil)
             vc.presentationController?.delegate = self
             self.present(vc, animated: true, completion: nil)
         }
-        if indexPath == NSIndexPath(row: 2, section: 0) as IndexPath{
+        if indexPath == NSIndexPath(row: 2, section: 0) as IndexPath {
             let vc = UpcomingViewController(nibName: "TaskTableViewController", bundle: nil)
             vc.presentationController?.delegate = self
             self.present(vc, animated: true, completion: nil)
         }
-        if indexPath == NSIndexPath(row: 3, section: 0) as IndexPath{
+        if indexPath == NSIndexPath(row: 3, section: 0) as IndexPath {
             let vc = AllTasksViewController(nibName: "TaskTableViewController", bundle: nil)
             vc.presentationController?.delegate = self
             self.present(vc, animated: true, completion: nil)
@@ -137,6 +137,7 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
 
     }
     
+    
 // MARK: Segue Methods
     
     func projectSelected(sender: ProjectTableView) {
@@ -197,10 +198,20 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
     
     override func viewDidLoad() {
         myTableView.layer.backgroundColor = UIColor.clear.cgColor
-        let width = (view.frame.size.width - 55) / 2
+        
+
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSize(width: width, height: 105)
+        
+        //let width = (view.frame.size.width - 55) / 2
+        //layout.itemSize = CGSize(width: width, height: 105)
   
+        let spacing: CGFloat = 12.0
+        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        layout.minimumLineSpacing = spacing
+        layout.minimumInteritemSpacing = spacing
+        
+        let width = (collectionView.bounds.width - 3 * spacing) / 2
+        layout.itemSize = CGSize(width: width, height: 105)
         self.view.backgroundColor = .BackgroundColor
     
         collectionView.delegate = self
