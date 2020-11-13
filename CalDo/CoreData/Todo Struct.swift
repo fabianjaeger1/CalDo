@@ -140,6 +140,11 @@ func loadSampleTaskEntities() {
     project2.title = "Work"
     project2.color = "4FC2E8"
     
+    let project3 = ProjectEntity(context: managedContext)
+    project3.title = "School"
+    project3.color = "FF8888"
+    
+    
 
     let tag1 = TagEntity(context: managedContext)
     tag1.title = "Calls"

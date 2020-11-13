@@ -93,7 +93,6 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         // Sort tasks
         self.sortTasks()
         
-        
         // Enable dragging tasks
         tableView.dragDelegate = self
         tableView.dragInteractionEnabled = true
@@ -649,8 +648,6 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
     }
     
     // MARK: - Dragging to reorder
-    
-    // TODO: save order after reordering
     
     func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         let dragItem = UIDragItem(itemProvider: NSItemProvider())

@@ -159,6 +159,10 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
         }
     }
     
+    func reloadCollection(sender: ProjectTableView) {
+        collectionView.reloadData()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         segue.destination.presentationController?.delegate = self
         
@@ -203,7 +207,7 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
         collectionView.dataSource = self
     
         projectTableView = ProjectTableView(myTableView)
-
+        
         super.viewDidLoad()
     }
     
@@ -211,6 +215,7 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
     override func viewWillAppear(_ animated: Bool) {
         collectionView.reloadData()
         myTableView.reloadData()
+
         super.viewWillAppear(animated)
         
         if let selectedRow: IndexPath = myTableView.indexPathForSelectedRow {

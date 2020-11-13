@@ -39,9 +39,13 @@ class ExpandableHeaderView: UITableViewHeaderFooterView {
         super.awakeFromNib()
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapHeader)))
         
-        // TODO: deprecated, set custom background view
-        self.contentView.backgroundColor = UIColor.BackgroundColor
-        self.view.backgroundColor = UIColor.BackgroundColor
+        // deprecated
+        //self.contentView.backgroundColor = UIColor.BackgroundColor
+        //self.view.backgroundColor = UIColor.BackgroundColor
+        
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = .BackgroundColor
+        self.backgroundView = backgroundView
     }
     
     override func prepareForReuse() {
@@ -60,13 +64,13 @@ class ExpandableHeaderView: UITableViewHeaderFooterView {
     func setCollapsed(collapsed: Bool) {
         if collapsed == true {
             UIView.animate(withDuration: 0.2, animations: {
-                self.view.backgroundColor = UIColor.backgroundColor
+                self.backgroundView?.backgroundColor = .backgroundColor
                 self.arrowImage.transform = self.arrowImage.transform.rotated(by: .pi / 2)
             })
         }
         else {
             UIView.animate(withDuration: 0.2, animations: {
-                self.view.backgroundColor = UIColor.BackgroundColor
+                self.backgroundView?.backgroundColor = .BackgroundColor
                 self.arrowImage.transform = self.arrowImage.transform.rotated(by: -.pi / 2)
             })
         }

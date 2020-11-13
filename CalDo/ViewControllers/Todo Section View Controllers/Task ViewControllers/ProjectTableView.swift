@@ -30,9 +30,15 @@ extension UIView {
     }
 }
 
+@objc protocol ProjectTableViewDelegate: class {
+    func projectSelected(sender: ProjectTableView)
+    func tagSelected(sender: ProjectTableView)
+    func reloadCollection(sender: ProjectTableView)
+}
 
 
-class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, ExpandableHeaderViewDelegate {
+
+class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, ExpandableHeaderViewDelegate, UITableViewDragDelegate, UITableViewDropDelegate {
     
     var tableView: UITableView
     var tableViewData: [ProjectEntity]
@@ -71,8 +77,9 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
             
             if isCollapsedTags {
                 tableView.beginUpdates()
-                let indexPaths = (0 ..< tableViewData.count)
+                let indexPaths = (0 ..< tagViewData.count)
                 .map { IndexPath(row: $0, section: 1) }
+                print(indexPaths)
                 tableView.insertRows(at: indexPaths, with: .top)
                 isCollapsedTags = !isCollapsedTags
                 tableView.endUpdates()
@@ -110,13 +117,22 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
             print("Error fetching tags from context \(error)")
             return nil
         }
+        
         self.isCollapsedProject = false
         self.isCollapsedTags = false
         super.init()
-
+        
+        print("Should sort")
+        self.sortSections()
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .BackgroundColor
+        
+        // Enable dragging
+        tableView.dragDelegate = self
+        tableView.dropDelegate = self
+        tableView.dragInteractionEnabled = true
 
         // Register all of your cells
         tableView.register(UINib(nibName: "ProjectTableViewCell", bundle: nil), forCellReuseIdentifier: "ProjectTableViewCell")
@@ -154,13 +170,17 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ExpandableHeaderView.identifier) as? ExpandableHeaderView {
             if section == 0 {
+                let backgroundView = UIView()
                 if isCollapsedProject == false {
-                    headerView.view.backgroundColor = UIColor.backgroundColor
+                    backgroundView.backgroundColor = .backgroundColor
                 }
                 else {
-                    headerView.view.backgroundColor = UIColor.BackgroundColor
+                    backgroundView.backgroundColor = .BackgroundColor
                     headerView.arrowImage.transform = headerView.arrowImage.transform.rotated(by: -.pi/2)
                 }
+                backgroundView.layer.cornerRadius = 15
+                headerView.backgroundView = backgroundView
+                
                 headerView.view.layer.cornerRadius = 15
                 headerView.section = section
                 headerView.headerLabel.text = "Projects"
@@ -171,13 +191,17 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
                 return headerView
             }
             if section == 1 {
+                let backgroundView = UIView()
                 if isCollapsedTags == false {
-                    headerView.view.backgroundColor = UIColor.backgroundColor
+                    backgroundView.backgroundColor = .backgroundColor
                 }
                 else{
-                    headerView.view.backgroundColor = UIColor.BackgroundColor
+                    backgroundView.backgroundColor = .BackgroundColor
                     headerView.arrowImage.transform = headerView.arrowImage.transform.rotated(by: -.pi/2)
                 }
+                backgroundView.layer.cornerRadius = 15
+                headerView.backgroundView = backgroundView
+                
                 headerView.view.layer.cornerRadius = 15
                 headerView.section = section
                 headerView.headerLabel.text = "Tags"
@@ -224,9 +248,11 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
             
             // Set selection color & corner radius
             let selectionView = UIView()
-            selectionView.backgroundColor = UIColor.backgroundColor
+            selectionView.backgroundColor = .backgroundColor
             selectionView.layer.cornerRadius = 10
             cell.selectedBackgroundView = selectionView
+            
+            cell.backgroundColor = .BackgroundColor
             
             return cell
         }
@@ -254,16 +280,18 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
 //            cell.projectColor.bringSubviewToFront(tagView)
             
             cell.tagTitle.text = tagTitle
-            cell.tagTitle.textColor = UIColor.textColor
+            cell.tagTitle.textColor = .textColor
 //            cell.projectLabel.text = tagTitle
 //            cell.projectLabel.textColor = UIColor.textColor
             // cell.selectionStyle = .none
             
             // Set selection color & corner radius
             let selectionView = UIView()
-            selectionView.backgroundColor = UIColor.backgroundColor
+            selectionView.backgroundColor = .backgroundColor
             selectionView.layer.cornerRadius = 10
             cell.selectedBackgroundView = selectionView
+            
+            cell.backgroundColor = .BackgroundColor
             
             return cell
         }
@@ -279,10 +307,200 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
         }
     }
     
+    // MARK: - Re-/Ordering
     
+    func sortSections() {
+        if !self.tableViewData.isEmpty {
+            self.tableViewData.sort {
+                ($0.value(forKey: "sortOrder") as! Int) < ($1.value(forKey: "sortOrder") as! Int)
+            }
+        }
+        if !self.tagViewData.isEmpty {
+            self.tagViewData.sort {
+                ($0.value(forKey: "sortOrder") as! Int) < ($1.value(forKey: "sortOrder") as! Int)
+            }
+        }
+        self.saveOrder()
+    }
+    
+    func saveOrder() {
+        var i = 0
+        for project in self.tableViewData {
+            project.setValue(i, forKey: "sortOrder")
+            i += 1
+        }
+        
+        i = 0
+        for tag in self.tagViewData {
+            tag.setValue(i, forKey: "sortOrder")
+            i += 1
+        }
+        CoreDataManager.shared.saveContext()
+    }
+    
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        // Not necessary, but apparently there can be a bug with empty init
+        let itemProvider = NSItemProvider(object: "Move" as NSItemProviderWriting)
+            
+        let dragItem = UIDragItem(itemProvider: itemProvider)
+        
+        if indexPath.section == 0 {
+            dragItem.localObject = [0, tableViewData[indexPath.row]]
+        }
+        else if indexPath.section == 1 {
+            dragItem.localObject = [1, tagViewData[indexPath.row]]
+        }
+        
+        return [dragItem]
+    }
+
+    func tableView(_ _tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
+        if tableView.hasActiveDrag {
+            if session.items.count > 1 {
+                return UITableViewDropProposal(operation: .cancel)
+            } else if session.items.count == 1 {
+                // One item, check if the section matches
+                if let sourceSection = (session.items[0].localObject as? [Any])?[0] as? Int, let destinationSection = destinationIndexPath?.section {
+                    if sourceSection == destinationSection {
+                        return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
+                    }
+                }
+            }
+            return UITableViewDropProposal(operation: .cancel)
+        } else {
+            return UITableViewDropProposal(operation: .copy, intent: .insertAtDestinationIndexPath)
+        }
+    }
+
+    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
+        // Needed for drop delegate, but not called when dragging & dropping in table
+        print("perform Drop")
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+
+        switch (sourceIndexPath.section, destinationIndexPath.section) {
+        case (0, 0):
+            let mover = tableViewData.remove(at: sourceIndexPath.row)
+            tableViewData.insert(mover, at: destinationIndexPath.row)
+            self.saveOrder()
+        case (1, 1):
+            let mover = tagViewData.remove(at: sourceIndexPath.row)
+            tagViewData.insert(mover, at: destinationIndexPath.row)
+            self.saveOrder()
+        default:
+            break
+        }
+
+    }
+    
+    // MARK: - Context menu
+
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        let identifier = "\(indexPath.section),\(indexPath.row)" as NSString
+
+        if indexPath.section == 0 {
+            let project = tableViewData[indexPath.row]
+            
+            let deleteAction = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) { action in
+                
+                let alert = UIAlertController(title: "Delete project, and associated tasks?", message: "All tasks belonging to the project will be deleted as well. This action cannot be undone.", preferredStyle: .actionSheet)
+                
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+                let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+                    self.tableViewData.remove(at: indexPath.row)
+                    CoreDataManager.shared.deleteProject(project)
+                    UIView.animate(withDuration: 0.35) {
+                    self.tableView.deleteRows(at: [indexPath], with: .fade)
+                    }
+                    self.delegate?.reloadCollection(sender: self)
+                }
+
+                // Add the actions to the alert controller
+                alert.addAction(cancelAction)
+                alert.addAction(deleteAction)
+
+                // Present the alert controller
+                if var rootViewController = UIApplication.shared.keyWindow?.rootViewController {
+                    while let presentedViewController = rootViewController.presentedViewController {
+                        rootViewController = presentedViewController
+                    }
+                    rootViewController.present(alert, animated: true, completion: nil)
+                }
+            }
+            
+            return UIContextMenuConfiguration(identifier: identifier, previewProvider: nil, actionProvider: { _ in
+                UIMenu(title: "", identifier: nil, children: [deleteAction])
+            })
+        }
+        
+        else {
+            let tag = tagViewData[indexPath.row]
+            
+            let deleteAction = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) { action in
+                
+                let alert = UIAlertController(title: "Delete tag?", message: "The associated tasks will not be deleted. This action cannot be undone.", preferredStyle: .actionSheet)
+                
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+                let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+                    self.tagViewData.remove(at: indexPath.row)
+                    CoreDataManager.shared.deleteTag(tag)
+                    UIView.animate(withDuration: 0.35) {
+                    self.tableView.deleteRows(at: [indexPath], with: .fade)
+                    }
+                }
+
+                // Add the actions to the alert controller
+                alert.addAction(cancelAction)
+                alert.addAction(deleteAction)
+
+                // Present the alert controller
+                if var rootViewController = UIApplication.shared.keyWindow?.rootViewController {
+                    while let presentedViewController = rootViewController.presentedViewController {
+                        rootViewController = presentedViewController
+                    }
+                    rootViewController.present(alert, animated: true, completion: nil)
+                }
+            }
+            
+            return UIContextMenuConfiguration(identifier: identifier, previewProvider: nil, actionProvider: { _ in
+                UIMenu(title: "", identifier: nil, children: [deleteAction])
+            })
+        }
+        
+
+
+
+
+    }
+
+
+//    func tableView(_ tableView: UITableView, previewForDismissingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+//        guard
+//            let identifier = configuration.identifier as? String
+//        else {
+//            return nil
+//        }
+//
+//        let array = identifier.components(separatedBy: ",")
+//
+//        let section = Int(array[0])! as Int
+//        let row = Int(array[1])! as Int
+//
+//        let indexPath = IndexPath(row: row, section: section)
+//
+//
+//        if let cell = tableView.cellForRow(at: indexPath) {
+//         // let cellBackground = cell.backgroundView
+//         // cell.backgroundColor == UIColor.BackgroundColor
+//            return UITargetedPreview(view: cell)
+//        }
+//        else {
+//            return nil
+//        }
+//    }
 }
 
-@objc protocol ProjectTableViewDelegate: class {
-    func projectSelected(sender: ProjectTableView)
-    func tagSelected(sender: ProjectTableView)
-}
+
