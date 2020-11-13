@@ -80,6 +80,8 @@
 		01D5348E234F727C00DE6776 /* RepeatViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5348D234F727C00DE6776 /* RepeatViewCell.swift */; };
 		01D53490234F733100DE6776 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01D5348F234F733100DE6776 /* LaunchScreen.storyboard */; };
 		01D8F45B255DFF6400CEB9E9 /* HabitCollectionViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0142169B255DF7BE0071BD1C /* HabitCollectionViewHeader.xib */; };
+		01E6C59F255EA2D800F05A7A /* HabitDateSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E6C59E255EA2D800F05A7A /* HabitDateSelectorCell.swift */; };
+		01E6C5A7255EABD200F05A7A /* HabitDateSelectorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01E6C5A6255EABD200F05A7A /* HabitDateSelectorCell.xib */; };
 		01EAFEE6231CAACA00F3EA9D /* RepetitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EAFEE5231CAACA00F3EA9D /* RepetitionViewController.swift */; };
 		01F3A08C24F534D500368C6A /* ExpandableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3A08B24F534D500368C6A /* ExpandableHeaderView.swift */; };
 		01F3A08E24F534EC00368C6A /* ExpandableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01F3A08D24F534EC00368C6A /* ExpandableHeaderView.xib */; };
@@ -236,6 +238,8 @@
 		01D53483234F705000DE6776 /* SelectionScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionScreenViewController.swift; sourceTree = "<group>"; };
 		01D5348D234F727C00DE6776 /* RepeatViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatViewCell.swift; sourceTree = "<group>"; };
 		01D5348F234F733100DE6776 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		01E6C59E255EA2D800F05A7A /* HabitDateSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDateSelectorCell.swift; sourceTree = "<group>"; };
+		01E6C5A6255EABD200F05A7A /* HabitDateSelectorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HabitDateSelectorCell.xib; sourceTree = "<group>"; };
 		01EAFEE5231CAACA00F3EA9D /* RepetitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepetitionViewController.swift; sourceTree = "<group>"; };
 		01F3A08B24F534D500368C6A /* ExpandableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExpandableHeaderView.swift; path = "CalDo/ViewControllers/Cells/Task Project Cells/ExpandableHeaderView.swift"; sourceTree = SOURCE_ROOT; };
 		01F3A08D24F534EC00368C6A /* ExpandableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandableHeaderView.xib; sourceTree = "<group>"; };
@@ -455,6 +459,8 @@
 		01CC545A2546136900922BDF /* Habit Section Cells */ = {
 			isa = PBXGroup;
 			children = (
+				01E6C59E255EA2D800F05A7A /* HabitDateSelectorCell.swift */,
+				01E6C5A6255EABD200F05A7A /* HabitDateSelectorCell.xib */,
 				0142169B255DF7BE0071BD1C /* HabitCollectionViewHeader.xib */,
 				014216A0255DF8060071BD1C /* HabitCollectionViewHeader.swift */,
 				01CC54532546135500922BDF /* HabitTableViewCell.swift */,
@@ -538,6 +544,7 @@
 		01F3A09824F5403000368C6A /* Nib Files */ = {
 			isa = PBXGroup;
 			children = (
+				83AEF023250190F400D31E76 /* ProjectTableViewCell.swift */,
 				013A43482533A6C9008FC23E /* ProjectTaskDetailViewController.xib */,
 				013A433B2533A305008FC23E /* ScheduleViewController.xib */,
 				014B15CE250F861E00D673E7 /* TagTableViewCell.xib */,
@@ -582,7 +589,6 @@
 			children = (
 				014B15CD250F861E00D673E7 /* TagTableViewCell.swift */,
 				01F3A08B24F534D500368C6A /* ExpandableHeaderView.swift */,
-				83AEF023250190F400D31E76 /* ProjectTableViewCell.swift */,
 			);
 			path = "Task Project Cells";
 			sourceTree = "<group>";
@@ -764,6 +770,7 @@
 				0165E1A02329A971002F5DA1 /* InboxHomeScreenTableViewCell.xib in Resources */,
 				0145956E2445EA6400AFB34D /* SF-Pro-Rounded-Heavy.otf in Resources */,
 				019280F01F8A615C00E895D4 /* Main.storyboard in Resources */,
+				01E6C5A7255EABD200F05A7A /* HabitDateSelectorCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -904,6 +911,7 @@
 				83626C7A24DCACA200AFD9EE /* TaskTableView.swift in Sources */,
 				013E66BF22F0BFD80048AF18 /* DatePopUpViewController.swift in Sources */,
 				015DA6A223C952EF00582851 /* ChooseProjectTableViewCell.swift in Sources */,
+				01E6C59F255EA2D800F05A7A /* HabitDateSelectorCell.swift in Sources */,
 				010736642542E23300239F4E /* HabitViewController.swift in Sources */,
 				013A43492533A6C9008FC23E /* ProjectTaskDetailViewController.swift in Sources */,
 				83A1975B25018C1F001011D2 /* TaskTableViewController.swift in Sources */,
