@@ -82,7 +82,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MCR-TO-g72" customClass="PlainCircularProgressBar" customModule="CalDo" customModuleProvider="target">
-                                <rect key="frame" x="16" y="69" width="60" height="60"/>
+                                <rect key="frame" x="16" y="70" width="60" height="60"/>
                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="eed-SX-rPP"/>
@@ -95,25 +95,25 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Habits" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8N-Y7-wDy">
-                                <rect key="frame" x="20" y="20" width="87" height="35"/>
+                                <rect key="frame" x="20" y="20" width="89.5" height="36"/>
                                 <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goals Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X6e-IB-Tkb">
-                                <rect key="frame" x="97" y="71" width="122" height="26"/>
+                                <rect key="frame" x="97" y="72" width="122" height="26"/>
                                 <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ej-o6-BG6">
-                                <rect key="frame" x="97" y="105" width="42" height="20"/>
+                                <rect key="frame" x="97" y="106" width="40.5" height="20"/>
                                 <fontDescription key="fontDescription" name="SFProRounded-Medium" family="SF Pro Rounded" pointSize="17"/>
                                 <color key="textColor" name="TextColorDim"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="nyG-HT-GBZ">
-                                <rect key="frame" x="248" y="85" width="90" height="30"/>
+                                <rect key="frame" x="248" y="86" width="90" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="77t-Z1-3Y3"/>
                                 </constraints>
@@ -122,7 +122,7 @@
                                 </connections>
                             </slider>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cF2-ea-3bO">
-                                <rect key="frame" x="7" y="164" width="362" height="454"/>
+                                <rect key="frame" x="7" y="165" width="362" height="402"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="safeArea" id="teE-Tj-cXV">
                                     <size key="itemSize" width="373" height="75"/>
@@ -139,7 +139,7 @@
                             <constraint firstItem="e8N-Y7-wDy" firstAttribute="leading" secondItem="r6F-WF-8jd" secondAttribute="leading" constant="20" id="1Z2-b5-Vfp"/>
                             <constraint firstItem="MCR-TO-g72" firstAttribute="leading" secondItem="r6F-WF-8jd" secondAttribute="leading" constant="16" id="MeM-Uq-XxW"/>
                             <constraint firstItem="r6F-WF-8jd" firstAttribute="trailing" secondItem="nyG-HT-GBZ" secondAttribute="trailing" constant="39" id="Tyk-GX-QUA"/>
-                            <constraint firstItem="cF2-ea-3bO" firstAttribute="bottom" secondItem="r6F-WF-8jd" secondAttribute="bottom" id="VeE-cg-QU6"/>
+                            <constraint firstItem="cF2-ea-3bO" firstAttribute="bottom" secondItem="r6F-WF-8jd" secondAttribute="bottom" constant="-51" id="VeE-cg-QU6"/>
                             <constraint firstItem="cF2-ea-3bO" firstAttribute="leading" secondItem="r6F-WF-8jd" secondAttribute="leading" constant="7" id="X4i-jF-Rso"/>
                             <constraint firstItem="X6e-IB-Tkb" firstAttribute="leading" secondItem="MCR-TO-g72" secondAttribute="trailing" constant="21" id="cL4-Xf-jRx"/>
                             <constraint firstItem="nyG-HT-GBZ" firstAttribute="leading" secondItem="MCR-TO-g72" secondAttribute="leading" constant="234" id="dog-Or-DYB"/>
@@ -693,7 +693,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mle-YZ-aFU">
-                                        <rect key="frame" x="58" y="30" width="97" height="36"/>
+                                        <rect key="frame" x="58" y="30" width="94.5" height="35"/>
                                         <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
