@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17504.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Rounded-Bold.otf">
+            <string>SFProRounded-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="KGk-i7-Jjw" customClass="HabitTableViewCell" customModule="CalDo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="81"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="81"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X9F-g9-ByN">
+                        <rect key="frame" x="354" y="25" width="46" height="30"/>
+                        <state key="normal" title="Button"/>
+                    </button>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="138-oT-JLc">
+                        <rect key="frame" x="20" y="16" width="47" height="47"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="47" id="VvN-dv-8tq"/>
+                            <constraint firstAttribute="width" constant="47" id="syP-I7-DLZ"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lET-fV-ioL">
+                        <rect key="frame" x="80" y="17" width="41.5" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" systemColor="systemGrayColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lrg-03-sg9">
+                        <rect key="frame" x="80" y="43" width="118" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="118" id="NDF-rV-usb"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="X9F-g9-ByN" secondAttribute="bottom" constant="26" id="CSN-BR-lvl"/>
+                    <constraint firstItem="Lrg-03-sg9" firstAttribute="top" secondItem="lET-fV-ioL" secondAttribute="bottom" constant="5" id="GHL-dw-REe"/>
+                    <constraint firstItem="Lrg-03-sg9" firstAttribute="leading" secondItem="138-oT-JLc" secondAttribute="trailing" constant="13" id="Jee-ja-cFN"/>
+                    <constraint firstAttribute="bottom" secondItem="Lrg-03-sg9" secondAttribute="bottom" constant="17" id="K8N-nV-Jpc"/>
+                    <constraint firstAttribute="trailing" secondItem="X9F-g9-ByN" secondAttribute="trailing" constant="14" id="Lel-kJ-85f"/>
+                    <constraint firstItem="X9F-g9-ByN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="Ltz-Am-HwX"/>
+                    <constraint firstItem="lET-fV-ioL" firstAttribute="leading" secondItem="138-oT-JLc" secondAttribute="trailing" constant="13" id="SkX-hc-DbA"/>
+                    <constraint firstItem="lET-fV-ioL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="17" id="bTD-ZF-wyR"/>
+                    <constraint firstAttribute="bottom" secondItem="138-oT-JLc" secondAttribute="bottom" constant="18" id="hn4-UF-5w4"/>
+                    <constraint firstItem="138-oT-JLc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" symbolic="YES" id="iil-uN-MNv"/>
+                    <constraint firstItem="138-oT-JLc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="tM8-13-Ypz"/>
+                    <constraint firstItem="Lrg-03-sg9" firstAttribute="top" secondItem="lET-fV-ioL" secondAttribute="bottom" constant="5" id="xFx-kb-Vyy"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="habitButton" destination="X9F-g9-ByN" id="NB4-hT-PRa"/>
+                <outlet property="habitDescription" destination="lET-fV-ioL" id="2xj-l0-WEt"/>
+                <outlet property="habitImage" destination="138-oT-JLc" id="iit-yr-v0y"/>
+                <outlet property="habitTitle" destination="Lrg-03-sg9" id="8HP-A4-Qqr"/>
+            </connections>
+            <point key="canvasLocation" x="144.92753623188406" y="138.95089285714286"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
