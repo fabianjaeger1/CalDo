@@ -37,22 +37,21 @@ class PresentationController: UIPresentationController {
 //    }()
 
     override func presentationTransitionWillBegin() {
-        super.presentationTransitionWillBegin()
+        let dismissView = UIView(frame: self.containerView!.bounds)
+        dismissView.backgroundColor = UIColor.clear
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(PresentationController.touchCallback(_:)))
+        dismissView.addGestureRecognizer(tapGesture)
+        containerView?.addSubview(dismissView)
 
-//        let superview = presentingViewController.view!
-//        superview.addSubview(dimmingView)
-//        NSLayoutConstraint.activate([
-//            dimmingView.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
-//            dimmingView.trailingAnchor.constraint(equalTo: superview.trailingAnchor),
-//            dimmingView.bottomAnchor.constraint(equalTo: superview.bottomAnchor),
-//            dimmingView.topAnchor.constraint(equalTo: superview.topAnchor)
-//        ])
-//
-//        dimmingView.alpha = 0
-//        presentingViewController.transitionCoordinator?.animate(alongsideTransition: { _ in
-//            self.dimmingView.alpha = 1
-//        }, completion: nil)
     }
+    
+    @objc func touchCallback(_ sender: UITapGestureRecognizer? = nil) {
+         
+        let vcb = presentedViewController as! ScheduleViewController
+        
+        vcb.dismiss(animated: true, completion: nil)
+      }
+    
 
     override func dismissalTransitionWillBegin() {
 //        super.dismissalTransitionWillBegin()
@@ -91,15 +90,18 @@ class ScheduleViewController: UIViewController {
            super.init(coder: aDecoder)
            configure()
        }
-   }
 
-   private extension ScheduleViewController {
-       func configure() {
-            modalPresentationStyle = .custom
-            modalTransitionStyle = .coverVertical// use whatever transition you want
-            transitioningDelegate = customTransitioningDelegate
-       }
-   }
+}
+
+private extension ScheduleViewController {
+    func configure() {
+         modalPresentationStyle = .custom
+         modalTransitionStyle = .coverVertical// use whatever transition you want
+         transitioningDelegate = customTransitioningDelegate
+    }
+}
+
+
 
 
     /*
