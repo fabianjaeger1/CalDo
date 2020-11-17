@@ -9,8 +9,7 @@
 import UIKit
 
 
-let todoTaskCategories = ["Due", "Project", "Priority", "Tags"]
-let todoTaskCategoriesImages = ["clock.fill","folder.fill", "flag.fill"]
+
 
 class DetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIAdaptivePresentationControllerDelegate { 
     
@@ -20,8 +19,8 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
     @IBOutlet weak var textLine: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    @IBOutlet weak var projectTitle: UILabel!
-    @IBOutlet weak var projectColor: UIView!
+    // @IBOutlet weak var projectTitle: UILabel!
+    // @IBOutlet weak var projectColor: UIView!
     
     @IBOutlet weak var todoDate: UILabel!
     
@@ -30,10 +29,25 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
     var task: TaskEntity!
     var indexPath: IndexPath!
     
-    // Spacing at the margins left and right
+    var projectTitle: String!
+    var projectColor: UIColor!
+    
+    var dateTitle: String!
+    var dateTextColor: UIColor!
+    
+    var collectionTitles: [String]!
+    var collectionColors: [UIColor]!
+    
+    let todoTaskCategories = ["Due", "Project", "Priority", "Tags"]
+    let collectionImages = ["clock.fill","folder.fill", "flag.fill"]
+    
+    /// Spacing at the margins left and right
     let marginSpacing: CGFloat = 21
-    // Spacing between items in collection view
+    /// Spacing between items in collection view
     let spacing: CGFloat = 12
+    
+    /// Height of collection view cells
+    let cellHeight: CGFloat = 50
 
         
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -43,12 +57,19 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailCollectionViewCell", for: indexPath) as! DetailCollectionViewCell
-        cell.label.text = todoTaskCategories[indexPath.row]
-        cell.image.image = UIImage(systemName: todoTaskCategoriesImages[indexPath.row])
-        cell.image.tintColor = UIColor.textColor
-        cell.backgroundColor = UIColor.clear
-        cell.contentView.layer.cornerRadius = 15
+        
+        cell.label.text = collectionTitles[indexPath.row]
+        cell.image.image = UIImage(systemName: collectionImages[indexPath.row])
+        cell.image.tintColor = .textColor
+        
+        //if indexPath.row == 0 {
+            cell.label.textColor = collectionColors[indexPath.row]
+        //}
+        
+        cell.backgroundColor = .clear
+        cell.contentView.layer.cornerRadius = 10
         cell.contentView.backgroundColor = .backgroundColor
+        
         return cell
     }
     
@@ -71,7 +92,7 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if [0, 1].contains(indexPath.row) {
             let width = (self.view.frame.size.width - 2 * marginSpacing - spacing) / 2
-            return CGSize(width: width, height: 50)
+            return CGSize(width: width, height: cellHeight)
         }
         else {
             return CGSize(width: 0, height: 0)
@@ -99,23 +120,11 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         todoTitle.text = task.value(forKey: "title") as? String
         
-        let project = task.value(forKey: "project")
-        let projectColor = (project as? ProjectEntity)?.value(forKey: "color")
-        
-        projectTitle.text = (project as? ProjectEntity)?.title ?? "Inbox"
-        if projectColor != nil {
-             projectTitle.textColor = UIColor(hexString: (projectColor as! String))
-        }
-       
-        let taskHasTime = task.value(forKey: "dateHasTime") as! Bool
-        let date = task.value(forKey: "date") as? Date
-        let priority = task.value(forKey: "priority") as! Int
-        let recurrence = task.value(forKey: "recurrence") as! Bool
-        
-        todoDate.text = date?.todoString(withTime: taskHasTime) ?? "No Date"
-        todoDate.textColor = date?.todoColor(withTime: taskHasTime) ?? .systemGray
         
         var priorityImage: UIImage?
+        
+        let priority = task.value(forKey: "priority") as! Int
+        let recurrence = task.value(forKey: "recurrence") as! Bool
         
         switch priority {
         case 0:
@@ -128,7 +137,7 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
             priorityImage = UIImage(systemName: "flag")!.withTintColor(.systemGray, renderingMode: .alwaysOriginal)
         }
 
-        priorityButton.setImage(priorityImage, for: .normal)
+        // priorityButton.setImage(priorityImage, for: .normal)
         
 
         switch recurrence {
@@ -163,6 +172,28 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
     init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, task: TaskEntity, indexPath: IndexPath) {
         self.task = task
         self.indexPath = indexPath
+        
+        let project = task.value(forKey: "project")
+        let projectColorString = (project as? ProjectEntity)?.value(forKey: "color")
+         
+        projectTitle = (project as? ProjectEntity)?.title ?? "Inbox"
+
+        if projectColorString != nil {
+          projectColor = UIColor(hexString: (projectColorString as! String))
+        }
+        else {
+         projectColor = .textColor
+        }
+
+        let taskHasTime = task.value(forKey: "dateHasTime") as! Bool
+        let date = task.value(forKey: "date") as? Date
+
+        dateTitle = date?.todoString(withTime: taskHasTime) ?? "No Date"
+        dateTextColor = date?.todoColor(withTime: taskHasTime) ?? .systemGray
+
+        collectionTitles = [dateTitle, projectTitle]
+        collectionColors = [dateTextColor, projectColor]
+        
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     

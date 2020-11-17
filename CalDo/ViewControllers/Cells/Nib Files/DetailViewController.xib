@@ -16,11 +16,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="CalDo" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="qmh-1V-Hdt" id="nK7-iF-Iir"/>
-                <outlet property="priorityButton" destination="7rc-sK-pmb" id="Gfl-e7-gpb"/>
-                <outlet property="projectTitle" destination="cEB-q2-zom" id="bM4-tZ-1zH"/>
                 <outlet property="textLine" destination="5sI-ZE-cjc" id="Ub5-Za-vGW"/>
                 <outlet property="todoButton" destination="VPw-f8-sst" id="2NT-wC-RiQ"/>
-                <outlet property="todoDate" destination="i2N-h5-Ixt" id="sEo-gF-Gqq"/>
                 <outlet property="todoTitle" destination="UKQ-2F-nhw" id="fmr-9Z-U6Q"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
