@@ -99,14 +99,43 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
         }
     }
     
+    func configureCollectionView() {
+        collectionView.collectionViewLayout = createLayout()
+    }
+
+    func createLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewCompositionalLayout {
+            (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
+            
+            let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(30), heightDimension: .absolute(self.cellHeight))
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            // item.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: nil, top: NSCollectionLayoutSpacing.fixed(20), trailing: nil, bottom: NSCollectionLayoutSpacing.fixed(0))
+            // item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: self.spacing, bottom: 0, trailing: self.spacing)
+            
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(self.cellHeight))
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
+            group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: self.marginSpacing, bottom: 0, trailing: self.marginSpacing)
+            group.interItemSpacing = NSCollectionLayoutSpacing.fixed(self.spacing)
+            
+            let section = NSCollectionLayoutSection(group: group)
+            
+            return section
+        }
+        return layout
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        //let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         
-        layout.sectionInset = UIEdgeInsets(top: 0, left: marginSpacing, bottom: 0, right: marginSpacing)
-        layout.minimumLineSpacing = spacing
-        layout.minimumInteritemSpacing = spacing
+//        layout.sectionInset = UIEdgeInsets(top: 0, left: marginSpacing, bottom: 0, right: marginSpacing)
+//        layout.minimumLineSpacing = spacing
+//        layout.minimumInteritemSpacing = spacing
+        
+        // let layout = collectionView.collectionViewLayout as! UICollectionViewCompositionalLayout
+        
+        configureCollectionView()
        
         collectionView.register(UINib(nibName: "DetailCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DetailCollectionViewCell")
         collectionView.delegate = self
