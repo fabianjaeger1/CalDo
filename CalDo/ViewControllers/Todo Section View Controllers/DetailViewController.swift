@@ -30,6 +30,8 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
     var task: TaskEntity!
     var indexPath: IndexPath!
     
+    // Spacing at the margins left and right
+    let marginSpacing: CGFloat = 21
     // Spacing between items in collection view
     let spacing: CGFloat = 12
 
@@ -68,7 +70,7 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
 //
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if [0, 1].contains(indexPath.row) {
-            let width = (self.view.frame.size.width - 3 * spacing) / 2
+            let width = (self.view.frame.size.width - 2 * marginSpacing - spacing) / 2
             return CGSize(width: width, height: 50)
         }
         else {
@@ -81,7 +83,7 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
 
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         
-        layout.sectionInset = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: marginSpacing, bottom: 0, right: marginSpacing)
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
        
