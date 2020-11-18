@@ -39,7 +39,7 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
     var collectionColors: [UIColor]!
     
     let todoTaskCategories = ["Due", "Project", "Priority", "Tags"]
-    let collectionImages = ["clock.fill","folder.fill", "flag.fill"]
+    let collectionImages = ["clock.fill","folder.fill", "flag.fill", "flag.fill"]
     
     /// Spacing at the margins left and right
     let marginSpacing: CGFloat = 21
@@ -51,20 +51,50 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
 
         
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        2
+        3
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailCollectionViewCell", for: indexPath) as! DetailCollectionViewCell
         
-        cell.label.text = collectionTitles[indexPath.row]
-        cell.image.image = UIImage(systemName: collectionImages[indexPath.row])
-        cell.image.tintColor = .textColor
-        
-        //if indexPath.row == 0 {
+        if [0, 1, 3].contains(indexPath.row) {
+            cell.label.text = collectionTitles[indexPath.row]
+            cell.image.image = UIImage(systemName: collectionImages[indexPath.row])
+            cell.image.tintColor = .textColor
+            
+            //if indexPath.row == 0 {
             cell.label.textColor = collectionColors[indexPath.row]
-        //}
+        }
+        else if indexPath.row == 2 {
+            let priority = task.value(forKey: "priority") as! Int
+            // let recurrence = task.value(forKey: "recurrence") as! Bool
+            
+            switch priority {
+            case 0:
+                cell.image.image = UIImage(systemName: "flag.fill")!.withTintColor(.systemGray, renderingMode: .alwaysOriginal)
+            case 1:
+                cell.image.image = UIImage(systemName: "flag.fill")!.withTintColor(.systemOrange, renderingMode: .alwaysOriginal)
+            case 2:
+                cell.image.image = UIImage(systemName: "flag.fill")!.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
+            default:
+                cell.image.image = UIImage(systemName: "flag")!.withTintColor(.systemGray, renderingMode: .alwaysOriginal)
+            }
+            
+            cell.label.text = nil
+            
+            cell.labelTrailing.isActive = false
+            cell.imageLeading.isActive = false
+            cell.imageTrailing.isActive = false
+            
+            cell.imageWidth.constant = 30
+            cell.image.centerXAnchor.constraint(equalTo: cell.centerXAnchor).isActive = true
+            cell.image.centerYAnchor.constraint(equalTo: cell.centerYAnchor).isActive = true
+            
+            cell.widthAnchor.constraint(equalTo: cell.heightAnchor).isActive = true
+            
+        }
+
         
         cell.backgroundColor = .clear
         cell.contentView.layer.cornerRadius = 10
@@ -74,12 +104,14 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath == NSIndexPath(row: 0, section: 0) as IndexPath{
+        print("Section:", indexPath.section)
+        print("Row:", indexPath.row)
+        if indexPath == NSIndexPath(row: 0, section: 0) as IndexPath {
             let vc = ScheduleViewController(nibName: "ScheduleViewController", bundle: nil)
             vc.presentationController?.delegate = self
             self.present(vc, animated: true, completion: nil)
         }
-        if indexPath == NSIndexPath(row: 1, section: 0) as IndexPath{
+        if indexPath == NSIndexPath(row: 1, section: 0) as IndexPath {
             let vc = ProjectTaskDetailViewController(nibName: "ProjectTaskDetailViewController", bundle: nil)
             vc.presentationController?.delegate = self
             self.present(vc, animated: true, completion: nil)
@@ -89,35 +121,39 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
         }
     }
 //
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if [0, 1].contains(indexPath.row) {
-            let width = (self.view.frame.size.width - 2 * marginSpacing - spacing) / 2
-            return CGSize(width: width, height: cellHeight)
-        }
-        else {
-            return CGSize(width: 0, height: 0)
-        }
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        if [0, 1].contains(indexPath.row) {
+//            let width = (self.view.frame.size.width - 2 * marginSpacing - spacing) / 2
+//            return CGSize(width: width, height: cellHeight)
+//        }
+//        else {
+//            return CGSize(width: 0, height: 0)
+//        }
+//    }
     
     func configureCollectionView() {
         collectionView.collectionViewLayout = createLayout()
     }
 
+    
     func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout {
             (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             
-            let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(30), heightDimension: .absolute(self.cellHeight))
+            let widthDimension = NSCollectionLayoutDimension.estimated(49)
+            
+            let itemSize = NSCollectionLayoutSize(widthDimension: widthDimension, heightDimension: .fractionalHeight(1.0))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
             // item.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: nil, top: NSCollectionLayoutSpacing.fixed(20), trailing: nil, bottom: NSCollectionLayoutSpacing.fixed(0))
             // item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: self.spacing, bottom: 0, trailing: self.spacing)
             
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(self.cellHeight))
-            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
             group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: self.marginSpacing, bottom: 0, trailing: self.marginSpacing)
-            group.interItemSpacing = NSCollectionLayoutSpacing.fixed(self.spacing)
-            
+            group.interItemSpacing = .fixed(self.spacing)
+
             let section = NSCollectionLayoutSection(group: group)
+            section.interGroupSpacing = self.spacing
             
             return section
         }
@@ -150,25 +186,10 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
         todoTitle.text = task.value(forKey: "title") as? String
         
         
-        var priorityImage: UIImage?
         
         let priority = task.value(forKey: "priority") as! Int
         let recurrence = task.value(forKey: "recurrence") as! Bool
         
-        switch priority {
-        case 0:
-            priorityImage = UIImage(systemName: "flag.fill")!.withTintColor(.systemGray, renderingMode: .alwaysOriginal)
-        case 1:
-            priorityImage = UIImage(systemName: "flag.fill")!.withTintColor(.systemOrange, renderingMode: .alwaysOriginal)
-        case 2:
-            priorityImage = UIImage(systemName: "flag.fill")!.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
-        default:
-            priorityImage = UIImage(systemName: "flag")!.withTintColor(.systemGray, renderingMode: .alwaysOriginal)
-        }
-
-        // priorityButton.setImage(priorityImage, for: .normal)
-        
-
         switch recurrence {
         case true:
             switch priority {
@@ -208,10 +229,10 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
         projectTitle = (project as? ProjectEntity)?.title ?? "Inbox"
 
         if projectColorString != nil {
-          projectColor = UIColor(hexString: (projectColorString as! String))
+            projectColor = UIColor(hexString: (projectColorString as! String))
         }
         else {
-         projectColor = .textColor
+            projectColor = .textColor
         }
 
         let taskHasTime = task.value(forKey: "dateHasTime") as! Bool
@@ -220,8 +241,8 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
         dateTitle = date?.todoString(withTime: taskHasTime) ?? "No Date"
         dateTextColor = date?.todoColor(withTime: taskHasTime) ?? .systemGray
 
-        collectionTitles = [dateTitle, projectTitle]
-        collectionColors = [dateTextColor, projectColor]
+        collectionTitles = [dateTitle, projectTitle, "Test1", "Test2"]
+        collectionColors = [dateTextColor, projectColor, .textColor, .textColor]
         
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
