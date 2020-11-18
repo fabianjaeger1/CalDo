@@ -42,6 +42,12 @@ final class TableVIewAnimator {
 
 
 class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, SmallTaskTableViewCellDelegate, TaskTableViewCellDelegate, UITableViewDragDelegate {
+    
+    
+    func hasPerformedSwipe(passedInfo: String){
+        print("Test")
+    }
+    
         
     
 //    weak var delegate1: SmallTaskTableViewCellDelegate?
@@ -459,43 +465,39 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         
 // MARK: - Swipe Actions
         
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let schedule = scheduleAction(at: indexPath)
-        return UISwipeActionsConfiguration(actions: [schedule])
-    }
+//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        let select = selectAction(at: indexPath)
+//        return UISwipeActionsConfiguration(actions: [select])
+//    }
+//
+//    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        let schedule = scheduleAction(at: indexPath)
+//        return UISwipeActionsConfiguration(actions: [schedule])
+//    }
+//
+//    func selectAction(at indexPath: IndexPath) -> UIContextualAction {
+//        let action = UIContextualAction(style: .normal, title: "Select") { (action, view, completion) in
+//            completion(true)
+//        }
+//        action.image = UIGraphicsImageRenderer(size: CGSize(width: 25, height: 25)).image { _ in
+//        UIImage(named: "Info")?.draw(in: CGRect(x: 0, y: 0, width: 25, height: 25))}
+//        action.backgroundColor = UIColor(hexString: "6ABBD7")
+//        action.title = ""
+//
+//        return action
+//    }
+//
+//    func scheduleAction(at indexPath: IndexPath) -> UIContextualAction {
+//        let action = UIContextualAction(style: .normal, title: "Schedule") { (action, view, completion) in
+//            completion(true)
+//        }
+//        action.image = UIGraphicsImageRenderer(size: CGSize(width: 25, height: 25)).image { _ in
+//            UIImage(named: "Calendar")?.draw(in: CGRect(x: 0, y: 0, width: 25, height: 25))}
+//        action.backgroundColor = UIColor(hexString: "FCCE54")
+//
+//        return action
+//    }
     
-    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let select = selectAction(at: indexPath)
-        return UISwipeActionsConfiguration(actions: [select])
-    }
-    
-    func selectAction(at indexPath: IndexPath) -> UIContextualAction {
-        let action = UIContextualAction(style: .normal, title: "Select") { (action, view, completion) in
-            completion(true)
-        }
-        action.image = UIGraphicsImageRenderer(size: CGSize(width: 25, height: 25)).image { _ in
-        UIImage(named: "Info")?.draw(in: CGRect(x: 0, y: 0, width: 25, height: 25))}
-        action.backgroundColor = UIColor(hexString: "6ABBD7")
-
-        return action
-    }
-    
-    func scheduleAction(at indexPath: IndexPath) -> UIContextualAction {
-        let action = UIContextualAction(style: .normal, title: "Schedule") { (action, view, completion) in
-            completion(true)
-        }
-        action.image = UIGraphicsImageRenderer(size: CGSize(width: 25, height: 25)).image { _ in
-            UIImage(named: "Calendar")?.draw(in: CGRect(x: 0, y: 0, width: 25, height: 25))}
-        action.backgroundColor = UIColor(hexString: "FCCE54")
-        
-        return action
-    }
-    
-    @IBAction func swipeHandler(_ gestureRecognizer : UISwipeGestureRecognizer) {
-        if gestureRecognizer.state == .ended {
-            // Perform Action
-        }
-    }
     
 // MARK: - Cell Sizing
     

@@ -11,7 +11,7 @@ import UIKit
 class PresentationController: UIPresentationController {
     override var frameOfPresentedViewInContainerView: CGRect {
         let bounds = presentingViewController.view.bounds
-        let size = CGSize(width: 370, height: 450)
+        let size = CGSize(width: 370, height: 500)
         let origin = CGPoint(x: bounds.midX - size.width / 2, y: bounds.midY - size.height / 2)
         return CGRect(origin: origin, size: size)
     }
@@ -37,6 +37,10 @@ class PresentationController: UIPresentationController {
 //    }()
 
     override func presentationTransitionWillBegin() {
+        
+        // Possibly implement BlurView?
+//        let dismissView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+//        dismissView.frame = self.containerView!.bounds
         let dismissView = UIView(frame: self.containerView!.bounds)
         dismissView.backgroundColor = UIColor.clear
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(PresentationController.touchCallback(_:)))
@@ -96,7 +100,7 @@ class ScheduleViewController: UIViewController {
 private extension ScheduleViewController {
     func configure() {
          modalPresentationStyle = .custom
-         modalTransitionStyle = .coverVertical// use whatever transition you want
+        modalTransitionStyle = .crossDissolve// use whatever transition you want
          transitioningDelegate = customTransitioningDelegate
     }
 }

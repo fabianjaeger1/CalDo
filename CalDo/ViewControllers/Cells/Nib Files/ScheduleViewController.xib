@@ -32,7 +32,7 @@
                     <color key="textColor" name="TextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <datePicker contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="F9X-rD-30e">
+                <datePicker contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="F9X-rD-30e">
                     <rect key="frame" x="16" y="85" width="338" height="362"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </datePicker>
