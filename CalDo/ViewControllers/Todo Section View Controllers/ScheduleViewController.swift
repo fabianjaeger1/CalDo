@@ -50,12 +50,13 @@ class PresentationController: UIPresentationController {
         // Possibly implement BlurView?
 //        let dismissView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
 //        dismissView.frame = self.containerView!.bounds
-        let dismissView = UIView(frame: self.containerView!.bounds)
-        dismissView.backgroundColor = UIColor.clear
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(PresentationController.touchCallback(_:)))
-        dismissView.addGestureRecognizer(tapGesture)
-        containerView?.addSubview(dismissView)
-
+//        let dismissView = UIView(frame: self.containerView!.bounds)
+//        dismissView.backgroundColor = UIColor.clear
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(PresentationController.touchCallback(_:)))
+//        dismissView.addGestureRecognizer(tapGesture)
+        containerView?.addSubview(self.dismissView)
+        
+        self.dismissView.alpha = 0
         self.presentedViewController.transitionCoordinator?.animate(alongsideTransition: { (UIViewControllerTransitionCoordinatorContext) in
             self.dismissView.alpha = 1
         }, completion: { (UIViewControllerTransitionCoordinatorContext) in })
@@ -110,7 +111,7 @@ class ScheduleViewController: UIViewController {
 private extension ScheduleViewController {
     func configure() {
          modalPresentationStyle = .custom
-        modalTransitionStyle = .crossDissolve// use whatever transition you want
+        modalTransitionStyle = .crossDissolve // use whatever transition you want
          transitioningDelegate = customTransitioningDelegate
     }
 }

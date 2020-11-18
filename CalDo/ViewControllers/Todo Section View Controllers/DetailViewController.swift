@@ -104,8 +104,8 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Section:", indexPath.section)
-        print("Row:", indexPath.row)
+//        print("Section:", indexPath.section)
+//        print("Row:", indexPath.row)
         if indexPath == NSIndexPath(row: 0, section: 0) as IndexPath {
             let vc = ScheduleViewController(nibName: "ScheduleViewController", bundle: nil)
             vc.presentationController?.delegate = self
