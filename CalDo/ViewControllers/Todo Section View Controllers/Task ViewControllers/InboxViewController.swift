@@ -40,7 +40,7 @@ import UIKit
 
 // var InboxTodo = [TodoItem]() // Globally defined variable for Todo items in Inbox
 
-class InboxViewController: TaskTableViewController, UIAdaptivePresentationControllerDelegate {
+class InboxViewController: TaskTableViewController {
     
 //    func tableView(_ myTableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        let vc = DetailViewController(nibName: "DetailViewController", bundle: nil)

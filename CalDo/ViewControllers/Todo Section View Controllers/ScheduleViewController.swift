@@ -15,6 +15,16 @@ class PresentationController: UIPresentationController {
         let origin = CGPoint(x: bounds.midX - size.width / 2, y: bounds.midY - size.height / 2)
         return CGRect(origin: origin, size: size)
     }
+    
+    private lazy var dismissView: UIView = {
+        let view = UIView(frame: self.containerView!.bounds)
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        view.isUserInteractionEnabled = true
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(PresentationController.touchCallback(_:)))
+        view.addGestureRecognizer(tapGesture)
+        return view
+    }()
 
     override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
@@ -26,7 +36,7 @@ class PresentationController: UIPresentationController {
             .flexibleRightMargin
         ]
         presentedView?.layer.cornerRadius = 20
-        presentedView?.layer.backgroundColor = UIColor.backgroundColor.cgColor
+        presentedView?.layer.backgroundColor = UIColor.BackgroundColor.cgColor
         presentedView?.translatesAutoresizingMaskIntoConstraints = true
     }
     
@@ -37,12 +47,18 @@ class PresentationController: UIPresentationController {
 //    }()
 
     override func presentationTransitionWillBegin() {
-        let dismissView = UIView(frame: self.containerView!.bounds)
-        dismissView.backgroundColor = UIColor.clear
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(PresentationController.touchCallback(_:)))
-        dismissView.addGestureRecognizer(tapGesture)
-        containerView?.addSubview(dismissView)
+        //let dismissView = UIView(frame: self.containerView!.bounds)
+        //dismissView.backgroundColor = UIColor.clear
+        //let tapGesture = UITapGestureRecognizer(target: self, action: #selector(PresentationController.touchCallback(_:)))
+        //dismissView.addGestureRecognizer(tapGesture)
+        
+        containerView?.addSubview(self.dismissView)
+        
+        self.dismissView.alpha = 0
 
+        self.presentedViewController.transitionCoordinator?.animate(alongsideTransition: { (UIViewControllerTransitionCoordinatorContext) in
+            self.dismissView.alpha = 1
+        }, completion: { (UIViewControllerTransitionCoordinatorContext) in })
     }
     
     @objc func touchCallback(_ sender: UITapGestureRecognizer? = nil) {
@@ -55,13 +71,11 @@ class PresentationController: UIPresentationController {
 
     override func dismissalTransitionWillBegin() {
 //        super.dismissalTransitionWillBegin()
-//
-//        presentingViewController.transitionCoordinator?.animate(alongsideTransition: { _ in
-//            self.dimmingView.alpha = 0
-//        }, completion: { _ in
-//            self.dimmingView.removeFromSuperview()
-//        })
-//    }
+        self.presentedViewController.transitionCoordinator?.animate(alongsideTransition: { (UIViewControllerTransitionCoordinatorContext) in
+            self.dismissView.alpha = 0
+        }, completion: { (UIViewControllerTransitionCoordinatorContext) in
+            self.dismissView.removeFromSuperview()
+        })
     }
 }
 
@@ -96,20 +110,8 @@ class ScheduleViewController: UIViewController {
 private extension ScheduleViewController {
     func configure() {
          modalPresentationStyle = .custom
-         modalTransitionStyle = .coverVertical// use whatever transition you want
+         modalTransitionStyle = .coverVertical // use whatever transition you want
          transitioningDelegate = customTransitioningDelegate
     }
 }
 
-
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */

@@ -688,8 +688,10 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         let identifier = "\(indexPath.row)" as NSString
         
         let scheduleAction = UIAction(title: "Schedule", image: UIImage(systemName: "calendar")) { action in
-                   
-               }
+            let vc = ScheduleViewController(nibName: "ScheduleViewController", bundle: nil)
+            vc.presentationController?.delegate = self.myViewController
+            self.myViewController?.present(vc, animated: true, completion: nil)
+            }
         
         let priority0Action = UIAction(title: "Priority 3", image: UIImage(systemName: "flag")?.withTintColor(.systemGray, renderingMode: .alwaysOriginal)) { action in
             CoreDataManager.shared.setTaskPriority(task: task, priority: 0)
