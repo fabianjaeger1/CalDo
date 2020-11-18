@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 
-class TaskTableViewController: UIViewController {
+class TaskTableViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
     
     @IBOutlet var toolbarView: UIView!
     @IBOutlet weak var addButton: UIButton!
