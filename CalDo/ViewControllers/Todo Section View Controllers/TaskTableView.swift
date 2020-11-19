@@ -628,9 +628,14 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
     // MARK: - Dragging to reorder
     
     func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-        let dragItem = UIDragItem(itemProvider: NSItemProvider())
-        dragItem.localObject = tableViewData[indexPath.row]
-        return [dragItem]
+        if !isFiltering {
+            let dragItem = UIDragItem(itemProvider: NSItemProvider())
+            dragItem.localObject = tableViewData[indexPath.row]
+            return [dragItem]
+        }
+        else {
+            return []
+        }
     }
 
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
@@ -760,26 +765,46 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         // Inline submenu (to get a separator)
         let editMenu = UIMenu(title: "Edit...", options: .displayInline, children: [scheduleAction, priorityMenu, renameAction, duplicateAction])
         
-        return UIContextMenuConfiguration(identifier: identifier, previewProvider: nil, actionProvider: { _ in
+        //let previewProvider = isFiltering ? DetailViewController.init : nil
+        
+        return !searchController.isActive ? UIContextMenuConfiguration(identifier: identifier, previewProvider: nil, actionProvider: { _ in
             UIMenu(title: "", identifier: nil, children: [editMenu, deleteAction])
-        })
+        }) : nil
     }
     
 //    func tableView(_ tableView: UITableView, previewForHighlightingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
 //
-//        guard
-//            let identifier = configuration.identifier as? String,
-//            let index = Int(identifier),
-//            let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)),
-//            let cellBackground = cell.backgroundView
-//            // cell.backgroundColor == UIColor.BackgroundColor
+////        guard
+////            let identifier = configuration.identifier as? String,
+////            let index = Int(identifier),
+////            let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)),
+////            let cellBackground = cell.backgroundView
+////            // cell.backgroundColor == UIColor.BackgroundColor
+////
+////        else {
+////            return nil
+////        }
 //
+//        if let identifier = configuration.identifier as? String, let index = Int(identifier), let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) {
+//
+//            if !isFiltering {
+//                return UITargetedPreview(view: cell)
+//            }
+//            else {
+//                //self.searchController.view.layoutIfNeeded()
+//                //let container = self.searchController.view.snapshotView(afterScreenUpdates: true)
+//                //self.searchController.view.after
+//                return nil
+//               // return UITargetedPreview(view: cell, parameters: .init(), target: UIPreviewTarget(container: cell, center: self.searchController.view.center))
+//            }
+//
+//        }
 //        else {
 //            return nil
 //        }
-//
-//        print("preview used")
-//        return UITargetedPreview(view: cellBackground)
+
+        //print("preview used")
+        //return UITargetedPreview(view: cellBackground)
 //    }
 //
 
@@ -832,10 +857,12 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         }
         
 
-        if let cell = tableView.cellForRow(at: indexPath) {
+        if let cell = tableView.cellForRow(at: indexPath), !isFiltering {
+            print("Targeted Preview")
         // let cellBackground = cell.backgroundView
         // cell.backgroundColor == UIColor.BackgroundColor
             return UITargetedPreview(view: cell)
+            //return UITargetedPreview(view: cell, parameters: .init(), target: UIPreviewTarget(container: self.searchController.view, center: self.tableView.center))
         }
         else {
             return nil
