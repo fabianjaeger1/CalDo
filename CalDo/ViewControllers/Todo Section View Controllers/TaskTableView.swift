@@ -134,6 +134,11 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             }
             self.saveTaskOrder()
         }
+        if !self.filteredTableViewData.isEmpty {
+            self.filteredTableViewData.sort {
+                ($0.value(forKey: self.sortVariable) as! Int) < ($1.value(forKey: self.sortVariable) as! Int)
+            }
+        }
     }
     
     func saveTaskOrder() {
@@ -157,6 +162,12 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             print("Error fetching tasks from context \(error)")
         }
         
+        if isFiltering {
+            filteredTableViewData = tableViewData.filter { (task: TaskEntity) -> Bool in
+                return task.title!.lowercased().contains(searchController.searchBar.text!.lowercased())
+            }
+        }
+
         // TODO: necessary?
         // self.tableView.reloadData()
         self.sortTasks()
