@@ -126,7 +126,7 @@ extension Date {
         if cal.isDateInTomorrow(self) {
             return UIColor.systemOrange
         }
-        if dayDifference.day! > 2 && dayDifference.day! < 7 {
+        if dayDifference.day! >= 2 && dayDifference.day! < 7 {
             return UIColor.systemPurple
         }
         return UIColor.systemGray

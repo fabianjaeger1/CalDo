@@ -232,6 +232,11 @@ func loadSampleTaskEntities() {
     let task10 = TaskEntity(context: managedContext)
     task10.title = "Go to dentist with mom"
     
+// Task to test specific dates
+    let task11 = TaskEntity(context: managedContext)
+    task11.title = "Become omniscient"
+    task11.date = Date.init(timeIntervalSinceNow: 2 * 3600 * 24)
+    
 
     do {
         try managedContext.save()
