@@ -214,7 +214,48 @@ class CoreDataManager {
             print("Failed to set task priority: \(saveError)")
         }
         
+    }
+    
+    func duplicateTask(_ task: TaskEntity) -> TaskEntity {
+        let newTask = TaskEntity(context: self.persistentContainer.viewContext)
         
+        newTask.completed = task.completed
+        newTask.title = task.title
+        newTask.project = task.project
+        newTask.tags = task.tags
+        newTask.location = task.location
+        newTask.date = task.date
+        newTask.dateHasTime = task.dateHasTime
+        newTask.notes = task.notes
+        newTask.priority = task.priority
+        newTask.recurrence = task.recurrence
+        newTask.inboxOrder = task.inboxOrder
+        newTask.upcomingOrder = task.upcomingOrder
+        newTask.todayOrder = task.todayOrder
+        newTask.projectOrder = task.projectOrder
+        newTask.allOrder = task.allOrder
+        newTask.tagOrder = task.tagOrder
+        newTask.recurringPeriod = task.recurringPeriod
+        
+        self.saveContext()
+        
+        return newTask
+    }
+    
+    func completeTask(_ task: TaskEntity) {
+        
+        if task.recurrence {
+            let newTask = self.duplicateTask(task)
+            
+            let date = newTask.date
+            let interval = newTask.recurringPeriod
+            let newDate = date?.advanced(by: TimeInterval(interval))
+            
+            newTask.setValue(newDate, forKey: "date")
+        }
+        task.setValue(true, forKey: "completed")
+        
+        self.saveContext()
     }
     
     

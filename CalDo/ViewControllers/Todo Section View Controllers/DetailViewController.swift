@@ -253,8 +253,7 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     @objc func completeButtonTapped(sender: UIButton!) {
         
-        task.setValue(true, forKey: "completed")
-        CoreDataManager.shared.saveContext()
+        // CoreDataManager.shared.completeTask(task)
         
         if presentationController is DetailPresentationController {
             (presentationController as!

@@ -212,6 +212,8 @@ func loadSampleTaskEntities() {
     task7a.title = "Time travel"
     task7a.date = Date.init(timeIntervalSinceNow: -7776000)
     task7a.dateHasTime = true
+    task7a.recurrence = true
+    task7a.recurringPeriod = 24 * 3600
     
 // Tasks with no project, tags, no date
 
@@ -230,7 +232,6 @@ func loadSampleTaskEntities() {
     let task10 = TaskEntity(context: managedContext)
     task10.title = "Go to dentist with mom"
     
-
 
     do {
         try managedContext.save()

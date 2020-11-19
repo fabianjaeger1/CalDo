@@ -138,7 +138,7 @@ class TaskTableViewController: UIViewController, UIAdaptivePresentationControlle
             indexPaths?.forEach{
                 taskTableView.completeTask(indexPath: $0)
             }
-            myTableView.deleteRows(at: indexPaths ?? [], with: .fade)
+            // myTableView.deleteRows(at: indexPaths ?? [], with: .fade)
         })
     }
     

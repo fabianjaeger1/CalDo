@@ -158,7 +158,8 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         }
         
         // TODO: necessary?
-        self.tableView.reloadData()
+        // self.tableView.reloadData()
+        self.sortTasks()
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -514,8 +515,51 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
     func completeTask(indexPath: IndexPath) {
         let task = isFiltering ? filteredTableViewData[indexPath.row] : tableViewData[indexPath.row]
         
-        task.setValue(true, forKey: "completed")
-        CoreDataManager.shared.saveContext()
+        CoreDataManager.shared.completeTask(task)
+
+        // TODO: implement haptic feedback
+        let impact = UIImpactFeedbackGenerator()
+        impact.impactOccurred()
+        
+        let image: UIImage?
+        
+        switch (task.value(forKey: "recurrence") as! Bool, task.value(forKey: "priority") as! Int) {
+        case (true, 0):
+            image = UIImage(named: "RecurringButtonPressed")
+        case (true, 1):
+            image = UIImage(named: "MediumRecurringButtonPressed")
+        case (true, 2):
+            image = UIImage(named: "HighRecurringButtonPressed")
+        case (false, 0):
+            image = UIImage(named: "ButtonPressed")
+        case (false, 1):
+            image = UIImage(named: "MediumButtonPressed")
+        case (false, 2):
+            image = UIImage(named: "HighButtonPressed")
+        default:
+            image = nil
+        }
+        
+        if let cell = tableView.cellForRow(at: indexPath) as? SmallTaskTableViewCell {
+            UIView.animate(
+                withDuration: 0.3,
+                animations: {
+                    cell.TodoStatus.setImage(image, for: .normal)
+                    cell.taskTitle.textColor = .gray
+            })
+        }
+        else if let cell = tableView.cellForRow(at: indexPath) as? TaskTableViewCell {
+            UIView.animate(
+                withDuration: 0.3,
+                animations: {
+                    cell.TodoStatus.setImage(image, for: .normal)
+                    cell.taskTitle.textColor = .gray
+            })
+        }
+        
+        
+        let oldItemCount = tableViewData.count
+        
         
         if isFiltering {
             filteredTableViewData.remove(at: indexPath.row)
@@ -526,113 +570,34 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         else {
             tableViewData.remove(at: indexPath.row)
         }
-    }
-    
-    func completeTask(_ task: TaskEntity) {
-        task.setValue(true, forKey: "completed")
-        CoreDataManager.shared.saveContext()
         
-        if isFiltering {
-            filteredTableViewData.removeAll(where: {taskInList -> Bool in
-                return taskInList == task
-            })
+        self.refreshTableViewData()
+    
+        let newItemCount = tableViewData.count
+        
+        if newItemCount == oldItemCount {
+            self.tableView.reloadRows(at: [indexPath], with: .fade)
+        }
+        else {
+            UIView.animate(withDuration: 0.5) {
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
+            }
         }
         
-        tableViewData.removeAll(where: {taskInList -> Bool in
-            return taskInList == task
-        })
+        //self.tableView.reloadData()
     }
     
     
     func checkmarkTapped(sender: SmallTaskTableViewCell) {
         if let indexPath = self.tableView.indexPath(for: sender) {
-            
-            let task = isFiltering ? filteredTableViewData[indexPath.row] : tableViewData[indexPath.row]
-
-            completeTask(task)
-        
-            // TODO: implement haptic feedback
-            let impact = UIImpactFeedbackGenerator()
-            impact.impactOccurred()
-            
-            let image: UIImage?
-            
-            switch (task.value(forKey: "recurrence") as! Bool, task.value(forKey: "priority") as! Int) {
-            case (true, 0):
-                image = UIImage(named: "RecurringButtonPressed")
-            case (true, 1):
-                image = UIImage(named: "MediumRecurringButtonPressed")
-            case (true, 2):
-                image = UIImage(named: "HighRecurringButtonPressed")
-            case (false, 0):
-                image = UIImage(named: "ButtonPressed")
-            case (false, 1):
-                image = UIImage(named: "MediumButtonPressed")
-            case (false, 2):
-                image = UIImage(named: "HighButtonPressed")
-            default:
-                image = nil
-            }
-            
-            UIView.animate(
-                withDuration: 0.3,
-                animations: {
-                    sender.TodoStatus.setImage(image, for: .normal)
-                    sender.taskTitle.textColor = .gray
-            })
-            
-            UIView.animate(withDuration: 0.5) {
-//                self.myTableView.deleteSections(at: [indexPath], with: .fade)
-                self.tableView.deleteRows(at: [indexPath], with: .fade)
-            }
-            
-            // self.tableView.reloadRows(at: [indexPath], with: .automatic)
-
-            }
+            completeTask(indexPath: indexPath)
+        }
     }
     
     
     func checkmarkTapped1(sender: TaskTableViewCell) {
         if let indexPath = self.tableView.indexPath(for: sender) {
-            
-            let task = isFiltering ? filteredTableViewData[indexPath.row] : tableViewData[indexPath.row]
-
-            completeTask(task)
-            
-            // TODO: implement haptic
-            let impact = UIImpactFeedbackGenerator()
-            impact.impactOccurred()
-        
-            let image: UIImage?
-            
-            switch (task.value(forKey: "recurrence") as! Bool, task.value(forKey: "priority") as! Int) {
-            case (true, 0):
-                image = UIImage(named: "RecurringButtonPressed")
-            case (true, 1):
-                image = UIImage(named: "MediumRecurringButtonPressed")
-            case (true, 2):
-                image = UIImage(named: "HighRecurringButtonPressed")
-            case (false, 0):
-                image = UIImage(named: "ButtonPressed")
-            case (false, 1):
-                image = UIImage(named: "MediumButtonPressed")
-            case (false, 2):
-                image = UIImage(named: "HighButtonPressed")
-            default:
-                image = nil
-            }
-            
-            UIView.animate(
-                withDuration: 1.5,
-                animations: {
-                    sender.taskTitle.textColor = .gray
-                    sender.TodoStatus.setImage(image, for: .normal)
-            })
-
-            UIView.animate(withDuration: 0.5) {
-                self.tableView.deleteRows(at: [indexPath], with: .fade)
-            }
-            
+            completeTask(indexPath: indexPath)
         }
     }
     
@@ -770,6 +735,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             newTask.projectOrder = task.projectOrder
             newTask.allOrder = task.allOrder
             newTask.tagOrder = task.tagOrder
+            newTask.recurringPeriod = task.recurringPeriod
             
             if self.isFiltering {
                 self.filteredTableViewData.insert(newTask, at: indexPath.row)
@@ -983,10 +949,10 @@ extension TaskTableView: DetailPresentationControllerDelegate {
     }
     
     func completeTaskInDetail(_ task: TaskEntity, indexPath: IndexPath) {
-        completeTask(task)
-        UIView.animate(withDuration: 0.5) {
-            self.tableView.deleteRows(at: [indexPath], with: .fade)
-        }
+        completeTask(indexPath: indexPath)
+//        UIView.animate(withDuration: 0.5) {
+//            self.tableView.deleteRows(at: [indexPath], with: .fade)
+//        }
     }
     
 }
