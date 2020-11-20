@@ -639,9 +639,18 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
     }
 
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let mover = tableViewData.remove(at: sourceIndexPath.row)
-        tableViewData.insert(mover, at: destinationIndexPath.row)
-        self.saveTaskOrder()
+        if !isFiltering {
+            let mover = tableViewData.remove(at: sourceIndexPath.row)
+            tableViewData.insert(mover, at: destinationIndexPath.row)
+            self.saveTaskOrder()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+        if !isFiltering {
+            return proposedDestinationIndexPath
+        }
+        return sourceIndexPath
     }
     
     
