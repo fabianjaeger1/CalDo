@@ -72,7 +72,7 @@ extension Date {
         if cal.isDateInYesterday(self) {
             return "Yesterday" + timeString
         }
-        if components2.day! > 2 && components2.day! < 7 {
+        if components2.day! >= 2 && components2.day! < 7 {
             // return "\(dateformatter.string(from: self)) \(timeString)"
             return "\(weekdayFormatter.string(from: self))" + timeString
         }
@@ -120,7 +120,7 @@ extension Date {
             return "Tomorrow"
         }
   
-        if dayDifferenceComponent.day! > 2 && dayDifferenceComponent.day! < 7 {
+        if dayDifferenceComponent.day! >= 2 && dayDifferenceComponent.day! < 7 {
             return "\(weekdayFormatter.string(from: self))"
         }
 

@@ -52,7 +52,7 @@ class UpcomingTaskTableView: TaskTableView {
         // Tasks further away than a week
         var monthTasks = [TaskEntity]()
         
-        for key in dayDifferenceDictionary.keys {
+        for key in dayDifferenceDictionary.keys.sorted() {
             // Get tasks from the next week into own sections
             if key >= 0 && key < 7 {
                 hierarchicalData.append(dayDifferenceDictionary[key]!)
@@ -73,7 +73,7 @@ class UpcomingTaskTableView: TaskTableView {
         })
         
         // Make month sections
-        for key in monthDifferenceDictionary.keys {
+        for key in monthDifferenceDictionary.keys.sorted() {
             hierarchicalData.append(monthDifferenceDictionary[key]!)
             // Task first task to get section title
             let sampleTask = monthDifferenceDictionary[key]![0]
