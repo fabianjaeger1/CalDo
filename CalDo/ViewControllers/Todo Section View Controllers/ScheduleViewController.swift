@@ -11,14 +11,14 @@ import UIKit
 class PresentationController: UIPresentationController {
     override var frameOfPresentedViewInContainerView: CGRect {
         let bounds = presentingViewController.view.bounds
-        let size = CGSize(width: 370, height: 500)
+        let size = CGSize(width: 370, height: 630)
         let origin = CGPoint(x: bounds.midX - size.width / 2, y: bounds.midY - size.height / 2)
         return CGRect(origin: origin, size: size)
     }
     
     private lazy var dismissView: UIView = {
         let view = UIView(frame: self.containerView!.bounds)
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        view.backgroundColor = UIColor.darkGray.withAlphaComponent(0.3)
         view.isUserInteractionEnabled = true
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(PresentationController.touchCallback(_:)))
@@ -59,6 +59,7 @@ class PresentationController: UIPresentationController {
         self.dismissView.alpha = 0
         self.presentedViewController.transitionCoordinator?.animate(alongsideTransition: { (UIViewControllerTransitionCoordinatorContext) in
             self.dismissView.alpha = 1
+//            self.dismissView.backgroundColor = .backgroundColor
         }, completion: { (UIViewControllerTransitionCoordinatorContext) in })
     }
     
@@ -86,11 +87,92 @@ class TransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
     }
 }
 
-class ScheduleViewController: UIViewController {
+class ScheduleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let titleString = ["Add Time", "Add Reminder"]
+        let imageString = ["clock.fill", "repeat"]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleTableViewCell", for: indexPath) as! ScheduleTableViewCell
+        let pointSize:CGFloat = 26.0
+        cell.tableViewTitle.text = titleString[indexPath.row]
+        cell.tableViewTitle.textColor = .textColor
+        cell.backgroundColor = .BackgroundColor
+        let configuration = UIImage.SymbolConfiguration(pointSize: pointSize)
+        cell.tableViewImage.image = UIImage(systemName: imageString[indexPath.row])!.withTintColor(.label, renderingMode: .alwaysOriginal).withConfiguration(configuration)
+        
+        return cell
+    }
+    
+    
+    let redColor = UIColor(hexString: "E02020")
+    let blueColor = UIColor(hexString: "0091FF")
+    
+    @IBOutlet weak var SaveButton: UIButton!
+    @IBOutlet weak var clearButton: UIButton!
+
+    @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var todayButton: UIButton!
+    @IBOutlet weak var tomorrowButton: UIButton!
+    @IBOutlet weak var nextWeekButton: UIButton!
+    
+    @IBAction func cancelButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     private var customTransitioningDelegate = TransitioningDelegate()
 
     override func viewDidLoad() {
+        
+        // Register all of your cells
+        self.tableView.register(UINib(nibName: "ScheduleTableViewCell", bundle: nil), forCellReuseIdentifier: "ScheduleTableViewCell")
+        
+        self.tableView.backgroundColor = .BackgroundColor
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
+        SaveButton.backgroundColor = blueColor
+        clearButton.backgroundColor = redColor
+        SaveButton.layer.cornerRadius = 10
+        clearButton.layer.cornerRadius = 10
+        
+        
+        let pointSize:CGFloat = 26.0
+        
+        let pointSizeConfiguration = UIImage.SymbolConfiguration(pointSize: pointSize)
+        
+        let todayColor = UIColor(hexFromString: "F7B500")
+        let tomorrowColor = UIColor(hexFromString: "FA6400")
+        let nextWeekColor = UIColor(hexFromString: "32C5FF")
+        
+        let todayImage = UIImage(systemName: "sun.min.fill",withConfiguration: pointSizeConfiguration)?.withTintColor(todayColor, renderingMode: .alwaysOriginal)
+        let tomorrowImage = UIImage(systemName: "sunrise.fill", withConfiguration: pointSizeConfiguration)?.withTintColor(tomorrowColor, renderingMode: .alwaysOriginal)
+        let nextWeekImage = UIImage(systemName: "calendar",withConfiguration: pointSizeConfiguration)?.withTintColor(nextWeekColor, renderingMode: .alwaysOriginal)
+        
+        todayButton.setImage(todayImage, for: .normal)
+        tomorrowButton.setImage(tomorrowImage, for: .normal)
+        nextWeekButton.setImage(nextWeekImage, for: .normal)
+        todayButton.centerVertically()
+        tomorrowButton.centerVertically()
+        nextWeekButton.centerVertically()
+
+        
+
+//        tomorrowButton.centerVertically()
+//        todayButton.centerVertically()
+//        nextWeekButton.centerVertically()
+        
+//        todayButton.imageView?.tintColor = UIColor.red
+//        todayButton.tintColor = UIColor.red
+//        todayButton.tintColor = UIColor(named: "#F7B500")
+//        tomorrowButton.tintColor = UIColor(named: "#FA6400")
+//        nextWeekButton.tintColor = UIColor(named: "#32C5FF")
         super.viewDidLoad()
         self.view.backgroundColor = .BackgroundColor
         // Do any additional setup after loading the view.

@@ -33,6 +33,9 @@
 		014595742445EA6400AFB34D /* SF-Pro-Rounded-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 014595632445E9DA00AFB34D /* SF-Pro-Rounded-Ultralight.otf */; };
 		014B15CF250F861E00D673E7 /* TagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014B15CD250F861E00D673E7 /* TagTableViewCell.swift */; };
 		014B15D0250F861E00D673E7 /* TagTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 014B15CE250F861E00D673E7 /* TagTableViewCell.xib */; };
+		0152B90F258BDF1D003F2B94 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0152B90E258BDF1D003F2B94 /* UIButtonExtension.swift */; };
+		0152B91D258C20AD003F2B94 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0152B91B258C20AD003F2B94 /* ScheduleTableViewCell.swift */; };
+		0152B91E258C20AD003F2B94 /* ScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0152B91C258C20AD003F2B94 /* ScheduleTableViewCell.xib */; };
 		015361C524AA7AB200D19DD2 /* TagStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015361C424AA7AB200D19DD2 /* TagStruct.swift */; };
 		015DA69E23C94B5300582851 /* HabitHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015DA69D23C94B5300582851 /* HabitHomeViewController.swift */; };
 		015DA6A023C94E4900582851 /* ProjectHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015DA69F23C94E4900582851 /* ProjectHomeViewController.swift */; };
@@ -189,6 +192,9 @@
 		014B15CD250F861E00D673E7 /* TagTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TagTableViewCell.swift; path = "CalDo/ViewControllers/Cells/Task Project Cells/TagTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
 		014B15CE250F861E00D673E7 /* TagTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TagTableViewCell.xib; path = "CalDo/ViewControllers/Cells/Nib Files/TagTableViewCell.xib"; sourceTree = SOURCE_ROOT; };
 		014C23A02313176500A3EA4F /* TagListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TagListViewController.swift; path = "CalDo/ViewControllers/Todo Section View Controllers/Adding Tasks View Controllers/TagListViewController.swift"; sourceTree = SOURCE_ROOT; };
+		0152B90E258BDF1D003F2B94 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
+		0152B91B258C20AD003F2B94 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		0152B91C258C20AD003F2B94 /* ScheduleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleTableViewCell.xib; sourceTree = "<group>"; };
 		015361C424AA7AB200D19DD2 /* TagStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagStruct.swift; sourceTree = "<group>"; };
 		015DA69D23C94B5300582851 /* HabitHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitHomeViewController.swift; sourceTree = "<group>"; };
 		015DA69F23C94E4900582851 /* ProjectHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectHomeViewController.swift; sourceTree = "<group>"; };
@@ -366,6 +372,7 @@
 				83F9F70C24E3E80C0008FCF9 /* UIViewControllerExtension.swift */,
 				83F9388C251D3FB8007224FB /* UIDeviceExtension.swift */,
 				83D8467E25344F33005050E8 /* UIColorExtension.swift */,
+				0152B90E258BDF1D003F2B94 /* UIButtonExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -552,6 +559,8 @@
 				83AEF023250190F400D31E76 /* ProjectTableViewCell.swift */,
 				013A43482533A6C9008FC23E /* ProjectTaskDetailViewController.xib */,
 				013A433B2533A305008FC23E /* ScheduleViewController.xib */,
+				0152B91B258C20AD003F2B94 /* ScheduleTableViewCell.swift */,
+				0152B91C258C20AD003F2B94 /* ScheduleTableViewCell.xib */,
 				014B15CE250F861E00D673E7 /* TagTableViewCell.xib */,
 				01F7AA32250BF0E900504799 /* DetailViewController.xib */,
 				83A1975625018BD6001011D2 /* TaskTableViewController.xib */,
@@ -766,6 +775,7 @@
 				83A1975725018BE3001011D2 /* TaskTableViewController.xib in Resources */,
 				0145956F2445EA6400AFB34D /* SF-Pro-Rounded-Light.otf in Resources */,
 				016CF84B24DC8EB1006DEC65 /* SmallTaskTableViewCell.xib in Resources */,
+				0152B91E258C20AD003F2B94 /* ScheduleTableViewCell.xib in Resources */,
 				01D53490234F733100DE6776 /* LaunchScreen.storyboard in Resources */,
 				016CF84F24DCB393006DEC65 /* TaskTableViewCell.xib in Resources */,
 				01904999252FC37500FA9C6A /* DetailCollectionViewCell.xib in Resources */,
@@ -972,6 +982,7 @@
 				83372CBC250FAC8B0076DD7C /* TaskButton.swift in Sources */,
 				83C0019924E84E3D0016B68E /* EntityExtension.swift in Sources */,
 				0160336C24694EA00032DA23 /* AllTasksViewController.swift in Sources */,
+				0152B91D258C20AD003F2B94 /* ScheduleTableViewCell.swift in Sources */,
 				014216A1255DF8060071BD1C /* HabitCollectionViewHeader.swift in Sources */,
 				015361C524AA7AB200D19DD2 /* TagStruct.swift in Sources */,
 				015DA69E23C94B5300582851 /* HabitHomeViewController.swift in Sources */,
@@ -980,6 +991,7 @@
 				01D5348E234F727C00DE6776 /* RepeatViewCell.swift in Sources */,
 				016CF84A24DC8EB1006DEC65 /* SmallTaskTableViewCell.swift in Sources */,
 				010736592542E19000239F4E /* CircularProgressBar.swift in Sources */,
+				0152B90F258BDF1D003F2B94 /* UIButtonExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1105,7 +1117,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1159,7 +1171,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

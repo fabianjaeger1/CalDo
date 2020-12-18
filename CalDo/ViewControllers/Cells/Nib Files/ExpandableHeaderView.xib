@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,6 +22,25 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bti-6j-k2d">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fK7-do-mxi">
+                            <rect key="frame" x="289" y="34.5" width="27" height="27"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="27" id="T9Z-W8-jHv"/>
+                                <constraint firstAttribute="width" constant="27" id="Yvn-3K-mIG"/>
+                            </constraints>
+                            <state key="normal" image="Add_Symbol"/>
+                            <connections>
+                                <action selector="AddButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="h4m-JZ-ZBT"/>
+                                <action selector="AddButtonPressed:" destination="-1" eventType="touchUpInside" id="zwP-7e-Ytc"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="fK7-do-mxi" firstAttribute="centerY" secondItem="bti-6j-k2d" secondAttribute="centerY" id="C5H-gv-TcP"/>
+                        <constraint firstAttribute="trailing" secondItem="fK7-do-mxi" secondAttribute="trailing" constant="98" id="eWQ-sl-tLE"/>
+                        <constraint firstItem="fK7-do-mxi" firstAttribute="leading" secondItem="bti-6j-k2d" secondAttribute="leading" constant="289" id="pHZ-3Y-AY1"/>
+                    </constraints>
                 </view>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KhX-Om-IA0">
                     <rect key="frame" x="20" y="37" width="22" height="22"/>
@@ -49,6 +68,7 @@
                     </constraints>
                 </imageView>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" name="BackgroundColor"/>
             <constraints>
                 <constraint firstItem="z6e-PL-9x8" firstAttribute="leading" secondItem="KhX-Om-IA0" secondAttribute="trailing" constant="12" id="0kY-5b-bl6"/>
@@ -63,8 +83,8 @@
                 <constraint firstItem="z6e-PL-9x8" firstAttribute="centerY" secondItem="KhX-Om-IA0" secondAttribute="centerY" id="yrw-2A-WCj"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="addButton" destination="fK7-do-mxi" id="gOs-n5-5Rv"/>
                 <outlet property="arrowImage" destination="QSr-nr-KdD" id="9dB-YA-0Oh"/>
                 <outlet property="headerLabel" destination="z6e-PL-9x8" id="0JS-VK-RmP"/>
                 <outlet property="image" destination="KhX-Om-IA0" id="gcW-5f-PLh"/>
@@ -74,11 +94,12 @@
         </view>
     </objects>
     <resources>
+        <image name="Add_Symbol" width="30" height="30"/>
         <namedColor name="BackgroundColor">
-            <color red="0.13333333333333333" green="0.15686274509803921" blue="0.19215686274509805" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TextColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
     </resources>
 </document>

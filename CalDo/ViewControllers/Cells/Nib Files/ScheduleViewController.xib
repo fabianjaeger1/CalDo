@@ -1,50 +1,170 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <array key="SF-Pro-Rounded-Bold.otf">
             <string>SFProRounded-Bold</string>
         </array>
+        <array key="SF-Pro-Rounded-Medium.otf">
+            <string>SFProRounded-Medium</string>
+        </array>
+        <array key="SF-Pro-Rounded-Semibold.otf">
+            <string>SFProRounded-Semibold</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScheduleViewController" customModule="CalDo" customModuleProvider="target">
             <connections>
+                <outlet property="SaveButton" destination="7XS-JA-0Uc" id="GZe-jP-JYS"/>
+                <outlet property="clearButton" destination="ZFQ-vO-W9d" id="yPd-3W-arV"/>
+                <outlet property="nextWeekButton" destination="Mk8-GI-aZl" id="aKD-oG-omq"/>
+                <outlet property="tableView" destination="P39-0v-4RQ" id="zm5-ST-UI7"/>
+                <outlet property="todayButton" destination="KdT-4q-8v0" id="XJG-yN-Zwi"/>
+                <outlet property="tomorrowButton" destination="IlU-C4-guf" id="7eL-4e-iH0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="370" height="532"/>
+            <rect key="frame" x="0.0" y="0.0" width="370" height="611"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Schedule" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="woL-sm-1Bb">
-                    <rect key="frame" x="127" y="13" width="116" height="48"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="27"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="woL-sm-1Bb">
+                    <rect key="frame" x="141" y="26.5" width="88" height="24.5"/>
+                    <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="21"/>
                     <color key="textColor" name="TextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <datePicker contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="F9X-rD-30e">
-                    <rect key="frame" x="16" y="85" width="338" height="362"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <datePicker contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="F9X-rD-30e">
+                    <rect key="frame" x="16" y="154" width="338" height="317"/>
+                    <color key="tintColor" systemColor="systemOrangeColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="317" id="Qik-Wf-fB8"/>
+                        <constraint firstAttribute="width" constant="338" id="V5Y-lX-Q4q"/>
+                    </constraints>
                 </datePicker>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YYW-FX-IMy">
+                    <rect key="frame" x="21" y="21" width="61" height="33"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="SFProRounded-Medium" family="SF Pro Rounded" pointSize="16"/>
+                    <state key="normal" title="Cancel">
+                        <color key="titleColor" name="TextColor"/>
+                    </state>
+                    <connections>
+                        <action selector="cancelButtonPressed:" destination="-1" eventType="touchUpInside" id="eL0-K0-My0"/>
+                    </connections>
+                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="VKL-cr-uUv">
+                    <rect key="frame" x="16" y="77" width="338" height="74"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KdT-4q-8v0">
+                            <rect key="frame" x="0.0" y="0.0" width="112.5" height="74"/>
+                            <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="16"/>
+                            <color key="tintColor" systemColor="systemPinkColor"/>
+                            <state key="normal" title="Today" image="sun.min.fill" catalog="system">
+                                <color key="titleColor" name="TextColor"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="26" scale="large"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IlU-C4-guf">
+                            <rect key="frame" x="112.5" y="0.0" width="113" height="74"/>
+                            <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="16"/>
+                            <state key="normal" title="Tomorrow">
+                                <color key="titleColor" name="TextColor"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mk8-GI-aZl">
+                            <rect key="frame" x="225.5" y="0.0" width="112.5" height="74"/>
+                            <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="16"/>
+                            <state key="normal" title="Next Week">
+                                <color key="titleColor" name="TextColor"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="74" id="LdP-Qc-TLB"/>
+                        <constraint firstAttribute="height" constant="74" id="Pby-aj-Q7o"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="338" id="aHL-hg-UFo"/>
+                        <constraint firstAttribute="width" constant="338" id="uvW-sY-KHF"/>
+                    </constraints>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="8tc-r5-3e3">
+                    <rect key="frame" x="16" y="556" width="338" height="40"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZFQ-vO-W9d">
+                            <rect key="frame" x="0.0" y="0.0" width="159" height="40"/>
+                            <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="17"/>
+                            <state key="normal" title="Clear">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7XS-JA-0Uc">
+                            <rect key="frame" x="179" y="0.0" width="159" height="40"/>
+                            <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="17"/>
+                            <state key="normal" title="Save">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="OLK-gq-72s"/>
+                        <constraint firstAttribute="width" constant="338" id="XpT-Q5-b1L"/>
+                    </constraints>
+                </stackView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="none" sectionIndexMinimumDisplayRowCount="1" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="P39-0v-4RQ">
+                    <rect key="frame" x="17" y="453" width="338" height="94"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="94" id="Rx8-tc-p0S"/>
+                        <constraint firstAttribute="width" constant="338" id="fWH-1h-6xP"/>
+                    </constraints>
+                </tableView>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="8tc-r5-3e3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="6Nf-t1-oMp"/>
+                <constraint firstItem="VKL-cr-uUv" firstAttribute="top" secondItem="woL-sm-1Bb" secondAttribute="bottom" constant="26" id="CTv-rM-dA6"/>
+                <constraint firstItem="8tc-r5-3e3" firstAttribute="top" secondItem="P39-0v-4RQ" secondAttribute="bottom" constant="9" id="I60-Jq-c6t"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="8tc-r5-3e3" secondAttribute="trailing" constant="16" id="Ph5-pN-Tf5"/>
+                <constraint firstItem="F9X-rD-30e" firstAttribute="leading" secondItem="VKL-cr-uUv" secondAttribute="leading" id="SQy-5l-XAG"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VKL-cr-uUv" secondAttribute="trailing" constant="16" id="VDz-wm-jNw"/>
+                <constraint firstItem="VKL-cr-uUv" firstAttribute="centerX" secondItem="woL-sm-1Bb" secondAttribute="centerX" id="eYg-Vz-fpQ"/>
+                <constraint firstItem="P39-0v-4RQ" firstAttribute="top" secondItem="F9X-rD-30e" secondAttribute="bottom" constant="-18" id="jPi-uw-QYU"/>
+                <constraint firstItem="P39-0v-4RQ" firstAttribute="centerX" secondItem="8tc-r5-3e3" secondAttribute="centerX" constant="1" id="kov-lM-YSh"/>
+                <constraint firstItem="F9X-rD-30e" firstAttribute="top" secondItem="VKL-cr-uUv" secondAttribute="bottom" constant="3" id="puU-dQ-y3Q"/>
+                <constraint firstItem="VKL-cr-uUv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="77" id="r29-p0-ez0"/>
+                <constraint firstItem="VKL-cr-uUv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="x48-6i-6GT"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="8tc-r5-3e3" secondAttribute="bottom" constant="15" id="zLg-QW-vlS"/>
+            </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="-886.95652173913049" y="51.5625"/>
+            <point key="canvasLocation" x="-886.95652173913049" y="78.013392857142847"/>
         </view>
     </objects>
     <resources>
+        <image name="sun.min.fill" catalog="system" width="128" height="121"/>
         <namedColor name="TextColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

@@ -31,6 +31,16 @@ class ExpandableHeaderView: UITableViewHeaderFooterView {
     @IBOutlet weak var arrowImage: UIImageView!
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var view: UIView!
+    @IBOutlet weak var addButton: UIButton!
+    
+    
+    @IBAction func AddButtonPressed(_ sender: Any) {
+        print("Test")
+    }
+    
+
+    
+
 
     var section: Int!
     
