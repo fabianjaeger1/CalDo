@@ -98,6 +98,24 @@ extension Date {
 }
 
 extension Date {
+    func monthSectionTitle() -> String {
+        let cal = Calendar.current
+
+        let monthCurrentYearFormatter = DateFormatter()
+        monthCurrentYearFormatter.setLocalizedDateFormatFromTemplate("MMMM")
+        
+        let monthOtherYearFormatter = DateFormatter()
+        monthOtherYearFormatter.setLocalizedDateFormatFromTemplate("MMMM yyyy")
+        
+        if cal.dateComponents([.year], from: self) == cal.dateComponents([.year], from: Date()) {
+            return monthCurrentYearFormatter.string(from: self)
+        }
+        return monthOtherYearFormatter.string(from: self)
+        
+    }
+}
+
+extension Date {
     func todoColor(withTime: Bool) -> UIColor {
         let cal = Calendar.current
         

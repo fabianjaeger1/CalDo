@@ -115,6 +115,9 @@
 		834F82D624E2AF49007DB362 /* ProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 834F82D424E2AF49007DB362 /* ProjectTableViewCell.xib */; };
 		834F82D724E2AF49007DB362 /* ProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 834F82D424E2AF49007DB362 /* ProjectTableViewCell.xib */; };
 		83626C7A24DCACA200AFD9EE /* TaskTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83626C7924DCACA200AFD9EE /* TaskTableView.swift */; };
+		8376A298258BD290007B87C9 /* UpcomingTaskTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8376A297258BD290007B87C9 /* UpcomingTaskTableView.swift */; };
+		8376A299258BD290007B87C9 /* UpcomingTaskTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8376A297258BD290007B87C9 /* UpcomingTaskTableView.swift */; };
+		8376A29A258BD290007B87C9 /* UpcomingTaskTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8376A297258BD290007B87C9 /* UpcomingTaskTableView.swift */; };
 		83A1975725018BE3001011D2 /* TaskTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83A1975625018BD6001011D2 /* TaskTableViewController.xib */; };
 		83A1975825018BE3001011D2 /* TaskTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83A1975625018BD6001011D2 /* TaskTableViewController.xib */; };
 		83A1975925018BE3001011D2 /* TaskTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83A1975625018BD6001011D2 /* TaskTableViewController.xib */; };
@@ -262,6 +265,7 @@
 		834F82D024E2ADDF007DB362 /* ProjectTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableView.swift; sourceTree = "<group>"; };
 		834F82D424E2AF49007DB362 /* ProjectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectTableViewCell.xib; sourceTree = "<group>"; };
 		83626C7924DCACA200AFD9EE /* TaskTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableView.swift; sourceTree = "<group>"; };
+		8376A297258BD290007B87C9 /* UpcomingTaskTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingTaskTableView.swift; sourceTree = "<group>"; };
 		83A1975625018BD6001011D2 /* TaskTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TaskTableViewController.xib; path = CalDo/ViewControllers/Cells/TaskTableViewController.xib; sourceTree = SOURCE_ROOT; };
 		83A1975A25018C1F001011D2 /* TaskTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskTableViewController.swift; path = "CalDo/ViewControllers/Task ViewControllers/TaskTableViewController.swift"; sourceTree = SOURCE_ROOT; };
 		83AEF023250190F400D31E76 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
@@ -490,6 +494,7 @@
 				83626C7824DCABF600AFD9EE /* Task ViewControllers */,
 				0165E19723294AAA002F5DA1 /* TodoSectionViewController.swift */,
 				01F3A09424F53F6100368C6A /* Adding Tasks View Controllers */,
+				8376A297258BD290007B87C9 /* UpcomingTaskTableView.swift */,
 			);
 			path = "Todo Section View Controllers";
 			sourceTree = "<group>";
@@ -927,6 +932,7 @@
 				019281551F8B884E00E895D4 /* InboxViewController.swift in Sources */,
 				016CF84E24DCB393006DEC65 /* TaskTableViewCell.swift in Sources */,
 				01D53481234F6EFC00DE6776 /* DateCell.swift in Sources */,
+				8376A298258BD290007B87C9 /* UpcomingTaskTableView.swift in Sources */,
 				01F3A09524F53F7200368C6A /* TagListViewController.swift in Sources */,
 				0165E1A52329F337002F5DA1 /* ScheduledHomeViewController.swift in Sources */,
 				01EAFEE6231CAACA00F3EA9D /* RepetitionViewController.swift in Sources */,
@@ -983,6 +989,7 @@
 			files = (
 				83372CBD250FAC8B0076DD7C /* TaskButton.swift in Sources */,
 				83D8468025344F33005050E8 /* UIColorExtension.swift in Sources */,
+				8376A299258BD290007B87C9 /* UpcomingTaskTableView.swift in Sources */,
 				834F82C624E2ACF8007DB362 /* ProjectTaskViewController.swift in Sources */,
 				83AEF025250190F400D31E76 /* ProjectTableViewCell.swift in Sources */,
 				83C0019A24E84E3D0016B68E /* EntityExtension.swift in Sources */,
@@ -1004,6 +1011,7 @@
 			files = (
 				83372CBE250FAC8B0076DD7C /* TaskButton.swift in Sources */,
 				83D8468125344F33005050E8 /* UIColorExtension.swift in Sources */,
+				8376A29A258BD290007B87C9 /* UpcomingTaskTableView.swift in Sources */,
 				834F82C724E2ACF8007DB362 /* ProjectTaskViewController.swift in Sources */,
 				83AEF026250190F400D31E76 /* ProjectTableViewCell.swift in Sources */,
 				83C0019B24E84E3D0016B68E /* EntityExtension.swift in Sources */,

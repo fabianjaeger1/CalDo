@@ -9,6 +9,11 @@
 import UIKit
 
 class UpcomingViewController: TaskTableViewController {
+    
+    override func setTableView() {
+        taskTableView = UpcomingTaskTableView(myTableView, predicate, sortVariable)
+        (taskTableView as! UpcomingTaskTableView).refreshSections()
+    }
         
     override func viewDidLoad() {
         predicate = NSPredicate(format: "(completed == false) AND (date != nil)")

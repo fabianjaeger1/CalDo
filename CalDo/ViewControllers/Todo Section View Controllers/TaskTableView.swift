@@ -183,16 +183,13 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
+    func taskAtIndexPath(_ indexPath: IndexPath) -> TaskEntity {
+        return isFiltering ? filteredTableViewData[indexPath.row] : tableViewData[indexPath.row]
+    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let task: TaskEntity
-        if isFiltering {
-            task = filteredTableViewData[indexPath.row]
-        }
-        else {
-            task = self.tableViewData[indexPath.row]
-        }
+        let task = taskAtIndexPath(indexPath)
         
         var vcIsProject = false
         var vcIsTag = false

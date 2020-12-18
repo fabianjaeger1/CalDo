@@ -304,6 +304,11 @@ class TaskTableViewController: UIViewController, UIAdaptivePresentationControlle
         super.viewWillAppear(animated)
     }
     
+    func setTableView() {
+        // Initialize tableView, can be overriden to set subclasses of TaskTableView
+        taskTableView = TaskTableView(myTableView, predicate, sortVariable)
+    }
+    
     override func viewDidLoad() {
         
         if traitCollection.userInterfaceStyle == .light {
@@ -320,7 +325,8 @@ class TaskTableViewController: UIViewController, UIAdaptivePresentationControlle
         menuButton.addTarget(self, action: #selector(self.showActionSheet(_:)), for: .touchUpInside)
 
         // Table View
-        taskTableView = TaskTableView(myTableView, predicate, sortVariable)
+        // taskTableView = TaskTableView(myTableView, predicate, sortVariable)
+        setTableView()
         taskTableView.myViewController = self
         myTableView.allowsMultipleSelectionDuringEditing = true
         
