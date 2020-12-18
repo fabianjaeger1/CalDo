@@ -497,11 +497,11 @@
 				013A433A2533A305008FC23E /* ScheduleViewController.swift */,
 				83372CB7250ED4DD0076DD7C /* DetailPresentationController.swift */,
 				83626C7924DCACA200AFD9EE /* TaskTableView.swift */,
+				8376A297258BD290007B87C9 /* UpcomingTaskTableView.swift */,
 				83372CBB250FAC8B0076DD7C /* TaskButton.swift */,
 				83626C7824DCABF600AFD9EE /* Task ViewControllers */,
 				0165E19723294AAA002F5DA1 /* TodoSectionViewController.swift */,
 				01F3A09424F53F6100368C6A /* Adding Tasks View Controllers */,
-				8376A297258BD290007B87C9 /* UpcomingTaskTableView.swift */,
 			);
 			path = "Todo Section View Controllers";
 			sourceTree = "<group>";

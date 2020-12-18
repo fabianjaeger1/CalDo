@@ -97,9 +97,32 @@ extension Date {
     }
 }
 
+
 extension Date {
-    func monthSectionTitle() -> String {
+    func upcomingSectionTitle() -> String {
         let cal = Calendar.current
+        
+        let weekdayFormatter = DateFormatter()
+        weekdayFormatter.setLocalizedDateFormatFromTemplate("EEEE")
+        
+        let date1 = cal.startOfDay(for: Date())
+        let date2 = cal.startOfDay(for: self)
+
+        let dayDifferenceComponent = cal.dateComponents([.day], from: date1, to: date2)
+        
+        if dayDifferenceComponent.day! < 0 {
+            return "Overdue"
+        }
+        if cal.isDateInToday(self) {
+            return "Today"
+        }
+        if cal.isDateInTomorrow(self) {
+            return "Tomorrow"
+        }
+  
+        if dayDifferenceComponent.day! > 2 && dayDifferenceComponent.day! < 7 {
+            return "\(weekdayFormatter.string(from: self))"
+        }
 
         let monthCurrentYearFormatter = DateFormatter()
         monthCurrentYearFormatter.setLocalizedDateFormatFromTemplate("MMMM")
@@ -108,6 +131,9 @@ extension Date {
         monthOtherYearFormatter.setLocalizedDateFormatFromTemplate("MMMM yyyy")
         
         if cal.dateComponents([.year], from: self) == cal.dateComponents([.year], from: Date()) {
+            if cal.dateComponents([.month], from: self) == cal.dateComponents([.month], from: Date()) {
+                return "This Month"
+            }
             return monthCurrentYearFormatter.string(from: self)
         }
         return monthOtherYearFormatter.string(from: self)

@@ -59,7 +59,7 @@ class UpcomingTaskTableView: TaskTableView {
                 // Take first task to get section title
                 let sampleTask = dayDifferenceDictionary[key]![0]
                 let sampleDate = sampleTask.value(forKey: "date") as! Date
-                sectionTitles.append(sampleDate.todoString(withTime: false))
+                sectionTitles.append(sampleDate.upcomingSectionTitle())
             }
             if key > 7 {
                 monthTasks += dayDifferenceDictionary[key]!
@@ -78,7 +78,7 @@ class UpcomingTaskTableView: TaskTableView {
             // Task first task to get section title
             let sampleTask = monthDifferenceDictionary[key]![0]
             let sampleDate = sampleTask.value(forKey: "date") as! Date
-            sectionTitles.append(sampleDate.monthSectionTitle())
+            sectionTitles.append(sampleDate.upcomingSectionTitle())
         }
     }
     
