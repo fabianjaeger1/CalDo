@@ -115,7 +115,7 @@ class CustomTabBar: UIView {
     func createTabBarContainer(index: Int) -> CGRect {
         
         let tabBarContainerWidth = self.frame.width / CGFloat(tabBarItems.count+1)
-        let tabBarContainerRect = CGRect(x: tabBarContainerWidth * CGFloat(index), y: 0 - 10, width: tabBarContainerWidth, height: self.frame.height)
+        let tabBarContainerRect = CGRect(x: tabBarContainerWidth * CGFloat(index), y: -10, width: tabBarContainerWidth, height: self.frame.height)
         
         return tabBarContainerRect
     }

@@ -51,7 +51,7 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
 
         
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        3
+        4
     }
     
     
@@ -215,7 +215,7 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
             }
         }
         
-        self.view.backgroundColor = .BackgroundColor
+        self.view.backgroundColor = UIColor.BackgroundColor
         
     }
 

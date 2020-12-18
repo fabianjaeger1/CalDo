@@ -21,6 +21,7 @@ class SmallTaskTableViewCell: UITableViewCell {
     var originalCenter = CGPoint()
     var isSwipeSuccesful = false
     var myViewController: TaskTableViewController?
+//    var scheduleImage: UIImageView?
 
 
     @IBOutlet weak var TodoStatus: UIButton!
@@ -57,9 +58,13 @@ class SmallTaskTableViewCell: UITableViewCell {
     let kUICuesMargin: CGFloat = 10.0, kUICuesWidth: CGFloat = 50.0
     
     override func layoutSubviews() {
+        
+//        scheduleImage!.frame = CGRect(x: -kUICuesWidth - kUICuesMargin, y: 0,
+//                                     width: kUICuesWidth, height: bounds.size.height)
         super.layoutSubviews()
        
     }
+    
     
     func initialize() {
         let recognizer = UIPanGestureRecognizer(target: self, action: #selector(self.handlePan(recognizer:)))
@@ -73,6 +78,9 @@ class SmallTaskTableViewCell: UITableViewCell {
         self.addSubview(scheduleLabel)
         self.addSubview(selectLabel)
         addGestureRecognizer(recognizer)
+    
+//        scheduleImage?.image = UIImage(named: "Calendar")
+//        self.addSubview(scheduleImage)
     }
     
     @objc func handlePan(recognizer: UIPanGestureRecognizer) {
@@ -92,6 +100,11 @@ class SmallTaskTableViewCell: UITableViewCell {
         }
         
     }
+    
+    
+    
+ 
+    
     
     
     func checkIfSwiped(recognizer: UIPanGestureRecognizer) {
