@@ -534,9 +534,9 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
 
     
 // MARK: - Delegate Methods
-
+    
     func completeTask(indexPath: IndexPath) {
-        let task = isFiltering ? filteredTableViewData[indexPath.row] : tableViewData[indexPath.row]
+        let task = taskAtIndexPath(indexPath)
         
         CoreDataManager.shared.completeTask(task)
 
@@ -585,13 +585,17 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         
         
         if isFiltering {
-            filteredTableViewData.remove(at: indexPath.row)
+            filteredTableViewData.removeAll(where: {taskInList -> Bool in
+                return taskInList == task
+            })
             tableViewData.removeAll(where: {taskInList -> Bool in
                 return taskInList == task
             })
         }
         else {
-            tableViewData.remove(at: indexPath.row)
+            tableViewData.removeAll(where: {taskInList -> Bool in
+                return taskInList == task
+            })
         }
         
         self.refreshTableViewData()

@@ -66,7 +66,7 @@ class UpcomingTaskTableView: TaskTableView {
                 let sampleDate = sampleTask.value(forKey: "date") as! Date
                 sectionTitles.append(sampleDate.upcomingSectionTitle())
             }
-            if key > 7 {
+            if key >= 7 {
                 monthTasks += dayDifferenceDictionary[key]!
             }
         }
@@ -80,7 +80,7 @@ class UpcomingTaskTableView: TaskTableView {
         // Make month sections
         for key in monthDifferenceDictionary.keys.sorted() {
             hierarchicalData.append(monthDifferenceDictionary[key]!)
-            // Task first task to get section title
+            // Take first task to get section title
             let sampleTask = monthDifferenceDictionary[key]![0]
             let sampleDate = sampleTask.value(forKey: "date") as! Date
             sectionTitles.append(sampleDate.upcomingSectionTitle())
@@ -88,10 +88,14 @@ class UpcomingTaskTableView: TaskTableView {
     }
     
     override func completeTask(indexPath: IndexPath) {
+        let oldNumberOfSections = hierarchicalData.count
         self.tableView.performBatchUpdates({
             super.completeTask(indexPath: indexPath)
             refreshSections()
-            print(hierarchicalData.count)
+            let newNumberOfSections = hierarchicalData.count
+            if oldNumberOfSections != newNumberOfSections {
+                tableView.deleteSections([indexPath.section], with: .fade)
+            }
         })
 
     }
