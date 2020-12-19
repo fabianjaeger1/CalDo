@@ -39,6 +39,7 @@ extension Date {
     func todoString(withTime: Bool) -> String {
         let cal = Calendar.current
 
+        // E.g. 10:30
         let timeFormatter = DateFormatter()
         timeFormatter.dateStyle = .none
         timeFormatter.timeStyle = .short
@@ -48,14 +49,17 @@ extension Date {
             timeString = " " + timeFormatter.string(from: self)
         }
         
+        // E.g. Dec 19 2020
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
         
         let weekdayFormatter = DateFormatter()
+        // E.g. Saturday
         weekdayFormatter.setLocalizedDateFormatFromTemplate("EEEE")
         
         let dateNoYearFormatter = DateFormatter()
+        // E.g. Dec 19
         dateNoYearFormatter.setLocalizedDateFormatFromTemplate("MMM d")
 
         let date1 = cal.startOfDay(for: Date())
@@ -103,7 +107,14 @@ extension Date {
         let cal = Calendar.current
         
         let weekdayFormatter = DateFormatter()
+        // E.g. Saturday
         weekdayFormatter.setLocalizedDateFormatFromTemplate("EEEE")
+        
+        let dateNoYearFormatter = DateFormatter()
+        // E.g. Dec 19
+        dateNoYearFormatter.setLocalizedDateFormatFromTemplate("MMM d")
+        
+        let dateNoYearString = "  ·  " + dateNoYearFormatter.string(from: self)
         
         let date1 = cal.startOfDay(for: Date())
         let date2 = cal.startOfDay(for: self)
@@ -114,19 +125,21 @@ extension Date {
             return "Overdue"
         }
         if cal.isDateInToday(self) {
-            return "Today"
+            return "Today" + dateNoYearString
         }
         if cal.isDateInTomorrow(self) {
-            return "Tomorrow"
+            return "Tomorrow" + dateNoYearString
         }
   
         if dayDifferenceComponent.day! >= 2 && dayDifferenceComponent.day! < 7 {
-            return "\(weekdayFormatter.string(from: self))"
+            return "\(weekdayFormatter.string(from: self))" + dateNoYearString
         }
 
+        // E.g. December
         let monthCurrentYearFormatter = DateFormatter()
         monthCurrentYearFormatter.setLocalizedDateFormatFromTemplate("MMMM")
         
+        // E.g. March 2022
         let monthOtherYearFormatter = DateFormatter()
         monthOtherYearFormatter.setLocalizedDateFormatFromTemplate("MMMM yyyy")
         
