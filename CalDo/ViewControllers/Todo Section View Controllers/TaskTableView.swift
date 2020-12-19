@@ -193,10 +193,14 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         
         var vcIsProject = false
         var vcIsTag = false
+        var vcIsUpcoming = false
         
         if let vc = myViewController {
             if vc is ProjectTaskViewController {
                 vcIsProject = true
+            }
+            if vc is UpcomingViewController {
+                vcIsUpcoming = true
             }
 //            if vc is TagTaskViewController {
 //                vcIsTag = true
@@ -231,7 +235,13 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             // ========= DATE ===========
             
             // TODO: simplify by adding function returning a task's todoString
-            cell.TodoDate?.text = (task.value(forKey: "date") as? Date)?.todoString(withTime: task.value(forKey: "dateHasTime") as! Bool)
+            if vcIsUpcoming {
+                cell.TodoDate?.text = (task.value(forKey: "date") as? Date)?.todoStringUpcoming(withTime: task.value(forKey: "dateHasTime") as! Bool)
+            }
+            else {
+                cell.TodoDate?.text = (task.value(forKey: "date") as? Date)?.todoString(withTime: task.value(forKey: "dateHasTime") as! Bool)
+            }
+            
             //cell.TodoDate.textColor = UIColor.textColor
             cell.TodoDate.textColor = (task.value(forKey: "date") as? Date)?.todoColor(withTime: task.value(forKey: "dateHasTime") as! Bool)
             
@@ -344,8 +354,13 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             cell.taskTitle.text = (task.value(forKey: "title") as! String)
             cell.taskTitle.textColor = .textColor
             
-            
-            cell.TodoDate.text = (task.value(forKey: "date") as? Date)?.todoString(withTime: task.value(forKey: "dateHasTime") as! Bool)
+            // TODO: simplify by adding function returning a task's todoString
+            if vcIsUpcoming {
+                cell.TodoDate?.text = (task.value(forKey: "date") as? Date)?.todoStringUpcoming(withTime: task.value(forKey: "dateHasTime") as! Bool)
+            }
+            else {
+                cell.TodoDate?.text = (task.value(forKey: "date") as? Date)?.todoString(withTime: task.value(forKey: "dateHasTime") as! Bool)
+            }
             cell.TodoDate.textColor = (task.value(forKey: "date") as? Date)?.todoColor(withTime: task.value(forKey: "dateHasTime") as! Bool)
 
             // cell.backgroundColor = .clear

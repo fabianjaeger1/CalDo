@@ -122,7 +122,30 @@ class UpcomingTaskTableView: TaskTableView {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
          if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: UpcomingHeaderView.identifier) as? UpcomingHeaderView {
             
-            headerView.sectionTitle.text = sectionTitles[section]
+            let text = sectionTitles[section]
+            let attributedText = NSMutableAttributedString(string: text)
+            // If title has a date (after ·), split to change font color and weight
+            let subStrings = text.components(separatedBy: "·")
+            
+            func getRangeOfSubString(subString: String, fromString: String) -> NSRange {
+                let sampleLinkRange = fromString.range(of: subString)!
+                let startPos = fromString.distance(from: fromString.startIndex, to: sampleLinkRange.lowerBound)
+                let endPos = fromString.distance(from: fromString.startIndex, to: sampleLinkRange.upperBound)
+                let linkRange = NSMakeRange(startPos, endPos - startPos)
+                return linkRange
+            }
+            
+            attributedText.addAttributes([NSAttributedString.Key.foregroundColor: UIColor.label], range: getRangeOfSubString(subString: subStrings[0], fromString: text))
+            if subStrings.count > 1 {
+                attributedText.addAttributes([NSAttributedString.Key.foregroundColor: UIColor.secondaryLabel], range: getRangeOfSubString(subString: "·" + subStrings[1], fromString: text))
+                attributedText.addAttributes([NSAttributedString.Key.font: UIFont(name: "SFProRounded-SemiBold", size: 20)!], range: getRangeOfSubString(subString: subStrings[1], fromString: text))
+            }
+            
+            headerView.sectionTitle.attributedText = attributedText
+            
+            if sectionTitles[section] == "Overdue" {
+                headerView.sectionTitle.textColor = .systemRed
+            }
             
             return headerView
     }

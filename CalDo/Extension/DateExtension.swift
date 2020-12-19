@@ -101,6 +101,57 @@ extension Date {
     }
 }
 
+// Date string for tasks in the upcoming view controller
+extension Date {
+    func todoStringUpcoming(withTime: Bool) -> String {
+        let cal = Calendar.current
+
+        // E.g. 10:30
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateStyle = .none
+        timeFormatter.timeStyle = .short
+        
+        var timeString = ""
+        if (withTime) {
+            timeString = " " + timeFormatter.string(from: self)
+        }
+        
+        // E.g. Dec 19 2020
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        
+        let dateNoYearFormatter = DateFormatter()
+        // E.g. Dec 19
+        dateNoYearFormatter.setLocalizedDateFormatFromTemplate("MMM d")
+
+        let date1 = cal.startOfDay(for: Date())
+        let date2 = cal.startOfDay(for: self)
+
+        let components2 = cal.dateComponents([.day], from: date1, to: date2)
+        
+        if cal.isDateInToday(self) {
+            return timeString
+        }
+        if cal.isDateInTomorrow(self) {
+            return timeString
+        }
+        if cal.isDateInYesterday(self) {
+            return "Yesterday" + timeString
+        }
+        if components2.day! >= 2 && components2.day! < 7 {
+            return timeString
+        }
+
+        if cal.dateComponents([.year], from: date1) == cal.dateComponents([.year], from: date2) {
+            return "\(dateNoYearFormatter.string(from: self))" + timeString
+        }
+        else {
+            return "\(dateFormatter.string(from: self))" + timeString
+        }
+    }
+}
+
 
 extension Date {
     func upcomingSectionTitle() -> String {
