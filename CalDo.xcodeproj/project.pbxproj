@@ -121,6 +121,12 @@
 		8376A298258BD290007B87C9 /* UpcomingTaskTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8376A297258BD290007B87C9 /* UpcomingTaskTableView.swift */; };
 		8376A299258BD290007B87C9 /* UpcomingTaskTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8376A297258BD290007B87C9 /* UpcomingTaskTableView.swift */; };
 		8376A29A258BD290007B87C9 /* UpcomingTaskTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8376A297258BD290007B87C9 /* UpcomingTaskTableView.swift */; };
+		8376A29C258D61E2007B87C9 /* UpcomingHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8376A29B258D61E2007B87C9 /* UpcomingHeaderView.xib */; };
+		8376A29D258D61E2007B87C9 /* UpcomingHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8376A29B258D61E2007B87C9 /* UpcomingHeaderView.xib */; };
+		8376A29E258D61E2007B87C9 /* UpcomingHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8376A29B258D61E2007B87C9 /* UpcomingHeaderView.xib */; };
+		8376A2A0258D6386007B87C9 /* UpcomingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8376A29F258D6386007B87C9 /* UpcomingHeaderView.swift */; };
+		8376A2A1258D6386007B87C9 /* UpcomingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8376A29F258D6386007B87C9 /* UpcomingHeaderView.swift */; };
+		8376A2A2258D6386007B87C9 /* UpcomingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8376A29F258D6386007B87C9 /* UpcomingHeaderView.swift */; };
 		83A1975725018BE3001011D2 /* TaskTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83A1975625018BD6001011D2 /* TaskTableViewController.xib */; };
 		83A1975825018BE3001011D2 /* TaskTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83A1975625018BD6001011D2 /* TaskTableViewController.xib */; };
 		83A1975925018BE3001011D2 /* TaskTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83A1975625018BD6001011D2 /* TaskTableViewController.xib */; };
@@ -272,6 +278,8 @@
 		834F82D424E2AF49007DB362 /* ProjectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectTableViewCell.xib; sourceTree = "<group>"; };
 		83626C7924DCACA200AFD9EE /* TaskTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableView.swift; sourceTree = "<group>"; };
 		8376A297258BD290007B87C9 /* UpcomingTaskTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingTaskTableView.swift; sourceTree = "<group>"; };
+		8376A29B258D61E2007B87C9 /* UpcomingHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpcomingHeaderView.xib; sourceTree = "<group>"; };
+		8376A29F258D6386007B87C9 /* UpcomingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingHeaderView.swift; sourceTree = "<group>"; };
 		83A1975625018BD6001011D2 /* TaskTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TaskTableViewController.xib; path = CalDo/ViewControllers/Cells/TaskTableViewController.xib; sourceTree = SOURCE_ROOT; };
 		83A1975A25018C1F001011D2 /* TaskTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskTableViewController.swift; path = "CalDo/ViewControllers/Task ViewControllers/TaskTableViewController.swift"; sourceTree = SOURCE_ROOT; };
 		83AEF023250190F400D31E76 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
@@ -571,6 +579,7 @@
 				834F82D424E2AF49007DB362 /* ProjectTableViewCell.xib */,
 				01904997252FC37500FA9C6A /* DetailCollectionViewCell.xib */,
 				01D5346F234F6A1900DE6776 /* TodoSectionCollectionViewCell.swift */,
+				8376A29B258D61E2007B87C9 /* UpcomingHeaderView.xib */,
 			);
 			path = "Nib Files";
 			sourceTree = "<group>";
@@ -603,6 +612,7 @@
 			children = (
 				014B15CD250F861E00D673E7 /* TagTableViewCell.swift */,
 				01F3A08B24F534D500368C6A /* ExpandableHeaderView.swift */,
+				8376A29F258D6386007B87C9 /* UpcomingHeaderView.swift */,
 			);
 			path = "Task Project Cells";
 			sourceTree = "<group>";
@@ -776,6 +786,7 @@
 				0145956F2445EA6400AFB34D /* SF-Pro-Rounded-Light.otf in Resources */,
 				016CF84B24DC8EB1006DEC65 /* SmallTaskTableViewCell.xib in Resources */,
 				0152B91E258C20AD003F2B94 /* ScheduleTableViewCell.xib in Resources */,
+				8376A29C258D61E2007B87C9 /* UpcomingHeaderView.xib in Resources */,
 				01D53490234F733100DE6776 /* LaunchScreen.storyboard in Resources */,
 				016CF84F24DCB393006DEC65 /* TaskTableViewCell.xib in Resources */,
 				01904999252FC37500FA9C6A /* DetailCollectionViewCell.xib in Resources */,
@@ -794,6 +805,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83A1975825018BE3001011D2 /* TaskTableViewController.xib in Resources */,
+				8376A29D258D61E2007B87C9 /* UpcomingHeaderView.xib in Resources */,
 				834F82D624E2AF49007DB362 /* ProjectTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -803,6 +815,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83A1975925018BE3001011D2 /* TaskTableViewController.xib in Resources */,
+				8376A29E258D61E2007B87C9 /* UpcomingHeaderView.xib in Resources */,
 				834F82D724E2AF49007DB362 /* ProjectTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -982,6 +995,7 @@
 				83372CBC250FAC8B0076DD7C /* TaskButton.swift in Sources */,
 				83C0019924E84E3D0016B68E /* EntityExtension.swift in Sources */,
 				0160336C24694EA00032DA23 /* AllTasksViewController.swift in Sources */,
+				8376A2A0258D6386007B87C9 /* UpcomingHeaderView.swift in Sources */,
 				0152B91D258C20AD003F2B94 /* ScheduleTableViewCell.swift in Sources */,
 				014216A1255DF8060071BD1C /* HabitCollectionViewHeader.swift in Sources */,
 				015361C524AA7AB200D19DD2 /* TagStruct.swift in Sources */,
@@ -1008,6 +1022,7 @@
 				83372CC1251014EB0076DD7C /* TagTaskViewController.swift in Sources */,
 				83A1975C25018C1F001011D2 /* TaskTableViewController.swift in Sources */,
 				83372CB9250ED4DD0076DD7C /* DetailPresentationController.swift in Sources */,
+				8376A2A1258D6386007B87C9 /* UpcomingHeaderView.swift in Sources */,
 				832D3C6924ADE0A000A1E709 /* CoreDataManager.swift in Sources */,
 				83F9F70E24E3E80C0008FCF9 /* UIViewControllerExtension.swift in Sources */,
 				019281001F8A615C00E895D4 /* CalDoTests.swift in Sources */,
@@ -1030,6 +1045,7 @@
 				83372CC2251014EB0076DD7C /* TagTaskViewController.swift in Sources */,
 				83A1975D25018C1F001011D2 /* TaskTableViewController.swift in Sources */,
 				83372CBA250ED4DD0076DD7C /* DetailPresentationController.swift in Sources */,
+				8376A2A2258D6386007B87C9 /* UpcomingHeaderView.swift in Sources */,
 				832D3C6A24ADE0A000A1E709 /* CoreDataManager.swift in Sources */,
 				83F9F70F24E3E80C0008FCF9 /* UIViewControllerExtension.swift in Sources */,
 				0192810B1F8A615C00E895D4 /* CalDoUITests.swift in Sources */,

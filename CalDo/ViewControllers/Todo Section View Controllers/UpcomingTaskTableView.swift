@@ -21,6 +21,11 @@ class UpcomingTaskTableView: TaskTableView {
         return hierarchicalData[indexPath.section][indexPath.row]
     }
     
+    override init?(_ tv: UITableView, _ predicate: NSPredicate, _ sortVariable: String) {
+        super.init(tv, predicate, sortVariable)
+        tableView.register(UpcomingHeaderView.nib, forHeaderFooterViewReuseIdentifier: UpcomingHeaderView.identifier)
+    }
+    
     
     func refreshSections() {
         hierarchicalData = [[TaskEntity]]()
@@ -92,9 +97,9 @@ class UpcomingTaskTableView: TaskTableView {
     }
     
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-       return sectionTitles[section]
-    }
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//       return sectionTitles[section]
+//    }
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -103,6 +108,25 @@ class UpcomingTaskTableView: TaskTableView {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return hierarchicalData.count
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        return 50.0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50.0
+    }
+        
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+         if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: UpcomingHeaderView.identifier) as? UpcomingHeaderView {
+            
+            headerView.sectionTitle.text = sectionTitles[section]
+            
+            return headerView
+    }
+    return UIView()
     }
 }
 
