@@ -29,11 +29,11 @@ class UpcomingTaskTableView: TaskTableView {
     
     func refreshSections() {
         hierarchicalData = [[TaskEntity]]()
+        sectionTitles = [String]()
         
         let tasks = isFiltering ? filteredTableViewData : tableViewData
 
         let cal = Calendar.current
-        
         let currentDate = cal.startOfDay(for: Date())
   
         // Group into dictionary by date differences
@@ -155,5 +155,15 @@ class UpcomingTaskTableView: TaskTableView {
     }
     return UIView()
     }
+    
+    // MARK: - Search Bar
+    override func filterTasksForSearchText(_ searchText: String) {
+        filteredTableViewData = tableViewData.filter { (task: TaskEntity) -> Bool in
+            return task.title!.lowercased().contains(searchText.lowercased())
+        }
+        refreshSections()
+        tableView.reloadData()
+    }
+    
 }
 
