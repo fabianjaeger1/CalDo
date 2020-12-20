@@ -37,23 +37,33 @@ class UpcomingTaskTableView: TaskTableView, UITableViewDropDelegate {
         let cal = Calendar.current
         let currentDate = cal.startOfDay(for: Date())
   
-        // Group into dictionary by date differences
-        let dayDifferenceDictionary = Dictionary(grouping: tasks, by: {(task: TaskEntity) -> Int in
+        // Group into dictionary by time difference to current time
+        let minuteDifferenceDictionary = Dictionary(grouping: tasks, by: {(task: TaskEntity) -> Int in
             let date = task.value(forKey: "date") as! Date
-            return (cal.dateComponents([.day], from: currentDate, to: date).day ?? 0)
+            return (cal.dateComponents([.minute], from: currentDate, to: date).minute ?? 0)
         })
         
-        // Get overdue tasks into overdue section
+        // Split tasks into overdue and non-overdue
         var overdueTasks = [TaskEntity]()
-        for key in dayDifferenceDictionary.keys {
+        var notOverdueTasks = [TaskEntity]()
+        for key in minuteDifferenceDictionary.keys {
             if key < 0 {
-                overdueTasks += dayDifferenceDictionary[key]!
+                overdueTasks += minuteDifferenceDictionary[key]!
+            }
+            else {
+                notOverdueTasks += minuteDifferenceDictionary[key]!
             }
         }
         if !overdueTasks.isEmpty {
             hierarchicalData.append(overdueTasks)
             sectionTitles.append("Overdue")
         }
+        
+        // Group into dictionary by day differences
+        let dayDifferenceDictionary = Dictionary(grouping: notOverdueTasks, by: {(task: TaskEntity) -> Int in
+            let date = task.value(forKey: "date") as! Date
+            return (cal.dateComponents([.day], from: currentDate, to: date).day ?? 0)
+        })
         
         // Tasks further away than a week
         var monthTasks = [TaskEntity]()
