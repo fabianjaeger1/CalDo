@@ -12,7 +12,7 @@ import CoreData
 
 
 
-class UpcomingTaskTableView: TaskTableView {
+class UpcomingTaskTableView: TaskTableView, UITableViewDropDelegate {
     
     var hierarchicalData = [[TaskEntity]]()
     var sectionTitles = [String]()
@@ -24,6 +24,7 @@ class UpcomingTaskTableView: TaskTableView {
     override init?(_ tv: UITableView, _ predicate: NSPredicate, _ sortVariable: String) {
         super.init(tv, predicate, sortVariable)
         tableView.register(UpcomingHeaderView.nib, forHeaderFooterViewReuseIdentifier: UpcomingHeaderView.identifier)
+        tableView.dropDelegate = self
     }
     
     
@@ -74,7 +75,7 @@ class UpcomingTaskTableView: TaskTableView {
         // Group remaining tasks into dictionary by month differences
         let monthDifferenceDictionary = Dictionary(grouping: monthTasks, by: {(task: TaskEntity) -> Int in
             let date = task.value(forKey: "date") as! Date
-            return (cal.dateComponents([.day], from: currentDate, to: date).month ?? 0)
+            return (cal.dateComponents([.month], from: currentDate, to: date).month!)
         })
         
         // Make month sections
@@ -165,5 +166,51 @@ class UpcomingTaskTableView: TaskTableView {
         tableView.reloadData()
     }
     
+    
+    // MARK: - Reordering
+    
+    override func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        // Not necessary, but apparently there can be a bug with empty init
+        let itemProvider = NSItemProvider(object: "Move" as NSItemProviderWriting)
+        let dragItem = UIDragItem(itemProvider: itemProvider)
+        
+        dragItem.localObject = [indexPath.section, hierarchicalData[indexPath.section][indexPath.row]]
+        return [dragItem]
+    }
+
+    func tableView(_ _tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
+        if tableView.hasActiveDrag {
+            if session.items.count > 1 {
+                return UITableViewDropProposal(operation: .cancel)
+            } else if session.items.count == 1 {
+                // One item, check if the section matches
+                if let sourceSection = (session.items[0].localObject as? [Any])?[0] as? Int, let destinationSection = destinationIndexPath?.section {
+                    if sourceSection == destinationSection {
+                        return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
+                    }
+                }
+            }
+            return UITableViewDropProposal(operation: .cancel)
+        } else {
+            return UITableViewDropProposal(operation: .copy, intent: .insertAtDestinationIndexPath)
+        }
+    }
+
+    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
+        // Needed for drop delegate, but not called when dragging & dropping in table
+        print("perform Drop")
+    }
+    
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        if sourceIndexPath.section == destinationIndexPath.section {
+            let mover = hierarchicalData[sourceIndexPath.section].remove(at: sourceIndexPath.row)
+            hierarchicalData[destinationIndexPath.section].insert(mover, at: destinationIndexPath.row)
+            // self.saveOrder()
+        }
+
+    }
+
 }
+
+
 

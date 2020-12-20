@@ -646,7 +646,8 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
     func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         if !isFiltering {
             let dragItem = UIDragItem(itemProvider: NSItemProvider())
-            dragItem.localObject = tableViewData[indexPath.row]
+            // dragItem.localObject = tableViewData[indexPath.row]
+            dragItem.localObject = taskAtIndexPath(indexPath)
             return [dragItem]
         }
         else {
@@ -662,12 +663,12 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         }
     }
     
-    func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
-        if !isFiltering {
-            return proposedDestinationIndexPath
-        }
-        return sourceIndexPath
-    }
+//    func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+//        if !isFiltering {
+//            return proposedDestinationIndexPath
+//        }
+//        return sourceIndexPath
+//    }
     
     
     // MARK: - Search Bar
@@ -692,7 +693,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
     
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
 
-        let task = isFiltering ? filteredTableViewData[indexPath.row] : tableViewData[indexPath.row]
+        let task = taskAtIndexPath(indexPath)
         let identifier = "\(indexPath.row)" as NSString
         
         let scheduleAction = UIAction(title: "Schedule", image: UIImage(systemName: "calendar")) { action in
@@ -984,7 +985,7 @@ extension TaskTableView: UIViewControllerTransitioningDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let task = isFiltering ? filteredTableViewData[indexPath.row] : tableViewData[indexPath.row]
+        let task = taskAtIndexPath(indexPath)
         let vc = DetailViewController(nibName: "DetailViewController", bundle: nil, task: task, indexPath: indexPath)
         vc.modalPresentationStyle = .custom
         vc.transitioningDelegate = self
