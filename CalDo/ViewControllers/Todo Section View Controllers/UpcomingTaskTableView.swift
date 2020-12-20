@@ -96,6 +96,32 @@ class UpcomingTaskTableView: TaskTableView, UITableViewDropDelegate {
             let sampleDate = sampleTask.value(forKey: "date") as! Date
             sectionTitles.append(sampleDate.upcomingSectionTitle())
         }
+        
+        sortTasks()
+    }
+    
+    override func sortTasks() {
+        if !self.hierarchicalData.isEmpty {
+            hierarchicalData = hierarchicalData.map({
+                var section = $0
+                section.sort {
+                    ($0.value(forKey: self.sortVariable) as! Int) < ($1.value(forKey: self.sortVariable) as! Int)
+                }
+                return section
+            })
+            self.saveTaskOrder()
+        }
+    }
+    
+    override func saveTaskOrder() {
+        var i = 0
+        for section in hierarchicalData {
+            for task in section {
+                task.setValue(i, forKey: self.sortVariable)
+                i += 1
+            }
+        }
+        CoreDataManager.shared.saveContext()
     }
     
     override func completeTask(indexPath: IndexPath) {
@@ -111,10 +137,6 @@ class UpcomingTaskTableView: TaskTableView, UITableViewDropDelegate {
 
     }
     
-    
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//       return sectionTitles[section]
-//    }
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -215,7 +237,7 @@ class UpcomingTaskTableView: TaskTableView, UITableViewDropDelegate {
         if sourceIndexPath.section == destinationIndexPath.section {
             let mover = hierarchicalData[sourceIndexPath.section].remove(at: sourceIndexPath.row)
             hierarchicalData[destinationIndexPath.section].insert(mover, at: destinationIndexPath.row)
-            // self.saveOrder()
+            self.saveTaskOrder()
         }
 
     }
