@@ -96,16 +96,22 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let titleString = ["Add Time", "Add Reminder"]
-        let imageString = ["clock.fill", "repeat"]
+        let titleString = ["Time", "Reminder"]
+        let imageString = ["When_Todo", "Repeat_Todo"]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleTableViewCell", for: indexPath) as! ScheduleTableViewCell
-        let pointSize:CGFloat = 26.0
+        
         cell.tableViewTitle.text = titleString[indexPath.row]
+        cell.tableViewDetailLabel.text = ""
         cell.tableViewTitle.textColor = .textColor
         cell.backgroundColor = .BackgroundColor
-        let configuration = UIImage.SymbolConfiguration(pointSize: pointSize)
-        cell.tableViewImage.image = UIImage(systemName: imageString[indexPath.row])!.withTintColor(.label, renderingMode: .alwaysOriginal).withConfiguration(configuration)
+        
+        cell.tableViewImage.image = UIImage(named: imageString[indexPath.row])!.withTintColor(UIColor.textColor)
+        // for SF Symbols
+//        let pointSize:CGFloat = 26.0
+//        let configuration = UIImage.SymbolConfiguration(pointSize: pointSize)
+//        cell.tableViewImage.image = UIImage(named: imageString[indexPath.row])!.withTintColor(.label, renderingMode: .alwaysOriginal).withConfiguration(configuration)
+
         
         return cell
     }
@@ -137,10 +143,10 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        SaveButton.backgroundColor = blueColor
-        clearButton.backgroundColor = redColor
-        SaveButton.layer.cornerRadius = 10
-        clearButton.layer.cornerRadius = 10
+        SaveButton.backgroundColor = UIColor(named: "BlueDateSelectorColor")
+        clearButton.backgroundColor = .red
+        SaveButton.layer.cornerRadius = 12
+        clearButton.layer.cornerRadius = 12
         
         
         let pointSize:CGFloat = 26.0
