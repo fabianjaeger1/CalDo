@@ -10,6 +10,7 @@ import UIKit
 
 class ScheduleTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var tableViewDetailLabel: UILabel!
     @IBOutlet weak var tableViewTitle: UILabel!
     @IBOutlet weak var tableViewImage: UIImageView!
     

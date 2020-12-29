@@ -45,16 +45,16 @@
                 </label>
                 <datePicker contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="F9X-rD-30e">
                     <rect key="frame" x="16" y="154" width="338" height="317"/>
-                    <color key="tintColor" systemColor="systemOrangeColor"/>
+                    <color key="tintColor" name="BlueDateSelectorColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="317" id="Qik-Wf-fB8"/>
                         <constraint firstAttribute="width" constant="338" id="V5Y-lX-Q4q"/>
                     </constraints>
                 </datePicker>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YYW-FX-IMy">
-                    <rect key="frame" x="21" y="21" width="61" height="33"/>
+                    <rect key="frame" x="17" y="21" width="61" height="33"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="SFProRounded-Medium" family="SF Pro Rounded" pointSize="16"/>
+                    <fontDescription key="fontDescription" name="SFProRounded-Medium" family="SF Pro Rounded" pointSize="18"/>
                     <state key="normal" title="Cancel">
                         <color key="titleColor" name="TextColor"/>
                     </state>
@@ -85,7 +85,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mk8-GI-aZl">
                             <rect key="frame" x="225.5" y="0.0" width="112.5" height="74"/>
                             <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="16"/>
-                            <state key="normal" title="Next Week">
+                            <state key="normal" title="In a Week">
                                 <color key="titleColor" name="TextColor"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                             </state>
@@ -98,18 +98,26 @@
                         <constraint firstAttribute="width" constant="338" id="uvW-sY-KHF"/>
                     </constraints>
                 </stackView>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="8tc-r5-3e3">
-                    <rect key="frame" x="16" y="556" width="338" height="40"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="none" sectionIndexMinimumDisplayRowCount="1" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="P39-0v-4RQ">
+                    <rect key="frame" x="17" y="447" width="338" height="100"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="Rx8-tc-p0S"/>
+                        <constraint firstAttribute="width" constant="338" id="fWH-1h-6xP"/>
+                    </constraints>
+                </tableView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8tc-r5-3e3">
+                    <rect key="frame" x="16" y="551" width="338" height="40"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZFQ-vO-W9d">
-                            <rect key="frame" x="0.0" y="0.0" width="159" height="40"/>
+                            <rect key="frame" x="0.0" y="0.0" width="164" height="40"/>
                             <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="17"/>
                             <state key="normal" title="Clear">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7XS-JA-0Uc">
-                            <rect key="frame" x="179" y="0.0" width="159" height="40"/>
+                            <rect key="frame" x="174" y="0.0" width="164" height="40"/>
                             <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="17"/>
                             <state key="normal" title="Save">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -121,31 +129,23 @@
                         <constraint firstAttribute="width" constant="338" id="XpT-Q5-b1L"/>
                     </constraints>
                 </stackView>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="none" sectionIndexMinimumDisplayRowCount="1" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="P39-0v-4RQ">
-                    <rect key="frame" x="17" y="453" width="338" height="94"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="94" id="Rx8-tc-p0S"/>
-                        <constraint firstAttribute="width" constant="338" id="fWH-1h-6xP"/>
-                    </constraints>
-                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="8tc-r5-3e3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="6Nf-t1-oMp"/>
                 <constraint firstItem="VKL-cr-uUv" firstAttribute="top" secondItem="woL-sm-1Bb" secondAttribute="bottom" constant="26" id="CTv-rM-dA6"/>
-                <constraint firstItem="8tc-r5-3e3" firstAttribute="top" secondItem="P39-0v-4RQ" secondAttribute="bottom" constant="9" id="I60-Jq-c6t"/>
+                <constraint firstItem="8tc-r5-3e3" firstAttribute="top" secondItem="P39-0v-4RQ" secondAttribute="bottom" constant="4" id="I60-Jq-c6t"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="8tc-r5-3e3" secondAttribute="trailing" constant="16" id="Ph5-pN-Tf5"/>
                 <constraint firstItem="F9X-rD-30e" firstAttribute="leading" secondItem="VKL-cr-uUv" secondAttribute="leading" id="SQy-5l-XAG"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VKL-cr-uUv" secondAttribute="trailing" constant="16" id="VDz-wm-jNw"/>
                 <constraint firstItem="VKL-cr-uUv" firstAttribute="centerX" secondItem="woL-sm-1Bb" secondAttribute="centerX" id="eYg-Vz-fpQ"/>
-                <constraint firstItem="P39-0v-4RQ" firstAttribute="top" secondItem="F9X-rD-30e" secondAttribute="bottom" constant="-18" id="jPi-uw-QYU"/>
+                <constraint firstItem="P39-0v-4RQ" firstAttribute="top" secondItem="F9X-rD-30e" secondAttribute="bottom" constant="-24" id="jPi-uw-QYU"/>
                 <constraint firstItem="P39-0v-4RQ" firstAttribute="centerX" secondItem="8tc-r5-3e3" secondAttribute="centerX" constant="1" id="kov-lM-YSh"/>
                 <constraint firstItem="F9X-rD-30e" firstAttribute="top" secondItem="VKL-cr-uUv" secondAttribute="bottom" constant="3" id="puU-dQ-y3Q"/>
                 <constraint firstItem="VKL-cr-uUv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="77" id="r29-p0-ez0"/>
                 <constraint firstItem="VKL-cr-uUv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="x48-6i-6GT"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="8tc-r5-3e3" secondAttribute="bottom" constant="15" id="zLg-QW-vlS"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="8tc-r5-3e3" secondAttribute="bottom" constant="20" id="zLg-QW-vlS"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -154,14 +154,14 @@
     </objects>
     <resources>
         <image name="sun.min.fill" catalog="system" width="128" height="121"/>
+        <namedColor name="BlueDateSelectorColor">
+            <color red="0.29019607843137257" green="0.5490196078431373" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="TextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
