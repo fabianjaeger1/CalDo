@@ -242,7 +242,8 @@ class CoreDataManager {
         return newTask
     }
     
-    func completeTask(_ task: TaskEntity) {
+    // Complete task and return new task if task was recurring, otherwise old (completed) task
+    func completeTask(_ task: TaskEntity) -> TaskEntity {
         
         if task.recurrence {
             let newTask = self.duplicateTask(task)
@@ -252,10 +253,15 @@ class CoreDataManager {
             let newDate = date?.advanced(by: TimeInterval(interval))
             
             newTask.setValue(newDate, forKey: "date")
+            
+            task.setValue(true, forKey: "completed")
+            self.saveContext()
+            return newTask
         }
         task.setValue(true, forKey: "completed")
-        
         self.saveContext()
+        
+        return task
     }
     
     

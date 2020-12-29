@@ -535,10 +535,12 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
     
 // MARK: - Delegate Methods
     
-    func completeTask(indexPath: IndexPath) {
-        let task = taskAtIndexPath(indexPath)
+    // Complete task and return new task if task was recurring, otherwise completed task
+    // Argument withSections for subclasses with sections, which changes the behavior slightly
+    func completeTask(indexPath: IndexPath, withSections: Bool = false) -> TaskEntity {
+        var task = taskAtIndexPath(indexPath)
         
-        CoreDataManager.shared.completeTask(task)
+        task = CoreDataManager.shared.completeTask(task)
 
         // TODO: implement haptic feedback
         let impact = UIImpactFeedbackGenerator()
@@ -581,9 +583,6 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         }
         
         
-        let oldItemCount = tableViewData.count
-        
-        
         if isFiltering {
             filteredTableViewData.removeAll(where: {taskInList -> Bool in
                 return taskInList == task
@@ -598,20 +597,23 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             })
         }
         
-        self.refreshTableViewData()
-    
-        let newItemCount = tableViewData.count
         
-        if newItemCount == oldItemCount {
+        self.refreshTableViewData()
+        
+        let recurrence = task.value(forKey: "recurrence") as! Bool
+        
+        // Recurring tasks in the case with sections are handled separately in subclass
+        if recurrence && !withSections {
             self.tableView.reloadRows(at: [indexPath], with: .fade)
         }
-        else {
+        else if !recurrence {
             UIView.animate(withDuration: 0.5) {
                 self.tableView.deleteRows(at: [indexPath], with: .fade)
             }
         }
         
         //self.tableView.reloadData()
+        return task
     }
     
     

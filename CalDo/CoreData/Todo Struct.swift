@@ -240,6 +240,8 @@ func loadSampleTaskEntities() {
     let task12 = TaskEntity(context: managedContext)
     task12.title = "Remember the milk"
     task12.date = Date.init(timeIntervalSinceNow: -1 * 3600 * 24)
+    task12.recurrence = true
+    task12.recurringPeriod = 24 * 3600
     
 
     do {

@@ -17,6 +17,15 @@ class UpcomingTaskTableView: TaskTableView, UITableViewDropDelegate {
     var hierarchicalData = [[TaskEntity]]()
     var sectionTitles = [String]()
     
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return hierarchicalData[section].count
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return hierarchicalData.count
+    }
+    
     override func taskAtIndexPath(_ indexPath: IndexPath) -> TaskEntity {
         return hierarchicalData[indexPath.section][indexPath.row]
     }
@@ -27,6 +36,110 @@ class UpcomingTaskTableView: TaskTableView, UITableViewDropDelegate {
         tableView.dropDelegate = self
     }
     
+    override func completeTask(indexPath: IndexPath, withSections: Bool = true) -> TaskEntity {
+        var task = taskAtIndexPath(indexPath)
+        let recurrence = task.value(forKey: "recurrence") as! Bool
+        
+        let oldSection = hierarchicalData.firstIndex(where: {$0.contains(task)})!
+        let oldSectionSize = hierarchicalData[oldSection].count
+        let oldNumberOfSections = hierarchicalData.count
+        let oldSectionTitle = sectionTitles[oldSection]
+        
+        // New index path in case the row needs to be reloaded
+        var newIndexPath = IndexPath()
+        
+        self.tableView.performBatchUpdates({
+            task = super.completeTask(indexPath: indexPath, withSections: true)
+            refreshSections()
+            let newNumberOfSections = hierarchicalData.count
+            
+            // Recurring task, i.e. it can move to another section
+            if recurrence {
+                let newSection = hierarchicalData.firstIndex(where: {$0.contains(task)})!// ?? oldSection
+                print("New Section: ", newSection)
+                let newSectionSize = hierarchicalData[newSection].count
+                
+                // Task moves to another section
+                if newSection != oldSection {
+                    
+                    // Was only task in old section, needs to be deleted
+                    if oldSectionSize == 1 {
+                        
+                        // New section is created
+                        if oldNumberOfSections == newNumberOfSections {
+                            print("New section 1")
+                            tableView.insertSections([newSection], with: .fade)
+                            
+                            tableView.deleteRows(at: [indexPath], with: .fade)
+                            newIndexPath = IndexPath(row: 0, section: newSection)
+                            tableView.insertRows(at: [newIndexPath], with: .top)
+                        }
+                        // Task moves to existing section
+                        else {
+                            let newRow = hierarchicalData[newSection].firstIndex(of: task)! // ?? 0
+                            
+                            newIndexPath = IndexPath(row: newRow, section: newSection)
+                            tableView.moveRow(at: indexPath, to: newIndexPath)
+                        }
+                        tableView.deleteSections([oldSection], with: .fade)
+                    }
+                    // Old section remains
+                    else {
+                        // Task moves to existing section
+                        if oldNumberOfSections == newNumberOfSections {
+                            let newRow = hierarchicalData[newSection].firstIndex(of: task)! // ?? 0
+                            newIndexPath = IndexPath(row: newRow, section: newSection)
+                            tableView.moveRow(at: indexPath, to: newIndexPath)
+                        }
+                        // New section is created
+                        else {
+                            tableView.insertSections([newSection], with: .fade)
+                            
+                            tableView.deleteRows(at: [indexPath], with: .fade)
+                            newIndexPath = IndexPath(row: 0, section: newSection)
+                            tableView.insertRows(at: [newIndexPath], with: .top)
+                        }
+                    }
+                    
+                }
+                
+                // Section number stays the same, but section itself can still change
+                else {
+                    // Task moves into next section and old section gets deleted (-> stays same section number)
+                    if newSectionSize != oldSectionSize {
+                        let newRow = hierarchicalData[newSection].firstIndex(of: task)!
+
+                        tableView.deleteSections([oldSection], with: .fade)
+                        newIndexPath = IndexPath(row: newRow, section: newSection)
+                        tableView.insertRows(at: [newIndexPath], with: .top)
+                    }
+                    // Section title can still change, reload section if title changes to refresh header
+                    else {
+                        let newSectionTitle = sectionTitles[newSection]
+                        if newSectionTitle != oldSectionTitle {
+                            tableView.reloadSections([indexPath.section], with: .fade)
+                        }
+                        else {
+                            newIndexPath = indexPath
+                        }
+                    }
+                }
+            }
+            // Task isn't recurring, i.e. it can only be the last one in its section
+            else {
+                if oldNumberOfSections != newNumberOfSections {
+                    tableView.deleteSections([indexPath.section], with: .fade)
+                }
+            }
+        })
+        
+        if !newIndexPath.isEmpty {
+            tableView.reloadRows(at: [newIndexPath], with: .fade)
+        }
+        return task
+    }
+    
+    // MARK: - Generate Sections
     
     func refreshSections() {
         hierarchicalData = [[TaskEntity]]()
@@ -82,17 +195,17 @@ class UpcomingTaskTableView: TaskTableView, UITableViewDropDelegate {
             }
         }
         
-        // Group remaining tasks into dictionary by month differences
-        let monthDifferenceDictionary = Dictionary(grouping: monthTasks, by: {(task: TaskEntity) -> Int in
+        // Group remaining tasks into dictionary by month
+        let monthDictionary = Dictionary(grouping: monthTasks, by: {(task: TaskEntity) -> Int in
             let date = task.value(forKey: "date") as! Date
-            return (cal.dateComponents([.month], from: currentDate, to: date).month!)
+            return (cal.dateComponents([.month], from: date).month!)
         })
         
         // Make month sections
-        for key in monthDifferenceDictionary.keys.sorted() {
-            hierarchicalData.append(monthDifferenceDictionary[key]!)
+        for key in monthDictionary.keys.sorted() {
+            hierarchicalData.append(monthDictionary[key]!)
             // Take first task to get section title
-            let sampleTask = monthDifferenceDictionary[key]![0]
+            let sampleTask = monthDictionary[key]![0]
             let sampleDate = sampleTask.value(forKey: "date") as! Date
             sectionTitles.append(sampleDate.upcomingSectionTitle())
         }
@@ -100,52 +213,9 @@ class UpcomingTaskTableView: TaskTableView, UITableViewDropDelegate {
         sortTasks()
     }
     
-    override func sortTasks() {
-        if !self.hierarchicalData.isEmpty {
-            hierarchicalData = hierarchicalData.map({
-                var section = $0
-                section.sort {
-                    ($0.value(forKey: self.sortVariable) as! Int) < ($1.value(forKey: self.sortVariable) as! Int)
-                }
-                return section
-            })
-            self.saveTaskOrder()
-        }
-    }
-    
-    override func saveTaskOrder() {
-        var i = 0
-        for section in hierarchicalData {
-            for task in section {
-                task.setValue(i, forKey: self.sortVariable)
-                i += 1
-            }
-        }
-        CoreDataManager.shared.saveContext()
-    }
-    
-    override func completeTask(indexPath: IndexPath) {
-        let oldNumberOfSections = hierarchicalData.count
-        self.tableView.performBatchUpdates({
-            super.completeTask(indexPath: indexPath)
-            refreshSections()
-            let newNumberOfSections = hierarchicalData.count
-            if oldNumberOfSections != newNumberOfSections {
-                tableView.deleteSections([indexPath.section], with: .fade)
-            }
-        })
 
-    }
     
-    
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return hierarchicalData[section].count
-    }
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return hierarchicalData.count
-    }
+    // MARK: - Section Headers
     
     func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
         return 50.0
@@ -155,7 +225,6 @@ class UpcomingTaskTableView: TaskTableView, UITableViewDropDelegate {
         return 50.0
     }
         
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
          if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: UpcomingHeaderView.identifier) as? UpcomingHeaderView {
             
@@ -198,6 +267,34 @@ class UpcomingTaskTableView: TaskTableView, UITableViewDropDelegate {
         tableView.reloadData()
     }
     
+    
+    
+    // MARK: - Sorting/Ordering
+    
+    override func sortTasks() {
+        if !self.hierarchicalData.isEmpty {
+            hierarchicalData = hierarchicalData.map({
+                var section = $0
+                section.sort {
+                    ($0.value(forKey: self.sortVariable) as! Int) < ($1.value(forKey: self.sortVariable) as! Int)
+                }
+                return section
+            })
+            self.saveTaskOrder()
+        }
+    }
+    
+    override func saveTaskOrder() {
+        var i = 0
+        for section in hierarchicalData {
+            for task in section {
+                task.setValue(i, forKey: self.sortVariable)
+                i += 1
+            }
+        }
+        CoreDataManager.shared.saveContext()
+    }
+
     
     // MARK: - Reordering
     
