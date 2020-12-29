@@ -696,7 +696,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
 
         let task = taskAtIndexPath(indexPath)
-        let identifier = "\(indexPath.row)" as NSString
+        let identifier = "\(indexPath.row),\(indexPath.section)" as NSString
         
         let scheduleAction = UIAction(title: "Schedule", image: UIImage(systemName: "calendar")) { action in
             let vc = ScheduleViewController(nibName: "ScheduleViewController", bundle: nil)
@@ -842,9 +842,9 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         else {
             return nil
         }
-
-        let index = Int(identifier)! as Int
-        let indexPath = IndexPath(row: index, section:0)
+        
+        let indices = identifier.components(separatedBy: ",")
+        let indexPath = IndexPath(row: Int(indices[0])!, section: Int(indices[1])!)
         
         /// Renaming task title
         if let cell = tableView.cellForRow(at: indexPath) as? TaskTableViewCell {
