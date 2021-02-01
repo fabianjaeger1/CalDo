@@ -11,7 +11,7 @@ import UIKit
 class PresentationController: UIPresentationController {
     override var frameOfPresentedViewInContainerView: CGRect {
         let bounds = presentingViewController.view.bounds
-        let size = CGSize(width: 370, height: 630)
+        let size = CGSize(width: 370, height: 670)
         let origin = CGPoint(x: bounds.midX - size.width / 2, y: bounds.midY - size.height / 2)
         return CGRect(origin: origin, size: size)
     }
@@ -19,6 +19,7 @@ class PresentationController: UIPresentationController {
     private lazy var dismissView: UIView = {
         let view = UIView(frame: self.containerView!.bounds)
         view.backgroundColor = UIColor.darkGray.withAlphaComponent(0.3)
+//        view.backgroundColor = UIColor.darkGray.withAlphaComponent(0.3)
         view.isUserInteractionEnabled = true
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(PresentationController.touchCallback(_:)))
@@ -89,18 +90,37 @@ class TransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
 
 class ScheduleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+//    var task: TaskEntity!
+//    var indexPath: IndexPath!
+//
+//    var dateTitle: String!
+//
+//    
+//    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, task: TaskEntity, indexPath: IndexPath) {
+//        self.task = task
+//        self.indexPath = indexPath
+//        
+//        let taskHasTime = task.value(forKey: "dateHasTime") as! Bool
+//        let date = task.value(forKey: "date") as? Date
+//
+//        dateTitle = date?.todoString(withTime: taskHasTime) ?? "No Date"
+//
+//        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+//    }
+    
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let titleString = ["Time", "Reminder"]
-        let imageString = ["When_Todo", "Repeat_Todo"]
+        let titleString = ["Time", "Repeat", "Reminder"]
+        let imageString = ["When_Todo", "Repeat_Todo","Reminder_Todo"]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleTableViewCell", for: indexPath) as! ScheduleTableViewCell
         
+        cell.selectionStyle = .none
         cell.tableViewTitle.text = titleString[indexPath.row]
         cell.tableViewDetailLabel.text = ""
         cell.tableViewTitle.textColor = .textColor
@@ -115,8 +135,7 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
         
         return cell
     }
-    
-    
+
     let redColor = UIColor(hexString: "E02020")
     let blueColor = UIColor(hexString: "0091FF")
     

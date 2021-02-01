@@ -43,11 +43,11 @@
                     <color key="textColor" name="TextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <datePicker contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="F9X-rD-30e">
-                    <rect key="frame" x="16" y="154" width="338" height="317"/>
+                <datePicker contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="F9X-rD-30e">
+                    <rect key="frame" x="16" y="154" width="338" height="324"/>
                     <color key="tintColor" name="BlueDateSelectorColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="317" id="Qik-Wf-fB8"/>
+                        <constraint firstAttribute="height" constant="324" id="Qik-Wf-fB8"/>
                         <constraint firstAttribute="width" constant="338" id="V5Y-lX-Q4q"/>
                     </constraints>
                 </datePicker>
@@ -98,14 +98,6 @@
                         <constraint firstAttribute="width" constant="338" id="uvW-sY-KHF"/>
                     </constraints>
                 </stackView>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="none" sectionIndexMinimumDisplayRowCount="1" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="P39-0v-4RQ">
-                    <rect key="frame" x="17" y="447" width="338" height="100"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="100" id="Rx8-tc-p0S"/>
-                        <constraint firstAttribute="width" constant="338" id="fWH-1h-6xP"/>
-                    </constraints>
-                </tableView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8tc-r5-3e3">
                     <rect key="frame" x="16" y="551" width="338" height="40"/>
                     <subviews>
@@ -129,21 +121,26 @@
                         <constraint firstAttribute="width" constant="338" id="XpT-Q5-b1L"/>
                     </constraints>
                 </stackView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="none" sectionIndexMinimumDisplayRowCount="1" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="P39-0v-4RQ">
+                    <rect key="frame" x="9" y="463" width="345" height="63"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="P39-0v-4RQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="9" id="122-ah-cBc"/>
                 <constraint firstItem="8tc-r5-3e3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="6Nf-t1-oMp"/>
                 <constraint firstItem="VKL-cr-uUv" firstAttribute="top" secondItem="woL-sm-1Bb" secondAttribute="bottom" constant="26" id="CTv-rM-dA6"/>
-                <constraint firstItem="8tc-r5-3e3" firstAttribute="top" secondItem="P39-0v-4RQ" secondAttribute="bottom" constant="4" id="I60-Jq-c6t"/>
+                <constraint firstItem="P39-0v-4RQ" firstAttribute="top" secondItem="F9X-rD-30e" secondAttribute="bottom" constant="-15" id="GAM-r5-rDP"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="8tc-r5-3e3" secondAttribute="trailing" constant="16" id="Ph5-pN-Tf5"/>
                 <constraint firstItem="F9X-rD-30e" firstAttribute="leading" secondItem="VKL-cr-uUv" secondAttribute="leading" id="SQy-5l-XAG"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VKL-cr-uUv" secondAttribute="trailing" constant="16" id="VDz-wm-jNw"/>
+                <constraint firstItem="8tc-r5-3e3" firstAttribute="top" secondItem="P39-0v-4RQ" secondAttribute="bottom" constant="25" id="eMp-ZP-0Rm"/>
                 <constraint firstItem="VKL-cr-uUv" firstAttribute="centerX" secondItem="woL-sm-1Bb" secondAttribute="centerX" id="eYg-Vz-fpQ"/>
-                <constraint firstItem="P39-0v-4RQ" firstAttribute="top" secondItem="F9X-rD-30e" secondAttribute="bottom" constant="-24" id="jPi-uw-QYU"/>
-                <constraint firstItem="P39-0v-4RQ" firstAttribute="centerX" secondItem="8tc-r5-3e3" secondAttribute="centerX" constant="1" id="kov-lM-YSh"/>
                 <constraint firstItem="F9X-rD-30e" firstAttribute="top" secondItem="VKL-cr-uUv" secondAttribute="bottom" constant="3" id="puU-dQ-y3Q"/>
                 <constraint firstItem="VKL-cr-uUv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="77" id="r29-p0-ez0"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="P39-0v-4RQ" secondAttribute="trailing" constant="16" id="ufL-JU-vwf"/>
                 <constraint firstItem="VKL-cr-uUv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="x48-6i-6GT"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="8tc-r5-3e3" secondAttribute="bottom" constant="20" id="zLg-QW-vlS"/>
             </constraints>

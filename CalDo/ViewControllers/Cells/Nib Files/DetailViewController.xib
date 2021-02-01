@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -16,6 +18,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="CalDo" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="qmh-1V-Hdt" id="nK7-iF-Iir"/>
+                <outlet property="detailDropdownButton" destination="Ymr-av-RB3" id="79I-XA-FuM"/>
                 <outlet property="textLine" destination="5sI-ZE-cjc" id="Ub5-Za-vGW"/>
                 <outlet property="todoButton" destination="VPw-f8-sst" id="2NT-wC-RiQ"/>
                 <outlet property="todoTitle" destination="UKQ-2F-nhw" id="fmr-9Z-U6Q"/>
@@ -35,42 +38,23 @@
                     </constraints>
                 </progressView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VPw-f8-sst">
-                    <rect key="frame" x="22" y="110" width="29" height="29"/>
+                    <rect key="frame" x="22" y="125" width="29" height="29"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="29" id="3VL-jB-NHV"/>
                         <constraint firstAttribute="height" constant="29" id="aSO-kI-Vec"/>
                     </constraints>
                     <state key="normal" image="TodoButton"/>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Project" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEB-q2-zom">
-                    <rect key="frame" x="79" y="753.5" width="115" height="20"/>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i2N-h5-Ixt">
-                    <rect key="frame" x="194" y="755" width="146" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5sI-ZE-cjc">
-                    <rect key="frame" x="21" y="153.5" width="372" height="2"/>
+                    <rect key="frame" x="21" y="168.5" width="372" height="2"/>
                     <color key="backgroundColor" name="TextColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="2" id="O6f-UA-Hv9"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7rc-sK-pmb">
-                    <rect key="frame" x="79" y="803" width="30" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="tintColor" systemColor="systemGrayColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <state key="normal" image="flag" catalog="system"/>
-                </button>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="qmh-1V-Hdt">
-                    <rect key="frame" x="0.0" y="170.5" width="414" height="506"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <rect key="frame" x="0.0" y="185.5" width="414" height="506"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="506" id="dn7-dq-clb"/>
                     </constraints>
@@ -82,38 +66,47 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="NO U" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UKQ-2F-nhw">
-                    <rect key="frame" x="59" y="107" width="334" height="35"/>
+                    <rect key="frame" x="59" y="122" width="334" height="35"/>
                     <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="27"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ymr-av-RB3">
+                    <rect key="frame" x="363" y="70" width="30" height="29"/>
+                    <state key="normal" image="Down"/>
+                </button>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="VPw-f8-sst" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="66" id="4lk-Zd-PPt"/>
+                <constraint firstItem="VPw-f8-sst" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="81" id="4lk-Zd-PPt"/>
+                <constraint firstItem="Ymr-av-RB3" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="26" id="6EP-rk-8VD"/>
                 <constraint firstItem="VPw-f8-sst" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="22" id="DNm-oW-JnY"/>
+                <constraint firstItem="UKQ-2F-nhw" firstAttribute="top" secondItem="Ymr-av-RB3" secondAttribute="bottom" constant="23" id="IJT-yG-vwN"/>
                 <constraint firstItem="5sI-ZE-cjc" firstAttribute="top" secondItem="UKQ-2F-nhw" secondAttribute="bottom" constant="11.5" id="ISt-mx-hjm"/>
                 <constraint firstItem="AxO-zk-0hp" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="J5L-iB-Q42"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5sI-ZE-cjc" secondAttribute="trailing" constant="21" id="LC7-kx-p2R"/>
                 <constraint firstItem="qmh-1V-Hdt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="LZK-Iu-hWU"/>
                 <constraint firstItem="AxO-zk-0hp" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="UBX-e2-QRa"/>
-                <constraint firstItem="UKQ-2F-nhw" firstAttribute="top" secondItem="AxO-zk-0hp" secondAttribute="bottom" constant="43" id="VeD-M1-61K"/>
+                <constraint firstItem="UKQ-2F-nhw" firstAttribute="top" secondItem="AxO-zk-0hp" secondAttribute="bottom" constant="58" id="VeD-M1-61K"/>
                 <constraint firstItem="UKQ-2F-nhw" firstAttribute="leading" secondItem="VPw-f8-sst" secondAttribute="trailing" constant="8" symbolic="YES" id="VxE-7y-1oF"/>
                 <constraint firstItem="qmh-1V-Hdt" firstAttribute="top" secondItem="5sI-ZE-cjc" secondAttribute="bottom" constant="15" id="ZMu-bn-pen"/>
                 <constraint firstItem="5sI-ZE-cjc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="21" id="gJP-Ot-R8w"/>
                 <constraint firstItem="qmh-1V-Hdt" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="n7W-z2-CN0"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="UKQ-2F-nhw" secondAttribute="trailing" constant="21" id="pkV-66-ntM"/>
                 <constraint firstItem="UKQ-2F-nhw" firstAttribute="centerY" secondItem="VPw-f8-sst" secondAttribute="centerY" id="r1O-pP-Agt"/>
-                <constraint firstItem="cEB-q2-zom" firstAttribute="top" secondItem="qmh-1V-Hdt" secondAttribute="bottom" constant="77" id="tya-PQ-GJ2"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ymr-av-RB3" secondAttribute="trailing" constant="21" id="uHJ-eh-NEI"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="-86.956521739130437" y="109.82142857142857"/>
         </view>
     </objects>
     <resources>
+        <image name="Down" width="30" height="29"/>
         <image name="TodoButton" width="21" height="21"/>
-        <image name="flag" catalog="system" width="64" height="64"/>
         <namedColor name="TextColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

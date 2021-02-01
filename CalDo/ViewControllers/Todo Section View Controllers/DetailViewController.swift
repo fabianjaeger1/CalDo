@@ -13,7 +13,7 @@ import UIKit
 
 class DetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIAdaptivePresentationControllerDelegate { 
     
-    
+    @IBOutlet weak var detailDropdownButton: UIButton!
     @IBOutlet weak var todoTitle: UITextField!
     @IBOutlet weak var todoButton: UIButton!
     @IBOutlet weak var textLine: UIView!
@@ -38,8 +38,9 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
     var collectionTitles: [String]!
     var collectionColors: [UIColor]!
     
-    let todoTaskCategories = ["Due", "Project", "Priority", "Tags"]
-    let collectionImages = ["clock.fill","folder.fill", "flag.fill", "flag.fill"]
+    let todoTaskCategories = ["Due", "Project", "Duration", "Priority"]
+//    let collectionImages = ["When_Todo","folder", "clock", "flag"]
+    let collectionImages = ["When_Todo","folder", "clock", "flag"]
     
     /// Spacing at the margins left and right
     let marginSpacing: CGFloat = 21
@@ -58,15 +59,12 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailCollectionViewCell", for: indexPath) as! DetailCollectionViewCell
         
-        if [0, 1, 3].contains(indexPath.row) {
+        if [0, 1, 2].contains(indexPath.row) {
             cell.label.text = collectionTitles[indexPath.row]
-            cell.image.image = UIImage(systemName: collectionImages[indexPath.row])
-            cell.image.tintColor = .textColor
-            
-            //if indexPath.row == 0 {
+            cell.image.image = UIImage(named: collectionImages[indexPath.row])!.withTintColor(UIColor.textColor, renderingMode: .alwaysOriginal)
             cell.label.textColor = collectionColors[indexPath.row]
         }
-        else if indexPath.row == 2 {
+        else if indexPath.row == 3 {
             let priority = task.value(forKey: "priority") as! Int
             // let recurrence = task.value(forKey: "recurrence") as! Bool
             
@@ -92,10 +90,8 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
             cell.image.centerYAnchor.constraint(equalTo: cell.centerYAnchor).isActive = true
             
             cell.widthAnchor.constraint(equalTo: cell.heightAnchor).isActive = true
-            
         }
 
-        
         cell.backgroundColor = .clear
         cell.contentView.layer.cornerRadius = 10
         cell.contentView.backgroundColor = .backgroundColor
@@ -134,7 +130,6 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
     func configureCollectionView() {
         collectionView.collectionViewLayout = createLayout()
     }
-
     
     func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout {
@@ -184,8 +179,6 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
         todoButton.addTarget(self, action: #selector(completeButtonTapped), for: .touchUpInside)
         
         todoTitle.text = task.value(forKey: "title") as? String
-        
-        
         
         let priority = task.value(forKey: "priority") as! Int
         let recurrence = task.value(forKey: "recurrence") as! Bool
@@ -241,7 +234,7 @@ class DetailViewController: UIViewController, UICollectionViewDataSource, UIColl
         dateTitle = date?.todoString(withTime: taskHasTime) ?? "No Date"
         dateTextColor = date?.todoColor(withTime: taskHasTime) ?? .systemGray
 
-        collectionTitles = [dateTitle, projectTitle, "Test1", "Test2"]
+        collectionTitles = [dateTitle, projectTitle, "Duration", "Test2"]
         collectionColors = [dateTextColor, projectColor, .textColor, .textColor]
         
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
