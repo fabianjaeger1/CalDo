@@ -15,6 +15,9 @@ class CustomTabBarViewController: UITabBarController, CustomTabBarDataSource, Cu
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let bottom = self.view.frame.maxY - 70// will return the bottommost y coordinate of the view
+        self.tabBar.frame = CGRect( x: 0, y: bottom, width: self.tabBar.frame.width, height: self.tabBar.frame.height)
+        
         // Do any additional setup after loading the view.
         self.tabBar.isHidden = true
         

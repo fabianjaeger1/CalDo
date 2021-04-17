@@ -656,7 +656,7 @@
         <!--All Tasks View Controller-->
         <scene sceneID="fzh-jb-QLW">
             <objects>
-                <viewController id="NFI-oE-5dt" customClass="AllTasksViewController" customModule="CalDo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="pageSheet" id="NFI-oE-5dt" customClass="AllTasksViewController" customModule="CalDo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KQp-M5-wit">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -713,7 +713,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mle-YZ-aFU">
-                                        <rect key="frame" x="58" y="30" width="94.5" height="35"/>
+                                        <rect key="frame" x="58" y="30" width="97" height="36"/>
                                         <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -761,7 +761,7 @@
         <!--Today View Controller-->
         <scene sceneID="fxj-Cc-NZ2">
             <objects>
-                <viewController id="tND-UQ-A2O" customClass="TodayViewController" customModule="CalDo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="pageSheet" id="tND-UQ-A2O" customClass="TodayViewController" customModule="CalDo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xsn-04-4mb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -808,7 +808,7 @@
         <!--Upcoming View Controller-->
         <scene sceneID="3v9-Ku-axL">
             <objects>
-                <viewController id="rht-Yz-jkJ" customClass="UpcomingViewController" customModule="CalDo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="pageSheet" id="rht-Yz-jkJ" customClass="UpcomingViewController" customModule="CalDo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EAb-NV-Sd3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
