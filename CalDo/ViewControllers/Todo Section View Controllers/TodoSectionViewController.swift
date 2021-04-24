@@ -192,8 +192,15 @@ class TodoSectionViewController: UIViewController, UICollectionViewDataSource, U
     func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
         collectionView.reloadData()
         smoothlyDeselectRows(tableView: myTableView)
-        
     }
+    
+    func presentationControllerDidAttemptToDismiss(_ presentationController: UIPresentationController) {
+        if presentationController.presentedViewController is TaskTableViewController {
+            let vc = presentationController.presentedViewController as! TaskTableViewController
+            vc.taskTableView.searchController.isActive = false
+        }
+    }
+    
     
     
     override func viewDidLoad() {
