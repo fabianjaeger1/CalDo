@@ -315,7 +315,7 @@ class InboxViewController: TaskTableViewController {
 //    override func viewWillAppear(_ animated: Bool) {
 //        super.viewWillAppear(animated)
 //
-//        // inboxTableView.refreshTableViewData()
+//        // inboxTableView.refreshTableView()
 //        // inboxTableView.tableView.reloadData()
 //    }
 //

@@ -141,6 +141,7 @@ class UpcomingTaskTableView: TaskTableView, UITableViewDropDelegate {
     
     // MARK: - Generate Sections
     
+    // Generate sections and titles, called after refreshing table view data
     func refreshSections() {
         hierarchicalData = [[TaskEntity]]()
         sectionTitles = [String]()
@@ -213,7 +214,13 @@ class UpcomingTaskTableView: TaskTableView, UITableViewDropDelegate {
         sortTasks()
     }
     
+    override func refreshTableView() {
+        super.refreshTableViewData()
+        self.refreshSections()
+        self.sortTasks()
+    }
 
+    
     
     // MARK: - Section Headers
     
@@ -273,6 +280,7 @@ class UpcomingTaskTableView: TaskTableView, UITableViewDropDelegate {
     
     override func sortTasks() {
         if !self.hierarchicalData.isEmpty {
+            print(self.sortVariable)
             hierarchicalData = hierarchicalData.map({
                 var section = $0
                 section.sort {

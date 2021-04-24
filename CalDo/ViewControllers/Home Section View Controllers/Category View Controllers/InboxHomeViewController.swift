@@ -160,7 +160,7 @@ class InboxHomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        inboxHomeTableView.refreshTableViewData()
+        inboxHomeTableView.refreshTableView()
     }
     
     override func viewDidLoad() {

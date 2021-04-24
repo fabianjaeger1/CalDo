@@ -150,6 +150,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         CoreDataManager.shared.saveContext()
     }
     
+    // Refresh the data itself
     func refreshTableViewData() {
         let managedContext = CoreDataManager.shared.persistentContainer.viewContext
         let request : NSFetchRequest<TaskEntity> = TaskEntity.fetchRequest()
@@ -167,9 +168,11 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
                 return task.title!.lowercased().contains(searchController.searchBar.text!.lowercased())
             }
         }
-
-        // TODO: necessary?
-        // self.tableView.reloadData()
+    }
+    
+    // Refresh the table view by fetching the data, and sorting
+    func refreshTableView() {
+        self.refreshTableViewData()
         self.sortTasks()
     }
 
@@ -598,7 +601,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         }
         
         
-        self.refreshTableViewData()
+        self.refreshTableView()
         
         let recurrence = task.value(forKey: "recurrence") as! Bool
         
@@ -739,11 +742,30 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
 
             let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
-                self.tableViewData.remove(at: indexPath.row)
                 CoreDataManager.shared.deleteTask(task)
-                UIView.animate(withDuration: 0.35) {
-                self.tableView.deleteRows(at: [indexPath], with: .fade)
+                
+                self.tableView.beginUpdates()
+                // Subclass which has sections, not super elegant, but works
+                if self is UpcomingTaskTableView {
+                    let tv = self as! UpcomingTaskTableView
+                    if tv.hierarchicalData[indexPath.section].count == 1 {
+                        self.tableView.deleteSections([indexPath.section], with: .fade)
+                    }
+                    else {
+                        UIView.animate(withDuration: 0.35) {
+                        self.tableView.deleteRows(at: [indexPath], with: .fade)
+                        }
+                    }
                 }
+                else {
+                    UIView.animate(withDuration: 0.35) {
+                    self.tableView.deleteRows(at: [indexPath], with: .fade)
+                    }
+                }
+                
+                self.refreshTableView()
+                
+                self.tableView.endUpdates()
             }
 
             // Add the actions to the alert controller
@@ -781,12 +803,8 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
             newTask.tagOrder = task.tagOrder
             newTask.recurringPeriod = task.recurringPeriod
             
-            if self.isFiltering {
-                self.filteredTableViewData.insert(newTask, at: indexPath.row)
-            }
-            
-            self.tableViewData.insert(newTask, at: indexPath.row)
             CoreDataManager.shared.saveContext()
+            self.refreshTableView()
             self.tableView.insertRows(at: [indexPath], with: .fade)
         }
         
@@ -795,6 +813,7 @@ class TaskTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Small
         
         //let previewProvider = isFiltering ? DetailViewController.init : nil
         
+        // Don't return a configuration if the search controller is active
         return !searchController.isActive ? UIContextMenuConfiguration(identifier: identifier, previewProvider: nil, actionProvider: { _ in
             UIMenu(title: "", identifier: nil, children: [editMenu, deleteAction])
         }) : nil
