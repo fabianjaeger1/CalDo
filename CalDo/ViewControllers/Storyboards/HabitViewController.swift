@@ -10,7 +10,6 @@ import UIKit
 
 class HabitViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     
-    
     // Make sure to check numberOfDays with number of Cells per section for DateSelector CollectionView
     func arrayOfDateNumbers() -> NSArray {
             

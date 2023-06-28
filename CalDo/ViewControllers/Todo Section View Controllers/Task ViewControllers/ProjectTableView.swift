@@ -146,7 +146,7 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+        return 43
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -182,6 +182,7 @@ class ProjectTableView: NSObject, UITableViewDataSource, UITableViewDelegate, Ex
                 headerView.backgroundView = backgroundView
                 
                 headerView.view.layer.cornerRadius = 15
+                //headerView.addButton.view.set
                 headerView.section = section
                 headerView.headerLabel.text = "Projects"
                 headerView.image.image = UIImage(named: "ProjectImageLabel")
